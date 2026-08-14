@@ -1,0 +1,137 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-01T12:00:00.000Z",
+  "title": "Design System: Whale",
+  "extensions": {
+    "colorMeta": {
+      "vacuum-white": { "role": "neutral", "displayName": "Vacuum White", "canonical": "#F8F7F4", "tonalRamp": ["#0F172A", "#475569", "#94A3B8", "#CBD5E1", "#E2E8F0", "#EEF2F6", "#F8F7F4", "#FFFFFF"] },
+      "near-black": { "role": "neutral", "displayName": "Near Black", "canonical": "#0F172A", "tonalRamp": ["#020617", "#0F172A", "#1E293B", "#334155", "#475569", "#64748B", "#94A3B8", "#CBD5E1"] },
+      "steel-blue": { "role": "secondary", "displayName": "Steel Blue", "canonical": "#4A6C8C", "tonalRamp": ["#0F172A", "#1E3A5F", "#2A4D73", "#3D5F85", "#4A6C8C", "#6B8EAE", "#93B4CC", "#C3D6E5"] },
+      "track-vision": { "role": "primary", "displayName": "Track Vision", "canonical": "#FFD23F", "tonalRamp": ["#7A4F00", "#A66D00", "#CC8A00", "#F0A800", "#FFD23F", "#FFE06B", "#FFEC9B", "#FFF7D1"] },
+      "track-voice": { "role": "primary", "displayName": "Track Voice", "canonical": "#00E5FF", "tonalRamp": ["#005F6B", "#007A8A", "#0096A8", "#00B4C8", "#00E5FF", "#5BEFFF", "#8FF5FF", "#C3FBFF"] },
+      "track-sensor": { "role": "primary", "displayName": "Track Sensor", "canonical": "#FF4D8D", "tonalRamp": ["#7A0D32", "#A31448", "#CC1D5F", "#F02E7A", "#FF4D8D", "#FF7AAA", "#FFA3C4", "#FFD1E4"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero headlines only." },
+      "headline": { "displayName": "Headline", "purpose": "Section headlines." },
+      "title": { "displayName": "Title", "purpose": "Card and component titles." },
+      "lead": { "displayName": "Lead", "purpose": "Hero lead paragraph." },
+      "body-large": { "displayName": "Body Large", "purpose": "Section descriptions and CTA lead." },
+      "body": { "displayName": "Body", "purpose": "Paragraphs and descriptions; max 70ch." },
+      "body-small": { "displayName": "Body Small", "purpose": "Compact card descriptions." },
+      "code": { "displayName": "Code", "purpose": "Terminal and code snippets." },
+      "data": { "displayName": "Data", "purpose": "Tabular spec numbers." },
+      "label": { "displayName": "Label", "purpose": "Mono legends, nav links, and small technical labels." },
+      "micro": { "displayName": "Micro", "purpose": "Spec labels." },
+      "caption": { "displayName": "Caption", "purpose": "Footer meta and fine print." },
+      "logo": { "displayName": "Logo", "purpose": "Logo wordmark." }
+    },
+    "shadows": [
+      { "name": "button-hover", "value": "0 10px 28px rgba(15, 23, 42, 0.22)", "purpose": "Lift under primary buttons on hover." },
+      { "name": "card-hover", "value": "0 12px 32px rgba(15, 23, 42, 0.08)", "purpose": "Subtle lift under use-case and layer cards on hover." },
+      { "name": "legend-active", "value": "0 4px 14px rgba(15, 23, 42, 0.1)", "purpose": "Small pressed shadow for active track-isolation button." }
+    ],
+    "motion": [
+      { "name": "ease-spring", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Bouncy lift transitions for cards and buttons." },
+      { "name": "ease-standard", "value": "0.2s ease", "purpose": "Default color and border transitions." }
+    ],
+    "breakpoints": [
+      { "name": "mobile", "value": "720px" },
+      { "name": "desktop", "value": "840px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Bold pill button used for the main call to action.",
+      "html": "<button class=\"ds-btn-primary\">Request a demo</button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.85rem 1.8rem; border-radius: 999px; background: #0F172A; color: #F8F7F4; font-family: 'Chakra Petch', system-ui, sans-serif; font-weight: 700; font-size: 1rem; border: none; cursor: pointer; transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.18s ease; } .ds-btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(15, 23, 42, 0.22); } .ds-btn-primary:focus-visible { outline: 3px solid #00E5FF; outline-offset: 3px; }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Secondary pill button with an inset stroke.",
+      "html": "<button class=\"ds-btn-ghost\">Explore products</button>",
+      "css": ".ds-btn-ghost { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.85rem 1.8rem; border-radius: 999px; background: transparent; color: #0F172A; font-family: 'Chakra Petch', system-ui, sans-serif; font-weight: 700; font-size: 1rem; border: none; box-shadow: inset 0 0 0 2px #0F172A; cursor: pointer; transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1), background 0.2s ease; } .ds-btn-ghost:hover { transform: translateY(-2px); background: rgba(15, 23, 42, 0.04); } .ds-btn-ghost:focus-visible { outline: 3px solid #00E5FF; outline-offset: 3px; }"
+    },
+    {
+      "name": "Layer Card",
+      "kind": "card",
+      "refersTo": "layer-card",
+      "description": "Dark card used in the detector-layers section for each Whale product module.",
+      "html": "<article class=\"ds-layer-card\"><h3>SpaceSight</h3><p>AI audit platform for space and facilities.</p></article>",
+      "css": ".ds-layer-card { background: rgba(248, 247, 244, 0.04); border: 1px solid rgba(248, 247, 244, 0.1); border-radius: 18px; padding: 3rem 1.5rem; color: #F8F7F4; font-family: 'Manrope', system-ui, sans-serif; transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease; } .ds-layer-card:hover { transform: translateY(-6px); border-color: rgba(248, 247, 244, 0.25); } .ds-layer-card h3 { font-family: 'Chakra Petch', system-ui, sans-serif; font-size: 1.5rem; font-weight: 700; margin: 0 0 0.5rem; } .ds-layer-card p { color: #94A3B8; font-size: 0.95rem; line-height: 1.6; margin: 0; }"
+    },
+    {
+      "name": "Use Case Card",
+      "kind": "card",
+      "refersTo": "usecase-card",
+      "description": "Light card with an orbital icon and a short description.",
+      "html": "<article class=\"ds-usecase-card\"><div class=\"ds-usecase-icon\" aria-hidden=\"true\"></div><div><h3>Sales Floor Intelligence</h3><p>Score every customer interaction across 40+ languages.</p></div></article>",
+      "css": ".ds-usecase-card { display: flex; align-items: flex-start; gap: 1.5rem; background: #FFFFFF; border: 1px solid rgba(15, 23, 42, 0.08); border-radius: 18px; padding: 1.5rem; font-family: 'Manrope', system-ui, sans-serif; transition: transform 0.2s ease, box-shadow 0.2s ease; } .ds-usecase-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(15, 23, 42, 0.08); } .ds-usecase-icon { flex: 0 0 64px; width: 64px; height: 64px; border-radius: 50%; border: 2px solid #FFD23F; } .ds-usecase-card h3 { font-family: 'Chakra Petch', system-ui, sans-serif; font-size: 1.2rem; font-weight: 700; margin: 0 0 0.25rem; } .ds-usecase-card p { color: #475569; font-size: 0.95rem; line-height: 1.6; margin: 0; }"
+    },
+    {
+      "name": "Terminal Panel",
+      "kind": "custom",
+      "refersTo": "integration-terminal",
+      "description": "Dark code panel styled like a terminal window.",
+      "html": "<div class=\"ds-terminal\"><div class=\"ds-terminal-header\"><span></span><span></span><span></span><span>stardust_deploy.yaml</span></div><pre class=\"ds-terminal-body\"><code>fleet: whale-owl</code></pre></div>",
+      "css": ".ds-terminal { background: #0B1020; border-radius: 18px; overflow: hidden; font-family: 'Space Mono', monospace; } .ds-terminal-header { display: flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1rem; background: rgba(255, 255, 255, 0.05); border-bottom: 1px solid rgba(255, 255, 255, 0.08); } .ds-terminal-header span:nth-child(1) { width: 10px; height: 10px; border-radius: 50%; background: #FF4B4B; } .ds-terminal-header span:nth-child(2) { width: 10px; height: 10px; border-radius: 50%; background: #FFD23F; } .ds-terminal-header span:nth-child(3) { width: 10px; height: 10px; border-radius: 50%; background: #00E5FF; } .ds-terminal-header span:nth-child(4) { margin-left: 0.5rem; font-size: 0.7rem; color: #94A3B8; } .ds-terminal-body { margin: 0; padding: 1.25rem; font-size: 0.9rem; line-height: 1.7; color: #00E5FF; overflow-x: auto; }"
+    },
+    {
+      "name": "Track Legend Button",
+      "kind": "button",
+      "refersTo": "track-item",
+      "description": "Pill button that isolates a particle track in the WebGL hero.",
+      "html": "<button class=\"ds-track-btn\" aria-pressed=\"false\"><span></span>SpaceSight</button>",
+      "css": ".ds-track-btn { display: inline-flex; align-items: center; gap: 0.45rem; padding: 0.35rem 0.7rem; border: 1px solid transparent; border-radius: 999px; background: rgba(248, 247, 244, 0.5); font-family: 'Space Mono', monospace; font-size: 0.85rem; color: #475569; cursor: pointer; transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease; } .ds-track-btn span { width: 10px; height: 10px; border-radius: 50%; background: #FFD23F; box-shadow: 0 0 10px #FFD23F; } .ds-track-btn:hover { background: rgba(248, 247, 244, 0.9); color: #0F172A; } .ds-track-btn[aria-pressed='true'] { background: #FFFFFF; border-color: #FFD23F; color: #0F172A; box-shadow: 0 4px 14px rgba(15, 23, 42, 0.1); } .ds-track-btn:focus-visible { outline: 3px solid #00E5FF; outline-offset: 3px; }"
+    },
+    {
+      "name": "CTA Input",
+      "kind": "input",
+      "refersTo": "cta-input",
+      "description": "Dark translucent pill input used in the CTA section.",
+      "html": "<input class=\"ds-cta-input\" type=\"email\" placeholder=\"work@company.com\" required>",
+      "css": ".ds-cta-input { flex: 1 1 240px; padding: 0.85rem 1.2rem; border: 1px solid rgba(248, 247, 244, 0.2); border-radius: 999px; background: rgba(248, 247, 244, 0.08); color: #F8F7F4; font-family: 'Manrope', system-ui, sans-serif; font-size: 1rem; transition: border-color 0.2s ease, background 0.2s ease; } .ds-cta-input::placeholder { color: #94A3B8; } .ds-cta-input:focus, .ds-cta-input:focus-visible { outline: 3px solid #00E5FF; outline-offset: 3px; border-color: #00E5FF; background: rgba(248, 247, 244, 0.12); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Particle Detector Event Display",
+    "overview": "Whale's visual world treats every visit as a single multimodal collision event. The interface borrows the spare, scientific notation of high-energy physics — concentric detector rings, colored particle tracks, and deposited-energy markers — but renders it on a warm, bright ground so the result feels approachable rather than archival. The system is built for B2B buyers who need to trust Whale's operations platform, but it refuses the dark, dense aesthetic that enterprise AI sites usually inherit. The page moves from the macro (the full-bleed interactive detector) to the micro (spec numbers in tabular mono) and back out to the human outcome (use cases, integration code, contact). Color is functional first: yellow for SpaceSight video, cyan for Echo voice, magenta for Alivia orchestration. The same three colors thread through every section, so the visitor learns the palette as they scroll.",
+    "keyCharacteristics": [
+      "Bright vacuum-chamber white ground with one deep-ink section for contrast.",
+      "Signal tracks in yellow, cyan, and magenta carry meaning across the whole site.",
+      "Technical grotesk display type (Chakra Petch) paired with a clean body face (Manrope) and tabular mono for data.",
+      "Every interactive state is authored; no browser-default focus rings or unstyled hover.",
+      "The hero is a real WebGL stage, not a decorative illustration."
+    ],
+    "rules": [
+      { "name": "Signal-Color Rule", "body": "Yellow, cyan, and magenta always map to SpaceSight video, Echo voice, and Alivia orchestration respectively. Never use them as generic decoration; their meaning is the interface.", "section": "colors" },
+      { "name": "One Ink Section Rule", "body": "Only one major section (CTA/footer) uses the near-black/detecto-ink ground. The rest of the page lives in daylight to keep the energy light, not moody.", "section": "colors" },
+      { "name": "Tight Display Rule", "body": "Display and headline letter-spacing is always -0.04em or tighter. The technical face needs to feel locked in, not floating.", "section": "typography" },
+      { "name": "Mono-For-Data Rule", "body": "Space Mono appears only for numbers, code, command labels, and small technical callouts. Never for marketing headlines or body text.", "section": "typography" },
+      { "name": "Full-Bleed Hero Rule", "body": "Only the hero and its WebGL canvas are full-bleed. Every other section respects the shared container.", "section": "layout" },
+      { "name": "Flat-By-Default Rule", "body": "Surfaces are flat at rest. Shadows appear only as a response to state (hover, focus, active). No decorative drop shadows under static cards.", "section": "elevation" },
+      { "name": "Orbital Base Rule", "body": "Circles and rings are the default motif. Angular shapes appear only inside iconography when the meaning demands it.", "section": "shapes" }
+    ],
+    "dos": [
+      "Do use yellow, cyan, and magenta exclusively for SpaceSight video, Echo voice, and Alivia orchestration respectively.",
+      "Do keep the page in daylight; use the detector-ink ground only for the terminal panel and CTA/footer.",
+      "Do use Chakra Petch for all headlines and Manrope for body text.",
+      "Do reserve Space Mono for data, code, and small technical labels.",
+      "Do make every interactive element respond with authored hover/focus/active states.",
+      "Do let the WebGL hero remain the dominant first impression."
+    ],
+    "donts": [
+      "Don't add decorative section numbers (01, 02, 03) unless the sequence itself is required navigation.",
+      "Don't use glass or blur as a decorative header effect.",
+      "Don't rely on browser-default focus outlines.",
+      "Don't use monospace for marketing copy or display type.",
+      "Don't make every section the same card grid.",
+      "Don't introduce new accent colors that compete with the three signal tracks."
+    ]
+  }
+}

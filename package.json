@@ -1,0 +1,22 @@
+{
+  "name": "whale-site",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "test:leads": "node scripts/test-leads-function.mjs"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.3",
+    "astro": "^7.2.0",
+    "playwright": "^1.62.1"
+  },
+  "devDependencies": {
+    "dotenv": "^17.4.2",
+    "netlify-cli": "^27.1.1"
+  }
+}

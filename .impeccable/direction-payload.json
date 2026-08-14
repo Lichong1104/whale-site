@@ -1,0 +1,55 @@
+{
+  "title": "选择 AI 硬件官网的视觉世界",
+  "question": "骰子指定了「性能装备店」。保留它、选一个替代方案，还是重新掷骰？",
+  "options": [
+    {
+      "id": "assigned",
+      "label": "性能装备店 Performance Gear Storefront",
+      "kicker": "骰子选定",
+      "lineage": "运动生活方式品牌旗舰店 + 实时数据可视化",
+      "thesis": "把每个 AI 感知模块当作一件性能装备来展示，让 B2B 采购也能感受到产品的活力、速度与可靠性。",
+      "palette": ["#FF4D8D", "#00D9C0", "#FFD23F", "#F8F7F4"],
+      "materials": ["大胆渐变", "动态数据波形", "模块化装备卡片", "高对比无衬线体"],
+      "viewport": "首屏以一颗悬浮的感知模组为中心，周围环绕实时视觉/语音/传感器数据流，CTA 像装备标签一样醒目。",
+      "risk": "如果渐变用得收敛，会退化成普通 SaaS 首页；必须让硬件形态和数据流同时被看到。",
+      "hero": "https://impeccable.style/worlds/cards/design-canon-memphis-showroom-morning-hero.webp",
+      "board": "https://impeccable.style/worlds/cards/design-canon-memphis-showroom-morning.webp"
+    },
+    {
+      "id": "challenger-particle-detector",
+      "label": "粒子探测器事件显示 Particle Detector Event Display",
+      "lineage": "高能物理实验的事件可视化",
+      "thesis": "把视觉、语音、环境信号当作一次碰撞事件中不同粒子的轨迹，科学感极强。",
+      "case": "融合顺畅：三种感知模态就是三条不同颜色的轨迹，共同构成一次「环境事件」。产品清晰度极高，但可能让非技术采购感到遥远。",
+      "hero": "https://impeccable.style/worlds/cards/scientific-notation-particle-detector-event-display-hero.webp",
+      "board": "https://impeccable.style/worlds/cards/scientific-notation-particle-detector-event-display.webp"
+    },
+    {
+      "id": "challenger-cephalopod",
+      "label": "头足类动态皮肤 Cephalopod Skin Language",
+      "lineage": "章鱼通过色素细胞实时变换皮肤图案",
+      "thesis": "多模态感知就像一种活体显示：根据环境上下文自动切换视觉、声音与触觉信号。",
+      "case": "融合诗意：自适应感知与生物皮肤的对应非常贴切，但隐喻需要解释，B2B 采购可能先被美感吸引、再看懂产品。",
+      "hero": "https://impeccable.style/worlds/cards/reefs-bioluminescent-nocturnal-chromatophore-skin-language-hero.webp",
+      "board": "https://impeccable.style/worlds/cards/reefs-bioluminescent-nocturnal-chromatophore-skin-language.webp"
+    },
+    {
+      "id": "challenger-memphis",
+      "label": "孟菲斯展厅早晨 Memphis Milano Showroom",
+      "lineage": "孟菲斯设计团体的家具展厅",
+      "thesis": "用高饱和几何、水磨石纹理和玩具般的控件，把硬件展台变成一间活泼的展厅。",
+      "case": "融合大胆：色彩与能量完全贴合 brief，但几何图案容易让页面显得像家具店而非企业硬件。",
+      "hero": "https://impeccable.style/worlds/cards/design-canon-memphis-showroom-morning-hero.webp",
+      "board": "https://impeccable.style/worlds/cards/design-canon-memphis-showroom-morning.webp"
+    }
+  ],
+  "reroll": true,
+  "canon": true,
+  "canonCard": {
+    "label": "品类标准页",
+    "thesis": "大多数 B2B 硬件官网会采用的稳妥方案：深色/白色基调、产品图、规格表、合作伙伴 logo 墙。",
+    "viewport": "传统英雄区 + 三栏特性 + 客户见证 + 联系表单。",
+    "risk": "这正是 brief 明确要求避免的「死气沉沉」。"
+  },
+  "steer": true
+}

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 100" preserveAspectRatio="none">
+  <path d="M0 25
+    C8 21 20 21 28 25 S48 29 56 25 S76 21 84 25 S104 29 112 25
+    S132 21 140 25 S160 29 168 25 S188 21 196 25 S216 29 224 25
+    S244 21 252 25 S272 29 280 25 S300 21 308 25 S328 29 336 25
+    S348 21 360 25
+    V100 H0 Z" fill="white"/>
+</svg>

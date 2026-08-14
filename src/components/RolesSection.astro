@@ -1,0 +1,76 @@
+---
+export interface Props {
+  title?: string;
+  subtitle?: string;
+  roles?: Array<{
+    image: string;
+    title: string;
+    description: string;
+    href: string;
+    cta?: string;
+  }>;
+}
+
+const {
+  title = 'SpaceSight works for every team that touches your physical space.',
+  subtitle = "From running daily audits to overseeing multiple store locations, here's how SpaceSight fits into your workflow.",
+  roles: rolesProp
+} = Astro.props;
+
+const defaultRoles = [
+  {
+    image: 'https://whale-web.oss-cn-beijing.aliyuncs.com/2026-06-01/045916168.jpg',
+    title: 'For the Marketing Team',
+    description: "Know exactly which end-cap display drives traffic — and which one doesn't. SpaceSight's footfall and dwell time analytics let marketing teams correlate promotion placement with actual in-store conversion, so every square foot earns measurable ROI.",
+    href: 'https://www.meetwhale.ai/workflow_marketing_team.html',
+    cta: 'Learn more'
+  },
+  {
+    image: 'https://whale-web.oss-cn-beijing.aliyuncs.com/2026-06-01/045966827.jpg',
+    title: 'For the Regional Director',
+    description: "Managing 500 stores manually is impossible. SpaceSight's multi-store dashboard gives regional directors a real-time compliance heatmap across every location, AI-generated exception alerts, and automated weekly summaries — so the right issues surface before they become problems.",
+    href: 'https://www.meetwhale.ai/Workflow_Leadership_Executive_Team.html',
+    cta: 'Learn more'
+  },
+  {
+    image: 'https://whale-web.oss-cn-beijing.aliyuncs.com/2026-06-01/050066489.jpg',
+    title: 'For the Store Manager',
+    description: "Cut your daily audit from 40 minutes to 2 minutes per report. SpaceSight's AI Audit Copilot runs 24/7, automatically identifies violations, scores compliance by zone, and sends corrective task notifications directly to the right team members, while you focus on decisions, not monitoring.",
+    href: 'https://www.meetwhale.ai/Workflow_Store_Operations_Team.html',
+    cta: 'Learn more'
+  }
+];
+
+const roles = rolesProp ?? defaultRoles;
+---
+
+<section class="section roles-section" id="roles">
+  <div class="container">
+    <div class="section-head center">
+      <h2>{title}</h2>
+      <p>{subtitle}</p>
+    </div>
+
+    <div class="roles-grid">
+      {roles.map(role => (
+        <article class="role-card">
+          <a href={role.href} class="role-card-link">
+            <div class="role-card-media">
+              <img src={role.image} alt={role.title} loading="lazy" decoding="async">
+            </div>
+            <div class="role-card-body">
+              <h3>{role.title}</h3>
+              <p>{role.description}</p>
+              <span class="role-card-cta">
+                {role.cta}
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </span>
+            </div>
+          </a>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

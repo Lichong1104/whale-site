@@ -1,0 +1,65 @@
+---
+export interface Props {
+  title?: string;
+  subtitle?: string;
+  options?: Array<{
+    image: string;
+    title: string;
+    href: string;
+    cta?: string;
+  }>;
+}
+
+const {
+  title = 'Flexible Deployment Options',
+  subtitle = 'Deploy SpaceSight the way that fits your infrastructure.',
+  options: optionsProp
+} = Astro.props;
+
+const defaultOptions = [
+  {
+    image: 'https://www.meetwhale.ai/images/2025/zc/c1.png',
+    title: 'AI Camera',
+    href: '#',
+    cta: 'Learn more'
+  },
+  {
+    image: 'https://www.meetwhale.ai/images/2025/zc/c2.png',
+    title: 'AI Hub',
+    href: '#',
+    cta: 'Learn more'
+  }
+];
+
+const options = optionsProp ?? defaultOptions;
+---
+
+<section class="section deployment-section" id="deployment">
+  <div class="container">
+    <div class="section-head center">
+      <h2>{title}</h2>
+      <p>{subtitle}</p>
+    </div>
+
+    <div class="deployment-grid">
+      {options.map(option => (
+        <article class="deployment-card">
+          <a href={option.href} class="deployment-card-link">
+            <div class="deployment-card-media">
+              <img src={option.image} alt={option.title} loading="lazy" decoding="async">
+            </div>
+            <div class="deployment-card-body">
+              <h3>{option.title}</h3>
+              <span class="deployment-card-cta">
+                {option.cta}
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </span>
+            </div>
+          </a>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

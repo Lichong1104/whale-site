@@ -1,0 +1,113 @@
+DIRECTION CONCEPT SEED (key: e5b36fff; mode: persuade; source: api; approved pool: 94ff10ff20de; 281/531 human-approved; rerun with --scope direction --mode persuade --from e5b36fff --candidate-count 7 to reproduce this roll against this catalog revision)
+ASSIGNED INDEX: 7
+  After ordering the grounded directions by resonance, build candidate
+  7 of your own grounded list; the assignment never points at a
+  challenger. The assignment is the roll, not a suggestion: your top-ranked
+  direction is what every run would ship, so the script decides which grounded
+  direction gets built. Each direction joins a durable visual system to a
+  concrete expression for the requested first surface, decided as one. It must
+  survive the current task plus navigation, quiet and dense content,
+  interaction and state, and a substantially different future surface. In an
+  attended run, present the assigned direction fully committed and offer
+  re-roll; never present a ranked lineup to choose from. Re-roll yourself only
+  on named factual grounds, when the assignment cannot carry the product's
+  truth or task; taste is never grounds.
+  The assignment exists to refuse the model's ranking rut, never to outrank
+  the user or the brief. Never expose assignment metadata in user-facing labels.
+CHALLENGERS:
+  1. a Memphis Milano showroom morning, where terrazzo speckle, squiggle laminate, and clashing candy geometry make the furniture argue cheerfully
+     SOURCE ID: design-canon-memphis-showroom-morning
+     CREATIVE SPARK: A shelf leans like a question, the laminate crawls with black squiggles, and pink argues with mint until the argument becomes the room.
+     SYSTEM GRAMMAR:
+       - Palette/material: pink arguing with mint over bacterio-speckled cream laminate ground, black squiggle print as texture, one candy yellow reserved for the pressed control
+       - Type/composition: chunky geometric display faces set at play angles, each block its own shape and pattern fill, alignment loose but every clash choreographed
+       - Topology/navigation: sections are objects in a showroom, each with its own playful geometry inside one shared floor.
+       - Controls/state: every control is a distinct toy-like shape; states change pattern fill, never just tint.
+       - Responsive/motion: objects reflow like rearranged furniture; motion is springy but short, and pattern stays legible at density.
+     WEB LEVERAGE: Procedural pattern fills generated per element keep speckle and squiggle unique at every viewport.
+     QUALITY BAR: board https://impeccable.style/worlds/cards/design-canon-memphis-showroom-morning.webp · hero https://impeccable.style/worlds/cards/design-canon-memphis-showroom-morning-hero.webp
+  2. a brazilian album sleeve collaging studio portraits into a painted tropical tableau, cut-out figures pasted at mismatched scales among leaves and plastic fruit, concrete-poetry lettering scattered across the whole field
+     SOURCE ID: posters-covers-sleeves-tropicalia-sleeve-collage
+     CREATIVE SPARK: a man twice the size of the man next to him, both cut out with scissors and pasted into a painted jungle full of plastic fruit, with the word tropicalia broken into syllables and thrown across the whole thing.
+     SYSTEM GRAMMAR:
+       - Palette/material: hot tropical greens and mango over a saturated painted backdrop, cut-out photographs printed warm with visible scissor edges
+       - Type/composition: concrete-poetry lettering scattered at several angles and scales, figures pasted at deliberately wrong sizes among painted foliage
+       - Topology/navigation: the tableau is one crowded scene, so navigation moves between pasted figures rather than through sections
+       - Controls/state: controls are cut-outs, the active one lifts with a paper shadow, and inactive ones sit flat in the paste-up
+       - Responsive/motion: figures repack among the foliage at any width, and motion is a cut-out lifting and settling back
+     WEB LEVERAGE: a responsive collage that repacks cut-outs, paper-shadow lift transforms on state, and scattered svg lettering
+     QUALITY BAR: board https://impeccable.style/worlds/cards/posters-covers-sleeves-tropicalia-sleeve-collage.webp · hero https://impeccable.style/worlds/cards/posters-covers-sleeves-tropicalia-sleeve-collage-hero.webp
+  3. a pixel-art arcade cabinet screen, where fat luminous pixels, scanlines, and phosphor bloom turn a 240-line grid into a stage with real glow
+     SOURCE ID: medium-native-crt-arcade-pixel-glow
+     CREATIVE SPARK: Up close it is just squares; at play distance the squares fuse into a hero, and the black between scanlines is doing half the work.
+     SYSTEM GRAMMAR:
+       - Palette/material: a sixteen-color sprite palette over phosphor black, scanline gaps doing half the shading, flashing white-gold reserved by law for power-ups
+       - Type/composition: eight-by-eight pixel caps for score and menus pinned to the top edge, the playfield composing in whole tiles with nothing allowed off-grid
+       - Topology/navigation: space is a tile grid with screen-by-screen rooms; the camera moves in whole-pixel steps.
+       - Controls/state: states are sprite swaps with strict palette discipline; damage, power, and rarity are palette laws.
+       - Responsive/motion: integer scaling preserves the grid at every size; bloom and scanlines are togglable capability layers.
+     WEB LEVERAGE: Crisp integer-scaled canvas with shader scanline glow, and every sprite state addressable in code.
+     QUALITY BAR: board https://impeccable.style/worlds/cards/medium-native-crt-arcade-pixel-glow.webp · hero https://impeccable.style/worlds/cards/medium-native-crt-arcade-pixel-glow-hero.webp
+  4. a collider event display, particle tracks curving out of one frozen collision through onion rings of detector and into stacked calorimeter wedges
+     SOURCE ID: scientific-notation-particle-detector-event-display
+     CREATIVE SPARK: The event lands and the cross-section blooms: yellow tracks curl through the inner rings, two stiff blue lines punch straight to the muon chambers, and red energy bars stack in the calorimeter wedges like a sudden bar chart of violence.
+     SYSTEM GRAMMAR:
+       - Palette/material: near-black vacuum ground, detector rings in muted steel blue, tracks in signal yellow and cyan by particle type, red calorimeter bars for deposited energy
+       - Type/composition: spare technical grotesk labels pinned to tracks and wedges, momentum figures in tabular digits; the concentric ring section is the compositional law
+       - Topology/navigation: space is concentric, beamline at center; you move outward through detector layers and along individual tracks, one event held at a time
+       - Controls/state: select a track to isolate it and dim the rest; competing reconstruction hypotheses overlay as ghost tracks, confidence written as line weight
+       - Responsive/motion: the ring section stays whole on phones while wedges and figures move to drawers; rotation is inertial 3D
+     WEB LEVERAGE: WebGL renders thousands of curved tracks in one 3D scene, with drag rotation, zoom into detector layers, and picked tracks reporting momentum
+     QUALITY BAR: board https://impeccable.style/worlds/cards/scientific-notation-particle-detector-event-display.webp · hero https://impeccable.style/worlds/cards/scientific-notation-particle-detector-event-display-hero.webp
+  5. a cephalopod skin becoming a living display, with expanding chromatophores, traveling patterns, texture change, and context-dependent signals
+     SOURCE ID: reefs-bioluminescent-nocturnal-chromatophore-skin-language
+     CREATIVE SPARK: A pale animal crosses patterned stone and its skin becomes waves, eyes, and ridges in less than a heartbeat.
+     SYSTEM GRAMMAR:
+       - Palette/material: pale mantle-cream as ground, red-brown chromatophores as body ink, one iridophore blue-green flash marking the active signal, dark ridges as texture
+       - Type/composition: a variable typeface whose weight tracks pigment expansion, patterns traveling body to skin-cell as waves, signals drawn directly onto the surface
+       - Topology/navigation: Navigate whole body, skin region, pigment cell, pattern wave, and environmental trigger.
+       - Controls/state: Change context, draw signals, and show neutral, camouflaging, warning, and communicating states.
+       - Responsive/motion: Flatten skin into an inspectable living textile on phones; pattern speed is adjustable.
+     WEB LEVERAGE: GPU cellular shaders and displacement textures render signal, color, and texture together.
+     QUALITY BAR: board https://impeccable.style/worlds/cards/reefs-bioluminescent-nocturnal-chromatophore-skin-language.webp · hero https://impeccable.style/worlds/cards/reefs-bioluminescent-nocturnal-chromatophore-skin-language-hero.webp
+  6. a technical deep dive down a volcanic island wall, where one small diver leaves the turquoise surface, crosses a cold blue thermocline, and enters a mesophotic garden of black coral, glass sponges, and falling marine snow
+     SOURCE ID: rivers-tides-ocean-depths-mesophotic-deep-dive
+     CREATIVE SPARK: At forty meters the last warm red drains from the diver's gloves; a lamp clicks on, revealing black-coral branches and white particles falling past a wall with no visible floor.
+     SYSTEM GRAMMAR:
+       - Palette/material: abyssal ink blue deepening by dive stage as the ground, chalk-white marine snow as particle texture, one thermocline cyan band marking the active depth
+       - Type/composition: monospaced dive-computer digits for depth and gas beside quiet grotesk notes, one vertical depth axis ruling every line of copy
+       - Topology/navigation: Descend through surface, thermocline, reef ledge, mesophotic wall, turnaround depth, ascent stops, and the vertical route home.
+       - Controls/state: Descend, hover, illuminate, mark, turn, and ascend with daylight, cooling, dark, gas-limited, decompression, and surfaced states.
+       - Responsive/motion: Pair the vertical dive profile with selected close views; stop drift and bubbles under
+     WEB LEVERAGE: A synchronized depth-and-time scrub can change light, color, sound, species, and ascent obligations together, while any observation remains pinned to its exact depth and dive phase.
+     QUALITY BAR: board https://impeccable.style/worlds/cards/rivers-tides-ocean-depths-mesophotic-deep-dive.webp · hero https://impeccable.style/worlds/cards/rivers-tides-ocean-depths-mesophotic-deep-dive-hero.webp
+Fuse each challenger before judging it: the challenger supplies the form
+  and its system grammar, the product supplies every fact, and clarity wins
+  conflicts. Weigh the fused result against the assigned direction on exactly
+  two axes, audience identification and product clarity. Losing to strong
+  grounded material is a valid outcome; beating a thin or tool-monoculture
+  list is the point. A fused challenger that wins both axes becomes the build.
+When you can view images, open the QUALITY BAR board and hero for any
+challenger you weigh seriously and for the world you build. They exist as a
+craft bar, the finish level and commitment the build is expected to reach,
+never as a mockup to copy; your surface serves this product, not that render.
+PRODUCT.md and explicit incumbent brand commitments constrain every direction.
+The seed never chooses exact colors, fonts, tokens, or a user preference, and
+it never permits the world and first surface to be selected independently.
+The CREATIVE SPARK is a complete visual system, not a theme or decorative
+reference. Translate every supplied system rule into the product: palette and
+material, type and composition, topology, controls and states, and adaptation.
+Keep the source's visible character, scale, rhythm, and interaction instead of
+reducing vivid grammar to generic nouns. When the source is already a credible
+interface language, commit to it across navigation, content, controls, and
+states. Otherwise keep a literal carrier only when it becomes functional.
+Ambitious motion, spatial media, or interaction is welcome when it strengthens
+the product without weakening semantics, performance, or fallback behavior.
+TELEMETRY: if the resolved direction uses one of these challengers, rerun
+  this script once with --chosen <challenger-id> --from e5b36fff --scope direction --mode persuade
+  after resolution. The ping is anonymous (chosen id only) and is skipped
+  automatically when DO_NOT_TRACK or IMPECCABLE_NO_TELEMETRY is set.
+A user- or brief-pinned decision beats the roll, always.
+ASSIGNED INDEX (restated for truncated readers): 7. Build candidate
+7 of your own grounded list; seed key e5b36fff.
+Assertion failed: !(handle->flags & UV_HANDLE_CLOSING), file src\win\async.c, line 76

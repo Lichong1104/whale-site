@@ -1,0 +1,183 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import SpaceSightHero from '../components/SpaceSightHero.astro';
+import ProductSpotlightSection from '../components/ProductSpotlightSection.astro';
+import CapabilitiesSection from '../components/CapabilitiesSection.astro';
+import RolesSection from '../components/RolesSection.astro';
+import DeploymentSection from '../components/DeploymentSection.astro';
+import CTASection from '../components/CTASection.astro';
+import Footer from '../components/Footer.astro';
+
+const howItWorksCapabilities = [
+  {
+    label: 'Compliance and inspection',
+    title: 'Compliance & Inspection — Stop auditing manually. Start auditing continuously.',
+    features: [
+      {
+        icon: 'https://whale-web.oss-cn-beijing.aliyuncs.com/2026-05-03/180736684.PNG',
+        title: 'AI monitoring across every zone',
+        description: 'Edge VLM monitors staff behavior, display compliance, and product availability in real time — at every location.'
+      },
+      {
+        icon: 'https://whale-web.oss-cn-beijing.aliyuncs.com/2026-05-03/180878304.PNG',
+        title: 'Inspections that took 40 minutes now take 2',
+        description: 'SpaceClaw audit checklist with one-click AI scoring replaces manual CCTV review.'
+      },
+      {
+        icon: 'https://whale-web.oss-cn-beijing.aliyuncs.com/2026-05-03/180728365.PNG',
+        title: 'Compliance gaps surface before incidents',
+        description: 'Real-time risk alerts and automated exception routing so nothing falls through.'
+      },
+      {
+        icon: 'https://whale-web.oss-cn-beijing.aliyuncs.com/2026-05-03/180874233.PNG',
+        title: 'Hazard and non-compliance detection: +300%',
+        description: '30+ VLM detection models flag safety violations, queue lengths, and staff deviations automatically.'
+      }
+    ],
+    media: {
+      type: 'video' as const,
+      src: 'https://whale-web.oss-cn-beijing.aliyuncs.com/2026-05-06/071150201.mp4',
+      poster: 'https://whale-web.oss-cn-beijing.aliyuncs.com/2026-06-02/161484576.png'
+    }
+  },
+  {
+    label: 'AI operations agent',
+    title: 'AI Operations Agent — SpaceClaw works 24/7 across every camera.',
+    features: [
+      {
+        icon: 'https://whale-web.oss-cn-beijing.aliyuncs.com/2026-05-03/180765820.PNG',
+        title: 'Semantic video search',
+        description: "Describe what you're looking for in natural language. SpaceClaw finds the exact footage clip in seconds."
+      },
+      {
+        icon: 'https://whale-web.oss-cn-beijing.aliyuncs.com/2026-05-03/180684349.PNG',
+        title: 'Autonomous task execution',
+        description: "Detects anomalies and dispatches corrective tasks to the right team member's phone."
+      },
+      {
+        icon: 'https://whale-web.oss-cn-beijing.aliyuncs.com/2026-05-03/180833676.PNG',
+        title: 'Rapid incident investigation',
+        description: 'Find footage of theft, damage, or workplace incidents in seconds — resolving disputes faster.'
+      },
+      {
+        icon: 'https://whale-web.oss-cn-beijing.aliyuncs.com/2026-05-03/180788179.PNG',
+        title: 'AI operational recommendations',
+        description: 'Automatically generates audit scores and improvement plans to boost sales-per-square-foot.'
+      }
+    ],
+    media: {
+      type: 'video' as const,
+      src: 'https://whale-web.oss-cn-beijing.aliyuncs.com/2026-05-06/065298529.mp4',
+      poster: 'https://whale-web.oss-cn-beijing.aliyuncs.com/2026-06-02/161484576.png'
+    }
+  },
+  {
+    label: 'Customer intelligence',
+    title: 'Customer Intelligence — Know your customer. Know your space.',
+    features: [
+      {
+        icon: 'https://whale-web.oss-cn-beijing.aliyuncs.com/2026-05-03/182680222.PNG',
+        title: 'Space analytics',
+        description: 'Track footfall, dwell time, queue length, and customer flow heatmaps across every location.'
+      },
+      {
+        icon: 'https://whale-web.oss-cn-beijing.aliyuncs.com/2026-05-03/182759181.PNG',
+        title: 'Promotion ROI by placement',
+        description: 'Correlate end-cap display placement with in-store conversion so every square foot earns measurable ROI.'
+      },
+      {
+        icon: 'https://whale-web.oss-cn-beijing.aliyuncs.com/2026-05-03/182753167.PNG',
+        title: 'Automated daily reports',
+        description: 'Multi-dimensional reports combine audit compliance, foot traffic, and out-of-stock rates into one dashboard.'
+      },
+      {
+        icon: 'https://whale-web.oss-cn-beijing.aliyuncs.com/2026-05-03/182852662.PNG',
+        title: 'SpaceClaw recommendations',
+        description: 'Actionable next steps for restock alerts, staffing optimization, loss prevention, and traffic redirection.'
+      }
+    ],
+    media: {
+      type: 'video' as const,
+      src: 'https://whale-web.oss-cn-beijing.aliyuncs.com/2026-05-06/071769752.mp4',
+      poster: 'https://whale-web.oss-cn-beijing.aliyuncs.com/2026-06-02/161484576.png'
+    }
+  }
+];
+const canonicalUrl = 'https://www.whale.sg/whale_spacesight/';
+const pageDescription = 'SpaceSight turns existing cameras into an edge AI audit platform. Automate compliance, loss prevention, and customer analytics across every location.';
+
+const extraSchema = [
+  {
+    '@type': 'SoftwareApplication',
+    name: 'Whale SpaceSight',
+    applicationCategory: 'BusinessApplication',
+    operatingSystem: 'Web, Edge, Cloud',
+    description: pageDescription,
+    offers: {
+      '@type': 'Offer',
+      priceCurrency: 'USD',
+      price: 'Contact sales',
+      availability: 'https://schema.org/InStock',
+      url: canonicalUrl
+    }
+  },
+  {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: 'https://www.whale.sg/'
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Products',
+        item: 'https://www.whale.sg/products/'
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: 'SpaceSight',
+        item: canonicalUrl
+      }
+    ]
+  }
+];
+---
+
+<Layout
+  title="Whale SpaceSight | AI Audit Platform for Retail & Facilities"
+  description={pageDescription}
+  canonical={canonicalUrl}
+  ogImage="/og/spacesight.png"
+  extraSchema={extraSchema}
+>
+  <Header />
+  <main>
+    <SpaceSightHero />
+
+    <ProductSpotlightSection />
+
+    <CapabilitiesSection
+      sectionTitle="How it <strong>works</strong>"
+      sectionSubtitle="Compliance, operations, and customer intelligence — all powered by SpaceSight."
+      capabilities={howItWorksCapabilities}
+    />
+
+    <RolesSection />
+
+    <DeploymentSection />
+
+    <CTASection
+      headline="See SpaceSight in your <strong>stores.</strong>"
+      lead="30-minute demo. We'll show you exactly how SpaceSight can optimize your operation."
+      sourceType="官网 SDP 体验 demo 留资"
+      secondaryLabel="Contact Sales"
+      secondaryHref="https://www.meetwhale.ai/Contact_us.html"
+    />
+  </main>
+  <Footer />
+</Layout>

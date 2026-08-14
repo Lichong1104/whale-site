@@ -1,0 +1,85 @@
+---
+export interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  canonical?: string;
+  extraSchema?: any[];
+}
+
+const {
+  title = 'Whale — AI That Turns Physical Operations into Real-Time Intelligence',
+  description = 'Whale AI converts camera footage, voice conversations, and floor activity into structured data for enterprise operations. Used across retail, automotive, healthcare, and transit.',
+  ogImage = 'https://www.whale.sg/og/home.png',
+  canonical = 'https://www.whale.sg/',
+  extraSchema = []
+} = Astro.props;
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      name: 'Whale',
+      url: 'https://www.whale.sg/',
+      logo: 'https://www.whale.sg/whale-logo.svg',
+      email: 'whaleglobal@whale.im',
+      sameAs: [
+        'https://www.facebook.com/Whale-105271425542708',
+        'https://www.linkedin.com/company/hellowhale'
+      ],
+      contactPoint: {
+        '@type': 'ContactPoint',
+        email: 'whaleglobal@whale.im',
+        contactType: 'sales'
+      }
+    },
+    {
+      '@type': 'WebSite',
+      name: 'Whale',
+      url: 'https://www.whale.sg/',
+      publisher: {
+        '@type': 'Organization',
+        name: 'Whale'
+      }
+    }
+  ]
+};
+
+if (extraSchema && extraSchema.length > 0) {
+  structuredData['@graph'].push(...extraSchema);
+}
+---
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{title}</title>
+<meta name="description" content={description}>
+<link rel="canonical" href={canonical}>
+
+<!-- Open Graph -->
+<meta property="og:title" content={title}>
+<meta property="og:description" content={description}>
+<meta property="og:type" content="website">
+<meta property="og:url" content={canonical}>
+<meta property="og:image" content={ogImage}>
+<meta property="og:site_name" content="Whale">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content={title}>
+<meta name="twitter:description" content={description}>
+<meta name="twitter:image" content={ogImage}>
+
+<!-- Preconnect -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com">
+<link rel="preconnect" href="https://whale-web.oss-cn-beijing.aliyuncs.com">
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<!-- Structured Data -->
+<script type="application/ld+json" set:html={JSON.stringify(structuredData)} />

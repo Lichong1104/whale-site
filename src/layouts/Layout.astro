@@ -1,0 +1,32 @@
+---
+import '../styles/global.css';
+import SEO from '../components/SEO.astro';
+import LeadModal from '../components/LeadModal.astro';
+
+export interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  canonical?: string;
+  extraSchema?: any[];
+}
+
+const { title, description, ogImage, canonical, extraSchema } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <SEO title={title} description={description} ogImage={ogImage} canonical={canonical} extraSchema={extraSchema} />
+  <script is:inline src="https://cdn.jsdelivr.net/npm/animejs@4.2.0/dist/bundles/anime.umd.min.js"></script>
+  <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+  <slot />
+
+  <LeadModal />
+
+  <script is:inline src="/main.js"></script>
+  <script is:inline src="/leads.js"></script>
+</body>
+</html>

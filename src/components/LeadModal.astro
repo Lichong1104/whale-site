@@ -1,0 +1,82 @@
+---
+---
+
+<div class="lead-modal" id="leadModal" role="dialog" aria-modal="true" aria-labelledby="leadModalTitle" hidden>
+  <div class="lead-modal-backdrop" data-close-modal></div>
+  <div class="lead-modal-panel">
+    <button type="button" class="lead-modal-close" data-close-modal aria-label="Close">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="18" y1="6" x2="6" y2="18"/>
+        <line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+
+    <div class="lead-modal-header">
+      <h3 id="leadModalTitle">Request a Demo</h3>
+      <p class="lead-modal-subtitle">Fill in your details and our team will reach out within one business day.</p>
+    </div>
+
+    <form class="lead-form" data-lead-form novalidate>
+      <input type="hidden" name="unionCode" value="">
+      <input type="hidden" name="sourceType" id="leadModalSourceType" value="官网立即咨询留资">
+
+      <div class="lead-field">
+        <label for="lead-company">Company <span aria-label="required">*</span></label>
+        <input id="lead-company" type="text" name="customerName" placeholder="Your company name" required>
+      </div>
+
+      <div class="lead-field">
+        <label for="lead-name">Full Name <span aria-label="required">*</span></label>
+        <input id="lead-name" type="text" name="contactName" placeholder="Your name" required>
+      </div>
+
+      <div class="lead-field">
+        <label for="lead-country">Country <span aria-label="required">*</span></label>
+        <select id="lead-country" name="customerCountryCode" required>
+          <option value="4744" selected>中国</option>
+          <option value="583547">香港</option>
+          <option value="583548">台灣</option>
+          <option value="583541">Singapore</option>
+          <option value="583542">United States</option>
+          <option value="583544">日本</option>
+          <option value="583545">대한민국</option>
+          <option value="583546">Malaysia</option>
+          <option value="583560">Canada</option>
+          <option value="583561">United Kingdom</option>
+          <option value="583558">Deutschland</option>
+          <option value="583557">Australia</option>
+          <option value="583566">New Zealand</option>
+        </select>
+      </div>
+
+      <div class="lead-field">
+        <label for="lead-phone">Phone <span aria-label="required">*</span></label>
+        <input id="lead-phone" type="tel" name="contactPhone" placeholder="+1 234 567 8900" required>
+      </div>
+
+      <div class="lead-field">
+        <label for="lead-email">Work Email <span aria-label="required">*</span></label>
+        <input id="lead-email" type="email" name="contactEmail" placeholder="you@company.com" required>
+      </div>
+
+      <div class="lead-field">
+        <label for="lead-message">Message <span class="lead-optional">(optional)</span></label>
+        <textarea id="lead-message" name="remark" placeholder="Tell us about your project or questions..." rows="3"></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-large lead-submit">Submit</button>
+
+      <p class="lead-form-note">By submitting, you agree to our privacy policy.</p>
+    </form>
+
+    <p class="lead-error" hidden></p>
+  </div>
+</div>
+
+<div class="lead-toast" id="leadToast" role="status" aria-live="polite" hidden>
+  <div class="lead-toast-icon" aria-hidden="true">✓</div>
+  <div class="lead-toast-content">
+    <strong>Thank you!</strong>
+    <span>We've received your request and will be in touch shortly.</span>
+  </div>
+</div>

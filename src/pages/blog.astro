@@ -1,0 +1,494 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const categories = [
+  'All',
+  'Products & Solutions',
+  'Updates',
+  'Luxury',
+  'Automotive',
+  'Fashion',
+  'Grocery',
+  'Food & Beverage',
+  'Bank',
+  'Electronic'
+];
+
+const articles = [
+  {
+    title: 'Whale Raises $40M Series C3 Extension, Bringing Total Series C to $100M, to Scale Global Enterprise AI Operations',
+    category: 'Updates',
+    date: '2026-07-15',
+    image: 'https://whale-web.oss-cn-beijing.aliyuncs.com/2026-07-15/170035620.png',
+    excerpt: 'Whale secures additional funding to accelerate enterprise AI operations worldwide.',
+    url: 'https://www.whale.sg/whale_raises_40m_usd_series_c3_extension.html'
+  },
+  {
+    title: 'Whale at Shenzhen Tour: The Next EV Battleground Is the Operational Excellence',
+    category: 'Automotive',
+    date: '2026-06-12',
+    image: 'https://whale-web.oss-cn-beijing.aliyuncs.com/2026-06-12/001951542.jpg',
+    excerpt: 'How EV players are turning operational excellence into competitive advantage.',
+    url: 'https://www.whale.sg/the_new_battleground_is_operational_excellence.html'
+  },
+  {
+    title: 'Whale Debuts Enterprise AI Partner Platform at NRF APAC 2026, Redefining How Businesses Operate with AI',
+    category: 'Updates',
+    date: '2026-06-03',
+    image: 'https://whale-web.oss-cn-beijing.aliyuncs.com/2026-06-03/165583456.jpeg',
+    excerpt: 'Introducing the partner platform that brings AI operations to every enterprise.',
+    url: 'https://www.whale.sg/whale_debuts_enterprise_ai_partner_platform_at_nrf.html'
+  },
+  {
+    title: 'AI Audit: Why More Enterprises Are Rethinking Inspection',
+    category: 'Products & Solutions',
+    date: '2026-05-08',
+    image: 'https://whale-web.oss-cn-beijing.aliyuncs.com/2026-05-08/013318293.png',
+    excerpt: 'Why traditional inspection methods are being replaced by AI-driven audits.',
+    url: 'https://www.whale.sg/what_is_ai_audit.html'
+  },
+  {
+    title: 'Beyond the Hype: What It Actually Takes to Make AI Work in F&B and Retail',
+    category: 'Products & Solutions',
+    date: '2026-04-29',
+    image: 'https://whale-web.oss-cn-beijing.aliyuncs.com/2026-04-29/142660905.JPG',
+    excerpt: 'Practical lessons from deploying AI across F&B and retail operations.',
+    url: 'https://www.whale.sg/what_it_takes_to_make_ai_work.html'
+  },
+  {
+    title: 'Whale 2026 H1 All Hands: A Fresh Start with AI, Into a New Phase',
+    category: 'Updates',
+    date: '2026-04-20',
+    image: 'https://whale-web.oss-cn-beijing.aliyuncs.com/2026-04-24/144857378.jpeg',
+    excerpt: 'A recap of Whale 2026 H1 All Hands and the journey ahead.',
+    url: 'https://www.whale.sg/whale_2026_h1_all_hands.html'
+  },
+  {
+    title: 'Revolutionizing Production Management with AI',
+    category: 'Products & Solutions',
+    date: '2026-03-28',
+    image: 'https://whale-web.oss-cn-beijing.aliyuncs.com/2026-03-28/192840200.png',
+    excerpt: 'How AI is transforming production management at scale.',
+    url: 'https://www.whale.sg/ai_production.html'
+  },
+  {
+    title: 'Insights from Singtel AI Talk: The Future of AI in Retail',
+    category: 'Products & Solutions',
+    date: '2026-03-28',
+    image: 'https://whale-web.oss-cn-beijing.aliyuncs.com/2026-03-28/152485272.png',
+    excerpt: 'Key takeaways from Whale and Singtel on the future of retail AI.',
+    url: 'https://www.whale.sg/ai_retail_insights.html'
+  },
+  {
+    title: 'How Enterprises Can Leverage AI to Boost Collaboration, Productivity, and Scale',
+    category: 'Products & Solutions',
+    date: '2026-03-27',
+    image: 'https://whale-web.oss-cn-beijing.aliyuncs.com/2026-03-27/232568601.JPG',
+    excerpt: 'Enterprise AI strategies for collaboration, productivity, and scale.',
+    url: 'https://www.whale.sg/ai_enterprise_collaboration.html'
+  }
+];
+---
+
+<Layout
+  title="Whale Blog | Products, Solutions, News & About Us"
+  description="Explore Whale's latest insights on AI operations, retail intelligence, automotive excellence, and enterprise AI news."
+  canonical="https://www.whale.sg/blog/"
+>
+  <Header />
+  <main class="blog-page">
+    <section class="blog-hero">
+      <div class="container">
+        <div class="blog-hero-text">
+          <h1>Whale Blog</h1>
+          <p>Product deep-dives, industry playbooks, and company updates from the Whale team.</p>
+        </div>
+
+        <div class="blog-hero-banners">
+          <button type="button" class="blog-banner blog-banner-filter" data-category="Products & Solutions" aria-label="Filter by Products & Solutions">
+            <span class="blog-banner-label">Explore</span>
+            <span class="blog-banner-title">Products &amp; Solutions</span>
+            <span class="blog-banner-lead">How Whale turns cameras, voice, and floor activity into real-time operational intelligence.</span>
+            <span class="blog-banner-cta">
+              Browse articles
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </span>
+          </button>
+
+          <a href="https://www.whale.sg/blogpost.html" class="blog-banner blog-banner-link">
+            <span class="blog-banner-label">Company</span>
+            <span class="blog-banner-title">News &amp; About Us</span>
+            <span class="blog-banner-lead">Funding updates, events, partner news, and the story behind Whale.</span>
+            <span class="blog-banner-cta">
+              Read more
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="articles">
+      <div class="container">
+        <div class="blog-filter" id="blogFilter" role="tablist" aria-label="Blog categories">
+          {categories.map((cat, i) => (
+            <button
+              class={`blog-filter-btn ${i === 0 ? 'active' : ''}`}
+              type="button"
+              role="tab"
+              aria-selected={i === 0 ? 'true' : 'false'}
+              data-category={cat}
+              tabindex={i === 0 ? undefined : '-1'}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+
+        <h2 class="blog-section-title">Recent articles</h2>
+
+        <div class="blog-grid" id="blogGrid">
+          {articles.map((article) => (
+            <article class="blog-card" data-category={article.category}>
+              <a href={article.url} target="_blank" rel="noopener noreferrer" class="blog-card-link">
+                <div class="blog-card-media">
+                  <img src={article.image} alt={article.title} loading="lazy" decoding="async" width="600" height="340">
+                  <span class="blog-card-category">{article.category}</span>
+                </div>
+                <div class="blog-card-body">
+                  <h3 class="blog-card-title">{article.title}</h3>
+                  <p class="blog-card-excerpt">{article.excerpt}</p>
+                  <time class="blog-card-date" datetime={article.date}>{article.date}</time>
+                </div>
+              </a>
+            </article>
+          ))}
+        </div>
+
+        <div class="blog-load-more">
+          <a class="btn btn-ghost" href="https://www.whale.sg/blogpost.html" target="_blank" rel="noopener noreferrer">More</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .blog-page {
+    padding-top: var(--header-height);
+  }
+
+  .blog-hero {
+    padding: var(--space-xl) 0;
+    background:
+      radial-gradient(circle at 10% 20%, rgba(37, 99, 235, 0.08) 0%, transparent 25%),
+      radial-gradient(circle at 90% 80%, rgba(6, 182, 212, 0.08) 0%, transparent 25%),
+      var(--bg);
+  }
+
+  .blog-hero-text {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto var(--space-lg);
+  }
+  .blog-hero-text h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.25rem, 6vw, 3.5rem);
+    font-weight: 700;
+    margin: 0 0 var(--space-sm);
+    color: var(--text);
+  }
+  .blog-hero-text p {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+
+  .blog-hero-banners {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-md);
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .blog-banner {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-xs);
+    padding: var(--space-lg);
+    border-radius: var(--radius);
+    text-decoration: none;
+    color: #fff;
+    min-height: 220px;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .blog-banner::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(15, 23, 42, 0.1) 0%, rgba(15, 23, 42, 0.45) 100%);
+    z-index: 1;
+    transition: opacity 0.25s ease;
+  }
+  .blog-banner > * {
+    position: relative;
+    z-index: 2;
+  }
+  .blog-banner:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+  }
+  .blog-banner:hover::after {
+    opacity: 0.85;
+  }
+  .blog-banner-filter {
+    background: linear-gradient(135deg, #2563EB 0%, #06B6D4 100%);
+  }
+  .blog-banner-link {
+    background: linear-gradient(135deg, #7C3AED 0%, #EC4899 100%);
+  }
+  .blog-banner-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.85;
+  }
+  .blog-banner-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.35rem, 3vw, 1.85rem);
+    font-weight: 700;
+  }
+  .blog-banner-lead {
+    font-size: 0.95rem;
+    opacity: 0.9;
+    line-height: 1.5;
+    max-width: 45ch;
+  }
+  .blog-banner-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin-top: auto;
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+
+  .blog-filter {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-xs);
+    margin-bottom: var(--space-lg);
+  }
+  .blog-filter-btn {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    background: transparent;
+    border: 1px solid rgba(15, 23, 42, 0.1);
+    border-radius: 999px;
+    padding: 0.45rem 1rem;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  }
+  .blog-filter-btn:hover {
+    border-color: rgba(37, 99, 235, 0.3);
+    color: var(--text);
+  }
+  .blog-filter-btn.active {
+    color: #fff;
+    background: linear-gradient(135deg, #2563EB 0%, #06B6D4 100%);
+    border-color: transparent;
+  }
+
+  .blog-section-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: 700;
+    text-align: center;
+    margin: 0 0 var(--space-lg);
+    color: var(--text);
+  }
+
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--space-md);
+  }
+  .blog-card {
+    background: var(--bg-elevated);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .blog-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.1);
+  }
+  .blog-card-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
+  .blog-card-media {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: var(--bg-tint);
+  }
+  .blog-card-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.35s ease;
+  }
+  .blog-card:hover .blog-card-media img {
+    transform: scale(1.05);
+  }
+  .blog-card-category {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #fff;
+    background: rgba(15, 23, 42, 0.7);
+    padding: 0.3rem 0.7rem;
+    border-radius: 999px;
+  }
+  .blog-card-body {
+    padding: var(--space-md);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .blog-card-title {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 700;
+    line-height: 1.35;
+    margin: 0;
+    color: var(--text);
+  }
+  .blog-card-excerpt {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin: 0;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .blog-card-date {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-top: auto;
+  }
+
+  .blog-load-more {
+    display: flex;
+    justify-content: center;
+    margin-top: var(--space-lg);
+  }
+
+  @media (max-width: 720px) {
+    .blog-hero-banners {
+      grid-template-columns: 1fr;
+    }
+    .blog-banner {
+      min-height: 200px;
+    }
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    'use strict';
+
+    const filter = document.getElementById('blogFilter');
+    const grid = document.getElementById('blogGrid');
+    const bannerFilter = document.querySelector('.blog-banner-filter');
+    if (!filter || !grid) return;
+
+    const buttons = Array.from(filter.querySelectorAll('.blog-filter-btn'));
+    const cards = Array.from(grid.querySelectorAll('.blog-card'));
+
+    function setActiveButton(category) {
+      buttons.forEach((btn) => {
+        const isActive = btn.dataset.category === category;
+        btn.classList.toggle('active', isActive);
+        btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        btn.setAttribute('tabindex', isActive ? '0' : '-1');
+      });
+    }
+
+    function filterCards(category) {
+      cards.forEach((card) => {
+        const show = category === 'All' || card.dataset.category === category;
+        card.hidden = !show;
+        card.style.display = show ? '' : 'none';
+      });
+    }
+
+    function selectCategory(category) {
+      setActiveButton(category);
+      filterCards(category);
+      const articlesSection = document.getElementById('articles');
+      if (articlesSection) {
+        articlesSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    buttons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        selectCategory(btn.dataset.category);
+      });
+
+      btn.addEventListener('keydown', (e) => {
+        const idx = buttons.indexOf(btn);
+        let nextIdx = idx;
+        if (e.key === 'ArrowRight') {
+          nextIdx = (idx + 1) % buttons.length;
+        } else if (e.key === 'ArrowLeft') {
+          nextIdx = (idx - 1 + buttons.length) % buttons.length;
+        } else if (e.key === 'Home') {
+          nextIdx = 0;
+        } else if (e.key === 'End') {
+          nextIdx = buttons.length - 1;
+        } else {
+          return;
+        }
+        e.preventDefault();
+        buttons[nextIdx].click();
+        buttons[nextIdx].focus();
+      });
+    });
+
+    if (bannerFilter) {
+      bannerFilter.addEventListener('click', () => {
+        const category = bannerFilter.dataset.category;
+        selectCategory(category);
+      });
+    }
+  })();
+</script>

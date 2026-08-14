@@ -1,0 +1,190 @@
+---
+export interface Props {
+  sectionTitle?: string;
+  sectionSubtitle?: string;
+  blocks?: Array<{
+    title: string;
+    description: string;
+    features: Array<{ label: string; description: string }>;
+    media: { type: 'video' | 'image'; src: string; poster?: string };
+    reverse?: boolean;
+  }>;
+}
+
+const {
+  sectionTitle = 'Product spotlight',
+  sectionSubtitle = 'Five ways SpaceSight turns camera footage into operational intelligence.',
+  blocks: blocksProp
+} = Astro.props;
+
+const defaultBlocks = [
+  {
+    title: "The Store's Super Brain: 20× Audit Efficiency",
+    description: 'See everything. Catch everything. Automatically.',
+    features: [
+      {
+        label: 'On-device VLM:',
+        description: 'Built for large, complex environments. AI algorithm channel capacity increased 60%.'
+      },
+      {
+        label: 'Natural language configuration:',
+        description: 'Define audit rules in plain English, no code required. (e.g., "Check Aisle 3 shelves every 90 minutes.")'
+      },
+      {
+        label: 'Proactive Loss Prevention:',
+        description: 'Real-time detection of checkout anomalies, unauthorized warehouse access, and suspicious loitering — with instant alerts before incidents escalate.'
+      },
+      {
+        label: 'Privacy by default:',
+        description: 'VLM deployed on-premise. Data never leaves your network. Millisecond response times.'
+      }
+    ],
+    media: {
+      type: 'video' as const,
+      src: 'https://whale-web.oss-cn-beijing.aliyuncs.com/2026-05-06/065440732.mp4'
+    }
+  },
+  {
+    title: 'SpaceClaw: Find Any Moment in 10 Seconds',
+    description: 'Ask questions about your space. Get answers in seconds.',
+    features: [
+      {
+        label: 'Semantic video search:',
+        description: "Describe what you're looking for in natural language. SpaceClaw finds the exact footage clip in seconds."
+      },
+      {
+        label: 'Rapid Incident Investigation:',
+        description: 'Find footage of theft, inventory damage, or workplace incidents in seconds — cutting investigation time dramatically and resolving disputes faster.'
+      },
+      {
+        label: 'Autonomous task execution:',
+        description: "Detects anomalies (e.g., trash bin left open) and automatically dispatches corrective tasks to the store manager's phone."
+      },
+      {
+        label: 'AI operational recommendations:',
+        description: 'Automatically generates audit scores and improvement plans. Identifies efficiency gains. Helps boost sales-per-square-foot.'
+      }
+    ],
+    media: {
+      type: 'video' as const,
+      src: 'https://whale-web.oss-cn-beijing.aliyuncs.com/2026-05-06/065298529.mp4'
+    },
+    reverse: true
+  },
+  {
+    title: 'AI Audit Copilot: Immersive Management',
+    description: 'Audit every location. Every day. No one needs to be there.',
+    features: [
+      {
+        label: 'Zero-shot universal detection:',
+        description: 'No training data needed. Works immediately across retail, F&B, healthcare, pharma, showrooms, and 30+ complex environments.'
+      },
+      {
+        label: 'Zero missed issues:',
+        description: 'SpaceClaw audit checklist with one-click AI scoring. Real-time risk alerts. Nothing falls through.'
+      },
+      {
+        label: '20× efficiency leap:',
+        description: 'From manual CCTV review to AI-powered automatic anomaly detection. Free your operations team for higher-value work.'
+      }
+    ],
+    media: {
+      type: 'video' as const,
+      src: 'https://whale-web.oss-cn-beijing.aliyuncs.com/2026-05-06/071150201.mp4'
+    }
+  },
+  {
+    title: 'AI Reporting Center: Zero-Wait Decisions',
+    description: 'Your daily store report, ready before you finish your coffee.',
+    features: [
+      {
+        label: 'Automated report delivery:',
+        description: 'Daily, weekly, and monthly operational reports generated and delivered on schedule. No waiting, no manual compilation.'
+      },
+      {
+        label: 'Multi-dimensional analysis:',
+        description: 'Combines audit compliance rate, foot traffic heatmaps, out-of-stock rate, and more into one structured report.'
+      },
+      {
+        label: 'Dynamic card dashboard:',
+        description: 'Next-generation interface — key KPIs visible at a glance. Data utilization increased 80%.'
+      },
+      {
+        label: 'SpaceClaw recommendations:',
+        description: 'Beyond reporting — the AI agent delivers specific action recommendations: restock alerts, staffing optimization, loss prevention, traffic redirection.'
+      }
+    ],
+    media: {
+      type: 'video' as const,
+      src: 'https://whale-web.oss-cn-beijing.aliyuncs.com/2026-05-06/071769752.mp4'
+    },
+    reverse: true
+  },
+  {
+    title: 'AI Security & Loss Prevention',
+    description: 'Catch theft before it costs you. Protect every corner, automatically.',
+    features: [
+      {
+        label: 'Checkout loss prevention:',
+        description: 'AI detects suspicious behavior at the register in real time — misscans, item concealment, unauthorized discounts. Alerts triggered instantly.'
+      },
+      {
+        label: 'Warehouse & stockroom monitoring:',
+        description: '24/7 AI surveillance on high-value storage areas. Detects unauthorized access, unusual movement, and inventory discrepancies automatically.'
+      },
+      {
+        label: 'Behavior anomaly detection:',
+        description: 'Identifies loitering, restricted area entry, after-hours activity, and other risk patterns across any camera feed — no manual review needed.'
+      },
+      {
+        label: 'Evidence ready in seconds:',
+        description: 'SpaceClaw retrieves the exact footage clip on demand. One search, instant playback. No scrubbing through hours of recording.'
+      }
+    ],
+    media: {
+      type: 'video' as const,
+      src: 'https://whale-web.oss-cn-beijing.aliyuncs.com/2026-05-06/072769868.mp4'
+    }
+  }
+];
+
+const blocks = blocksProp ?? defaultBlocks;
+---
+
+<section class="section product-spotlight-section" id="product-spotlight">
+  <div class="container">
+    <div class="section-head center">
+      <h2>{sectionTitle}</h2>
+      <p>{sectionSubtitle}</p>
+    </div>
+
+    <div class="spotlight-stack">
+      {blocks.map((block, i) => (
+        <article class={`spotlight-block ${block.reverse ? 'reverse' : ''}`}>
+          <div class="spotlight-copy">
+            <span class="spotlight-number">{String(i + 1).padStart(2, '0')}</span>
+            <h3>{block.title}</h3>
+            <p class="spotlight-lead">{block.description}</p>
+            <ul class="spotlight-features">
+              {block.features.map(feature => (
+                <li>
+                  <strong>{feature.label}</strong> {feature.description}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div class="spotlight-media">
+            {block.media.type === 'video' ? (
+              <video autoplay muted loop playsinline preload="metadata" poster={block.media.poster}>
+                <source src={block.media.src} type="video/mp4">
+              </video>
+            ) : (
+              <img src={block.media.src} alt={block.title} loading="lazy" decoding="async">
+            )}
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

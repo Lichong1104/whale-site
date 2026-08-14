@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 28" fill="none" role="img" aria-label="NIO">
+  <!-- NIO horizon emblem -->
+  <g fill="#ffffff">
+    <path d="M14 0C6.268 0 0 6.268 0 14s6.268 14 14 14 14-6.268 14-14S21.732 0 14 0Zm0 2c6.627 0 12 5.373 12 12s-5.373 12-12 12S2 20.627 2 14 7.373 2 14 2Z"/>
+    <path d="M3.5 15.5c3.5-3.5 8.5-4 13.5-1.5 4.5 2.5 8.5 1.5 11-.5" stroke="#ffffff" stroke-width="1.75" stroke-linecap="round" fill="none"/>
+    <circle cx="20" cy="8" r="2.25"/>
+  </g>
+  <!-- NIO wordmark -->
+  <g fill="#ffffff">
+    <path d="M38 7h2.9l7.1 9.8V7H51v14h-2.9L41 11.2V21H38V7Z"/>
+    <rect x="55" y="7" width="2.8" height="14"/>
+    <path d="M66 7a7 7 0 1 1 0 14 7 7 0 0 1 0-14Zm0 3a4 4 0 1 0 0 8 4 4 0 0 0 0-8Z"/>
+  </g>
+</svg>

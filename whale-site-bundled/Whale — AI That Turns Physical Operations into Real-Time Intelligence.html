@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<!-- saved from url=(0065)file:///D:/%E8%A7%A6%E9%94%90/%E5%B8%B7%E5%B9%84/site8/index.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Whale — AI That Turns Physical Operations into Real-Time Intelligence</title>
+  <meta name="description" content="Whale converts camera footage, voice conversations, and floor activity into structured data for enterprise operations. Used across retail, automotive, healthcare, and transit.">
+  <link rel="preconnect" href="https://fonts.googleapis.com/">
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+  <link href="./Whale — AI That Turns Physical Operations into Real-Time Intelligence_files/css2" rel="stylesheet">
+  <link rel="stylesheet" href="file:///D:/%E8%A7%A6%E9%94%90/%E5%B8%B7%E5%B9%84/site8/styles.css">
+  <script src="./Whale — AI That Turns Physical Operations into Real-Time Intelligence_files/anime.umd.min.js.download"></script>
+</head>
+<body>
+  <!--
+    DIRECTION CONTRACT
+    THESIS: The corporate operations site as a live particle-detector event display — every visitor sees one multimodal "collision" of video, voice, and operational data rather than a feature list.
+    OWN-WORLD: Warm vacuum-chamber white ground (#F8F7F4); concentric steel-blue detector rings; signal tracks in yellow, cyan, and magenta; friendly geometric sans (Poppins) with tabular digits (Space Mono); every section obeys the ring-section law; controls isolate a track and dim the rest.
+    STORY: A B2B buyer understands in seconds that Whale fuses video, voice, and operational signals into a single real-time intelligence stream, believes it because the interface dramatizes the fusion, and requests a demo.
+    FIRST VIEWPORT: A full-height WebGL detector stage dominates; the product name and promise sit at the upper-left, the primary action below, and a live track legend at the lower-left. The detector rotates slowly until the user drags it.
+    FORM: Particle detector event display; chosen over Performance Gear Storefront, Cephalopod Skin, and Memphis Showroom because it makes the multimodal product mechanism immediately visible; seed key e5b36fff; chosen challenger scientific-notation-particle-detector-event-display.
+    FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md.
+  -->
+
+  <header class="site-header">
+    <a href="file:///D:/%E8%A7%A6%E9%94%90/%E5%B8%B7%E5%B9%84/site8/index.html#" class="logo" aria-label="Whale home">
+      <img src="file:///D:/%E8%A7%A6%E9%94%90/%E5%B8%B7%E5%B9%84/site8/whale-logo.svg" alt="" width="29" height="32" aria-hidden="true">
+      <span>Whale</span>
+    </a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="file:///D:/%E8%A7%A6%E9%94%90/%E5%B8%B7%E5%B9%84/site8/index.html#products">Products</a>
+      <a href="file:///D:/%E8%A7%A6%E9%94%90/%E5%B8%B7%E5%B9%84/site8/index.html#capabilities">Capabilities</a>
+      <a href="file:///D:/%E8%A7%A6%E9%94%90/%E5%B8%B7%E5%B9%84/site8/index.html#usecases">Solutions</a>
+      <a href="file:///D:/%E8%A7%A6%E9%94%90/%E5%B8%B7%E5%B9%84/site8/index.html#cases">Cases</a>
+      <a href="file:///D:/%E8%A7%A6%E9%94%90/%E5%B8%B7%E5%B9%84/site8/index.html#footer-contact">Contact</a>
+    </nav>
+    <a href="file:///D:/%E8%A7%A6%E9%94%90/%E5%B8%B7%E5%B9%84/site8/index.html#contact" class="btn btn-primary">Request Demo</a>
+  </header>
+
+  <main>
+    <section class="hero" id="hero">
+      <canvas id="detector" aria-label="Interactive particle detector showing vision, voice, and sensor tracks" width="1897" height="1224" style="width: 1265px; height: 816px;"></canvas>
+      <div class="hero-overlay">
+        <h1>AI that turns your physical operations into <span class="hero-highlight">real-time intelligence</span>.</h1>
+        <p class="hero-lead">Cameras, voice, and AI agents that audit compliance, coach teams, and improve every customer interaction across your locations.</p>
+        <div class="hero-actions">
+          <a href="file:///D:/%E8%A7%A6%E9%94%90/%E5%B8%B7%E5%B9%84/site8/index.html#contact" class="btn btn-primary btn-large">Request a demo</a>
+          <a href="file:///D:/%E8%A7%A6%E9%94%90/%E5%B8%B7%E5%B9%84/site8/index.html#products" class="btn btn-ghost btn-large">Explore products</a>
+        </div>
+        <div class="track-legend">
+          <button class="track-item" data-track="vision" type="button" aria-pressed="false"><span class="track-dot" style="--track-color: #FFD23F"></span> Vision</button>
+          <button class="track-item" data-track="voice" type="button" aria-pressed="false"><span class="track-dot" style="--track-color: #00E5FF"></span> Voice</button>
+          <button class="track-item" data-track="sensor" type="button" aria-pressed="false"><span class="track-dot" style="--track-color: #FF4D8D"></span> Sensor</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="trust-band" aria-label="Trusted by">
+      <div class="container">
+        <p class="trust-label">Backed by the infrastructure companies that move the world</p>
+        <div class="logo-bar">
+          <span class="logo-item">Singtel</span>
+          <span class="logo-item">MTR</span>
+          <span class="logo-item">Bosch</span>
+          <span class="logo-item">NIO</span>
+          <span class="logo-item">Watsons</span>
+          <span class="logo-item">Unilever</span>
+          <span class="logo-item">L'Oréal</span>
+          <span class="logo-item">Telkom Indonesia</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-tint platform-section" id="products">
+      <div class="container">
+        <div class="section-head section-head-inline spacesight-hero">
+          <div class="spacesight-hero-copy">
+            <h2>SpaceSight</h2>
+            <p class="section-tagline">SpaceSight turns your existing camera network into a <span class="tagline-highlight">real-time physical operations intelligence platform</span>,<br>using edge AI to automate compliance audits, anomaly detection, and customer behavior insights.</p>
+          </div>
+          <div class="spacesight-hero-art" aria-hidden="true">
+            <svg class="spacesight-hero-svg" viewBox="0 0 520 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="180" cy="180" r="150" stroke="var(--ring)" stroke-width="1" opacity="0.2"></circle>
+              <circle cx="180" cy="180" r="115" stroke="var(--ring)" stroke-width="1.5" opacity="0.3" stroke-dasharray="10 7"></circle>
+              <circle cx="180" cy="180" r="80" stroke="var(--ring)" stroke-width="2" opacity="0.5"></circle>
+              <path d="M90 130 Q180 60 270 130" stroke="var(--ring)" stroke-width="2.5" stroke-linecap="round"></path>
+              <circle cx="180" cy="180" r="55" stroke="var(--ring)" stroke-width="3" fill="none"></circle>
+              <circle cx="180" cy="180" r="32" stroke="var(--ring)" stroke-width="2" fill="none"></circle>
+              <circle cx="180" cy="180" r="15" stroke="var(--track-vision)" stroke-width="3.5" fill="none"></circle>
+              <circle cx="180" cy="180" r="6" fill="var(--track-vision)" opacity="0.25"></circle>
+              <path d="M235 180 L500 180" stroke="var(--ring)" stroke-width="2" opacity="0.35" stroke-linecap="round"></path>
+              <path d="M235 205 L470 300" stroke="var(--ring)" stroke-width="2" opacity="0.3" stroke-linecap="round"></path>
+              <path d="M235 155 L470 60" stroke="var(--ring)" stroke-width="2" opacity="0.3" stroke-linecap="round"></path>
+              <rect x="420" y="155" width="42" height="42" rx="8" stroke="var(--track-vision)" stroke-width="2.5" fill="none"></rect>
+              <circle cx="460" cy="85" r="18" stroke="var(--track-vision)" stroke-width="2.5" fill="none"></circle>
+              <rect x="440" y="265" width="38" height="38" rx="8" stroke="var(--track-vision)" stroke-width="2.5" fill="none"></rect>
+              <circle cx="60" cy="90" r="5" fill="var(--track-vision)"></circle>
+              <circle cx="320" cy="70" r="4" fill="var(--track-vision)" opacity="0.7"></circle>
+              <circle cx="350" cy="320" r="6" fill="var(--track-vision)" opacity="0.8"></circle>
+            </svg>
+          </div>
+        </div>
+
+        <div class="spacesight-tabs" role="tablist" aria-label="SpaceSight capabilities">
+          <button class="spacesight-tab active" type="button" role="tab" aria-selected="true" data-index="0" tabindex="0">Compliance &amp; Inspection</button>
+          <button class="spacesight-tab" type="button" role="tab" aria-selected="false" data-index="1" tabindex="-1">AI Operations Agent</button>
+          <button class="spacesight-tab" type="button" role="tab" aria-selected="false" data-index="2" tabindex="-1">Customer Intelligence</button>
+          <button class="spacesight-tab" type="button" role="tab" aria-selected="false" data-index="3" tabindex="-1">Flexible Deployment</button>
+        </div>
+
+        <div class="platform-grid">
+          <article class="platform-card platform-card-featured platform-card-spacesight">
+            <div class="platform-card-body">
+              <h3 id="spacesightTitle">Compliance &amp; Inspection</h3>
+              <p class="platform-card-lead" id="spacesightLead">Stop auditing manually. Start auditing continuously.</p>
+              <ul class="feature-list" id="spacesightFeatures">
+                <li>AI monitoring across every zone, every location</li>
+                <li>Inspections that took 40 minutes now take 2</li>
+                <li>Compliance gaps surface before they become incidents</li>
+                <li>Hazard and non-compliance detection: +300%</li>
+              </ul>
+              <a href="file:///D:/%E8%A7%A6%E9%94%90/%E5%B8%B7%E5%B9%84/site8/index.html#contact" class="btn btn-light">Learn more</a>
+            </div>
+            <div class="platform-visual">
+              <div class="cta-visual spacesight-visual" aria-label="Smart camera live feed visualization">
+                <div class="cta-stage" id="spacesightStage">
+                  <div class="cta-glow" id="spacesightGlow1" style="opacity: 0.9; transform: scale(1.15);"></div>
+                  <div class="cta-glow cta-glow-cyan" id="spacesightGlow2" style="opacity: 0.8874; transform: scale(1.1437);"></div>
+
+                  <div class="cta-floating-tag" style="top: 10%; left: 12%; opacity: 1; transform: translateY(0px) translateX(-12px);">Compliance &amp; Inspection</div>
+                  <div class="cta-floating-tag" style="top: 10%; right: 12%; opacity: 1; transform: translateY(0px) translateX(-4px);">AI Operations Agent</div>
+                  <div class="cta-floating-tag" style="bottom: 10%; left: 10%; opacity: 1; transform: translateY(0px) translateX(4px);">Customer Intelligence</div>
+                  <div class="cta-floating-tag" style="bottom: 10%; right: 12%; opacity: 1; transform: translateY(0px) translateX(12px);">Flexible Deployment</div>
+
+                  <div class="cta-camera-card" id="spacesightCameraCard" style="opacity: 1; transform: rotateX(0deg) rotateY(0deg) translateY(0px) scale(1) rotateZ(0deg) translateX(0px);">
+                    <div class="cta-corner cta-corner-tl" style="opacity: 1; transform: scale(1);"></div>
+                    <div class="cta-corner cta-corner-tr" style="opacity: 1; transform: scale(1);"></div>
+                    <div class="cta-corner cta-corner-bl" style="opacity: 1; transform: scale(1);"></div>
+                    <div class="cta-corner cta-corner-br" style="opacity: 1; transform: scale(1);"></div>
+
+                    <div class="cta-camera-header">
+                      <div class="cta-status-dot" id="spacesightStatusDot" style="opacity: 0.6003; transform: scale(1.4996);"></div>
+                    </div>
+
+                    <div class="cta-camera-body" id="spacesightCameraBody" style="transform: rotateY(0deg) rotateX(0deg) rotateZ(0deg) translateX(0px) translateY(0px);">
+                      <img class="cta-camera-img" id="spacesightCameraImg" src="file:///D:/%E8%A7%A6%E9%94%90/%E5%B8%B7%E5%B9%84/site8/camera.webp" alt="Security Camera" loading="lazy" decoding="async" style="opacity: 1; transform: scale(1.05) translateX(0px) translateY(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg); filter: blur(0px) brightness(0.92);">
+                      <div class="cta-lens-ring" id="spacesightLensRing" style="opacity: 1; transform: scale(1) rotate(0deg) translateX(0px) translateY(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg);"></div>
+                      <div class="cta-scanline" id="spacesightScanline" style="opacity: 0; top: 100%;"></div>
+                    </div>
+
+                    <div class="cta-camera-meta">
+                      <div class="cta-meta-label" id="spacesightMetaLabel" style="opacity: 1; transform: translateY(0px);">Live Feed</div>
+                      <div class="cta-meta-value" id="spacesightMetaValue" style="opacity: 1; transform: translateY(0px);"><span>08:48:09</span> UTC</div>
+                    </div>
+                  </div>
+
+                  <div id="spacesightParticles"><div class="cta-particle" style="width: 5px; height: 5px; left: 46%; top: 43%; background: rgb(124, 58, 237); opacity: 0.1137; transform: scale(1) translateY(-19.8123px) translateX(-12.5835px);"></div><div class="cta-particle" style="width: 7px; height: 7px; left: 78%; top: 86%; background: rgb(6, 182, 212); opacity: 0.1643; transform: scale(1) translateY(-14.0246px) translateX(-9.1328px);"></div><div class="cta-particle" style="width: 5px; height: 5px; left: 0%; top: 100%; background: rgb(6, 182, 212); opacity: 0.1471; transform: scale(1) translateY(-20.1945px) translateX(-7.6694px);"></div><div class="cta-particle" style="width: 4px; height: 4px; left: 60%; top: 42%; background: rgb(124, 58, 237); opacity: 0.1777; transform: scale(1) translateY(-11.2707px) translateX(-10.7389px);"></div><div class="cta-particle" style="width: 6px; height: 6px; left: 12%; top: 95%; background: rgb(6, 182, 212); opacity: 0.0863; transform: scale(1) translateY(-10.3184px) translateX(-10.6787px);"></div><div class="cta-particle" style="width: 5px; height: 5px; left: 84%; top: 22%; background: rgb(6, 182, 212); opacity: 0.1233; transform: scale(1) translateY(-4.7722px) translateX(-6.0899px);"></div><div class="cta-particle" style="width: 6px; height: 6px; left: 23%; top: 37%; background: rgb(124, 58, 237); opacity: 0.1135; transform: scale(1) translateY(-5.0204px) translateX(-7.4609px);"></div><div class="cta-particle" style="width: 5px; height: 5px; left: 69%; top: 96%; background: rgb(6, 182, 212); opacity: 0.1915; transform: scale(1) translateY(-2.2219px) translateX(-2.0669px);"></div><div class="cta-particle" style="width: 3px; height: 3px; left: 9%; top: 98%; background: rgb(6, 182, 212); opacity: 0.2033; transform: scale(1) translateY(-1.3262px) translateX(-0.839px);"></div><div class="cta-particle" style="width: 6px; height: 6px; left: 14%; top: 31%; background: rgb(124, 58, 237); opacity: 0.2289; transform: scale(1) translateY(-0.9057px) translateX(-0.2716px);"></div><div class="cta-particle" style="width: 5px; height: 5px; left: 99%; top: 62%; background: rgb(6, 182, 212); opacity: 0.233; transform: scale(1) translateY(0.3198px) translateX(0.5116px);"></div><div class="cta-particle" style="width: 4px; height: 4px; left: 3%; top: 45%; background: rgb(6, 182, 212); opacity: 0.1195; transform: scale(1) translateY(1.2071px) translateX(0.585px);"></div><div class="cta-particle" style="width: 5px; height: 5px; left: 37%; top: 16%; background: rgb(124, 58, 237); opacity: 0.0993; transform: scale(1) translateY(3.3952px) translateX(1.2239px);"></div><div class="cta-particle" style="width: 3px; height: 3px; left: 19%; top: 33%; background: rgb(6, 182, 212); opacity: 0.0771; transform: scale(1) translateY(2.2276px) translateX(2.9642px);"></div><div class="cta-particle" style="width: 3px; height: 3px; left: 59%; top: 8%; background: rgb(6, 182, 212); opacity: 0.1176; transform: scale(1) translateY(2.3096px) translateX(1.2335px);"></div><div class="cta-particle" style="width: 5px; height: 5px; left: 98%; top: 43%; background: rgb(124, 58, 237); opacity: 0.1512; transform: scale(1) translateY(4.3155px) translateX(1.0848px);"></div><div class="cta-particle" style="width: 5px; height: 5px; left: 43%; top: 56%; background: rgb(6, 182, 212); opacity: 0.1233; transform: scale(1) translateY(4.1054px) translateX(2.0383px);"></div><div class="cta-particle" style="width: 3px; height: 3px; left: 93%; top: 74%; background: rgb(6, 182, 212); opacity: 0.1088; transform: scale(1) translateY(3.1211px) translateX(1.5321px);"></div><div class="cta-particle" style="width: 5px; height: 5px; left: 97%; top: 76%; background: rgb(124, 58, 237); opacity: 0.0277; transform: scale(1) translateY(1.8319px) translateX(1.0625px);"></div><div class="cta-particle" style="width: 3px; height: 3px; left: 52%; top: 39%; background: rgb(6, 182, 212); opacity: 0.0241; transform: scale(1) translateY(1.0754px) translateX(0.6746px);"></div></div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <div class="platform-carousel" role="region" aria-roledescription="carousel" aria-label="Other Whale products">
+            <div class="platform-carousel-track-wrapper">
+              <div class="platform-carousel-track" id="productCarouselTrack" style="transform: translateX(-23%);"><article class="platform-card platform-carousel-slide product-lume platform-carousel-clone" aria-roledescription="slide" aria-hidden="true" tabindex="-1">
+                  <div class="platform-card-header">
+                    <div class="platform-icon" aria-hidden="true">L</div>
+                    <h3>Lume</h3>
+                  </div>
+                  <p>Content Engine Platform. Deep market research, intelligent campaign structuring, scaled content production, and multi-platform distribution.</p>
+                  <div class="tags">
+                    <span class="tag">Research</span>
+                    <span class="tag">Campaigns</span>
+                    <span class="tag">Distribution</span>
+                  </div>
+                  <div class="platform-visual">
+                    <img src="./Whale — AI That Turns Physical Operations into Real-Time Intelligence_files/161484576.png" alt="Lume interface" loading="lazy" decoding="async" style="display: block; width: 100%; height: auto; object-fit: cover;">
+                  </div>
+                </article><article class="platform-card platform-carousel-slide product-echo" role="group" aria-roledescription="slide" aria-label="1 of 4" aria-hidden="false">
+                  <div class="platform-card-header">
+                    <div class="platform-icon" aria-hidden="true">E</div>
+                    <h3>Echo</h3>
+                  </div>
+                  <p>Voice Intelligence Platform for Enterprise. 100% conversation capture, 30+ languages, Echo wearables, and conversation analytics.</p>
+                  <div class="tags">
+                    <span class="tag">ASR</span>
+                    <span class="tag">30+ Lang</span>
+                    <span class="tag">Wearables</span>
+                  </div>
+                  <div class="platform-visual">
+                    <img src="./Whale — AI That Turns Physical Operations into Real-Time Intelligence_files/182648490.gif" alt="Echo interface" loading="lazy" decoding="async">
+                  </div>
+                </article><article class="platform-card platform-carousel-slide product-alivia" role="group" aria-roledescription="slide" aria-label="2 of 4" aria-hidden="false">
+                  <div class="platform-card-header">
+                    <div class="platform-icon" aria-hidden="true">A</div>
+                    <h3>Alivia</h3>
+                  </div>
+                  <p>Your AI Assistant Behind Every Workflow. Model and agent orchestration, WhaleClaw architecture, AI training, and workflow studio.</p>
+                  <div class="tags">
+                    <span class="tag">Agents</span>
+                    <span class="tag">Orchestration</span>
+                    <span class="tag">Workflows</span>
+                  </div>
+                  <div class="platform-visual">
+                    <img src="./Whale — AI That Turns Physical Operations into Real-Time Intelligence_files/182625331.gif" alt="Alivia interface" loading="lazy" decoding="async">
+                  </div>
+                </article><article class="platform-card platform-carousel-slide product-harbor" role="group" aria-roledescription="slide" aria-label="3 of 4" aria-hidden="true">
+                  <div class="platform-card-header">
+                    <div class="platform-icon" aria-hidden="true">H</div>
+                    <h3>Harbor</h3>
+                  </div>
+                  <p>Content &amp; Knowledge Operation Cloud. Unified asset management, AI brand compliance, semantic search, and multi-brand control.</p>
+                  <div class="tags">
+                    <span class="tag">DAM</span>
+                    <span class="tag">Compliance</span>
+                    <span class="tag">Search</span>
+                  </div>
+                  <div class="platform-visual">
+                    <img src="./Whale — AI That Turns Physical Operations into Real-Time Intelligence_files/182693292.gif" alt="Harbor interface" loading="lazy" decoding="async">
+                  </div>
+                </article><article class="platform-card platform-carousel-slide product-lume" role="group" aria-roledescription="slide" aria-label="4 of 4" aria-hidden="true">
+                  <div class="platform-card-header">
+                    <div class="platform-icon" aria-hidden="true">L</div>
+                    <h3>Lume</h3>
+                  </div>
+                  <p>Content Engine Platform. Deep market research, intelligent campaign structuring, scaled content production, and multi-platform distribution.</p>
+                  <div class="tags">
+                    <span class="tag">Research</span>
+                    <span class="tag">Campaigns</span>
+                    <span class="tag">Distribution</span>
+                  </div>
+                  <div class="platform-visual">
+                    <video src="https://whale-web.oss-cn-beijing.aliyuncs.com/2026-06-01/053258468.mp4" poster="https://whale-web.oss-cn-beijing.aliyuncs.com/2026-06-02/161484576.png" muted="" loop="" playsinline="" autoplay="" preload="metadata" aria-label="Lume interface"></video>
+                  </div>
+                </article><article class="platform-card platform-carousel-slide product-echo platform-carousel-clone" aria-roledescription="slide" aria-hidden="true" tabindex="-1">
+                  <div class="platform-card-header">
+                    <div class="platform-icon" aria-hidden="true">E</div>
+                    <h3>Echo</h3>
+                  </div>
+                  <p>Voice Intelligence Platform for Enterprise. 100% conversation capture, 30+ languages, Echo wearables, and conversation analytics.</p>
+                  <div class="tags">
+                    <span class="tag">ASR</span>
+                    <span class="tag">30+ Lang</span>
+                    <span class="tag">Wearables</span>
+                  </div>
+                  <div class="platform-visual">
+                    <img src="./Whale — AI That Turns Physical Operations into Real-Time Intelligence_files/182648490.gif" alt="Echo interface" loading="lazy" decoding="async">
+                  </div>
+                </article></div>
+            </div>
+            <div class="platform-carousel-controls">
+              <button class="platform-carousel-btn platform-carousel-prev" type="button" aria-label="Previous product" aria-controls="productCarouselTrack">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg>
+              </button>
+              <div class="platform-carousel-dots" id="productCarouselDots" role="tablist" aria-label="Product slides"><button class="platform-carousel-dot active" type="button" role="tab" aria-label="Go to slide 1" aria-selected="true" tabindex="0"></button><button class="platform-carousel-dot" type="button" role="tab" aria-label="Go to slide 2" aria-selected="false" tabindex="-1"></button><button class="platform-carousel-dot" type="button" role="tab" aria-label="Go to slide 3" aria-selected="false" tabindex="-1"></button><button class="platform-carousel-dot" type="button" role="tab" aria-label="Go to slide 4" aria-selected="false" tabindex="-1"></button></div>
+              <button class="platform-carousel-btn platform-carousel-next" type="button" aria-label="Next product" aria-controls="productCarouselTrack">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"></path></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Product Capabilities section temporarily hidden
+    <section class="section capabilities-section" id="capabilities">
+      <div class="container">
+        <div class="section-head center">
+          <h2>Product <strong>Capabilities</strong></h2>
+          <p>Five ways Whale turns physical operations into structured intelligence.</p>
+        </div>
+
+        <div class="capabilities-tabs" id="capabilityTabs" role="tablist" aria-label="Product capabilities">
+          <button class="capability-tab active" type="button" role="tab" aria-selected="true" aria-controls="capability-pane-0" data-index="0">Sales Floor Intelligence</button>
+          <button class="capability-tab" type="button" role="tab" aria-selected="false" aria-controls="capability-pane-1" data-index="1">Ops Compliance</button>
+          <button class="capability-tab" type="button" role="tab" aria-selected="false" aria-controls="capability-pane-2" data-index="2">Omnichannel Content</button>
+          <button class="capability-tab" type="button" role="tab" aria-selected="false" aria-controls="capability-pane-3" data-index="3">Sales Playbook</button>
+          <button class="capability-tab" type="button" role="tab" aria-selected="false" aria-controls="capability-pane-4" data-index="4">Customer &amp; Space Insights</button>
+        </div>
+
+        <div class="capabilities-panes" id="capabilityPanes">
+          <!-- Pane 1: Sales Floor Intelligence -->
+          <div class="capability-pane active" id="capability-pane-0" role="tabpanel" data-index="0">
+            <h3 class="capability-pane-title">Sales Floor Intelligence based on <em>Data, not Instinct</em></h3>
+            <div class="capability-layout">
+              <div class="capability-copy">
+                <ul class="capability-list">
+                  <li class="capability-item">
+                    <img class="capability-icon" src="./Whale — AI That Turns Physical Operations into Real-Time Intelligence_files/180765820.PNG" alt="" width="40" height="40" loading="lazy">
+                    <div class="capability-text">
+                      <h4>Conversation Scoring</h4>
+                      <p>Echo captures and scores every customer interaction — SOP compliance, sales quality, tone — across 40+ languages. No more sampling. 100% coverage.</p>
+                    </div>
+                  </li>
+                  <li class="capability-item">
+                    <img class="capability-icon" src="./Whale — AI That Turns Physical Operations into Real-Time Intelligence_files/180736684.PNG" alt="" width="40" height="40" loading="lazy">
+                    <div class="capability-text">
+                      <h4>AI Floor Audit</h4>
+                      <p>SpaceSight's VLM engine monitors staff behavior, display compliance, and product availability in real time.</p>
+                    </div>
+                  </li>
+                  <li class="capability-item">
+                    <img class="capability-icon" src="./Whale — AI That Turns Physical Operations into Real-Time Intelligence_files/180684349.PNG" alt="" width="40" height="40" loading="lazy">
+                    <div class="capability-text">
+                      <h4>Real-Time Coaching</h4>
+                      <p>Alivia synthesizes signals and triggers in-the-moment coaching alerts to managers — before the deal is lost.</p>
+                    </div>
+                  </li>
+                  <li class="capability-item">
+                    <img class="capability-icon" src="./Whale — AI That Turns Physical Operations into Real-Time Intelligence_files/180788179.PNG" alt="" width="40" height="40" loading="lazy">
+                    <div class="capability-text">
+                      <h4>Playbook Delivery</h4>
+                      <p>Harbor delivers the right SOP or best practice guide to the right person, automatically.</p>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div class="capability-media">
+                <video autoplay="" muted="" loop="" playsinline="" preload="metadata" poster="https://whale-web.oss-cn-beijing.aliyuncs.com/2026-06-02/161484576.png">
+                  <source src="https://whale-web.oss-cn-beijing.aliyuncs.com/2026-05-03/183345100.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pane 2: Ops Compliance -->
+          <div class="capability-pane" id="capability-pane-1" role="tabpanel" data-index="1" hidden="">
+            <h3 class="capability-pane-title">Fully Automated Ops Compliance <em>Without the Manual Work</em></h3>
+            <div class="capability-layout">
+              <div class="capability-copy">
+                <ul class="capability-list">
+                  <li class="capability-item">
+                    <img class="capability-icon" src="./Whale — AI That Turns Physical Operations into Real-Time Intelligence_files/180878304.PNG" alt="" width="40" height="40" loading="lazy">
+                    <div class="capability-text">
+                      <h4>24/7 AI Audit</h4>
+                      <p>30+ VLM detection models flag compliance issues, queue lengths, safety violations, and staff deviations — automatically, at every location.</p>
+                    </div>
+                  </li>
+                  <li class="capability-item">
+                    <img class="capability-icon" src="./Whale — AI That Turns Physical Operations into Real-Time Intelligence_files/180874233.PNG" alt="" width="40" height="40" loading="lazy">
+                    <div class="capability-text">
+                      <h4>Auto-Escalation</h4>
+                      <p>Alivia scores severity and routes issues to the right team with corrective action prompts.</p>
+                    </div>
+                  </li>
+                  <li class="capability-item">
+                    <img class="capability-icon" src="./Whale — AI That Turns Physical Operations into Real-Time Intelligence_files/180833676.PNG" alt="" width="40" height="40" loading="lazy">
+                    <div class="capability-text">
+                      <h4>Staff Verification</h4>
+                      <p>Echo captures staff feedback to verify ambiguous findings.</p>
+                    </div>
+                  </li>
+                  <li class="capability-item">
+                    <img class="capability-icon" src="./Whale — AI That Turns Physical Operations into Real-Time Intelligence_files/180728365.PNG" alt="" width="40" height="40" loading="lazy">
+                    <div class="capability-text">
+                      <h4>Audit Archive</h4>
+                      <p>Harbor maintains a full compliance log, SOP library, and regulatory documentation trail.</p>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div class="capability-media">
+                <video autoplay="" muted="" loop="" playsinline="" preload="metadata" poster="https://whale-web.oss-cn-beijing.aliyuncs.com/2026-06-02/161484576.png">
+                  <source src="https://whale-web.oss-cn-beijing.aliyuncs.com/2026-05-03/183574562.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pane 3: Omnichannel Content -->
+          <div class="capability-pane" id="capability-pane-2" role="tabpanel" data-index="2" hidden="">
+            <h3 class="capability-pane-title">One Brief, <em>Every Channel, Every Format</em></h3>
+            <div class="capability-layout">
+              <div class="capability-copy">
+                <ul class="capability-list">
+                  <li class="capability-item">
+                    <img class="capability-icon" src="./Whale — AI That Turns Physical Operations into Real-Time Intelligence_files/181775069.PNG" alt="" width="40" height="40" loading="lazy">
+                    <div class="capability-text">
+                      <h4>Content Hub</h4>
+                      <p>Harbor's central library stores, governs, and scores every approved brand asset with AI quality scoring.</p>
+                    </div>
+                  </li>
+                  <li class="capability-item">
+                    <img class="capability-icon" src="./Whale — AI That Turns Physical Operations into Real-Time Intelligence_files/181847394.PNG" alt="" width="40" height="40" loading="lazy">
+                    <div class="capability-text">
+                      <h4>Omnichannel Distribution</h4>
+                      <p>Lume publishes to 10+ platforms simultaneously and deploys KOS missions to store teams.</p>
+                    </div>
+                  </li>
+                  <li class="capability-item">
+                    <img class="capability-icon" src="./Whale — AI That Turns Physical Operations into Real-Time Intelligence_files/181876156.PNG" alt="" width="40" height="40" loading="lazy">
+                    <div class="capability-text">
+                      <h4>Adaptive Delivery</h4>
+                      <p>Alivia personalizes content per location and feeds performance data back for real-time optimization.</p>
+                    </div>
+                  </li>
+                  <li class="capability-item">
+                    <img class="capability-icon" src="./Whale — AI That Turns Physical Operations into Real-Time Intelligence_files/181918239.PNG" alt="" width="40" height="40" loading="lazy">
+                    <div class="capability-text">
+                      <h4>Physical Compliance</h4>
+                      <p>SpaceSight verifies that in-store digital signage matches approved brand content.</p>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div class="capability-media">
+                <video autoplay="" muted="" loop="" playsinline="" preload="metadata" poster="https://whale-web.oss-cn-beijing.aliyuncs.com/2026-06-02/161484576.png">
+                  <source src="https://whale-web.oss-cn-beijing.aliyuncs.com/2026-05-03/183658164.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pane 4: Sales Playbook -->
+          <div class="capability-pane" id="capability-pane-3" role="tabpanel" data-index="3" hidden="">
+            <h3 class="capability-pane-title">Your Best Sale's Playbook <em>Scaled to All</em></h3>
+            <div class="capability-layout">
+              <div class="capability-copy">
+                <ul class="capability-list">
+                  <li class="capability-item">
+                    <img class="capability-icon" src="./Whale — AI That Turns Physical Operations into Real-Time Intelligence_files/182180883.PNG" alt="" width="40" height="40" loading="lazy">
+                    <div class="capability-text">
+                      <h4>Pattern Capture</h4>
+                      <p>Echo identifies top-performer conversation patterns and skill gaps across your entire team.</p>
+                    </div>
+                  </li>
+                  <li class="capability-item">
+                    <img class="capability-icon" src="./Whale — AI That Turns Physical Operations into Real-Time Intelligence_files/182280140.PNG" alt="" width="40" height="40" loading="lazy">
+                    <div class="capability-text">
+                      <h4>Content Governance</h4>
+                      <p>Harbor versions and manages all training content, SOPs, and regional adaptations.</p>
+                    </div>
+                  </li>
+                  <li class="capability-item">
+                    <img class="capability-icon" src="./Whale — AI That Turns Physical Operations into Real-Time Intelligence_files/182236144.PNG" alt="" width="40" height="40" loading="lazy">
+                    <div class="capability-text">
+                      <h4>Automated Distribution</h4>
+                      <p>Lume automatically delivers training to every location and team through KOS missions.</p>
+                    </div>
+                  </li>
+                  <li class="capability-item">
+                    <img class="capability-icon" src="./Whale — AI That Turns Physical Operations into Real-Time Intelligence_files/182366915.PNG" alt="" width="40" height="40" loading="lazy">
+                    <div class="capability-text">
+                      <h4>Role Personalization</h4>
+                      <p>Alivia serves the right training to each employee based on their role, location, and performance gap.</p>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div class="capability-media">
+                <video autoplay="" muted="" loop="" playsinline="" preload="metadata" poster="https://whale-web.oss-cn-beijing.aliyuncs.com/2026-06-02/161484576.png">
+                  <source src="https://whale-web.oss-cn-beijing.aliyuncs.com/2026-05-03/183753955.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pane 5: Customer & Space Insights -->
+          <div class="capability-pane" id="capability-pane-4" role="tabpanel" data-index="4" hidden="">
+            <h3 class="capability-pane-title"><em>Know your Customer, Know your Space</em></h3>
+            <div class="capability-layout">
+              <div class="capability-copy">
+                <ul class="capability-list">
+                  <li class="capability-item">
+                    <img class="capability-icon" src="./Whale — AI That Turns Physical Operations into Real-Time Intelligence_files/182680222.PNG" alt="" width="40" height="40" loading="lazy">
+                    <div class="capability-text">
+                      <h4>Space Analytics</h4>
+                      <p>SpaceSight tracks footfall, dwell time, queue length, and customer flow heatmaps across your locations.</p>
+                    </div>
+                  </li>
+                  <li class="capability-item">
+                    <img class="capability-icon" src="./Whale — AI That Turns Physical Operations into Real-Time Intelligence_files/182759181.PNG" alt="" width="40" height="40" loading="lazy">
+                    <div class="capability-text">
+                      <h4>Sentiment Signals</h4>
+                      <p>Echo captures customer sentiment, voice signals, and NPS indicators from real interactions.</p>
+                    </div>
+                  </li>
+                  <li class="capability-item">
+                    <img class="capability-icon" src="./Whale — AI That Turns Physical Operations into Real-Time Intelligence_files/182753167.PNG" alt="" width="40" height="40" loading="lazy">
+                    <div class="capability-text">
+                      <h4>Unified Intelligence</h4>
+                      <p>Alivia synthesizes spatial and audio data into executive reporting and predictive alerts.</p>
+                    </div>
+                  </li>
+                  <li class="capability-item">
+                    <img class="capability-icon" src="./Whale — AI That Turns Physical Operations into Real-Time Intelligence_files/182852662.PNG" alt="" width="40" height="40" loading="lazy">
+                    <div class="capability-text">
+                      <h4>Knowledge Archive</h4>
+                      <p>Harbor stores findings and builds an institutional knowledge base for strategic planning.</p>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div class="capability-media">
+                <video autoplay="" muted="" loop="" playsinline="" preload="metadata" poster="https://whale-web.oss-cn-beijing.aliyuncs.com/2026-06-02/161484576.png">
+                  <source src="https://whale-web.oss-cn-beijing.aliyuncs.com/2026-05-03/183785373.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+          </div>
+        
+      
+    
+    --&gt;
+
+    <section class="section integrated-platform-section" id="integrated-platform">
+      <div class="container">
+        <div class="integrated-platform-head">
+          <div>
+            <h2>One integrated platform</h2>
+          </div>
+          <div class="integrated-platform-copy">
+            <p>Control your entire physical operations from Whale,<br>the AI layer that connects cameras, voice, and agents into one real-time management platform.</p>
+            <a href="file:///D:/%E8%A7%A6%E9%94%90/%E5%B8%B7%E5%B9%84/site8/index.html#contact" class="btn btn-outline">Learn more</a>
+          </div>
+        </div>
+        <div class="integrated-platform-visual">
+          <img src="./Whale — AI That Turns Physical Operations into Real-Time Intelligence_files/182699028.gif" alt="Whale integrated platform showing live camera feeds, AI annotations, and operational dashboards" loading="lazy" decoding="async">
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-tint cases-section" id="cases">
+      <div class="container">
+        <div class="section-head">
+          <h2>Real workflows. <strong>Real results.</strong></h2>
+          <p>See how global teams use Whale to automate the work that used to take hours.</p>
+        </div>
+        <div class="case-grid">
+          <article class="case-card case-card-large" id="nio-case">
+            <div class="case-visual">
+              <img src="./Whale — AI That Turns Physical Operations into Real-Time Intelligence_files/154269282.jpeg" alt="NIO showroom" loading="eager" decoding="async">
+              <span class="case-logo"><img src="file:///D:/%E8%A7%A6%E9%94%90/%E5%B8%B7%E5%B9%84/site8/nio-logo.svg" alt="NIO" loading="eager" decoding="async"></span>
+              <div class="nio-scan" aria-hidden="true">
+                <div class="scan-glow"></div>
+                <div class="scan-beam"></div>
+                <div class="scan-mark" style="top: 38%; left: 18%;"></div>
+                <div class="scan-mark" style="top: 52%; left: 58%;"></div>
+                <div class="scan-mark" style="top: 44%; left: 74%;"></div>
+              </div>
+            </div>
+            <div class="case-body">
+              <span class="case-industry">Automotive</span>
+              <h3>NIO × Whale | Scaling a lifestyle brand with consistent content</h3>
+              <p>NIO used Whale's data and content systems to raise the quality and consistency of marketing materials across showrooms and digital channels.</p>
+            </div>
+          </article>
+          <article class="case-card">
+            <div class="case-visual">
+              <img src="./Whale — AI That Turns Physical Operations into Real-Time Intelligence_files/154453444.jpeg" alt="Watsons store" loading="eager" decoding="async">
+              <span class="case-logo"><img src="./Whale — AI That Turns Physical Operations into Real-Time Intelligence_files/162423348.png" alt="Watsons" loading="eager" decoding="async"></span>
+            </div>
+            <div class="case-body">
+              <span class="case-industry">Retail</span>
+              <h3>Watsons × Whale | Keeping shoppers in store longer</h3>
+              <p>Watsons used Whale SpaceSight to measure dwell time and test how promotions are displayed in-store, leading to longer visits and clearer in-store communication.</p>
+            </div>
+          </article>
+          <article class="case-card">
+            <div class="case-visual">
+              <img src="./Whale — AI That Turns Physical Operations into Real-Time Intelligence_files/bg2.jpg" alt="Unilever digital store" loading="eager" decoding="async">
+              <span class="case-logo">Unilever</span>
+            </div>
+            <div class="case-body">
+              <span class="case-industry">Retail</span>
+              <h3>Unilever × Whale</h3>
+              <p>Built the Future-Sense Digital Store, a retail innovation powered by Whale intelligence.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-dark cta-section" id="contact">
+      <div class="container cta-container">
+        <div class="cta-layout">
+          <div class="cta-copy">
+            <h2>See Alivia in your <strong>operation.</strong></h2>
+            <p class="cta-lead">30-minute demo. Tailored to your team size, industry, and workflow.</p>
+            <a href="mailto:sales@whale.sg" class="btn btn-primary btn-large">Request a Demo</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="footer-contact">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo">Whale<span>.</span></div>
+          <p>AI that powers enterprise operations across physical and digital channels.</p>
+          <div class="footer-contact">
+            <h4>Contact Us</h4>
+            <p><a href="mailto:sales@whale.sg">sales@whale.sg</a></p>
+            <p class="footer-regions">
+              <a href="https://www.whale.sg/">Singapore</a> |
+              <a href="https://meetwhale.ai/">United States</a> |
+              <a href="https://www.meetwhale.com/">China</a> |
+              <a href="https://www.keichi.co.jp/">Japan</a>
+            </p>
+          </div>
+          <div class="footer-social">
+            <h4>Get Our App</h4>
+            <div class="social-links">
+              <a href="https://www.facebook.com/Whale-105271425542708" aria-label="Facebook">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path></svg>
+              </a>
+              <a href="https://www.linkedin.com/company/hellowhale" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path></svg>
+              </a>
+            </div>
+            <div class="app-badges">
+              <a href="https://apps.apple.com/de/developer/whale-tech-pte-ltd/id1638253017">
+                <img src="./Whale — AI That Turns Physical Operations into Real-Time Intelligence_files/f-pic1.png" alt="Download on the App Store" loading="lazy">
+              </a>
+              <a href="https://play.google.com/store/apps/details?id=im.whale.isd&amp;hl=en_US">
+                <img src="./Whale — AI That Turns Physical Operations into Real-Time Intelligence_files/f-pic2.png" alt="Get it on Google Play" loading="lazy">
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Platform</h4>
+          <a href="file:///D:/%E8%A7%A6%E9%94%90/%E5%B8%B7%E5%B9%84/site8/index.html#products">SpaceSight</a>
+          <a href="file:///D:/%E8%A7%A6%E9%94%90/%E5%B8%B7%E5%B9%84/site8/index.html#products">Echo</a>
+          <a href="file:///D:/%E8%A7%A6%E9%94%90/%E5%B8%B7%E5%B9%84/site8/index.html#products">Harbor</a>
+          <a href="file:///D:/%E8%A7%A6%E9%94%90/%E5%B8%B7%E5%B9%84/site8/index.html#products">Alivia</a>
+          <a href="file:///D:/%E8%A7%A6%E9%94%90/%E5%B8%B7%E5%B9%84/site8/index.html#products">Lume</a>
+        </div>
+        <div class="footer-col">
+          <h4>Hardware</h4>
+          <a href="file:///D:/%E8%A7%A6%E9%94%90/%E5%B8%B7%E5%B9%84/site8/index.html#products">AI Cameras</a>
+          <a href="file:///D:/%E8%A7%A6%E9%94%90/%E5%B8%B7%E5%B9%84/site8/index.html#products">AI Hubs</a>
+          <a href="file:///D:/%E8%A7%A6%E9%94%90/%E5%B8%B7%E5%B9%84/site8/index.html#products">Echo Pins</a>
+          <a href="file:///D:/%E8%A7%A6%E9%94%90/%E5%B8%B7%E5%B9%84/site8/index.html#products">Echo Pods</a>
+        </div>
+        <div class="footer-col">
+          <h4>Solutions</h4>
+          <a href="https://www.whale.sg/realestate.html">Real Estate</a>
+          <a href="https://www.whale.sg/retail.html">Luxury &amp; Fashion Retail</a>
+          <a href="https://www.whale.sg/auto.html">Auto</a>
+          <a href="https://www.whale.sg/healthcare.html">Healthcare</a>
+          <a href="https://www.whale.sg/food_and_beverage.html">Food &amp; Beverage</a>
+          <a href="https://www.whale.sg/jewelry.html">Jewelry</a>
+          <a href="https://www.whale.sg/rails_and_transit.html">Rails &amp; Transit</a>
+          <a href="https://www.whale.sg/finance.html">FBSI</a>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="file:///D:/%E8%A7%A6%E9%94%90/%E5%B8%B7%E5%B9%84/site8/index.html#">About Us</a>
+          <a href="https://www.whale.sg/blogpost.html">Blog</a>
+          <a href="https://www.whale.sg/Joinus.html">Careers</a>
+          <a href="file:///D:/%E8%A7%A6%E9%94%90/%E5%B8%B7%E5%B9%84/site8/index.html#contact">Contact Us</a>
+          <a href="file:///D:/%E8%A7%A6%E9%94%90/%E5%B8%B7%E5%B9%84/site8/index.html#cases">Use Cases</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 WHALE TECH PTE. LTD.</span>
+        <div class="footer-legal">
+          <a href="file:///D:/%E8%A7%A6%E9%94%90/%E5%B8%B7%E5%B9%84/site8/index.html#">Legal</a>
+          <a href="https://www.meetwhale.ai/privacyPolicy.html">Privacy</a>
+        </div>
+        <div class="footer-lang">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"></path>
+          </svg>
+          <span>English (Singapore)</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./Whale — AI That Turns Physical Operations into Real-Time Intelligence_files/three.min.js.download"></script>
+  <script src="file:///D:/%E8%A7%A6%E9%94%90/%E5%B8%B7%E5%B9%84/site8/main.js"></script>
+  <script>
+    (function () {
+      'use strict';
+
+      const stage = document.getElementById('spacesightStage');
+      const particlesContainer = document.getElementById('spacesightParticles');
+      const cameraCard = document.getElementById('spacesightCameraCard');
+      const cameraBody = document.getElementById('spacesightCameraBody');
+      const cameraImg = document.getElementById('spacesightCameraImg');
+      const lensRing = document.getElementById('spacesightLensRing');
+      const scanline = document.getElementById('spacesightScanline');
+
+      if (!stage || typeof anime === 'undefined') return;
+
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      // Create floating particles
+      const particleCount = 20;
+      for (let i = 0; i < particleCount; i++) {
+        const p = document.createElement('div');
+        p.className = 'cta-particle';
+        const size = anime.random(3, 7);
+        p.style.width = `${size}px`;
+        p.style.height = `${size}px`;
+        p.style.left = `${anime.random(0, 100)}%`;
+        p.style.top = `${anime.random(0, 100)}%`;
+        p.style.background = i % 3 === 0 ? '#7c3aed' : '#06b6d4';
+        particlesContainer.appendChild(p);
+      }
+
+      // UTC clock
+      function updateClock() {
+        const now = new Date();
+        const h = String(now.getUTCHours()).padStart(2, '0');
+        const m = String(now.getUTCMinutes()).padStart(2, '0');
+        const s = String(now.getUTCSeconds()).padStart(2, '0');
+        const span = document.querySelector('#spacesightMetaValue span');
+        if (span) span.textContent = `${h}:${m}:${s}`;
+      }
+      setInterval(updateClock, 1000);
+      updateClock();
+
+      function playIntro() {
+        const tl = anime.createTimeline({ defaults: { ease: 'outExpo' } });
+
+        tl.add('#spacesightGlow1', {
+          opacity: [0, 0.8],
+          scale: [0.6, 1],
+          duration: 1600
+        }, 200);
+
+        tl.add('#spacesightGlow2', {
+          opacity: [0, 0.6],
+          scale: [0.5, 1.2],
+          duration: 1600
+        }, 400);
+
+        tl.add('#spacesightCameraCard', {
+          opacity: [0, 1],
+          rotateX: [35, 0],
+          rotateY: [-18, 0],
+          translateY: [120, 0],
+          scale: [0.82, 1],
+          duration: 1400,
+          ease: 'spring(1, 80, 12, 0)'
+        }, 400);
+
+        tl.add('.cta-corner', {
+          opacity: [0, 1],
+          scale: [0, 1],
+          duration: 600,
+          delay: anime.stagger(80, { grid: [2, 2], from: 'center' }),
+          ease: 'outBack'
+        }, '-=900');
+
+        tl.add('#spacesightStatusDot', {
+          opacity: [0, 1],
+          scale: [0, 1.4, 1],
+          duration: 800,
+          ease: 'outElastic(1, .6)'
+        }, '-=600');
+
+        tl.add('#spacesightCameraImg', {
+          opacity: [0, 1],
+          scale: [1.25, 1.05],
+          filter: ['blur(16px) brightness(0.6)', 'blur(0px) brightness(0.92)'],
+          duration: 1400,
+          ease: 'outQuart'
+        }, '-=1100');
+
+        tl.add('#spacesightLensRing', {
+          opacity: [0, 1],
+          scale: [0.2, 1],
+          rotate: [-90, 0],
+          duration: 1200,
+          ease: 'spring(1, 70, 10, 0)'
+        }, '-=800');
+
+        tl.add('#spacesightScanline', {
+          opacity: [0, 1, 0],
+          top: ['0%', '100%'],
+          duration: 1400,
+          ease: 'inOutExpo'
+        }, '-=1000');
+
+        tl.add(['#spacesightMetaLabel', '#spacesightMetaValue'], {
+          opacity: [0, 1],
+          translateY: [10, 0],
+          duration: 800,
+          delay: anime.stagger(120),
+          ease: 'outQuad'
+        }, '-=600');
+
+        tl.add('.cta-floating-tag', {
+          opacity: [0, 1],
+          translateY: [30, 0],
+          translateX: anime.stagger([-12, 12]),
+          duration: 900,
+          delay: anime.stagger(100, { from: 'center' }),
+          ease: 'outBack'
+        }, '-=900');
+
+        tl.add('.cta-particle', {
+          opacity: [0, anime.random(0.3, 0.7)],
+          scale: [0, 1],
+          duration: 1200,
+          delay: anime.stagger(40),
+          ease: 'outQuad'
+        }, '-=1200');
+
+        return tl;
+      }
+
+      function startAmbient() {
+        anime.animate(['#spacesightGlow1', '#spacesightGlow2'], {
+          scale: [1, 1.15],
+          opacity: [0.6, 0.9],
+          duration: 4000,
+          loop: true,
+          alternate: true,
+          ease: 'inOutQuad',
+          delay: anime.stagger(600)
+        });
+
+        anime.animate('#spacesightStatusDot', {
+          scale: [1, 1.5],
+          opacity: [1, 0.6],
+          duration: 1200,
+          loop: true,
+          alternate: true,
+          ease: 'inOutSine'
+        });
+
+        anime.animate('.cta-particle', {
+          translateY: anime.stagger([-40, 40]),
+          translateX: anime.stagger([-30, 30]),
+          opacity: anime.stagger([0.2, 0.8]),
+          duration: () => anime.random(6000, 12000),
+          loop: true,
+          alternate: true,
+          ease: 'inOutSine',
+          delay: anime.stagger(200)
+        });
+      }
+
+      function bindParallax() {
+        stage.addEventListener('mousemove', (e) => {
+          const rect = stage.getBoundingClientRect();
+          const cx = rect.width / 2;
+          const cy = rect.height / 2;
+          const dx = (e.clientX - rect.left - cx) / cx;
+          const dy = (e.clientY - rect.top - cy) / cy;
+
+          anime.set(cameraCard, {
+            rotateY: dx * 8,
+            rotateX: -dy * 6
+          });
+
+          anime.set(cameraBody, {
+            rotateY: dx * 4,
+            rotateX: -dy * 3
+          });
+
+          anime.set(cameraImg, {
+            translateX: dx * -10,
+            translateY: dy * -10
+          });
+
+          anime.set(lensRing, {
+            translateX: dx * 35,
+            translateY: dy * 35,
+            rotateX: -dy * 28,
+            rotateY: dx * 28,
+            rotateZ: dx * 12
+          });
+        });
+
+        stage.addEventListener('mouseleave', () => {
+          anime.animate([cameraCard, cameraBody, cameraImg, lensRing], {
+            rotateX: 0,
+            rotateY: 0,
+            rotateZ: 0,
+            translateX: 0,
+            translateY: 0,
+            duration: 600,
+            ease: 'outQuad'
+          });
+        });
+      }
+
+      function bindFlash() {
+        cameraBody.addEventListener('click', () => {
+          anime.animate(scanline, {
+            opacity: [0, 1, 0],
+            top: ['0%', '100%'],
+            duration: 1000,
+            ease: 'inOutExpo'
+          });
+
+          anime.animate(lensRing, {
+            scale: [1, 1.3, 1],
+            borderColor: ['rgba(6,182,212,0.4)', 'rgba(255,255,255,0.9)', 'rgba(6,182,212,0.4)'],
+            boxShadow: [
+              '0 0 30px rgba(6,182,212,0.3), 0 0 60px rgba(6,182,212,0.15) inset',
+              '0 0 80px rgba(255,255,255,0.6), 0 0 120px rgba(255,255,255,0.3) inset',
+              '0 0 30px rgba(6,182,212,0.3), 0 0 60px rgba(6,182,212,0.15) inset'
+            ],
+            duration: 900,
+            ease: 'outExpo'
+          });
+        });
+      }
+
+      function init() {
+        if (prefersReducedMotion) {
+          document.querySelectorAll('.cta-glow, .cta-camera-card, .cta-corner, .cta-status-dot, .cta-lens-ring, .cta-scanline, .cta-meta-label, .cta-meta-value, .cta-floating-tag, .cta-particle').forEach(el => {
+            el.style.opacity = '1';
+            el.style.transform = 'none';
+          });
+          return;
+        }
+
+        playIntro().then(startAmbient);
+        bindParallax();
+        bindFlash();
+      }
+
+      // Start when the CTA section scrolls into view
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            init();
+            observer.disconnect();
+          }
+        });
+      }, { threshold: 0.2 });
+
+      observer.observe(stage);
+    })();
+  </script>
+
+
+</body></html>

@@ -1,0 +1,41 @@
+---
+---
+
+<section class="section section--tight trust-band" aria-label="Certifications">
+  <div class="container">
+    <p class="trust-label">Certified &amp; compliant with the standards that protect your operations</p>
+    <div class="logo-bar cert-bar">
+      <img class="cert-logo" src="/cert-logos/cmmi.jpg" alt="Capability Maturity Model Integration Certification" width="120" height="60" loading="lazy">
+      <img class="cert-logo" src="/cert-logos/iso27001.jpg" alt="Information Security Management System Certification" width="120" height="60" loading="lazy">
+      <img class="cert-logo" src="/cert-logos/iso9001.jpg" alt="Quality Management System Certification" width="120" height="60" loading="lazy">
+      <img class="cert-logo" src="/cert-logos/imda.jpg" alt="Accreditation@SGD Certificate from the Singapore Infocomm Media Development Authority" width="120" height="60" loading="lazy">
+      <img class="cert-logo" src="/cert-logos/soc2.png" alt="SOC 2, System and Organization Controls 2" width="120" height="60" loading="lazy">
+      <img class="cert-logo" src="/cert-logos/gdpr.png" alt="General Data Protection Regulation (GDPR)" width="120" height="60" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<style>
+  .cert-bar {
+    gap: var(--space-md) var(--space-lg);
+  }
+  .cert-logo {
+    max-height: 60px;
+    width: auto;
+    max-width: 140px;
+    object-fit: contain;
+    opacity: 0.85;
+    transition: opacity 0.2s ease;
+    filter: grayscale(30%);
+  }
+  .cert-logo:hover {
+    opacity: 1;
+    filter: grayscale(0%);
+  }
+  @media (max-width: 720px) {
+    .cert-logo {
+      max-height: 48px;
+      max-width: 110px;
+    }
+  }
+</style>

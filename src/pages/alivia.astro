@@ -1,0 +1,407 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const useCases = [
+  {
+    scenario: 'Store Operations',
+    roles: 'Supervisory Co-pilot · Patrol Co-pilot · Customer Service Co-pilot · Scheduling Co-pilot · Lead Co-pilot'
+  },
+  {
+    scenario: 'Service Communication',
+    roles: 'Response Co-pilot · Follow-up Co-pilot · Case Co-pilot · Analysis Co-pilot'
+  },
+  {
+    scenario: 'Sales Management',
+    roles: 'Record Co-pilot · CRM Co-pilot · Proposal Co-pilot · Response Co-pilot'
+  },
+  {
+    scenario: 'Training Enablement',
+    roles: 'Response Co-pilot · Instructor Co-pilot · Content Co-pilot · Assessment Co-pilot'
+  },
+  {
+    scenario: 'Content Growth',
+    roles: 'Research Co-pilot · Content Co-pilot · Response Co-pilot · Analysis Co-pilot'
+  },
+  {
+    scenario: 'Market Insight',
+    roles: 'Research Co-pilot · Analytics Co-pilot · Insight Co-pilot'
+  }
+];
+const canonicalUrl = 'https://www.whale.sg/alivia/';
+const pageDescription = 'Alivia is Whale\'s enterprise AI OS for model orchestration, intelligent execution, and role-based AI co-pilots across every workflow.';
+
+const extraSchema = [
+  {
+    '@type': 'SoftwareApplication',
+    name: 'Whale Alivia',
+    applicationCategory: 'BusinessApplication',
+    operatingSystem: 'Web, Edge, Cloud',
+    description: pageDescription,
+    offers: {
+      '@type': 'Offer',
+      priceCurrency: 'USD',
+      price: 'Contact sales',
+      availability: 'https://schema.org/InStock',
+      url: canonicalUrl
+    }
+  },
+  {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: 'https://www.whale.sg/'
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Products',
+        item: 'https://www.whale.sg/products/'
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: 'Alivia',
+        item: canonicalUrl
+      }
+    ]
+  }
+];
+---
+
+<Layout
+  title="Whale Alivia | Enterprise AI OS for Agent Orchestration"
+  description={pageDescription}
+  canonical={canonicalUrl}
+  ogImage="/og/alivia.png"
+  extraSchema={extraSchema}
+>
+  <Header />
+  <main class="alivia-page">
+    <section class="alivia-hero">
+      <div class="container">
+        <div class="alivia-hero-brand">
+          <img src="/product-logos/alivia-logo.png" alt="Alivia" width="72" height="72" loading="eager">
+          <h1>Alivia <span class="alivia-hero-subtitle">— Enterprise AI Operating System for Agent Orchestration</span></h1>
+        </div>
+        <p class="alivia-hero-tagline">Enterprise AI Operating System (AIOS)</p>
+      </div>
+    </section>
+
+    <section class="alivia-section">
+      <div class="container">
+        <div class="alivia-section-head">
+          <h2>Capability Stack</h2>
+          <p>A three-layer architecture for model orchestration and intelligent execution at scale</p>
+        </div>
+
+        <div class="alivia-stack">
+          <div class="alivia-stack-layer alivia-stack-think">THINK <span>[Ideate]</span></div>
+          <div class="alivia-stack-layer alivia-stack-memory">MEMORY <span>[Record]</span></div>
+          <div class="alivia-stack-layer alivia-stack-infra">CLOUD AI INFRA <span>[Control]</span></div>
+        </div>
+
+        <div class="alivia-capability-grid">
+          <div class="alivia-capability-card">
+            <div class="alivia-capability-icon" aria-hidden="true">✓</div>
+            <div>
+              <h3>Harness</h3>
+              <p>Intelligent Orchestration</p>
+              <p class="alivia-capability-meta">Build · Edit · Deploy</p>
+            </div>
+          </div>
+          <div class="alivia-capability-card">
+            <div class="alivia-capability-icon" aria-hidden="true">✓</div>
+            <div>
+              <h3>Knowledge Base</h3>
+              <p>Enterprise Knowledge Hub</p>
+              <p class="alivia-capability-meta">Ingest · Process · Retrieve</p>
+            </div>
+          </div>
+          <div class="alivia-capability-card">
+            <div class="alivia-capability-icon" aria-hidden="true">✓</div>
+            <div>
+              <h3>Token Factory</h3>
+              <p>Model Orchestration Layer</p>
+              <p class="alivia-capability-meta">Routing · Auditing · Cost Optimization</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="alivia-section alivia-section-tint">
+      <div class="container">
+        <div class="alivia-section-head">
+          <h2>Principles</h2>
+          <p>Collaborative, Open, Neutral, Secure — The Foundation of Enterprise AI</p>
+        </div>
+
+        <div class="alivia-principle-grid">
+          <div class="alivia-principle-card">
+            <h3>Collaboration</h3>
+            <p>Collaborate across teams, knowledge, skills, and agents.</p>
+          </div>
+          <div class="alivia-principle-card">
+            <h3>Openness</h3>
+            <p>Integrate best-in-class models and tools such as Echo, SpaceSight, and more.</p>
+          </div>
+          <div class="alivia-principle-card">
+            <h3>Neutrality</h3>
+            <p>Model-agnostic and provider-independent deployment.</p>
+          </div>
+          <div class="alivia-principle-card">
+            <h3>Security</h3>
+            <p>Enterprise-grade data privacy, security, and full lifecycle auditing.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="alivia-section">
+      <div class="container">
+        <div class="alivia-section-head">
+          <h2>Use Cases</h2>
+          <p>Six Business Scenarios, AI Co-pilots On Duty</p>
+        </div>
+
+        <div class="alivia-usecase-table" role="table" aria-label="Alivia use cases and AI co-pilot roles">
+          <div class="alivia-usecase-row alivia-usecase-header" role="row">
+            <div role="columnheader">Scenario</div>
+            <div role="columnheader">AI Co-pilot Roles</div>
+          </div>
+          {useCases.map((item) => (
+            <div class="alivia-usecase-row" role="row">
+              <div role="cell">{item.scenario}</div>
+              <div role="cell">{item.roles}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .alivia-page {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    padding-top: var(--header-height);
+  }
+
+  .alivia-hero {
+    padding: var(--space-xl) 0;
+    background: linear-gradient(180deg, var(--bg-tint) 0%, var(--bg) 100%);
+  }
+
+  .alivia-hero-brand {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-sm);
+  }
+
+  .alivia-hero-brand img {
+    width: 72px;
+    height: 72px;
+    object-fit: contain;
+  }
+
+  .alivia-hero-brand h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 700;
+    margin: 0;
+    color: var(--text);
+  }
+
+  .alivia-hero-brand h1 .alivia-hero-subtitle {
+    display: block;
+    font-size: 0.5em;
+    opacity: 0.85;
+    margin-top: 0.25rem;
+  }
+
+  .alivia-hero-tagline {
+    font-size: clamp(1.25rem, 3vw, 1.75rem);
+    font-weight: 600;
+    color: #2563EB;
+    margin: 0;
+  }
+
+  .alivia-section {
+    padding: var(--space-xl) 0;
+  }
+
+  .alivia-section-tint {
+    background: var(--bg-tint);
+  }
+
+  .alivia-section-head {
+    margin-bottom: var(--space-lg);
+  }
+
+  .alivia-section-head h2 {
+    font-family: var(--font-display);
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #2563EB;
+    margin: 0 0 var(--space-xs) 0;
+  }
+
+  .alivia-section-head p {
+    font-size: clamp(1.25rem, 3vw, 1.75rem);
+    font-weight: 700;
+    color: var(--text);
+    margin: 0;
+    max-width: 60ch;
+  }
+
+  .alivia-stack {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    max-width: 600px;
+    margin: 0 auto var(--space-lg) auto;
+  }
+
+  .alivia-stack-layer {
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--radius-sm);
+    font-weight: 700;
+    text-align: center;
+    font-size: 1.1rem;
+  }
+
+  .alivia-stack-layer span {
+    font-weight: 500;
+    opacity: 0.8;
+  }
+
+  .alivia-stack-think { background: #E9D5FF; color: #6B21A8; }
+  .alivia-stack-memory { background: #DBEAFE; color: #1E40AF; }
+  .alivia-stack-infra { background: #F3F4F6; color: #374151; }
+
+  .alivia-capability-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--space-md);
+  }
+
+  .alivia-capability-card {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-sm);
+    background: var(--bg-elevated);
+    padding: var(--space-md);
+    border-radius: var(--radius);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  }
+
+  .alivia-capability-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #2563EB;
+    color: white;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .alivia-capability-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0 0 0.25rem 0;
+  }
+
+  .alivia-capability-card p {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+  }
+
+  .alivia-capability-meta {
+    font-size: 0.85rem;
+    margin-top: 0.25rem;
+  }
+
+  .alivia-principle-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--space-md);
+  }
+
+  .alivia-principle-card {
+    background: var(--bg-elevated);
+    padding: var(--space-md);
+    border-radius: var(--radius);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  }
+
+  .alivia-principle-card h3 {
+    font-family: var(--font-display);
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #2563EB;
+    margin: 0 0 var(--space-xs) 0;
+  }
+
+  .alivia-principle-card p {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .alivia-usecase-table {
+    display: grid;
+    gap: 0.5rem;
+  }
+
+  .alivia-usecase-row {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: var(--space-md);
+    padding: var(--space-sm) var(--space-md);
+    background: var(--bg-elevated);
+    border-radius: var(--radius-sm);
+    align-items: center;
+  }
+
+  .alivia-usecase-header {
+    font-weight: 700;
+    color: var(--text);
+    background: transparent;
+    padding-left: var(--space-md);
+    padding-right: var(--space-md);
+  }
+
+  .alivia-usecase-row [role="cell"]:first-child {
+    font-weight: 600;
+    color: #2563EB;
+  }
+
+  @media (max-width: 640px) {
+    .alivia-usecase-row {
+      grid-template-columns: 1fr;
+      gap: 0.25rem;
+    }
+    .alivia-usecase-header {
+      display: none;
+    }
+  }
+</style>

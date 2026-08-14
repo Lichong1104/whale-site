@@ -1,0 +1,33 @@
+项目字体说明
+================
+
+项目使用以下三种字体，均通过 Google Fonts 加载：
+
+- Poppins     — 标题 / 显示字体
+- Manrope     — 正文字体
+- Space Mono  — 等宽字体
+
+授权情况
+--------
+
+三种字体均采用 SIL Open Font License (OFL)，可免费商用，无需额外购买授权，也不存在商用字体授权风险。
+
+定义位置
+--------
+
+字体变量定义在：src/styles/global.css
+
+:root {
+  --font-display: 'Poppins', system-ui, sans-serif;
+  --font-body: 'Manrope', system-ui, sans-serif;
+  --font-mono: 'Space Mono', monospace;
+}
+
+Google Fonts 加载位置：src/components/SEO.astro
+
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+备用字体
+--------
+
+若 Google Fonts 加载失败，会回退到 system-ui 或无衬线/等宽系统字体。

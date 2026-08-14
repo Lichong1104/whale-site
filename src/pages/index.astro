@@ -1,0 +1,32 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import TrustBand from '../components/TrustBand.astro';
+import SpaceSightSection from '../components/SpaceSightSection.astro';
+import HardwareSection from '../components/HardwareSection.astro';
+import CapabilitiesSection from '../components/CapabilitiesSection.astro';
+import IntegratedPlatformSection from '../components/IntegratedPlatformSection.astro';
+import CasesSection from '../components/CasesSection.astro';
+import CTASection from '../components/CTASection.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="Whale AI | Physical Intelligence for Enterprise Operations"
+  description="Whale converts cameras, voice, and floor activity into real-time intelligence for retail, automotive, healthcare, and transit. Request a demo."
+  canonical="https://www.whale.sg/"
+>
+  <Header />
+  <main>
+    <Hero />
+    <TrustBand />
+    <SpaceSightSection />
+    <HardwareSection />
+    <CapabilitiesSection />
+    <IntegratedPlatformSection />
+    <CasesSection />
+    <CTASection />
+  </main>
+  <Footer />
+</Layout>
