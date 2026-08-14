@@ -4,7 +4,7 @@
 <section class="section section-tint" id="products">
   <div class="container">
     <div class="section-head section-head-inline spacesight-section-head">
-      <div class="spacesight-head-content">
+      <div>
         <div class="section-head-title-row">
           <div class="platform-icon spacesight-head-icon" aria-hidden="true"><img src="/product-logos/spacesight-logo.png" alt="SpaceSight" width="40" height="40" loading="eager"></div>
           <h2>SpaceSight</h2>
@@ -15,36 +15,38 @@
         <img src="/camera.webp" alt="SpaceSight AI camera" class="spacesight-hero-image" width="320" height="240" loading="lazy">
       </div>
     </div>
+
+    <div class="spacesight-simple-features">
+      <article class="spacesight-simple-item">
+        <h3 class="spacesight-simple-title">Compliance &amp; Inspection</h3>
+        <div class="spacesight-simple-media">
+          <video src="https://whale-web.oss-cn-beijing.aliyuncs.com/2026-05-06/071150201.mp4" poster="https://whale-web.oss-cn-beijing.aliyuncs.com/2026-06-02/161484576.png" muted loop playsinline preload="metadata" aria-label="Compliance and inspection demo"></video>
+        </div>
+      </article>
+
+      <article class="spacesight-simple-item">
+        <h3 class="spacesight-simple-title">AI Operations Agent</h3>
+        <div class="spacesight-simple-media">
+          <video src="https://whale-web.oss-cn-beijing.aliyuncs.com/2026-05-06/065298529.mp4" poster="https://whale-web.oss-cn-beijing.aliyuncs.com/2026-06-02/161484576.png" muted loop playsinline preload="metadata" aria-label="AI operations agent demo"></video>
+        </div>
+      </article>
+
+      <article class="spacesight-simple-item">
+        <h3 class="spacesight-simple-title">Flexible Deployment</h3>
+        <div class="spacesight-simple-media">
+          <video src="https://whale-web.oss-cn-beijing.aliyuncs.com/2026-05-06/071150201.mp4" poster="https://whale-web.oss-cn-beijing.aliyuncs.com/2026-06-02/161484576.png" muted loop playsinline preload="metadata" aria-label="Flexible deployment demo"></video>
+        </div>
+      </article>
+    </div>
   </div>
 </section>
 
 <style>
   .spacesight-section-head {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: var(--space-lg);
-    max-width: 720px;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-md);
+    max-width: 900px;
     margin-inline: auto;
-  }
-
-  .spacesight-head-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--space-sm);
-  }
-
-  .spacesight-head-content h2 {
-    margin: 0;
-  }
-
-  .spacesight-head-content .section-tagline {
-    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
-    color: var(--text-secondary);
-    margin: 0;
-    max-width: 48ch;
   }
 
   .spacesight-head-camera {
@@ -52,25 +54,68 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    max-width: 520px;
   }
-
   .spacesight-hero-image {
     width: 100%;
     height: auto;
-    max-height: 320px;
+    max-height: 240px;
     object-fit: contain;
     object-position: center;
     border-radius: var(--radius);
     mix-blend-mode: multiply;
   }
 
+  .spacesight-simple-features {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+    max-width: 1000px;
+    margin-inline: auto;
+  }
+
+  .spacesight-simple-item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .spacesight-simple-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 4vw, 2.25rem);
+    font-weight: 700;
+    color: var(--text);
+    margin: 0;
+    text-align: center;
+  }
+
+  .spacesight-simple-media {
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--bg-elevated);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  }
+
+  .spacesight-simple-media video {
+    width: 100%;
+    height: auto;
+    max-height: 520px;
+    object-fit: cover;
+    display: block;
+  }
+
   @media (max-width: 720px) {
     .spacesight-section-head {
-      gap: var(--space-md);
+      grid-template-columns: 1fr;
+    }
+    .spacesight-head-camera {
+      max-width: 100%;
+      margin: 0 auto var(--space-md);
     }
     .spacesight-hero-image {
-      max-height: 220px;
+      max-height: 180px;
+    }
+    .spacesight-simple-media video {
+      max-height: 320px;
     }
   }
 </style>
