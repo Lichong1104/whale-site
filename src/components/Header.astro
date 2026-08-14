@@ -103,7 +103,40 @@
     </div>
     <a href="/#integrated-platform" class="nav-link">Solutions</a>
     <a href="/#user-cases" class="nav-link">User Cases</a>
-    <a href="/blog/" class="nav-link">Blog</a>
+
+    <div class="nav-dropdown" data-dropdown>
+      <button
+        class="nav-link nav-dropdown-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="blog-menu"
+        data-dropdown-toggle
+      >
+        Blog
+        <svg class="nav-dropdown-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M6 9l6 6 6-6"/>
+        </svg>
+      </button>
+      <div class="nav-dropdown-menu blog-menu" id="blog-menu" aria-label="Blog" hidden>
+        <div class="blog-menu-inner">
+          <a href="/blog/" class="blog-menu-card">
+            <div class="blog-menu-icon" aria-hidden="true">📊</div>
+            <div class="blog-menu-text">
+              <div class="blog-menu-title">Products &amp; Solutions</div>
+              <div class="blog-menu-desc">AI operations for retail, automotive, healthcare, and more.</div>
+            </div>
+          </a>
+          <a href="https://www.whale.sg/blogpost.html" target="_blank" rel="noopener noreferrer" class="blog-menu-card">
+            <div class="blog-menu-icon" aria-hidden="true">📰</div>
+            <div class="blog-menu-text">
+              <div class="blog-menu-title">News &amp; About Us</div>
+              <div class="blog-menu-desc">Company updates, events, and the story behind Whale.</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+
     <a href="/#resources" class="nav-link">Resources</a>
     <a href="/#contact" class="nav-link">Contact</a>
   </nav>
@@ -252,6 +285,62 @@
     display: grid;
   }
 
+  /* Blog dropdown menu */
+  .blog-menu-inner {
+    width: min(360px, 92vw);
+    margin-inline: auto;
+    padding: 1rem;
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .blog-menu-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.85rem;
+    padding: 1rem;
+    background: #f8f9fb;
+    border-radius: 8px;
+    color: #1e2128;
+    text-decoration: none;
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+
+  .blog-menu-card:hover {
+    background: #edf2fa;
+    transform: translateY(-2px);
+  }
+
+  .blog-menu-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    border-radius: var(--radius-sm);
+    font-size: 1.25rem;
+    flex-shrink: 0;
+  }
+
+  .blog-menu-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .blog-menu-title {
+    font-weight: 700;
+    font-size: 0.95rem;
+    line-height: 1.25;
+  }
+
+  .blog-menu-desc {
+    font-size: 0.8rem;
+    color: #5d626b;
+    line-height: 1.25;
+  }
+
   .platform-card {
     display: flex;
     align-items: flex-start;
@@ -367,102 +456,142 @@
     .hardware-pic img {
       max-height: 120px;
     }
+    .blog-menu-inner {
+      width: 100%;
+      padding: 0;
+    }
   }
 </style>
 
 <script is:inline>
   (function () {
     'use strict';
-    const dropdown = document.querySelector('[data-dropdown]');
-    if (!dropdown) return;
-    const toggle = dropdown.querySelector('[data-dropdown-toggle]');
-    const menu = dropdown.querySelector('.nav-dropdown-menu');
-    const tabs = dropdown.querySelectorAll('.mega-tab');
-    const panels = dropdown.querySelectorAll('.mega-panel');
 
-    function switchTab(key) {
-      tabs.forEach((tab) => {
-        const isActive = tab.dataset.keyid === key;
-        tab.classList.toggle('active', isActive);
-        tab.setAttribute('aria-selected', isActive ? 'true' : 'false');
-        tab.setAttribute('tabindex', isActive ? '0' : '-1');
-      });
-      panels.forEach((panel) => {
-        const isActive = panel.dataset.keyid === key;
-        panel.classList.toggle('active', isActive);
-        panel.hidden = !isActive;
-      });
-    }
+    function initDropdown(dropdown) {
+      const toggle = dropdown.querySelector('[data-dropdown-toggle]');
+      const menu = dropdown.querySelector('.nav-dropdown-menu');
+      const tabs = dropdown.querySelectorAll('.mega-tab');
+      const panels = dropdown.querySelectorAll('.mega-panel');
 
-    let closeTimer = null;
-
-    function open() {
-      clearTimeout(closeTimer);
-      menu.hidden = false;
-      toggle.setAttribute('aria-expanded', 'true');
-      dropdown.classList.add('is-open');
-    }
-    function close() {
-      clearTimeout(closeTimer);
-      closeTimer = setTimeout(() => {
-        menu.hidden = true;
-        toggle.setAttribute('aria-expanded', 'false');
-        dropdown.classList.remove('is-open');
-      }, 250);
-    }
-
-    toggle.addEventListener('click', (e) => {
-      e.preventDefault();
-      menu.hidden ? open() : close();
-    });
-
-    dropdown.addEventListener('mouseenter', open);
-    dropdown.addEventListener('mouseleave', close);
-
-    dropdown.addEventListener('focusin', (e) => {
-      if (!dropdown.contains(e.relatedTarget)) open();
-    });
-    dropdown.addEventListener('focusout', (e) => {
-      if (!dropdown.contains(e.relatedTarget)) close();
-    });
-
-    tabs.forEach((tab) => {
-      tab.addEventListener('mouseenter', () => switchTab(tab.dataset.keyid));
-      tab.addEventListener('click', () => switchTab(tab.dataset.keyid));
-    });
-
-    document.addEventListener('click', (e) => {
-      if (!dropdown.contains(e.target)) close();
-    });
-
-    toggle.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowDown') {
-        e.preventDefault();
-        open();
-        const firstTab = dropdown.querySelector('.mega-tab');
-        firstTab && firstTab.focus();
-      } else if (e.key === 'Escape') {
-        close();
-        toggle.focus();
+      function switchTab(key) {
+        tabs.forEach((tab) => {
+          const isActive = tab.dataset.keyid === key;
+          tab.classList.toggle('active', isActive);
+          tab.setAttribute('aria-selected', isActive ? 'true' : 'false');
+          tab.setAttribute('tabindex', isActive ? '0' : '-1');
+        });
+        panels.forEach((panel) => {
+          const isActive = panel.dataset.keyid === key;
+          panel.classList.toggle('active', isActive);
+          panel.hidden = !isActive;
+        });
       }
-    });
 
-    menu.addEventListener('keydown', (e) => {
-      const items = Array.from(tabs);
-      const idx = items.indexOf(document.activeElement);
-      if (e.key === 'ArrowDown') {
-        e.preventDefault();
-        const next = items[(idx + 1) % items.length];
-        next && next.focus();
-      } else if (e.key === 'ArrowUp') {
-        e.preventDefault();
-        const prev = items[(idx - 1 + items.length) % items.length];
-        prev && prev.focus();
-      } else if (e.key === 'Escape') {
-        e.preventDefault();
-        close();
-        toggle.focus();
+      let closeTimer = null;
+
+      function open() {
+        clearTimeout(closeTimer);
+        menu.hidden = false;
+        toggle.setAttribute('aria-expanded', 'true');
+        dropdown.classList.add('is-open');
       }
-    });
+      function close() {
+        clearTimeout(closeTimer);
+        closeTimer = setTimeout(() => {
+          menu.hidden = true;
+          toggle.setAttribute('aria-expanded', 'false');
+          dropdown.classList.remove('is-open');
+        }, 250);
+      }
+
+      toggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        menu.hidden ? open() : close();
+      });
+
+      dropdown.addEventListener('mouseenter', open);
+      dropdown.addEventListener('mouseleave', close);
+
+      dropdown.addEventListener('focusin', (e) => {
+        if (!dropdown.contains(e.relatedTarget)) open();
+      });
+      dropdown.addEventListener('focusout', (e) => {
+        if (!dropdown.contains(e.relatedTarget)) close();
+      });
+
+      if (tabs.length && panels.length) {
+        tabs.forEach((tab) => {
+          tab.addEventListener('mouseenter', () => switchTab(tab.dataset.keyid));
+          tab.addEventListener('click', () => switchTab(tab.dataset.keyid));
+        });
+
+        toggle.addEventListener('keydown', (e) => {
+          if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            open();
+            const firstTab = dropdown.querySelector('.mega-tab');
+            firstTab && firstTab.focus();
+          } else if (e.key === 'Escape') {
+            close();
+            toggle.focus();
+          }
+        });
+
+        menu.addEventListener('keydown', (e) => {
+          const items = Array.from(tabs);
+          const idx = items.indexOf(document.activeElement);
+          if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            const next = items[(idx + 1) % items.length];
+            next && next.focus();
+          } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            const prev = items[(idx - 1 + items.length) % items.length];
+            prev && prev.focus();
+          } else if (e.key === 'Escape') {
+            e.preventDefault();
+            close();
+            toggle.focus();
+          }
+        });
+      } else {
+        toggle.addEventListener('keydown', (e) => {
+          if (e.key === 'ArrowDown' || e.key === 'Escape') {
+            e.preventDefault();
+            menu.hidden ? open() : close();
+            if (!menu.hidden) {
+              const firstLink = menu.querySelector('a');
+              firstLink && firstLink.focus();
+            } else {
+              toggle.focus();
+            }
+          }
+        });
+
+        menu.addEventListener('keydown', (e) => {
+          const items = Array.from(menu.querySelectorAll('a'));
+          const idx = items.indexOf(document.activeElement);
+          if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            const next = items[(idx + 1) % items.length];
+            next && next.focus();
+          } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            const prev = items[(idx - 1 + items.length) % items.length];
+            prev && prev.focus();
+          } else if (e.key === 'Escape') {
+            e.preventDefault();
+            close();
+            toggle.focus();
+          }
+        });
+      }
+
+      document.addEventListener('click', (e) => {
+        if (!dropdown.contains(e.target)) close();
+      });
+    }
+
+    document.querySelectorAll('[data-dropdown]').forEach(initDropdown);
   })();
 </script>

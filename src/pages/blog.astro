@@ -90,6 +90,9 @@ const articles = [
     url: 'https://www.whale.sg/ai_enterprise_collaboration.html'
   }
 ];
+
+const featuredArticle = articles[0];
+const recentArticles = articles.slice(1);
 ---
 
 <Layout
@@ -102,33 +105,32 @@ const articles = [
     <section class="blog-hero">
       <div class="container">
         <div class="blog-hero-text">
-          <h1>Whale Blog</h1>
-          <p>Product deep-dives, industry playbooks, and company updates from the Whale team.</p>
+          <h1>Products &amp; Solutions</h1>
+          <p>How Whale turns cameras, voice, and floor activity into real-time operational intelligence.</p>
         </div>
+      </div>
+    </section>
 
-        <div class="blog-hero-banners">
-          <button type="button" class="blog-banner blog-banner-filter" data-category="Products & Solutions" aria-label="Filter by Products & Solutions">
-            <span class="blog-banner-label">Explore</span>
-            <span class="blog-banner-title">Products &amp; Solutions</span>
-            <span class="blog-banner-lead">How Whale turns cameras, voice, and floor activity into real-time operational intelligence.</span>
-            <span class="blog-banner-cta">
-              Browse articles
+    <section class="blog-featured-section">
+      <div class="container">
+        <div class="blog-featured-card">
+          <div class="blog-featured-content">
+            <span class="blog-featured-label">Latest article</span>
+            <span class="blog-featured-category">{featuredArticle.category}</span>
+            <h2 class="blog-featured-title">
+              <a href={featuredArticle.url} target="_blank" rel="noopener noreferrer">{featuredArticle.title}</a>
+            </h2>
+            <p class="blog-featured-excerpt">{featuredArticle.excerpt}</p>
+            <time class="blog-featured-date" datetime={featuredArticle.date}>{featuredArticle.date}</time>
+            <a href={featuredArticle.url} target="_blank" rel="noopener noreferrer" class="blog-featured-cta">
+              Read article
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M5 12h14M12 5l7 7-7 7"/>
               </svg>
-            </span>
-          </button>
-
-          <a href="https://www.whale.sg/blogpost.html" class="blog-banner blog-banner-link">
-            <span class="blog-banner-label">Company</span>
-            <span class="blog-banner-title">News &amp; About Us</span>
-            <span class="blog-banner-lead">Funding updates, events, partner news, and the story behind Whale.</span>
-            <span class="blog-banner-cta">
-              Read more
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M5 12h14M12 5l7 7-7 7"/>
-              </svg>
-            </span>
+            </a>
+          </div>
+          <a href={featuredArticle.url} target="_blank" rel="noopener noreferrer" class="blog-featured-media">
+            <img src={featuredArticle.image} alt={featuredArticle.title} loading="eager" decoding="async" width="800" height="450">
           </a>
         </div>
       </div>
@@ -154,7 +156,7 @@ const articles = [
         <h2 class="blog-section-title">Recent articles</h2>
 
         <div class="blog-grid" id="blogGrid">
-          {articles.map((article) => (
+          {recentArticles.map((article) => (
             <article class="blog-card" data-category={article.category}>
               <a href={article.url} target="_blank" rel="noopener noreferrer" class="blog-card-link">
                 <div class="blog-card-media">
@@ -170,10 +172,6 @@ const articles = [
             </article>
           ))}
         </div>
-
-        <div class="blog-load-more">
-          <a class="btn btn-ghost" href="https://www.whale.sg/blogpost.html" target="_blank" rel="noopener noreferrer">More</a>
-        </div>
       </div>
     </section>
   </main>
@@ -186,7 +184,7 @@ const articles = [
   }
 
   .blog-hero {
-    padding: var(--space-xl) 0;
+    padding: var(--space-xl) 0 var(--space-lg);
     background:
       radial-gradient(circle at 10% 20%, rgba(37, 99, 235, 0.08) 0%, transparent 25%),
       radial-gradient(circle at 90% 80%, rgba(6, 182, 212, 0.08) 0%, transparent 25%),
@@ -196,7 +194,7 @@ const articles = [
   .blog-hero-text {
     text-align: center;
     max-width: 640px;
-    margin: 0 auto var(--space-lg);
+    margin: 0 auto;
   }
   .blog-hero-text h1 {
     font-family: var(--font-display);
@@ -211,81 +209,115 @@ const articles = [
     margin: 0;
   }
 
-  .blog-hero-banners {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: var(--space-md);
-    max-width: 900px;
-    margin: 0 auto;
+  .blog-featured-section {
+    padding-bottom: var(--space-lg);
+    background: var(--bg);
   }
 
-  .blog-banner {
+  .blog-featured-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-lg);
+    align-items: center;
+    background: var(--bg-elevated);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    transition: box-shadow 0.25s ease, transform 0.25s ease;
+  }
+
+  .blog-featured-card:hover {
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+    transform: translateY(-4px);
+  }
+
+  .blog-featured-content {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: var(--space-xs);
+    gap: var(--space-sm);
     padding: var(--space-lg);
-    border-radius: var(--radius);
-    text-decoration: none;
-    color: #fff;
-    min-height: 220px;
-    border: none;
-    text-align: left;
-    cursor: pointer;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-    position: relative;
-    overflow: hidden;
   }
-  .blog-banner::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, rgba(15, 23, 42, 0.1) 0%, rgba(15, 23, 42, 0.45) 100%);
-    z-index: 1;
-    transition: opacity 0.25s ease;
-  }
-  .blog-banner > * {
-    position: relative;
-    z-index: 2;
-  }
-  .blog-banner:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
-  }
-  .blog-banner:hover::after {
-    opacity: 0.85;
-  }
-  .blog-banner-filter {
-    background: linear-gradient(135deg, #2563EB 0%, #06B6D4 100%);
-  }
-  .blog-banner-link {
-    background: linear-gradient(135deg, #7C3AED 0%, #EC4899 100%);
-  }
-  .blog-banner-label {
+
+  .blog-featured-label {
     font-size: 0.75rem;
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    opacity: 0.85;
+    color: var(--text-on-dark);
+    background: linear-gradient(135deg, #2563EB 0%, #06B6D4 100%);
+    padding: 0.35rem 0.75rem;
+    border-radius: 999px;
   }
-  .blog-banner-title {
+
+  .blog-featured-category {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+  }
+
+  .blog-featured-title {
     font-family: var(--font-display);
-    font-size: clamp(1.35rem, 3vw, 1.85rem);
+    font-size: clamp(1.5rem, 3vw, 2rem);
     font-weight: 700;
+    line-height: 1.2;
+    margin: 0;
   }
-  .blog-banner-lead {
-    font-size: 0.95rem;
-    opacity: 0.9;
-    line-height: 1.5;
-    max-width: 45ch;
+
+  .blog-featured-title a {
+    color: var(--text);
+    text-decoration: none;
+    transition: color 0.2s ease;
   }
-  .blog-banner-cta {
+
+  .blog-featured-title a:hover {
+    color: #2563EB;
+  }
+
+  .blog-featured-excerpt {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .blog-featured-date {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+  }
+
+  .blog-featured-cta {
     display: inline-flex;
     align-items: center;
     gap: 0.35rem;
     margin-top: auto;
-    font-weight: 600;
-    font-size: 0.95rem;
+    font-weight: 700;
+    font-size: 1rem;
+    color: #2563EB;
+    text-decoration: none;
+    transition: gap 0.2s ease;
+  }
+
+  .blog-featured-cta:hover {
+    gap: 0.6rem;
+  }
+
+  .blog-featured-media {
+    display: block;
+    height: 100%;
+    min-height: 320px;
+    overflow: hidden;
+  }
+
+  .blog-featured-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+
+  .blog-featured-card:hover .blog-featured-media img {
+    transform: scale(1.03);
   }
 
   .blog-filter {
@@ -405,18 +437,16 @@ const articles = [
     margin-top: auto;
   }
 
-  .blog-load-more {
-    display: flex;
-    justify-content: center;
-    margin-top: var(--space-lg);
-  }
-
   @media (max-width: 720px) {
-    .blog-hero-banners {
+    .blog-featured-card {
       grid-template-columns: 1fr;
     }
-    .blog-banner {
-      min-height: 200px;
+    .blog-featured-media {
+      min-height: 220px;
+      order: -1;
+    }
+    .blog-featured-content {
+      padding: var(--space-md);
     }
   }
 </style>
@@ -427,7 +457,7 @@ const articles = [
 
     const filter = document.getElementById('blogFilter');
     const grid = document.getElementById('blogGrid');
-    const bannerFilter = document.querySelector('.blog-banner-filter');
+
     if (!filter || !grid) return;
 
     const buttons = Array.from(filter.querySelectorAll('.blog-filter-btn'));
@@ -453,10 +483,6 @@ const articles = [
     function selectCategory(category) {
       setActiveButton(category);
       filterCards(category);
-      const articlesSection = document.getElementById('articles');
-      if (articlesSection) {
-        articlesSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
     }
 
     buttons.forEach((btn) => {
@@ -483,12 +509,5 @@ const articles = [
         buttons[nextIdx].focus();
       });
     });
-
-    if (bannerFilter) {
-      bannerFilter.addEventListener('click', () => {
-        const category = bannerFilter.dataset.category;
-        selectCategory(category);
-      });
-    }
   })();
 </script>
