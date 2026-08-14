@@ -249,13 +249,30 @@ input:focus-visible {
   background: radial-gradient(circle at 70% 50%, var(--bg-tint) 0%, var(--bg) 60%);
 }
 
-.hero-video {
+.hero-video,
+#detector {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   z-index: 1;
+}
+
+#detector {
+  cursor: grab;
+  transform: translate(38%, 10%) scale(2);
+  transform-origin: center center;
+}
+
+#detector:active {
+  cursor: grabbing;
+}
+
+@media (max-width: 720px) {
+  #detector {
+    transform: translate(22%, 8%) scale(1.4);
+  }
 }
 
 .hero-overlay {
