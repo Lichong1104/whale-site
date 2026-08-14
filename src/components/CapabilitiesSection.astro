@@ -2,6 +2,7 @@
 export interface Props {
   sectionTitle?: string;
   sectionSubtitle?: string;
+  showFeatures?: boolean;
   capabilities?: Array<{
     label: string;
     title: string;
@@ -13,6 +14,7 @@ export interface Props {
 const {
   sectionTitle = 'Product <strong>Capabilities</strong>',
   sectionSubtitle = 'Five ways Whale turns physical operations into structured intelligence.',
+  showFeatures = true,
   capabilities: capabilitiesProp
 } = Astro.props;
 
@@ -188,9 +190,9 @@ const capabilities = capabilitiesProp ?? defaultCapabilities;
           hidden={i !== 0}
         >
           <h3 class="capability-pane-title" set:html={cap.title}></h3>
-          <div class={`capability-layout ${cap.features.length === 0 ? 'capability-layout-media-only' : ''}`}>
-            <div class="capability-copy">
-              {cap.features.length > 0 && (
+          <div class={`capability-layout ${!showFeatures || cap.features.length === 0 ? 'capability-layout-media-only' : ''}`}>
+            {showFeatures && cap.features.length > 0 && (
+              <div class="capability-copy">
                 <ul class="capability-list">
                   {cap.features.map(feature => (
                     <li class="capability-item">
@@ -202,8 +204,8 @@ const capabilities = capabilitiesProp ?? defaultCapabilities;
                     </li>
                   ))}
                 </ul>
-              )}
-            </div>
+              </div>
+            )}
             <div class="capability-media">
               {cap.media.type === 'video' ? (
                 <video autoplay muted loop playsinline preload="metadata" poster={cap.media.poster}>
