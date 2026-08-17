@@ -75,16 +75,77 @@
     <div class="footer-bottom">
       <span>© 2026 WHALE TECH PTE. LTD.</span>
       <div class="footer-legal">
-        <a href="#">Legal</a>
+        <a href="https://www.meetwhale.ai/privacyPolicy.html">Legal</a>
         <a href="https://www.meetwhale.ai/privacyPolicy.html">Privacy</a>
       </div>
-      <div class="footer-lang">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-          <circle cx="12" cy="12" r="10"/>
-          <path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
-        </svg>
-        <span>English (Singapore)</span>
+      <div class="footer-lang" data-lang-dropdown>
+        <button type="button" class="lang-toggle" aria-expanded="false" aria-haspopup="listbox">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
+          </svg>
+          <span>English (Singapore)</span>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M6 9l6 6 6-6"/>
+          </svg>
+        </button>
+        <ul class="lang-menu" role="listbox">
+          <li><a href="https://www.meetwhale.com/" role="option">Chinese (简体中文)</a></li>
+          <li><a href="https://www.whaleai.co.jp/" role="option">Japanese (日本語)</a></li>
+          <li><a href="https://www.meetwhale.ai/" role="option">English (US)</a></li>
+          <li><a href="https://www.whale.sg/" role="option" aria-current="true">English (Singapore)</a></li>
+        </ul>
       </div>
     </div>
   </div>
 </footer>
+
+<script>
+  (function () {
+    const dropdown = document.querySelector('[data-lang-dropdown]');
+    if (!dropdown) return;
+    const toggle = dropdown.querySelector('.lang-toggle');
+    const menu = dropdown.querySelector('.lang-menu');
+
+    function closeMenu() {
+      dropdown.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    }
+
+    function openMenu() {
+      dropdown.classList.add('open');
+      toggle.setAttribute('aria-expanded', 'true');
+    }
+
+    toggle.addEventListener('click', function (e) {
+      e.stopPropagation();
+      if (dropdown.classList.contains('open')) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
+
+    document.addEventListener('click', function (e) {
+      if (!dropdown.contains(e.target)) closeMenu();
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeMenu();
+    });
+
+    // Set active label based on current host
+    const currentHost = window.location.hostname;
+    const map = {
+      'www.meetwhale.com': 'Chinese (简体中文)',
+      'www.whaleai.co.jp': 'Japanese (日本語)',
+      'www.meetwhale.ai': 'English (US)',
+      'www.whale.sg': 'English (Singapore)'
+    };
+    const label = map[currentHost] || 'English (Singapore)';
+    toggle.querySelector('span').textContent = label;
+    menu.querySelectorAll('a').forEach(function (link) {
+      link.setAttribute('aria-current', link.textContent === label ? 'true' : 'false');
+    });
+  })();
+</script>
