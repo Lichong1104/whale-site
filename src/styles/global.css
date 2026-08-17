@@ -379,6 +379,8 @@ input:focus-visible {
   font-family: var(--font-mono);
   font-size: 0.85rem;
   color: var(--text-secondary);
+  transform: scale(1.2);
+  transform-origin: left center;
 }
 
 .track-item {
