@@ -92,7 +92,9 @@ const articles = [
 ];
 
 const featuredArticle = articles[0];
-const recentArticles = articles.slice(1);
+const companyArticle = articles[5];
+const recentArticles = articles.slice(1, 4);
+const moreArticles = articles.slice(4).filter((a) => a !== companyArticle);
 ---
 
 <Layout
@@ -102,6 +104,40 @@ const recentArticles = articles.slice(1);
 >
   <Header />
   <main class="blog-page">
+    <section class="blog-hero">
+      <div class="container">
+        <div class="blog-hero-text">
+          <h1>News &amp; Companies</h1>
+          <p>Company updates, events, and the story behind Whale.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="blog-featured-section">
+      <div class="container">
+        <div class="blog-featured-card">
+          <div class="blog-featured-content">
+            <span class="blog-featured-label">Company article</span>
+            <span class="blog-featured-category">{companyArticle.category}</span>
+            <h2 class="blog-featured-title">
+              <a href={companyArticle.url} target="_blank" rel="noopener noreferrer">{companyArticle.title}</a>
+            </h2>
+            <p class="blog-featured-excerpt">{companyArticle.excerpt}</p>
+            <time class="blog-featured-date" datetime={companyArticle.date}>{companyArticle.date}</time>
+            <a href={companyArticle.url} target="_blank" rel="noopener noreferrer" class="blog-featured-cta">
+              Read article
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
+          </div>
+          <a href={companyArticle.url} target="_blank" rel="noopener noreferrer" class="blog-featured-media">
+            <img src={companyArticle.image} alt={companyArticle.title} loading="eager" decoding="async" width="800" height="450">
+          </a>
+        </div>
+      </div>
+    </section>
+
     <section class="blog-hero">
       <div class="container">
         <div class="blog-hero-text">
@@ -172,6 +208,29 @@ const recentArticles = articles.slice(1);
             </article>
           ))}
         </div>
+
+        {moreArticles.length > 0 && (
+          <>
+            <h2 class="blog-section-title more-articles-title">More articles</h2>
+            <div class="blog-grid" id="moreGrid">
+              {moreArticles.map((article) => (
+                <article class="blog-card" data-category={article.category}>
+                  <a href={article.url} target="_blank" rel="noopener noreferrer" class="blog-card-link">
+                    <div class="blog-card-media">
+                      <img src={article.image} alt={article.title} loading="lazy" decoding="async" width="600" height="340">
+                      <span class="blog-card-category">{article.category}</span>
+                    </div>
+                    <div class="blog-card-body">
+                      <h3 class="blog-card-title">{article.title}</h3>
+                      <p class="blog-card-excerpt">{article.excerpt}</p>
+                      <time class="blog-card-date" datetime={article.date}>{article.date}</time>
+                    </div>
+                  </a>
+                </article>
+              ))}
+            </div>
+          </>
+        )}
       </div>
     </section>
   </main>
@@ -358,6 +417,10 @@ const recentArticles = articles.slice(1);
     color: var(--text);
   }
 
+  .more-articles-title {
+    margin-top: var(--space-xl);
+  }
+
   .blog-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -461,7 +524,7 @@ const recentArticles = articles.slice(1);
     if (!filter || !grid) return;
 
     const buttons = Array.from(filter.querySelectorAll('.blog-filter-btn'));
-    const cards = Array.from(grid.querySelectorAll('.blog-card'));
+    const cards = Array.from(document.querySelectorAll('.blog-card'));
 
     function setActiveButton(category) {
       buttons.forEach((btn) => {
