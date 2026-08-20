@@ -1,0 +1,46 @@
+---
+import LegalPage from '../components/LegalPage.astro';
+
+const headings = [
+  { id: 'role-allocation', text: 'Role Allocation Under Privacy Statutes' },
+  { id: 'audit-logs', text: 'Audit Logs and Governance' },
+  { id: 'law-enforcement', text: 'Law Enforcement Request Protocol' },
+  { id: 'cross-border', text: 'Data Processing and Cross-Border Transfers' },
+];
+---
+
+<LegalPage
+  title="Terms of Service & Regulatory Compliance Disclosures"
+  description="Whale Terms of Service and Regulatory Compliance Disclosures."
+  canonical="https://www.whale.sg/legal/"
+  lastUpdated="August 20, 2026"
+  headings={headings}
+>
+  <section class="legal-section" id="role-allocation">
+    <h2>Role Allocation Under Privacy Statutes</h2>
+    <p>
+      Under major global and regional privacy frameworks, including the California Consumer Privacy Act (CCPA/CPRA) and the General Data Protection Regulation (GDPR), Whale operates strictly as a Data Processor or Service Provider. The client operates as the Data Controller, maintaining ultimate authority over the purposes and means of processing. Consequently, the client assumes full legal responsibility for establishing a valid legal basis for data processing, which includes providing required on-site physical notices and obtaining necessary consents prior to enabling spatial analytics features.
+    </p>
+  </section>
+
+  <section class="legal-section" id="audit-logs">
+    <h2>Audit Logs and Governance</h2>
+    <p>
+      To support compliance auditing and internal chain-of-custody requirements, the platform maintains immutable logs across device, model, content, and organizational levels. System administrators can continuously monitor live video feeds and track real-time access through our Active Viewers audit dashboard.
+    </p>
+  </section>
+
+  <section class="legal-section" id="law-enforcement">
+    <h2>Law Enforcement Request Protocol</h2>
+    <p>
+      If Whale receives a formal request, law enforcement inquiry, or government subpoena concerning client data, our policy is to notify the affected client immediately. This notification provides the client with an opportunity to review the request and seek a protective court order, unless Whale is explicitly prohibited from doing so by law.
+    </p>
+  </section>
+
+  <section class="legal-section" id="cross-border">
+    <h2>Data Processing and Cross-Border Transfers</h2>
+    <p>
+      Whale maintains operational alignment with global data protection standards, supporting client compliance with CCPA, GDPR, PDPA, and PDPO mandates. We structure deployments to minimize cross-border data movements, keeping data within its originating jurisdiction whenever possible. Where international transfers are necessary, processing is executed under standard contractual clauses and reinforced through double-layer ciphertext encryption.
+    </p>
+  </section>
+</LegalPage>

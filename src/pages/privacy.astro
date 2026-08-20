@@ -1,0 +1,50 @@
+---
+import LegalPage from '../components/LegalPage.astro';
+
+const headings = [
+  { id: 'ownership', text: 'Data Ownership and Control' },
+  { id: 'privacy-default', text: 'Privacy by Default and Data Minimization' },
+  { id: 'encryption', text: 'Data Architecture, Encryption, and Storage' },
+  { id: 'ai-training', text: 'AI Model Training Policy' },
+];
+---
+
+<LegalPage
+  title="Whale Privacy Policy & Data Protection Overview"
+  description="Whale Privacy Policy and Data Protection Overview."
+  canonical="https://www.whale.sg/privacy/"
+  lastUpdated="August 20, 2026"
+  headings={headings}
+>
+  <p id="intro">
+    At Whale, privacy and data security are fundamental components of our software architecture. We design our spatial intelligence and AI auditing platforms to provide operational insights while maintaining complete respect for the privacy of individuals interacting with our clients' physical locations.
+  </p>
+
+  <section class="legal-section" id="ownership">
+    <h2>Data Ownership and Control</h2>
+    <p>
+      Our enterprise clients retain exclusive ownership and operational control over all data generated through their use of Whale products, including camera feeds, audio recordings, structured metadata, and analytical content. Whale employees have no right to view or access client data unless explicitly authorized by the client for technical support or troubleshooting. Furthermore, Whale never sells customer data, nor do we commingle or aggregate camera feeds across different client accounts without express written consent.
+    </p>
+  </section>
+
+  <section class="legal-section" id="privacy-default">
+    <h2>Privacy by Default and Data Minimization</h2>
+    <p>
+      To prevent accidental data collection, all sensitive capabilities—such as People Analytics, Event Detection, and Demographic Analysis—are disabled by default, ensuring clients remain in full control of feature activation. Core privacy protections, including Face Blur and Voice-print Removal, are activated by default to eliminate personally identifiable information prior to footage archival or third-party sharing. Additionally, system administrators can configure custom Privacy Regions to obscure specific physical areas and prevent recording within sensitive zones.
+    </p>
+  </section>
+
+  <section class="legal-section" id="encryption">
+    <h2>Data Architecture, Encryption, and Storage</h2>
+    <p>
+      Under our standard deployment model, camera footage is processed and stored locally on physical edge devices, uploading to the cloud only when a client explicitly configures a cloud backup policy. All data transmitted across networks is secured using HTTPS and TLS 1.2 protocols, while stored data is protected through double-layer AES-256 encryption. Clients maintain the ability to select localized storage nodes, such as US-based AWS or Azure data centers, to satisfy regional data residency requirements, and temporary message processing queues are permanently deleted within seven days.
+    </p>
+  </section>
+
+  <section class="legal-section" id="ai-training">
+    <h2>AI Model Training Policy</h2>
+    <p>
+      Whale enforces a strict policy regarding algorithm training: we do not utilize client video feeds, audio, or spatial metadata to train our public commercial models. Our core platform models are trained exclusively on public datasets and licensed third-party data. In scenarios where a client requests a custom or private model, training occurs within an isolated environment dedicated solely to that client.
+    </p>
+  </section>
+</LegalPage>
