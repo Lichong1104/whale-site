@@ -1,0 +1,73 @@
+---
+const faqs = [
+  {
+    question: "What is SpaceSight, and what is it not?",
+    answer:
+      "SpaceSight is Whale's spatial intelligence and AI-audit platform that transforms camera footage into structured metrics, real-time alerts, and operational workflows. It is far more than a basic people-counting tool, delivering end-to-end spatial analytics, safety checks, multi-site benchmarking, and automated evidence review across your physical operations.",
+  },
+  {
+    question: "How is ROI measured?",
+    answer:
+      "ROI is measured by tangible business outcomes—such as labor hours saved, faster issue closure, and reduced shrink—rather than raw detection volume alone. By connecting real-time AI alerts directly to your daily operations, value is generated through optimized staffing, improved customer experience, and higher multi-site compliance.",
+  },
+  {
+    question: "Do you use facial recognition? What are you actually capturing?",
+    answer:
+      "No, SpaceSight does not use facial recognition or identify individual customers by name. Instead, our platform uses anonymous Person Re-Identification (ReID) to convert foot traffic and spatial activity into privacy-compliant metadata, supported by encryption, role-based access, and optional video masking.",
+  },
+  {
+    question: "Does our video leave the building, and where does the data live?",
+    answer:
+      "No, continuous raw video remains securely on your local NVR network and never leaves your facility. Primary AI processing occurs locally on an on-premises AI Hub, transmitting only lightweight analytics metadata and approved evidence snapshots to the cloud using enterprise-grade encryption.",
+  },
+  {
+    question: "Can we use our existing cameras?",
+    answer:
+      "In most cases, yes, as SpaceSight is designed to layer directly onto your existing IP cameras and NVR streams via an AI Hub. During onboarding, our team conducts a quick technical assessment to verify stream stability, camera angles, and lighting before recommending any minor adjustments or hardware additions.",
+  },
+  {
+    question: "How is this different from our existing CCTV system?",
+    answer:
+      "While traditional CCTV acts as a passive recording tool for manual incident review, SpaceSight transforms your camera network into an active operational intelligence system. It automatically analyzes video streams in real time to generate automated alerts, predictive insights, and semantic search capabilities without requiring you to replace your current hardware.",
+  },
+  {
+    question: "How accurate is SpaceSight?",
+    answer:
+      "Because AI precision depends on site-specific variables like lighting and camera angles, we establish custom performance baselines rather than offering a generic universal figure. We collaborate with your team to define exact success criteria and validate model accuracy against human-verified ground truth before full deployment.",
+  },
+  {
+    question: "Pilot: How long, how many sites, and what does it cost?",
+    answer:
+      "Pilots typically run for 2 to 4 weeks at a single flagship site, focusing on 1 to 2 priority use cases before scaling to a multi-site rollout. Commercial pricing is fully customized based on your required AI Hub hardware capacity, annual software licensing, installation, and specific workflow integrations.",
+  },
+  {
+    question: "What are our key responsibilities during deployment?",
+    answer:
+      "Your team and local integrators manage physical site readiness, network access, cabling, and day-to-day alert reviews. Whale handles the pre-installation site survey, AI Hub configuration, model calibration, continuous platform maintenance, and ongoing technical support.",
+  },
+];
+---
+
+<section class="section" id="faq">
+  <div class="container">
+    <div class="section-head center">
+      <h2>Frequently asked questions</h2>
+      <p>Everything you need to know about SpaceSight before scaling across your sites.</p>
+    </div>
+    <div class="faq-list">
+      {
+        faqs.map((faq, index) => (
+          <details class="faq-item" name="faq">
+            <summary class="faq-question">
+              <span>{faq.question}</span>
+              <span class="faq-icon" aria-hidden="true" />
+            </summary>
+            <div class="faq-answer">
+              <p>{faq.answer}</p>
+            </div>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</section>
