@@ -48,10 +48,10 @@ const faqs = [
 ];
 ---
 
-<section class="section" id="faq">
+<section class="section section-tint" id="faq">
   <div class="container">
     <div class="section-head center">
-      <h2>Frequently asked questions</h2>
+      <h2 class="hero-shimmer">Frequently Asked Questions</h2>
       <p>Everything you need to know about SpaceSight before scaling across your sites.</p>
     </div>
     <div class="faq-list">
@@ -59,7 +59,8 @@ const faqs = [
         faqs.map((faq, index) => (
           <details class="faq-item" name="faq">
             <summary class="faq-question">
-              <span>{faq.question}</span>
+              <span class="faq-number">{String(index + 1).padStart(2, '0')}</span>
+              <span class="faq-text">{faq.question}</span>
               <span class="faq-icon" aria-hidden="true" />
             </summary>
             <div class="faq-answer">

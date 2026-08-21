@@ -12,17 +12,62 @@
     </div>
     <div class="track-legend">
       <button class="track-item" data-track="vision" type="button" aria-pressed="false">
-        <span class="track-row"><span class="track-dot" style="--track-color: #FFD23F"></span> <span class="track-value">95%</span></span>
+        <span class="track-row"><span class="track-dot" style="--track-color: #FFD23F"></span> <span class="track-value" data-count-up data-value="95" data-suffix="%">95%</span></span>
         <span class="track-label">Data Accuracy</span>
       </button>
       <button class="track-item" data-track="voice" type="button" aria-pressed="false">
-        <span class="track-row"><span class="track-dot" style="--track-color: #00E5FF"></span> <span class="track-value">+30%</span></span>
+        <span class="track-row"><span class="track-dot" style="--track-color: #00E5FF"></span> <span class="track-value" data-count-up data-value="30" data-prefix="+" data-suffix="%">+30%</span></span>
         <span class="track-label">Audit Efficiency</span>
       </button>
       <button class="track-item" data-track="sensor" type="button" aria-pressed="false">
-        <span class="track-row"><span class="track-dot" style="--track-color: #FF4D8D"></span> <span class="track-value">1600+</span></span>
+        <span class="track-row"><span class="track-dot" style="--track-color: #FF4D8D"></span> <span class="track-value" data-count-up data-value="1600" data-prefix="+">+1600</span></span>
         <span class="track-label">Countries Deployed</span>
       </button>
     </div>
   </div>
 </section>
+
+<script is:inline>
+(function () {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const targets = document.querySelectorAll('.track-value[data-count-up]');
+  if (!targets.length || typeof anime === 'undefined') return;
+
+  const legend = document.querySelector('.track-legend');
+  if (!legend) return;
+
+  const format = (el, value) => {
+    const prefix = el.dataset.prefix || '';
+    const suffix = el.dataset.suffix || '';
+    return prefix + Math.round(value) + suffix;
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      observer.disconnect();
+
+      targets.forEach((el, index) => {
+        const finalValue = parseFloat(el.dataset.value);
+        if (Number.isNaN(finalValue)) return;
+
+        el.textContent = format(el, 0);
+
+        const counter = { value: 0 };
+        anime.animate(counter, {
+          value: finalValue,
+          duration: 3000,
+          ease: 'outExpo',
+          delay: index * 250,
+          onUpdate: () => {
+            el.textContent = format(el, counter.value);
+          }
+        });
+      });
+    });
+  }, { threshold: 0.3 });
+
+  observer.observe(legend);
+})();
+</script>
