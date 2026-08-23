@@ -3,29 +3,103 @@
 
 <section class="hero" id="hero">
   <canvas id="detector" aria-label="Interactive particle detector showing vision, voice, and sensor tracks"></canvas>
-  <div class="hero-overlay">
-    <h1 class="hero-shimmer">From Footage to Insights to Action.</h1>
-    <p class="hero-lead">Real-Time Space Intelligence for Your Operations. AI that extracts meaning from every camera, every moment.</p>
-    <div class="hero-actions">
-      <button type="button" class="btn btn-primary btn-large" data-open-modal data-source-type="官网立即咨询留资">Request Demo</button>
-      <a href="#products" class="btn btn-ghost btn-large">Explore products</a>
+  <div class="hero-overlay hero-grid">
+    <div class="hero-copy">
+      <h1 class="hero-shimmer">Turn what happens on the ground into decisions in the boardroom — instantly.</h1>
+      <p class="hero-lead">Real-time monitoring, captured communication, and instant AI analysis — combined into answers, not raw data to sort through.</p>
+      <div class="hero-actions">
+        <button type="button" class="btn btn-primary btn-large" data-open-modal data-source-type="官网立即咨询留资">Request Demo</button>
+        <a href="#products" class="btn btn-ghost btn-large">Explore products</a>
+      </div>
     </div>
-    <div class="track-legend">
-      <button class="track-item" data-track="vision" type="button" aria-pressed="false">
-        <span class="track-row"><span class="track-dot" style="--track-color: #FFD23F"></span> <span class="track-value" data-count-up data-value="95" data-suffix="%">95%</span></span>
-        <span class="track-label">Data Accuracy</span>
-      </button>
-      <button class="track-item" data-track="voice" type="button" aria-pressed="false">
-        <span class="track-row"><span class="track-dot" style="--track-color: #00E5FF"></span> <span class="track-value" data-count-up data-value="30" data-prefix="+" data-suffix="%">+30%</span></span>
-        <span class="track-label">Audit Efficiency</span>
-      </button>
-      <button class="track-item" data-track="sensor" type="button" aria-pressed="false">
-        <span class="track-row"><span class="track-dot" style="--track-color: #FF4D8D"></span> <span class="track-value" data-count-up data-value="1600" data-prefix="+">+1600</span></span>
-        <span class="track-label">Countries Deployed</span>
-      </button>
+    <div class="hero-carousel" aria-label="Product showcase carousel">
+      <div class="hero-carousel-track">
+        <div class="hero-carousel-slide is-active" data-title="Standards Audit" data-tag="Cloud VLM" data-desc="Every location checked against your standards — uniform, cleanliness, staffing — flagged the moment something slips."><img src="/hero/slide-1.png" alt="In-store standards audit with AI detection overlays" loading="eager"></div>
+        <div class="hero-carousel-slide" data-title="Showroom Traffic" data-tag="Edge AI Hub" data-desc="True visitor counts with staff movements removed, so closing ratios finally use the right denominator."><img src="/hero/slide-2.png" alt="Showroom traffic counting with visitor analytics" loading="lazy"></div>
+        <div class="hero-carousel-slide" data-title="Event Triage" data-tag="On-Premises" data-desc="Hundreds of channels watched at once — search events in plain English and locate the exact clip in seconds."><img src="/hero/slide-3.png" alt="Multi-channel event triage across a surveillance wall" loading="lazy"></div>
+        <div class="hero-carousel-slide" data-title="Department Dwell" data-tag="Cloud Analytics" data-desc="See which departments hold attention and which get walked past — dwell time and penetration, live."><img src="/hero/slide-4.png" alt="Supermarket department dwell heatmap with analytics panel" loading="lazy"></div>
+      </div>
+      <div class="hero-carousel-body">
+        <div class="hero-carousel-heading">
+          <h3 class="hero-carousel-title">Standards Audit</h3>
+          <span class="hero-carousel-tag">Cloud VLM</span>
+        </div>
+        <p class="hero-carousel-desc">Every location checked against your standards — uniform, cleanliness, staffing — flagged the moment something slips.</p>
+      </div>
+      <div class="hero-carousel-chrome">
+        <span class="hero-carousel-counter">01 / 04</span>
+        <div class="hero-carousel-dots" role="tablist" aria-label="Carousel slides">
+          <button type="button" class="hero-carousel-dot is-active" aria-label="Slide 1"></button>
+          <button type="button" class="hero-carousel-dot" aria-label="Slide 2"></button>
+          <button type="button" class="hero-carousel-dot" aria-label="Slide 3"></button>
+          <button type="button" class="hero-carousel-dot" aria-label="Slide 4"></button>
+        </div>
+      </div>
     </div>
   </div>
 </section>
+
+<section class="stats-band" aria-label="Key metrics">
+  <div class="stats-band-inner track-legend">
+    <button class="track-item" data-track="vision" type="button" aria-pressed="false">
+      <span class="track-row"><span class="track-dot" style="--track-color: #FFD23F"></span> <span class="track-value" data-count-up data-value="95" data-suffix="%">95%</span></span>
+      <span class="track-label">Data Accuracy</span>
+    </button>
+    <button class="track-item" data-track="voice" type="button" aria-pressed="false">
+      <span class="track-row"><span class="track-dot" style="--track-color: #00E5FF"></span> <span class="track-value" data-count-up data-value="30" data-prefix="+" data-suffix="%">+30%</span></span>
+      <span class="track-label">Audit Efficiency</span>
+    </button>
+    <button class="track-item" data-track="sensor" type="button" aria-pressed="false">
+      <span class="track-row"><span class="track-dot" style="--track-color: #FF4D8D"></span> <span class="track-value" data-count-up data-value="1600" data-prefix="+">+1600</span></span>
+      <span class="track-label">Countries Deployed</span>
+    </button>
+  </div>
+</section>
+
+<script is:inline>
+(function () {
+  const carousel = document.querySelector('.hero-carousel');
+  if (!carousel) return;
+
+  const slides = carousel.querySelectorAll('.hero-carousel-slide');
+  const dots = carousel.querySelectorAll('.hero-carousel-dot');
+  const titleEl = carousel.querySelector('.hero-carousel-title');
+  const tagEl = carousel.querySelector('.hero-carousel-tag');
+  const descEl = carousel.querySelector('.hero-carousel-desc');
+  const counterEl = carousel.querySelector('.hero-carousel-counter');
+  let index = 0;
+  let timer = null;
+
+  const pad = (n) => String(n).padStart(2, '0');
+
+  const goTo = (next) => {
+    slides[index].classList.remove('is-active');
+    dots[index].classList.remove('is-active');
+    index = (next + slides.length) % slides.length;
+    slides[index].classList.add('is-active');
+    dots[index].classList.add('is-active');
+    const data = slides[index].dataset;
+    if (titleEl) titleEl.textContent = data.title || '';
+    if (tagEl) tagEl.textContent = data.tag || '';
+    if (descEl) descEl.textContent = data.desc || '';
+    if (counterEl) counterEl.textContent = pad(index + 1) + ' / ' + pad(slides.length);
+  };
+
+  const start = () => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    timer = setInterval(() => goTo(index + 1), 4500);
+  };
+  const stop = () => { if (timer) clearInterval(timer); timer = null; };
+
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => { stop(); goTo(i); start(); });
+  });
+
+  carousel.addEventListener('mouseenter', stop);
+  carousel.addEventListener('mouseleave', start);
+  start();
+})();
+</script>
 
 <script is:inline>
 (function () {
@@ -43,28 +117,33 @@
     return prefix + Math.round(value) + suffix;
   };
 
+  const runCount = () => {
+    legend.classList.remove('is-live');
+    void legend.offsetWidth; /* restart CSS entrance */
+    legend.classList.add('is-live');
+
+    targets.forEach((el, index) => {
+      const finalValue = parseFloat(el.dataset.value);
+      if (Number.isNaN(finalValue)) return;
+
+      el.textContent = format(el, 0);
+
+      const counter = { value: 0 };
+      anime.animate(counter, {
+        value: finalValue,
+        duration: 3000,
+        ease: 'outExpo',
+        delay: index * 250,
+        onUpdate: () => {
+          el.textContent = format(el, counter.value);
+        }
+      });
+    });
+  };
+
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      observer.disconnect();
-
-      targets.forEach((el, index) => {
-        const finalValue = parseFloat(el.dataset.value);
-        if (Number.isNaN(finalValue)) return;
-
-        el.textContent = format(el, 0);
-
-        const counter = { value: 0 };
-        anime.animate(counter, {
-          value: finalValue,
-          duration: 3000,
-          ease: 'outExpo',
-          delay: index * 250,
-          onUpdate: () => {
-            el.textContent = format(el, counter.value);
-          }
-        });
-      });
+      if (entry.isIntersecting) runCount();
     });
   }, { threshold: 0.3 });
 
