@@ -1,0 +1,221 @@
+---
+const stages = [
+  {
+    verb: 'Detect',
+    name: 'Automated Detection & Audit',
+    tagline: 'Catch everything, without watching everything.',
+    points: [
+      'SpaceSight audits your space continuously, using zero-shot AI detection that works the moment it\'s deployed — no training data, no setup lag.',
+      'Just describe what to check in plain English ("check aisle 3 shelves every 90 minutes") and let it run.',
+      'The same detection engine that flags a compliance gap also catches loitering, unauthorized access, or checkout anomalies in real time — so whether you\'re auditing operations or preventing loss, nothing slips through unnoticed.'
+    ]
+  },
+  {
+    verb: 'Find',
+    name: 'SpaceClaw: Ask & Find',
+    tagline: 'Find any moment in seconds, just by asking.',
+    points: [
+      'Describe what you\'re looking for in plain language, and SpaceClaw pulls the exact clip — no scrubbing through hours of footage.',
+      'Investigating an incident, resolving a dispute, or just confirming what happened at a specific time: what used to take an afternoon now takes seconds.',
+      'And SpaceClaw doesn\'t just search on command — when it spots something on its own, it can dispatch a task straight to the right person\'s phone.'
+    ]
+  },
+  {
+    verb: 'Act',
+    name: 'Intelligent Reporting',
+    tagline: 'Your daily report, ready before you are.',
+    points: [
+      'SpaceSight turns what it sees into a clear, structured report — compliance rates, foot traffic, stock levels — delivered automatically, on schedule. No manual compilation, no waiting.',
+      'Beyond the numbers, it recommends what to do next: restock alerts, staffing adjustments, loss-prevention flags — so reports drive action instead of sitting unread in an inbox.'
+    ]
+  }
+];
+---
+
+<section class="section value-stream" aria-label="SpaceSight capabilities">
+  <div class="container">
+    <div class="section-head center value-stream-head">
+      <h2>From raw footage to finished decisions</h2>
+      <p>Three capabilities, one continuous loop — detect what matters, find it instantly, act on it the same day.</p>
+    </div>
+
+    <ol class="value-stream-list">
+      {stages.map((stage) => (
+        <li class="value-stream-stage">
+          <div class="value-stream-marker" aria-hidden="true">
+            <span class="value-stream-verb">{stage.verb}</span>
+          </div>
+          <div class="value-stream-body">
+            <h3 class="value-stream-name">{stage.name}</h3>
+            <p class="value-stream-tagline">{stage.tagline}</p>
+            <ul class="value-stream-points">
+              {stage.points.map(point => (
+                <li>{point}</li>
+              ))}
+            </ul>
+          </div>
+        </li>
+      ))}
+    </ol>
+
+    <div class="value-stream-cta">
+      <button type="button" class="btn btn-primary btn-large" data-open-modal data-source-type="官网 SDP 体验 demo 留资">Book a demo</button>
+      <p class="value-stream-cta-note">30 minutes, your scenarios, your footage.</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .value-stream-head {
+    margin-bottom: var(--space-xl);
+  }
+
+  .value-stream-head h2 {
+    max-width: none;
+  }
+
+  .value-stream-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .value-stream-stage {
+    display: grid;
+    grid-template-columns: 120px minmax(0, 1fr);
+    gap: clamp(var(--space-md), 4vw, var(--space-lg));
+    padding: var(--space-lg) 0;
+  }
+
+  .value-stream-stage:first-child {
+    padding-top: 0;
+  }
+
+  .value-stream-marker {
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  /* The rail: one continuous thread linking the three verbs */
+  .value-stream-marker::before {
+    content: '';
+    position: absolute;
+    top: 0.9rem;
+    bottom: calc(-1 * var(--space-lg) - 0.9rem);
+    left: 5px;
+    width: 2px;
+    background: rgba(15, 23, 42, 0.12);
+  }
+
+  .value-stream-stage:last-child .value-stream-marker::before {
+    display: none;
+  }
+
+  .value-stream-verb {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text);
+    background: var(--bg, #F8F7F4);
+    padding: 0.3rem 0.8rem 0.3rem 1.4rem;
+    border: 1px solid rgba(15, 23, 42, 0.14);
+    border-radius: 999px;
+    height: fit-content;
+  }
+
+  .value-stream-verb::before {
+    content: '';
+    position: absolute;
+    left: 0.45rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 7px;
+    height: 7px;
+    border-radius: 999px;
+    background: #FFD23F;
+  }
+
+  .value-stream-name {
+    font-size: clamp(1.4rem, 2.6vw, 2rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    margin: 0 0 0.35rem;
+    max-width: none;
+  }
+
+  .value-stream-tagline {
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    font-weight: 500;
+    color: var(--text);
+    margin: 0 0 var(--space-md);
+  }
+
+  .value-stream-points {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    max-width: 72ch;
+  }
+
+  .value-stream-points li {
+    position: relative;
+    padding-left: 1.4rem;
+    font-size: 1rem;
+    line-height: 1.65;
+    color: var(--text-secondary);
+  }
+
+  .value-stream-points li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.62em;
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: rgba(15, 23, 42, 0.28);
+  }
+
+  .value-stream-cta {
+    margin-top: var(--space-lg);
+    padding-top: var(--space-xl);
+    border-top: 1px solid rgba(15, 23, 42, 0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-sm);
+    text-align: center;
+  }
+
+  .value-stream-cta-note {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+  }
+
+  @media (max-width: 720px) {
+    .value-stream-stage {
+      grid-template-columns: 1fr;
+      gap: var(--space-sm);
+      padding: var(--space-lg) 0;
+    }
+
+    .value-stream-marker::before {
+      display: none;
+    }
+  }
+</style>

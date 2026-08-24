@@ -1,35 +1,4 @@
 ---
-const pills = [
-  'Automated Operations',
-  'AI Automated Audit',
-  'On-Premise VLM Deployment',
-  'Semantic Video Search',
-  'Edge AI Processing',
-  'Customer Traffic Analysis'
-];
-
-const valueProps = [
-  {
-    icon: 'https://whale-web.oss-cn-beijing.aliyuncs.com/2025-09-10/171526404.png',
-    title: 'AI Instant Sensing',
-    description: 'Edge-embedded VLM with hybrid edge-cloud processing. Millisecond response time. Zero-code one-click deployment. Hardware cost reduced by 60%.'
-  },
-  {
-    icon: 'https://whale-web.oss-cn-beijing.aliyuncs.com/2025-09-10/171568432.png',
-    title: 'SpaceClaw Agent',
-    description: 'Built-in space intelligence agent. Natural language video search and command execution. Autonomous learning, adaptation, and closed-loop task completion.'
-  },
-  {
-    icon: 'https://whale-web.oss-cn-beijing.aliyuncs.com/2026-05-06/064380744.png',
-    title: 'AI Audit',
-    description: 'Zero-shot universal detection, no training data needed. Works immediately on new scenarios. Complex instruction parsing unlocks 20× audit efficiency.'
-  },
-  {
-    icon: 'https://whale-web.oss-cn-beijing.aliyuncs.com/2025-09-10/171597887.png',
-    title: 'Intelligent Reports',
-    description: 'Dynamic card design boosts data utilization by 80%. AI operational reports generated automatically. Every report becomes an insight for growth.'
-  }
-];
 ---
 
 <section class="section spacesight-hero" id="spacesight-hero">
@@ -40,37 +9,26 @@ const valueProps = [
           <img src="https://whale-web.oss-cn-beijing.aliyuncs.com/2025-09-26/182897735.png" alt="" width="48" height="48" loading="eager">
           <span>SpaceSight</span>
         </div>
-        <h1 class="spacesight-hero-headline">AI Audit Platform for Space & Facilities</h1>
-
-        <div class="hero-pills">
-          {pills.map(pill => (
-            <span class="hero-pill">{pill}</span>
-          ))}
-        </div>
+        <h1 class="spacesight-hero-headline">See what's actually happening — before it becomes a problem.</h1>
+        <p class="spacesight-hero-lead">SpaceSight turns raw physical-space data into real-time intelligence — built for teams who can't afford blind spots.</p>
 
         <div class="hero-actions">
-          <a href="https://www.meetwhale.ai/try_for_free" class="btn btn-primary btn-large">Watch a Demo</a>
-          <a href="https://www.meetwhale.ai/Contact_us.html" class="btn btn-ghost btn-large">Try for Free</a>
+          <button type="button" class="btn btn-primary btn-large" data-open-modal data-source-type="官网 SDP 体验 demo 留资">Book a demo</button>
+          <a href="https://www.meetwhale.ai/try_for_free" class="btn btn-ghost btn-large">Watch a Demo</a>
         </div>
       </div>
 
       <div class="spacesight-hero-media">
-        <video autoplay muted loop playsinline preload="metadata" poster="https://whale-web.oss-cn-beijing.aliyuncs.com/2026-06-02/161431350.png">
-          <source src="https://whale-web.oss-cn-beijing.aliyuncs.com/2026-06-02/160919624.mp4" type="video/mp4">
+        <video autoplay muted loop playsinline preload="metadata" poster="/hero/spacesight-poster.jpg">
+          <source src="/hero/spacesight-demo.mp4" type="video/mp4">
         </video>
-      </div>
-    </div>
-
-    <div class="value-prop-section">
-      <h2 class="value-prop-title">What can SpaceSight do for you?</h2>
-      <div class="value-prop-grid">
-        {valueProps.map(prop => (
-          <article class="value-prop-card">
-            <img src={prop.icon} alt="" width="48" height="48" loading="lazy">
-            <h3>{prop.title}</h3>
-            <p>{prop.description}</p>
-          </article>
-        ))}
+        <span class="viewfinder-corner viewfinder-corner-tl" aria-hidden="true"></span>
+        <span class="viewfinder-corner viewfinder-corner-tr" aria-hidden="true"></span>
+        <span class="viewfinder-corner viewfinder-corner-bl" aria-hidden="true"></span>
+        <span class="viewfinder-corner viewfinder-corner-br" aria-hidden="true"></span>
+        <span class="hud-chip hud-chip-live" aria-hidden="true"><span class="hud-live-dot"></span>LIVE</span>
+        <span class="hud-chip hud-chip-zone" aria-hidden="true">ZONE 03</span>
+        <span class="hud-chip hud-chip-count" aria-hidden="true">34 VISITORS</span>
       </div>
     </div>
   </div>

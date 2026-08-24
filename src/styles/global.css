@@ -249,30 +249,13 @@ input:focus-visible {
   background: radial-gradient(circle at 70% 50%, var(--bg-tint) 0%, var(--bg) 60%);
 }
 
-.hero-video,
-#detector {
+.hero-video {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   z-index: 1;
-}
-
-#detector {
-  cursor: grab;
-  transform: translate(38%, 10%) scale(2);
-  transform-origin: center center;
-}
-
-#detector:active {
-  cursor: grabbing;
-}
-
-@media (max-width: 720px) {
-  #detector {
-    transform: translate(22%, 8%) scale(1.4);
-  }
 }
 
 .hero-overlay {
@@ -2434,7 +2417,7 @@ a.platform-carousel-slide:hover {
 /* CTA camera animation */
 .cta-layout {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1.1fr 0.9fr;
   gap: var(--space-lg);
   align-items: center;
   text-align: left;
@@ -2447,12 +2430,14 @@ a.platform-carousel-slide:hover {
 }
 
 .cta-copy {
-  max-width: 48ch;
+  max-width: 58ch;
 }
 
 .cta-copy h2 {
   margin-inline: 0;
-  font-size: clamp(1.8rem, 4.5vw, 3.2rem);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  letter-spacing: -0.04em;
+  max-width: none;
 }
 
 .cta-visual {
@@ -3209,9 +3194,9 @@ a.platform-carousel-slide:hover {
 /* Hero */
 .spacesight-hero {
   position: relative;
-  padding: calc(var(--space-xxl) + var(--header-height)) 0 var(--space-xxl);
+  padding: calc(var(--space-xxl) + var(--header-height)) 0 var(--space-lg);
   background:
-    linear-gradient(180deg, rgba(248, 247, 244, 0.92) 0%, rgba(248, 247, 244, 0.85) 100%),
+    linear-gradient(180deg, rgba(248, 247, 244, 0.97) 0%, rgba(248, 247, 244, 0.93) 100%),
     url('https://whale-web.oss-cn-beijing.aliyuncs.com/2025-09-28/171857987.png') center/cover no-repeat;
   overflow: hidden;
 }
@@ -3223,10 +3208,9 @@ a.platform-carousel-slide:hover {
 
 .spacesight-hero-inner {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: var(--space-lg);
+  grid-template-columns: 0.92fr 1.08fr;
+  gap: clamp(var(--space-md), 4vw, var(--space-xl));
   align-items: center;
-  margin-bottom: var(--space-xl);
 }
 
 @media (max-width: 720px) {
@@ -3257,27 +3241,14 @@ a.platform-carousel-slide:hover {
   font-weight: 600;
   line-height: 1.2;
   color: var(--text);
-  margin-bottom: var(--space-md);
+  margin-bottom: var(--space-sm);
 }
 
-.hero-pills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-xs);
-  margin-bottom: var(--space-md);
-}
-
-.hero-pill {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.45rem 0.9rem;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.7);
-  border: 1px solid rgba(15, 23, 42, 0.1);
-  font-size: 0.8rem;
-  font-weight: 600;
+.spacesight-hero-lead {
+  font-size: 1.05rem;
+  line-height: 1.55;
   color: var(--text-secondary);
-  backdrop-filter: blur(4px);
+  margin: 0 0 var(--space-md);
 }
 
 .hero-actions {
@@ -3300,69 +3271,74 @@ a.platform-carousel-slide:hover {
   height: auto;
 }
 
-.value-prop-section {
-  text-align: center;
+/* Viewfinder: the hero itself is the monitored frame */
+.viewfinder-corner {
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  border: 2px solid #FFD23F;
+  pointer-events: none;
+  filter: drop-shadow(0 1px 2px rgba(15, 23, 42, 0.35));
 }
 
-.value-prop-title {
-  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
-  font-weight: 600;
-  margin-bottom: var(--space-lg);
-  color: var(--text);
-}
+.viewfinder-corner-tl { top: 12px; left: 12px; border-right: none; border-bottom: none; }
+.viewfinder-corner-tr { top: 12px; right: 12px; border-left: none; border-bottom: none; }
+.viewfinder-corner-bl { bottom: 12px; left: 12px; border-right: none; border-top: none; }
+.viewfinder-corner-br { bottom: 12px; right: 12px; border-left: none; border-top: none; }
 
-.value-prop-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: var(--space-md);
-}
-
-.value-prop-card {
-  display: flex;
-  flex-direction: column;
+.hud-chip {
+  position: absolute;
+  display: inline-flex;
   align-items: center;
-  text-align: center;
-  padding: var(--space-md);
-  background: var(--bg-elevated);
-  border: 1px solid rgba(15, 23, 42, 0.08);
-  border-radius: var(--radius);
-  box-shadow: 0 10px 40px rgba(15, 23, 42, 0.06);
-  transition: transform 0.25s ease, border-color 0.25s ease;
-}
-
-.value-prop-card:hover {
-  transform: translateY(-6px);
-  border-color: var(--ring-light);
-}
-
-.value-prop-card img {
-  width: 48px;
-  height: 48px;
-  object-fit: contain;
-  margin-bottom: var(--space-sm);
-}
-
-.value-prop-card h3 {
-  font-size: 1rem;
+  gap: 0.45rem;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.7rem;
   font-weight: 700;
-  margin-bottom: var(--space-xs);
-  color: var(--text);
+  letter-spacing: 0.12em;
+  color: #F8F7F4;
+  background: rgba(15, 23, 42, 0.78);
+  border: 1px solid rgba(255, 210, 63, 0.55);
+  border-radius: 999px;
+  padding: 0.32rem 0.7rem;
+  pointer-events: none;
 }
 
-.value-prop-card p {
-  font-size: 0.85rem;
-  color: var(--text-secondary);
-  line-height: 1.55;
+.hud-chip-live { top: 14px; left: 48px; }
+.hud-chip-zone { top: 14px; right: 48px; }
+.hud-chip-count { bottom: 14px; left: 48px; }
+
+.hud-live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: #FF4B4B;
+  animation: hud-live-pulse 1.6s ease-in-out infinite;
 }
 
-@media (max-width: 1024px) {
-  .value-prop-grid { grid-template-columns: repeat(2, 1fr); }
+@keyframes hud-live-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.45; transform: scale(0.8); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hud-live-dot { animation: none; }
 }
 
 @media (max-width: 720px) {
+  .viewfinder-corner { width: 18px; height: 18px; }
+  .viewfinder-corner-tl { top: 8px; left: 8px; }
+  .viewfinder-corner-tr { top: 8px; right: 8px; }
+  .viewfinder-corner-bl { bottom: 8px; left: 8px; }
+  .viewfinder-corner-br { bottom: 8px; right: 8px; }
+  .hud-chip { font-size: 0.58rem; padding: 0.22rem 0.55rem; }
+  .hud-chip-live { top: 10px; left: 34px; }
+  .hud-chip-zone { top: 10px; right: 34px; }
+  .hud-chip-count { bottom: 10px; left: 34px; }
+}
+
+@media (max-width: 900px) {
   .spacesight-hero-inner { grid-template-columns: 1fr; }
   .spacesight-hero-media { order: -1; }
-  .value-prop-grid { grid-template-columns: 1fr; }
   .hero-actions { justify-content: center; }
 }
 
