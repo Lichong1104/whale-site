@@ -261,7 +261,7 @@ input:focus-visible {
 .hero-overlay {
   position: relative;
   z-index: 2;
-  width: min(1600px, 98.5vw);
+  width: min(1600px, 95.5vw);
   padding: calc(var(--space-lg) + var(--space-md)) 0 var(--space-md);
   pointer-events: none;
 }
