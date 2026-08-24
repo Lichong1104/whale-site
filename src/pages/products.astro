@@ -346,12 +346,54 @@ const extraSchema = [
   }
 
   .pd-cap {
-    border-top: 2px solid rgba(15, 23, 42, 0.12);
-    padding-top: var(--space-md);
+    position: relative;
+    overflow: hidden;
+    background: var(--elevated-white, #FFFFFF);
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    border-radius: var(--radius);
+    padding: calc(var(--space-md) + 0.25rem) var(--space-md) var(--space-md);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  }
+
+  /* Orbital detector ring, cropped top-right — signal-colored per product */
+  .pd-cap::before {
+    content: '';
+    position: absolute;
+    top: -70px;
+    right: -70px;
+    width: 170px;
+    height: 170px;
+    border-radius: 999px;
+    border: 1.5px solid var(--cap-ring);
+    pointer-events: none;
+  }
+
+  .pd-cap::after {
+    content: '';
+    position: absolute;
+    top: -34px;
+    right: -34px;
+    width: 98px;
+    height: 98px;
+    border-radius: 999px;
+    border: 1px solid var(--cap-ring);
+    opacity: 0.55;
+    pointer-events: none;
+  }
+
+  #spacesight .pd-cap { --cap-ring: rgba(255, 210, 63, 0.5); }
+  #echo .pd-cap { --cap-ring: rgba(0, 229, 255, 0.55); }
+
+  .pd-cap:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(15, 23, 42, 0.08);
+    border-color: var(--cap-ring);
   }
 
   .pd-cap-label {
-    display: block;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
     font-family: 'Space Mono', monospace;
     font-size: 0.7rem;
     font-weight: 700;
@@ -360,8 +402,19 @@ const extraSchema = [
     margin-bottom: 0.75rem;
   }
 
-  .pd-label-spacesight { color: #B8960F; }
-  .pd-label-echo { color: #0891B2; }
+  .pd-cap-label::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: var(--cap-dot);
+  }
+
+  #spacesight .pd-cap-label { --cap-dot: #FFD23F; }
+  #echo .pd-cap-label { --cap-dot: #00E5FF; }
+
+  .pd-label-spacesight { color: #8A6D00; }
+  .pd-label-echo { color: #0E7490; }
 
   .pd-cap-slogan {
     font-family: var(--font-display);
@@ -370,6 +423,7 @@ const extraSchema = [
     letter-spacing: -0.02em;
     line-height: 1.15;
     margin: 0 0 var(--space-sm);
+    text-wrap: balance;
   }
 
   .pd-cap p {
