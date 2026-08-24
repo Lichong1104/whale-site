@@ -332,7 +332,7 @@ input:focus-visible {
 /* Hero two-column layout: copy left, carousel right */
 .hero-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.2fr);
   align-items: stretch;
   gap: clamp(var(--space-lg), 4vw, var(--space-xl));
 }
@@ -352,7 +352,7 @@ input:focus-visible {
   width: min(1200px, 92vw);
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: var(--space-md);
   transform: none;
 }
@@ -397,6 +397,7 @@ input:focus-visible {
 .stats-band .track-item:nth-child(1) .track-value { color: #B8860B; }
 .stats-band .track-item:nth-child(2) .track-value { color: #0891B2; }
 .stats-band .track-item:nth-child(3) .track-value { color: #DB2777; }
+.stats-band .track-item:nth-child(4) .track-value { color: #7C3AED; }
 
 /* Readout entrance: values settle from blur as the count runs, dot pings on lock */
 @keyframes stat-settle {
@@ -434,6 +435,7 @@ input:focus-visible {
 .stats-band.is-live .track-item:nth-child(1) { animation-delay: 0s; }
 .stats-band.is-live .track-item:nth-child(2) { animation-delay: 0.15s; }
 .stats-band.is-live .track-item:nth-child(3) { animation-delay: 0.3s; }
+.stats-band.is-live .track-item:nth-child(4) { animation-delay: 0.45s; }
 
 .stats-band.is-live .track-dot {
   animation: stat-ping 1.1s ease-out both;
@@ -442,6 +444,7 @@ input:focus-visible {
 .stats-band.is-live .track-item:nth-child(1) .track-dot { animation-delay: 2.1s; }
 .stats-band.is-live .track-item:nth-child(2) .track-dot { animation-delay: 2.35s; }
 .stats-band.is-live .track-item:nth-child(3) .track-dot { animation-delay: 2.6s; }
+.stats-band.is-live .track-item:nth-child(4) .track-dot { animation-delay: 2.85s; }
 
 @media (prefers-reduced-motion: reduce) {
   .stats-band.is-live .track-item,
@@ -480,6 +483,7 @@ input:focus-visible {
   display: flex;
   flex-direction: column;
   width: 100%;
+  align-self: center;
   border-radius: var(--radius);
   overflow: hidden;
   background: var(--elevated-white, #FFFFFF);
@@ -495,8 +499,8 @@ input:focus-visible {
 .hero-carousel-track {
   position: relative;
   width: 100%;
-  flex: 1 1 auto;
-  min-height: 240px;
+  flex: 0 0 auto;
+  aspect-ratio: 2.26;
 }
 
 .hero-carousel-slide {
@@ -619,7 +623,7 @@ input:focus-visible {
 
   .hero-carousel-track {
     flex: none;
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 2.26;
   }
 }
 

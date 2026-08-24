@@ -1,0 +1,69 @@
+---
+---
+
+<section class="section section--tight client-logos" aria-label="Client success stories">
+  <div class="container">
+    <div class="section-head center">
+      <h2>Discover how brands succeed with us</h2>
+      <p>Leading enterprises across finance, retail, and manufacturing run their physical operations on Whale.</p>
+    </div>
+    <div class="logo-bar client-logo-bar">
+      <img class="client-logo" src="/client-logos/temasek.svg" alt="Temasek" width="160" height="40" loading="lazy">
+      <img class="client-logo" src="/client-logos/ocbc.svg" alt="OCBC" width="140" height="40" loading="lazy">
+      <img class="client-logo" src="/client-logos/lvmh.svg" alt="LVMH" width="140" height="32" loading="lazy">
+      <img class="client-logo" src="/client-logos/byd.svg" alt="BYD" width="140" height="40" loading="lazy">
+      <img class="client-logo" src="/client-logos/daikin.svg" alt="Daikin" width="150" height="40" loading="lazy">
+      <span class="client-logo client-logo-text" role="img" aria-label="Arrail">Arrail</span>
+    </div>
+  </div>
+</section>
+
+<style>
+  .client-logos .section-head h2 {
+    max-width: none;
+  }
+  .client-logo-bar {
+    flex-wrap: nowrap;
+    gap: var(--space-md) clamp(var(--space-md), 4vw, 3.5rem);
+    margin-top: var(--space-lg);
+  }
+  .client-logo {
+    max-height: 44px;
+    width: auto;
+    max-width: 150px;
+    min-width: 0;
+    flex: 0 1 auto;
+    object-fit: contain;
+    opacity: 0.75;
+    filter: grayscale(100%);
+    transition: opacity 0.2s ease, filter 0.2s ease, transform 0.2s ease;
+  }
+  .client-logo:hover {
+    opacity: 1;
+    filter: grayscale(0%);
+    transform: translateY(-2px);
+  }
+  .client-logo-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: var(--text-secondary);
+    display: inline-flex;
+    align-items: center;
+  }
+  .client-logo-text:hover {
+    color: var(--text);
+  }
+  @media (max-width: 720px) {
+    .client-logo-bar {
+      flex-wrap: wrap;
+    }
+    .client-logo {
+      max-height: 34px;
+      max-width: 130px;
+    }
+    .client-logo-text {
+      font-size: 1.2rem;
+    }
+  }
+</style>
