@@ -39,6 +39,29 @@ const extraSchema = [
       </div>
     </section>
 
+    <section class="section section-tint loop" id="loop" aria-label="The operational intelligence loop">
+      <div class="container">
+        <ol class="loop-steps">
+          <li class="loop-step" style="--loop-color: #FFD23F">
+            <span class="loop-step-label">See</span>
+            <p>SpaceSight turns cameras into continuous space intelligence.</p>
+          </li>
+          <li class="loop-step" style="--loop-color: #00E5FF">
+            <span class="loop-step-label">Hear</span>
+            <p>Echo turns frontline conversations into structured voice intelligence.</p>
+          </li>
+          <li class="loop-step" style="--loop-color: #FF4D8D">
+            <span class="loop-step-label">Understand</span>
+            <p>One AI platform fuses both streams into decision-ready insight.</p>
+          </li>
+          <li class="loop-step" style="--loop-color: #8B5CF6">
+            <span class="loop-step-label">Act</span>
+            <p>Reports, alerts, and tasks reach the right person automatically.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
     <section class="section pd" id="spacesight">
       <div class="container">
         <div class="pd-head">
@@ -117,9 +140,9 @@ const extraSchema = [
       </div>
     </section>
 
-    <HardwareSection />
-    <CapabilitiesSection showFeatures={false} />
     <IntegratedPlatformSection />
+    <CapabilitiesSection showFeatures={false} />
+    <HardwareSection />
     <CasesSection />
 
     <CTASection />
@@ -153,6 +176,91 @@ const extraSchema = [
   @media (max-width: 720px) {
     .products-intro {
       padding-top: calc(var(--space-xl) + var(--header-height, 60px));
+    }
+  }
+
+  /* Loop connector: four beats of the operational intelligence loop */
+  .loop-steps {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: clamp(var(--space-md), 3vw, var(--space-lg));
+  }
+
+  .loop-step {
+    position: relative;
+    border-top: 1px solid rgba(15, 23, 42, 0.14);
+    padding-top: var(--space-md);
+  }
+
+  .loop-step::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: 0;
+    width: 9px;
+    height: 9px;
+    border-radius: 999px;
+    background: var(--loop-color);
+  }
+
+  .loop-step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: -4px;
+    right: 0;
+    width: 7px;
+    height: 7px;
+    border-top: 1px solid rgba(15, 23, 42, 0.35);
+    border-right: 1px solid rgba(15, 23, 42, 0.35);
+    transform: rotate(45deg);
+  }
+
+  .loop-step-label {
+    display: block;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  .loop-step p {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+  }
+
+  @media (max-width: 860px) {
+    .loop-steps {
+      grid-template-columns: 1fr;
+      gap: var(--space-lg);
+      max-width: 34rem;
+      margin-inline: auto;
+    }
+
+    .loop-step {
+      border-top: none;
+      border-left: 1px solid rgba(15, 23, 42, 0.14);
+      padding-top: 0;
+      padding-left: var(--space-md);
+    }
+
+    .loop-step::before {
+      top: 0.3rem;
+      left: -5px;
+    }
+
+    .loop-step:not(:last-child)::after {
+      top: auto;
+      bottom: -12px;
+      right: auto;
+      left: -4px;
+      transform: rotate(135deg);
     }
   }
 
