@@ -4,8 +4,7 @@
 <section class="section section--tight client-logos" aria-label="Client success stories">
   <div class="container">
     <div class="section-head center">
-      <h2>Discover how brands succeed with us</h2>
-      <p>Leading enterprises across finance, retail, and manufacturing run their physical operations on Whale.</p>
+      <h2 class="client-title"><span class="w">Discover</span> <span class="w">how</span> <span class="w">brands</span> <span class="w hl-accent">succeed</span> <span class="w">with</span> <span class="w">us</span></h2>
     </div>
     <div class="logo-bar client-logo-bar">
       <img class="client-logo" src="/client-logos/temasek.svg" alt="Temasek" width="160" height="40" loading="lazy">
@@ -22,6 +21,41 @@
   .client-logos .section-head h2 {
     max-width: none;
   }
+  .hl-accent {
+    color: #7C3AED;
+  }
+
+  /* Word-stagger entrance: words rise in, "succeed" turns purple last */
+  .client-title .w {
+    display: inline-block;
+  }
+
+  .client-title.anim-ready .w {
+    opacity: 0;
+    transform: translateY(0.45em);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .client-title.anim-ready .w:nth-of-type(1) { transition-delay: 0ms; }
+  .client-title.anim-ready .w:nth-of-type(2) { transition-delay: 70ms; }
+  .client-title.anim-ready .w:nth-of-type(3) { transition-delay: 140ms; }
+  .client-title.anim-ready .w:nth-of-type(4) { transition-delay: 210ms; }
+  .client-title.anim-ready .w:nth-of-type(5) { transition-delay: 280ms; }
+  .client-title.anim-ready .w:nth-of-type(6) { transition-delay: 350ms; }
+
+  .client-title.anim-ready .hl-accent {
+    color: var(--text);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), color 0.55s ease 0.9s;
+  }
+
+  .client-title.is-in .w {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .client-title.is-in .hl-accent {
+    color: #7C3AED;
+  }
   .client-logo-bar {
     flex-wrap: nowrap;
     gap: var(--space-md) clamp(var(--space-md), 4vw, 3.5rem);
@@ -34,20 +68,17 @@
     min-width: 0;
     flex: 0 1 auto;
     object-fit: contain;
-    opacity: 0.75;
-    filter: grayscale(100%);
-    transition: opacity 0.2s ease, filter 0.2s ease, transform 0.2s ease;
+    opacity: 1;
+    transition: opacity 0.2s ease, transform 0.2s ease;
   }
   .client-logo:hover {
-    opacity: 1;
-    filter: grayscale(0%);
     transform: translateY(-2px);
   }
   .client-logo-text {
     font-size: 1.5rem;
     font-weight: 700;
     letter-spacing: 0.02em;
-    color: var(--text-secondary);
+    color: var(--text);
     display: inline-flex;
     align-items: center;
   }
@@ -67,3 +98,26 @@
     }
   }
 </style>
+
+<script is:inline>
+  (function () {
+    'use strict';
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const title = document.querySelector('.client-title');
+    if (!title) return;
+
+    title.classList.add('anim-ready');
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          title.classList.add('is-in');
+          io.disconnect();
+        }
+      });
+    }, { threshold: 0.6 });
+
+    io.observe(title);
+  })();
+</script>

@@ -261,8 +261,8 @@ input:focus-visible {
 .hero-overlay {
   position: relative;
   z-index: 2;
-  width: min(1200px, 92vw);
-  padding: calc(var(--space-xl) + var(--space-md)) 0 var(--space-lg);
+  width: min(1600px, 98.5vw);
+  padding: calc(var(--space-lg) + var(--space-md)) 0 var(--space-md);
   pointer-events: none;
 }
 
@@ -315,9 +315,9 @@ input:focus-visible {
 /* Hero two-column layout: copy left, carousel right */
 .hero-grid {
   display: grid;
-  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.2fr);
+  grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.6fr);
   align-items: stretch;
-  gap: clamp(var(--space-lg), 4vw, var(--space-xl));
+  gap: clamp(var(--space-md), 2.5vw, var(--space-lg));
 }
 
 .hero-grid .hero-actions {
@@ -437,7 +437,7 @@ input:focus-visible {
 }
 
 .stats-band .track-label {
-  font-size: 0.8rem;
+  font-size: 1.1rem;
   letter-spacing: 0.06em;
   color: var(--text-secondary);
 }
@@ -455,18 +455,27 @@ input:focus-visible {
 
 .hero-copy {
   min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--space-md);
 }
 
 .hero-copy h1 {
-  font-size: clamp(1.6rem, 3.4vw, 3.4rem);
+  font-size: clamp(2.1rem, 4vw, 4rem);
   max-width: none;
+  margin-bottom: 0;
+}
+
+.hero-copy .hero-lead {
+  margin-bottom: 0;
 }
 
 .hero-carousel {
   display: flex;
   flex-direction: column;
   width: 100%;
-  align-self: center;
+  align-self: stretch;
   border-radius: var(--radius);
   overflow: hidden;
   background: var(--elevated-white, #FFFFFF);
@@ -482,7 +491,7 @@ input:focus-visible {
 .hero-carousel-track {
   position: relative;
   width: 100%;
-  flex: 0 0 auto;
+  flex: 1 1 auto;
   aspect-ratio: 2.26;
 }
 
