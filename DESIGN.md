@@ -14,6 +14,7 @@ colors:
   track-vision: "#FFD23F"
   track-voice: "#00E5FF"
   track-sensor: "#FF4D8D"
+  track-sensor-ink: "#DB2777"
   accent-purple: "#8B5CF6"
   accent-red: "#FF4B4B"
 typography:

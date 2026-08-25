@@ -3,8 +3,8 @@
 
 <section class="section" id="integrated-platform">
   <div class="container">
-    <div class="section-head center">
-      <h2>One integrated platform</h2>
+    <div class="section-head center" data-platform-head>
+      <h2 class="platform-headline"><span class="wm wm-decide"><span class="w w-decide" style="--i:0">Decide</span></span> <span class="wm"><span class="w" style="--i:1">with</span></span> <span class="wm"><span class="w" style="--i:2">confidence</span></span> <span class="wm"><span class="w" style="--i:3">—</span></span> <span class="pf-ready"><span class="wm"><span class="w" style="--i:4">before</span></span> <span class="wm"><span class="w" style="--i:5">the</span></span> <span class="wm"><span class="w" style="--i:6">moment's</span></span> <span class="wm"><span class="w" style="--i:7">gone.</span></span></span></h2>
       <p>Control your entire physical operations from Whale, the AI layer that connects cameras, voice, and agents into one real-time management platform.</p>
     </div>
 
@@ -13,3 +13,144 @@
     </div>
   </div>
 </section>
+
+<style>
+  .platform-headline .pf-ready {
+    color: #DB2777;
+    background-image: linear-gradient(to top, rgba(255, 77, 141, 0.22) 36%, transparent 36%);
+    background-repeat: no-repeat;
+    background-size: 0% 100%;
+  }
+
+  /* Masked word rise + fusion marker sweep, once on scroll into view */
+  .platform-headline .wm {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: top;
+    padding-bottom: 0.12em;
+    margin-bottom: -0.12em;
+  }
+
+  .platform-headline .w {
+    display: inline-block;
+  }
+
+  [data-platform-head].is-live .w {
+    animation: pf-rise 0.65s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+    animation-delay: calc(var(--i, 0) * 80ms + 60ms);
+  }
+
+  [data-platform-head].is-live .pf-ready {
+    transition: background-size 0.5s cubic-bezier(0.16, 1, 0.3, 1) 1.35s;
+    background-size: 100% 100%;
+  }
+
+  /* Detector lock-on: fusion magenta owns the verb, orbital ring pings onto it */
+  .platform-headline .w-decide {
+    color: #DB2777;
+  }
+
+  .platform-headline .wm-decide {
+    position: relative;
+  }
+
+  .platform-headline .wm-decide::after {
+    content: '';
+    position: absolute;
+    inset: -0.06em -0.26em;
+    border: 2px solid rgba(219, 39, 119, 0.55);
+    border-radius: 999px;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  /* Unmask only after the word rise completes (0.06s delay + 0.65s rise), then lock */
+  [data-platform-head].is-live .wm-decide {
+    animation: pf-unmask 0s 0.72s forwards;
+  }
+
+  [data-platform-head].is-live .wm-decide::after {
+    animation: pf-lock 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.78s forwards;
+  }
+
+  @keyframes pf-unmask {
+    to {
+      overflow: visible;
+    }
+  }
+
+  @keyframes pf-lock {
+    0% {
+      opacity: 0;
+      transform: scale(1.7);
+      box-shadow: 0 0 0 0 rgba(219, 39, 119, 0.3);
+    }
+    40% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+      box-shadow: 0 0 0 18px rgba(219, 39, 119, 0);
+    }
+  }
+
+  [data-platform-head].is-live .section-head p,
+  [data-platform-head].is-live > p {
+    animation: pf-fade 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.55s backwards;
+  }
+
+  @keyframes pf-rise {
+    from {
+      transform: translateY(110%);
+    }
+  }
+
+  @keyframes pf-fade {
+    from {
+      opacity: 0;
+      transform: translateY(0.4em);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    [data-platform-head].is-live .w,
+    [data-platform-head].is-live .wm-decide,
+    [data-platform-head].is-live .wm-decide::after,
+    [data-platform-head].is-live > p {
+      animation: none;
+    }
+
+    [data-platform-head].is-live .wm-decide {
+      overflow: visible;
+    }
+
+    [data-platform-head].is-live .wm-decide::after {
+      opacity: 1;
+    }
+
+    [data-platform-head].is-live .pf-ready {
+      transition: none;
+      background-size: 100% 100%;
+    }
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    const head = document.querySelector('[data-platform-head]');
+    if (!head) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          head.classList.add('is-live');
+          observer.disconnect();
+        }
+      });
+    }, { threshold: 0.35 });
+
+    observer.observe(head);
+  })();
+</script>
