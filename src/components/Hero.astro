@@ -90,7 +90,7 @@
 
   const start = () => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    timer = setInterval(() => goTo(index + 1), 4500);
+    timer = setInterval(() => goTo(index + 1), 3000);
   };
   const stop = () => { if (timer) clearInterval(timer); timer = null; };
 
