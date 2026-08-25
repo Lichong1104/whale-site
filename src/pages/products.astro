@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import HardwareSection from '../components/HardwareSection.astro';
+import TrustBand from '../components/TrustBand.astro';
 import CapabilitiesSection from '../components/CapabilitiesSection.astro';
 import IntegratedPlatformSection from '../components/IntegratedPlatformSection.astro';
 import CasesSection from '../components/CasesSection.astro';
@@ -30,69 +31,50 @@ const extraSchema = [
 >
   <Header />
   <main>
-    <section class="section products-intro">
-      <div class="container">
-        <div class="section-head center">
-          <h1>Products</h1>
-          <p>SpaceSight sees. Echo hears. One operational intelligence loop.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section-tint loop" id="loop" aria-label="The operational intelligence loop">
-      <div class="container">
-        <ol class="loop-steps">
-          <li class="loop-step" style="--loop-color: #FFD23F">
-            <span class="loop-step-label">See</span>
-            <p>SpaceSight turns cameras into continuous space intelligence.</p>
-          </li>
-          <li class="loop-step" style="--loop-color: #00E5FF">
-            <span class="loop-step-label">Hear</span>
-            <p>Echo turns frontline conversations into structured voice intelligence.</p>
-          </li>
-          <li class="loop-step" style="--loop-color: #FF4D8D">
-            <span class="loop-step-label">Understand</span>
-            <p>One AI platform fuses both streams into decision-ready insight.</p>
-          </li>
-          <li class="loop-step" style="--loop-color: #8B5CF6">
-            <span class="loop-step-label">Act</span>
-            <p>Reports, alerts, and tasks reach the right person automatically.</p>
-          </li>
-        </ol>
-      </div>
-    </section>
-
     <section class="section pd" id="spacesight">
       <div class="container">
         <div class="pd-head">
           <span class="pd-chip pd-chip-spacesight">SpaceSight · Sees</span>
-          <h2 class="pd-headline">See what's actually happening — before it becomes a problem.</h2>
+          <h2 class="pd-headline"><span class="wm"><span class="w" style="--i:0">See</span></span> <span class="wm"><span class="w" style="--i:1">what's</span></span> <span class="wm"><span class="w" style="--i:2">actually</span></span> <span class="wm"><span class="w" style="--i:3">happening</span></span> <span class="wm"><span class="w" style="--i:4">—</span></span> <span class="pd-ready"><span class="wm"><span class="w" style="--i:5">before</span></span> <span class="wm"><span class="w" style="--i:6">it</span></span> <span class="wm"><span class="w" style="--i:7">becomes</span></span> <span class="wm"><span class="w" style="--i:8">a</span></span> <span class="wm"><span class="w" style="--i:9">problem.</span></span></span></h2>
           <p class="pd-subhead">SpaceSight turns raw physical-space data into real-time intelligence — built for teams who can't afford blind spots.</p>
         </div>
 
-        <div class="pd-media">
-          <video src="/products/spacesight-demo-eng.mp4" poster="/products/spacesight-demo-poster.jpg" autoplay muted loop controls preload="metadata" playsinline aria-label="SpaceSight product demo"></video>
-        </div>
+        <div class="pd-showcase">
+          <div class="pd-media">
+            <video src="/products/spacesight-demo-eng.mp4" poster="/products/spacesight-demo-poster.jpg" autoplay muted loop controls preload="metadata" playsinline aria-label="SpaceSight product demo"></video>
+          </div>
 
-        <div class="pd-caps">
+          <div class="pd-carousel" data-carousel>
+            <div class="pd-track">
           <article class="pd-cap">
             <span class="pd-cap-label pd-label-spacesight">Automated Detection &amp; Audit</span>
-            <h3 class="pd-cap-slogan">"Catch everything, without watching everything."</h3>
+            <h3 class="pd-cap-slogan"><span class="w" style="--i:0">"Catch</span> <span class="w" style="--i:1">everything,</span> <span class="pd-ready"><span class="w" style="--i:2">without</span> <span class="w" style="--i:3">watching</span> <span class="w" style="--i:4">everything."</span></span></h3>
             <p>SpaceSight audits your space continuously, using zero-shot AI detection that works the moment it's deployed — no training data, no setup lag. Just describe what to check in plain English ("check aisle 3 shelves every 90 minutes") and let it run.</p>
             <p>The same detection engine that flags a compliance gap also catches loitering, unauthorized access, or checkout anomalies in real time — so whether you're auditing operations or preventing loss, nothing slips through unnoticed.</p>
           </article>
           <article class="pd-cap">
             <span class="pd-cap-label pd-label-spacesight">SpaceClaw: Ask &amp; Find</span>
-            <h3 class="pd-cap-slogan">"Find any moment in seconds, just by asking."</h3>
+            <h3 class="pd-cap-slogan"><span class="w" style="--i:0">"Find</span> <span class="w" style="--i:1">any</span> <span class="w" style="--i:2">moment</span> <span class="pd-ready"><span class="w" style="--i:3">in</span> <span class="w" style="--i:4">seconds,</span></span> <span class="w" style="--i:5">just</span> <span class="w" style="--i:6">by</span> <span class="w" style="--i:7">asking."</span></h3>
             <p>Describe what you're looking for in plain language, and SpaceClaw pulls the exact clip — no scrubbing through hours of footage. Investigating an incident, resolving a dispute, or just confirming what happened at a specific time: what used to take an afternoon now takes seconds.</p>
             <p>And SpaceClaw doesn't just search on command — when it spots something on its own, it can dispatch a task straight to the right person's phone.</p>
           </article>
           <article class="pd-cap">
             <span class="pd-cap-label pd-label-spacesight">Intelligent Reporting</span>
-            <h3 class="pd-cap-slogan">"Your daily report, ready before you are."</h3>
+            <h3 class="pd-cap-slogan"><span class="w" style="--i:0">"Your</span> <span class="w" style="--i:1">daily</span> <span class="w" style="--i:2">report,</span> <span class="pd-ready"><span class="w" style="--i:3">ready</span> <span class="w" style="--i:4">before</span> <span class="w" style="--i:5">you</span> <span class="w" style="--i:6">are."</span></span></h3>
             <p>SpaceSight turns what it sees into a clear, structured report — compliance rates, foot traffic, stock levels — delivered automatically, on schedule. No manual compilation, no waiting.</p>
             <p>Beyond the numbers, it recommends what to do next: restock alerts, staffing adjustments, loss-prevention flags — so reports drive action instead of sitting unread in an inbox.</p>
           </article>
+            </div>
+            <div class="pd-carousel-nav">
+              <button type="button" class="pd-arrow" data-prev aria-label="Previous capability">
+                <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M10.5 2.5 5 8l5.5 5.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="pd-dots"></div>
+              <button type="button" class="pd-arrow" data-next aria-label="Next capability">
+                <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M5.5 2.5 11 8l-5.5 5.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+            </div>
+          </div>
         </div>
 
         <div class="pd-cta">
@@ -105,33 +87,46 @@ const extraSchema = [
       <div class="container">
         <div class="pd-head">
           <span class="pd-chip pd-chip-echo">Echo · Hears</span>
-          <h2 class="pd-headline">Hear what matters — and never lose it in the noise.</h2>
+          <h2 class="pd-headline"><span class="wm"><span class="w" style="--i:0">Hear</span></span> <span class="wm"><span class="w" style="--i:1">what</span></span> <span class="wm"><span class="w" style="--i:2">matters</span></span> <span class="wm"><span class="w" style="--i:3">—</span></span> <span class="wm"><span class="w" style="--i:4">and</span></span> <span class="pd-ready"><span class="wm"><span class="w" style="--i:5">never</span></span> <span class="wm"><span class="w" style="--i:6">lose</span></span> <span class="wm"><span class="w" style="--i:7">it</span></span> <span class="wm"><span class="w" style="--i:8">in</span></span> <span class="wm"><span class="w" style="--i:9">the</span></span> <span class="wm"><span class="w" style="--i:10">noise.</span></span></span></h2>
           <p class="pd-subhead">Echo captures and understands the communication behind your operations, feeding straight into our AI for instant, decision-ready insight.</p>
         </div>
 
-        <div class="pd-media">
-          <video src="/products/echo-demo-eng.mp4" poster="/products/echo-demo-poster.jpg" autoplay muted loop controls preload="metadata" playsinline aria-label="Echo product demo"></video>
-        </div>
+        <div class="pd-showcase">
+          <div class="pd-media">
+            <video src="/products/echo-demo-eng.mp4" poster="/products/echo-demo-poster.jpg" autoplay muted loop controls preload="metadata" playsinline aria-label="Echo product demo"></video>
+          </div>
 
-        <div class="pd-caps">
+          <div class="pd-carousel" data-carousel>
+            <div class="pd-track">
           <article class="pd-cap">
             <span class="pd-cap-label pd-label-echo">Always-On Capture</span>
-            <h3 class="pd-cap-slogan">"Every conversation, captured without lifting a finger."</h3>
+            <h3 class="pd-cap-slogan"><span class="w" style="--i:0">"Every</span> <span class="w" style="--i:1">conversation,</span> <span class="w" style="--i:2">captured</span> <span class="pd-ready"><span class="w" style="--i:3">without</span> <span class="w" style="--i:4">lifting</span> <span class="w" style="--i:5">a</span> <span class="w" style="--i:6">finger."</span></span></h3>
             <p>Echo wearables (Pin or Buds) capture conversations hands-free, with directional audio that stays clear even in noisy environments. Every interaction is automatically recorded and structured in real time — no manual note-taking, nothing lost.</p>
             <p>With support for 30+ languages and real-time translation, your team can capture and understand conversations wherever business happens, in whatever language it happens in.</p>
           </article>
           <article class="pd-cap">
             <span class="pd-cap-label pd-label-echo">Custom Analytics Engine</span>
-            <h3 class="pd-cap-slogan">"Insight tuned to how your industry actually works."</h3>
+            <h3 class="pd-cap-slogan"><span class="w" style="--i:0">"Insight</span> <span class="w" style="--i:1">tuned</span> <span class="w" style="--i:2">to</span> <span class="pd-ready"><span class="w" style="--i:3">how</span> <span class="w" style="--i:4">your</span> <span class="w" style="--i:5">industry</span> <span class="w" style="--i:6">actually</span> <span class="w" style="--i:7">works."</span></span></h3>
             <p>Echo doesn't apply a generic transcript template to every conversation — it analyzes against your industry's own knowledge graph, extracting what matters for healthcare, legal, finance, retail, and 100+ other specialized verticals.</p>
             <p>Configure your own analysis dimensions, or set a persona — like "Senior Sales Coach" — to review every conversation with specialized judgment.</p>
           </article>
           <article class="pd-cap">
             <span class="pd-cap-label pd-label-echo">EchoClaw: Hands-Free Execution</span>
-            <h3 class="pd-cap-slogan">"Say it once. Consider it done."</h3>
+            <h3 class="pd-cap-slogan"><span class="w" style="--i:0">"Say</span> <span class="w" style="--i:1">it</span> <span class="w" style="--i:2">once."</span> <span class="pd-ready"><span class="w" style="--i:3">Consider</span> <span class="w" style="--i:4">it</span> <span class="w" style="--i:5">done."</span></span></h3>
             <p>Echo doesn't stop at understanding — it acts. A single voice command ("send the meeting summary to the client") triggers Echo to handle it automatically, connecting directly to your CRM, ERP, and other tools without manual data entry.</p>
             <p>This is where conversation becomes action — the same execution layer that powers the rest of the AI story across the platform.</p>
           </article>
+            </div>
+            <div class="pd-carousel-nav">
+              <button type="button" class="pd-arrow" data-prev aria-label="Previous capability">
+                <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M10.5 2.5 5 8l5.5 5.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="pd-dots"></div>
+              <button type="button" class="pd-arrow" data-next aria-label="Next capability">
+                <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M5.5 2.5 11 8l-5.5 5.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+            </div>
+          </div>
         </div>
 
         <div class="pd-cta">
@@ -143,6 +138,7 @@ const extraSchema = [
     <IntegratedPlatformSection />
     <CapabilitiesSection showFeatures={false} />
     <HardwareSection />
+    <TrustBand />
     <CasesSection />
 
     <CTASection />
@@ -150,117 +146,144 @@ const extraSchema = [
   <Footer />
 </Layout>
 
+<script>
+  document.querySelectorAll('[data-carousel]').forEach((root) => {
+    const track = root.querySelector('.pd-track');
+    const slides = track.children.length;
+    const dotsWrap = root.querySelector('.pd-dots');
+    let index = 0;
+    let timer;
+
+    for (let n = 0; n < slides; n++) {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'pd-dot';
+      dot.setAttribute('aria-label', `Go to capability ${n + 1}`);
+      dot.addEventListener('click', () => go(n, true));
+      dotsWrap.appendChild(dot);
+    }
+    const dots = [...dotsWrap.children];
+
+    function go(n, manual) {
+      index = (n + slides) % slides;
+      track.style.transform = `translateX(-${index * 100}%)`;
+      [...track.children].forEach((c, k) => c.classList.toggle('is-live', k === index));
+      dots.forEach((d, k) => d.classList.toggle('is-active', k === index));
+      if (manual) restart();
+    }
+
+    function restart() {
+      clearInterval(timer);
+      timer = setInterval(() => go(index + 1), 6000);
+    }
+
+    root.querySelector('[data-prev]').addEventListener('click', () => go(index - 1, true));
+    root.querySelector('[data-next]').addEventListener('click', () => go(index + 1, true));
+    root.addEventListener('mouseenter', () => clearInterval(timer));
+    root.addEventListener('mouseleave', restart);
+
+    go(0);
+    restart();
+  });
+
+  /* Section heads: play the scan-in once when the headline enters view */
+  const headObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-live');
+        headObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.35 });
+
+  document.querySelectorAll('.pd-head').forEach((head) => headObserver.observe(head));
+</script>
+
 <style>
-  .products-intro {
-    padding-top: calc(var(--space-xxl, 8rem) + var(--header-height, 60px));
-    padding-bottom: var(--space-xl);
-    text-align: center;
-  }
-
-  .products-intro h1 {
-    font-family: var(--font-display);
-    font-size: clamp(2.8rem, 7vw, 5.5rem);
-    font-weight: 700;
-    letter-spacing: -0.04em;
-    line-height: 1.05;
-    margin: 0 0 var(--space-sm);
-    text-wrap: balance;
-  }
-
-  .products-intro .section-head p {
-    font-size: clamp(1.1rem, 2vw, 1.4rem);
-    line-height: 1.5;
-    margin-inline: auto;
+  /* First section now carries the fixed-header offset */
+  main > .pd:first-child {
+    padding-top: calc(var(--space-xl, 5rem) + var(--header-height, 60px));
   }
 
   @media (max-width: 720px) {
-    .products-intro {
-      padding-top: calc(var(--space-xl) + var(--header-height, 60px));
+    main > .pd:first-child {
+      padding-top: calc(var(--space-lg, 3rem) + var(--header-height, 60px));
     }
   }
 
-  /* Loop connector: four beats of the operational intelligence loop */
-  .loop-steps {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: clamp(var(--space-md), 3vw, var(--space-lg));
+  /* Headline scan-in: words rise out of per-word masks, then a marker sweep
+     underlines the payoff clause. Triggered once by IntersectionObserver (.is-live
+     on .pd-head); default state fully visible. */
+  .pd-head .wm {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: top;
+    padding-bottom: 0.12em; /* descender room during the rise */
+    margin-bottom: -0.12em;
   }
 
-  .loop-step {
-    position: relative;
-    border-top: 1px solid rgba(15, 23, 42, 0.14);
-    padding-top: var(--space-md);
+  .pd-head .w {
+    display: inline-block;
   }
 
-  .loop-step::before {
-    content: '';
-    position: absolute;
-    top: -5px;
-    left: 0;
-    width: 9px;
-    height: 9px;
-    border-radius: 999px;
-    background: var(--loop-color);
+  .pd-head .pd-ready {
+    color: var(--ready-ink, #8A6D00); /* signal hue darkened for ≥3:1 on the marker wash */
+    background-image: linear-gradient(to top, var(--ready-mark, rgba(255, 210, 63, 0.4)) 36%, transparent 36%);
+    background-repeat: no-repeat;
+    background-size: 0% 100%;
   }
 
-  .loop-step:not(:last-child)::after {
-    content: '';
-    position: absolute;
-    top: -4px;
-    right: 0;
-    width: 7px;
-    height: 7px;
-    border-top: 1px solid rgba(15, 23, 42, 0.35);
-    border-right: 1px solid rgba(15, 23, 42, 0.35);
-    transform: rotate(45deg);
+  #echo .pd-head .pd-ready {
+    --ready-mark: rgba(0, 229, 255, 0.35);
+    --ready-ink: #0E7490;
   }
 
-  .loop-step-label {
-    display: block;
-    font-family: 'Space Mono', monospace;
-    font-size: 0.85rem;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    margin-bottom: 0.5rem;
+  /* Echo voice: words resolve out of blur — signal settling out of noise */
+  #echo .pd-head.is-live .w {
+    animation-name: pd-rise-voice;
   }
 
-  .loop-step p {
-    margin: 0;
-    font-size: 0.95rem;
-    line-height: 1.6;
-    color: var(--text-secondary);
+  @keyframes pd-rise-voice {
+    from {
+      transform: translateY(110%);
+      filter: blur(5px);
+    }
   }
 
-  @media (max-width: 860px) {
-    .loop-steps {
-      grid-template-columns: 1fr;
-      gap: var(--space-lg);
-      max-width: 34rem;
-      margin-inline: auto;
+  .pd-head.is-live .w {
+    animation: pd-rise 0.65s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+    animation-delay: calc(var(--i, 0) * 80ms + 60ms);
+  }
+
+  .pd-head.is-live .pd-ready {
+    transition: background-size 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.95s;
+    background-size: 100% 100%;
+  }
+
+  .pd-head.is-live .pd-chip {
+    animation: pd-word-in 0.45s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+  }
+
+  .pd-head.is-live .pd-subhead {
+    animation: pd-word-in 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.55s backwards;
+  }
+
+  @keyframes pd-rise {
+    from {
+      transform: translateY(110%);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pd-head.is-live .w,
+    .pd-head.is-live .pd-chip,
+    .pd-head.is-live .pd-subhead {
+      animation: none;
     }
 
-    .loop-step {
-      border-top: none;
-      border-left: 1px solid rgba(15, 23, 42, 0.14);
-      padding-top: 0;
-      padding-left: var(--space-md);
-    }
-
-    .loop-step::before {
-      top: 0.3rem;
-      left: -5px;
-    }
-
-    .loop-step:not(:last-child)::after {
-      top: auto;
-      bottom: -12px;
-      right: auto;
-      left: -4px;
-      transform: rotate(135deg);
+    .pd-head.is-live .pd-ready {
+      transition: none;
+      background-size: 100% 100%;
     }
   }
 
@@ -337,13 +360,93 @@ const extraSchema = [
     display: block;
   }
 
-  /* Capabilities: typographic triplet, no imagery */
-  .pd-caps {
+  /* Showcase: video left, capability carousel right, one row */
+  .pd-showcase {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
     gap: clamp(var(--space-md), 3vw, var(--space-lg));
-    margin-top: var(--space-xl);
+    align-items: stretch;
+    margin-top: var(--space-lg);
   }
+
+  .pd-showcase .pd-media {
+    margin: 0;
+    max-width: none;
+    min-width: 0;
+    aspect-ratio: auto; /* ratio off in row layout — both axes stretch, video object-fit cover fills */
+  }
+
+  .pd-carousel {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    overflow: hidden;
+    padding-top: 4px; /* room for card hover lift */
+  }
+
+  .pd-track {
+    display: flex;
+    height: 100%;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .pd-track .pd-cap {
+    flex: 0 0 100%;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .pd-carousel-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.9rem;
+    margin-top: var(--space-sm);
+  }
+
+  .pd-arrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 999px;
+    border: 1px solid rgba(15, 23, 42, 0.16);
+    background: transparent;
+    color: var(--text);
+    cursor: pointer;
+    transition: border-color 0.25s ease, background 0.25s ease;
+  }
+
+  .pd-arrow:hover {
+    border-color: var(--cap-accent, rgba(15, 23, 42, 0.4));
+    background: rgba(15, 23, 42, 0.04);
+  }
+
+  .pd-dots {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  :global(.pd-dot) {
+    width: 7px;
+    height: 7px;
+    border-radius: 999px;
+    border: none;
+    padding: 0;
+    background: rgba(15, 23, 42, 0.18);
+    cursor: pointer;
+    transition: background 0.25s ease, transform 0.25s ease;
+  }
+
+  :global(.pd-dot.is-active) {
+    background: var(--cap-accent, var(--text));
+    transform: scale(1.35);
+  }
+
+  #spacesight .pd-carousel { --cap-dot: #FFD23F; --cap-accent: #B8860B; }
+  #echo .pd-carousel { --cap-dot: #00E5FF; --cap-accent: #0E7490; }
 
   .pd-cap {
     position: relative;
@@ -437,15 +540,75 @@ const extraSchema = [
     margin-bottom: 0;
   }
 
+  /* Slogan compile: words arrive one by one, then a marker sweep underlines the takeaway.
+     Triggered by .is-live (set on the active carousel slide); default state fully visible. */
+  .pd-cap .w {
+    display: inline-block;
+  }
+
+  .pd-cap .pd-ready {
+    background-image: linear-gradient(to top, var(--ready-mark, rgba(255, 210, 63, 0.45)) 42%, transparent 42%);
+    background-repeat: no-repeat;
+    background-size: 0% 100%;
+  }
+
+  #spacesight .pd-cap { --ready-mark: rgba(255, 210, 63, 0.45); }
+  #echo .pd-cap { --ready-mark: rgba(0, 229, 255, 0.32); }
+
+  .pd-cap.is-live .w {
+    animation: pd-word-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+    animation-delay: calc(var(--i, 0) * 70ms + 50ms);
+  }
+
+  .pd-cap.is-live .pd-ready {
+    transition: background-size 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.75s;
+    background-size: 100% 100%;
+  }
+
+  .pd-cap.is-live .pd-cap-label {
+    animation: pd-word-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+  }
+
+  .pd-cap.is-live p {
+    animation: pd-word-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.3s backwards;
+  }
+
+  .pd-cap.is-live p + p {
+    animation-delay: 0.42s;
+  }
+
+  @keyframes pd-word-in {
+    from {
+      opacity: 0;
+      transform: translateY(0.4em);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pd-cap.is-live .w,
+    .pd-cap.is-live .pd-cap-label,
+    .pd-cap.is-live p {
+      animation: none;
+    }
+
+    .pd-cap.is-live .pd-ready {
+      transition: none;
+      background-size: 100% 100%;
+    }
+  }
+
   .pd-cta {
     margin-top: var(--space-lg);
     text-align: center;
   }
 
   @media (max-width: 860px) {
-    .pd-caps {
+    .pd-showcase {
       grid-template-columns: 1fr;
-      gap: var(--space-lg);
+    }
+
+    .pd-showcase .pd-media {
+      aspect-ratio: 16 / 9;
     }
   }
 </style>
