@@ -9,34 +9,29 @@
     </div>
 
     <div class="solution-panels">
-      <div class="solution-panel" data-panel="spacesight">        <div class="solution-media">
-          <video src="/hero/spacesight-sees.mp4" poster="/hero/spacesight-sees-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="SpaceSight monitoring demo"></video>
-          <canvas class="solution-matrix" aria-hidden="true"></canvas>
-          <span class="solution-chip solution-chip-spacesight">SpaceSight · Sees</span>
-          <span class="solution-standby" aria-hidden="true">Standby</span>
-          <div class="solution-overlay" aria-hidden="true">
-            <p class="solution-word solution-word-long"><span class="hl-vision">SpaceSight</span> monitors your operations in <span class="hl-vision">real time</span>.</p>
+      <div class="solution-panel" data-panel="spacesight" tabindex="0" role="button" aria-label="SpaceSight card — activate to watch the demo">
+        <div class="solution-flip">
+          <div class="solution-face solution-front">
+            <span class="solution-chip solution-chip-spacesight">SpaceSight · Sees</span>
+            <p class="solution-word"><span class="hl-vision">SpaceSight</span> monitors your operations in <span class="hl-vision">real time</span>.</p>
+            <span class="solution-hint">Hover or tap to watch</span>
+          </div>
+          <div class="solution-face solution-back">
+            <video src="/hero/spacesight-sees.mp4" poster="/hero/spacesight-sees-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="SpaceSight monitoring demo"></video>
           </div>
         </div>
       </div>
 
-      <div class="solution-panel" data-panel="echo">
-        <div class="solution-media">
-          <video src="/hero/echo-hears.mp4" poster="/hero/echo-hears-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Echo voice capture demo"></video>
-          <canvas class="solution-matrix" aria-hidden="true"></canvas>
-          <span class="solution-chip solution-chip-echo">Echo · Hears</span>
-          <span class="solution-standby" aria-hidden="true">Standby</span>
-          <div class="solution-overlay" aria-hidden="true">
-            <p class="solution-word solution-word-long"><span class="hl-voice">Echo</span> captures the <span class="hl-voice">communication</span> around it.</p>
+      <div class="solution-panel" data-panel="echo" tabindex="0" role="button" aria-label="Echo card — activate to watch the demo">
+        <div class="solution-flip">
+          <div class="solution-face solution-front">
+            <span class="solution-chip solution-chip-echo">Echo · Hears</span>
+            <p class="solution-word"><span class="hl-voice">Echo</span> captures the <span class="hl-voice">communication</span> around it.</p>
+            <span class="solution-hint">Hover or tap to watch</span>
           </div>
-        </div>
-      </div>
-
-      <div class="merge-overlay" aria-hidden="true">
-        <div class="merge-line">
-          <p class="merge-word">Decide</p>
-          <p class="merge-sub">Clear insight, instantly</p>
-          <p class="merge-body">That data flows straight into our <span class="hl-fusion">AI</span>, which analyzes it instantly — turning raw signals into clear, <span class="hl-fusion">decision-ready insight</span> for the people who need to act on it.</p>
+          <div class="solution-face solution-back">
+            <video src="/hero/echo-hears.mp4" poster="/hero/echo-hears-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Echo voice capture demo"></video>
+          </div>
         </div>
       </div>
     </div>
@@ -64,58 +59,88 @@
   }
 
   .solution-panels {
-    position: relative;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: var(--space-md);
     max-width: 1100px;
     margin-inline: auto;
-    transition: gap 0.9s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  .solution-media {
+  .solution-panel {
+    perspective: 1400px;
+    border-radius: var(--radius);
+    cursor: pointer;
+    outline: none;
+  }
+
+  .solution-panel:focus-visible {
+    outline: 3px solid #00E5FF;
+    outline-offset: 3px;
+  }
+
+  .solution-flip {
     position: relative;
+    aspect-ratio: 16 / 10;
+    transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(0.3, 0.7, 0.25, 1);
+  }
+
+  .solution-panel:hover .solution-flip,
+  .solution-panel:focus-visible .solution-flip,
+  .solution-panel.is-flipped .solution-flip {
+    transform: rotateY(180deg);
+  }
+
+  .solution-face {
+    position: absolute;
+    inset: 0;
     border-radius: var(--radius);
     overflow: hidden;
-    background: var(--bg-dark);
-    aspect-ratio: 16 / 10;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06), inset 0 0 0 1px rgba(248, 247, 244, 0.07);
-    transform: scale(0.985);
-    transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.9s ease, border-radius 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
   }
 
-  .solution-media video {
+  /* Front: text card on detector ink, product-colored orbital rings */
+  .solution-front {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.9rem;
+    text-align: center;
+    padding: var(--space-md);
+    background: var(--bg-dark, #0B1020);
+    border: 1px solid rgba(248, 247, 244, 0.08);
+  }
+
+  .solution-front::before,
+  .solution-front::after {
+    content: '';
     position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    filter: brightness(0);
-    transition: filter 2.2s cubic-bezier(0.25, 0.6, 0.3, 1);
+    border-radius: 999px;
+    border: 1.5px solid var(--panel-ring);
+    pointer-events: none;
   }
 
-  .solution-matrix {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    width: 100%;
-    height: 100%;
-    display: block;
-    opacity: 0.85;
-    transition: opacity 0.9s ease;
+  .solution-front::before {
+    top: -90px;
+    right: -90px;
+    width: 220px;
+    height: 220px;
   }
 
-  .solution-panel.is-lit .solution-matrix,
-  .solution-panel.is-reading .solution-matrix {
-    opacity: 0;
+  .solution-front::after {
+    top: -44px;
+    right: -44px;
+    width: 128px;
+    height: 128px;
+    opacity: 0.55;
   }
+
+  [data-panel="spacesight"] .solution-front { --panel-ring: rgba(255, 210, 63, 0.35); }
+  [data-panel="echo"] .solution-front { --panel-ring: rgba(0, 229, 255, 0.4); }
 
   .solution-chip {
-    position: absolute;
-    top: var(--space-sm);
-    left: var(--space-sm);
-    z-index: 3;
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
@@ -125,10 +150,10 @@
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: #F8F7F4;
-    background: rgba(11, 16, 32, 0.72);
+    background: rgba(248, 247, 244, 0.06);
+    border: 1px solid rgba(248, 247, 244, 0.12);
     border-radius: 999px;
     padding: 0.35rem 0.8rem;
-    transition: opacity 0.6s ease;
   }
 
   .solution-chip::before {
@@ -141,278 +166,59 @@
   .solution-chip-spacesight::before { background: #FFD23F; }
   .solution-chip-echo::before { background: #00E5FF; }
 
-  .solution-standby {
-    position: absolute;
-    right: var(--space-sm);
-    bottom: var(--space-sm);
-    z-index: 3;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.45rem;
-    font-family: 'Space Mono', monospace;
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: rgba(248, 247, 244, 0.38);
-    opacity: 1;
-    transition: opacity 0.6s ease;
-  }
-
-  .solution-standby::before {
-    content: '';
-    width: 6px;
-    height: 6px;
-    border-radius: 999px;
-    background: rgba(248, 247, 244, 0.28);
-  }
-
-  [data-panel="spacesight"] .solution-standby::before { background: rgba(255, 210, 63, 0.55); }
-  [data-panel="echo"] .solution-standby::before { background: rgba(0, 229, 255, 0.55); }
-
-  .solution-panel.is-lit .solution-standby,
-  .solution-panel.is-reading .solution-standby {
-    opacity: 0;
-  }
-
-  .solution-panel.is-lit .solution-chip::before {
-    animation: chip-pulse 1.6s ease-in-out infinite;
-  }
-
-  @keyframes chip-pulse {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(248, 247, 244, 0.35); }
-    50% { box-shadow: 0 0 0 5px rgba(248, 247, 244, 0); }
-  }
-
-  .solution-overlay {
-    position: absolute;
-    inset: 0;
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 0.4rem;
-    text-align: center;
-    padding: var(--space-md);
-    background: rgba(11, 16, 32, 0);
-    opacity: 0;
-    transition: opacity 0.8s ease, background 0.8s ease;
-  }
-
   .solution-word {
     font-family: var(--font-display);
-    font-size: clamp(2rem, 4.5vw, 3.5rem);
-    font-weight: 700;
-    letter-spacing: -0.04em;
-    line-height: 1.05;
-    color: #F8F7F4;
-    margin: 0;
-    transform: translateY(14px);
-    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .solution-word-long {
     font-size: clamp(1.3rem, 2.4vw, 2rem);
+    font-weight: 700;
     letter-spacing: -0.02em;
     line-height: 1.25;
     max-width: 24ch;
-  }
-
-  .hl-vision {
-    color: #FFD23F;
-  }
-
-  .hl-voice {
-    color: #00E5FF;
-  }
-
-  .hl-fusion {
-    color: #FF4D8D;
-    font-weight: 600;
-  }
-
-  .solution-sub {
-    font-size: clamp(0.95rem, 1.6vw, 1.15rem);
-    color: rgba(248, 247, 244, 0.82);
+    color: #F8F7F4;
     margin: 0;
-    transform: translateY(14px);
-    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.08s;
   }
 
-  /* Lit state: panel takes focus */
-  .solution-panel.is-lit .solution-media {
-    transform: scale(1);
-  }
+  .hl-vision { color: #FFD23F; }
+  .hl-voice { color: #00E5FF; }
 
-  .solution-panel.is-lit .solution-media video {
-    filter: brightness(1) saturate(1);
-  }
-
-  .solution-panel.is-lit[data-panel="spacesight"] .solution-media {
-    box-shadow: 0 24px 48px -16px rgba(255, 210, 63, 0.38), 0 6px 16px rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(255, 210, 63, 0.55);
-  }
-
-  .solution-panel.is-lit[data-panel="echo"] .solution-media {
-    box-shadow: 0 24px 48px -16px rgba(0, 229, 255, 0.35), 0 6px 16px rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(0, 229, 255, 0.55);
-  }
-
-  /* Reading state: video dims, message surfaces */
-  .solution-panel.is-reading .solution-media {
-    transform: scale(1);
-  }
-
-  .solution-panel.is-reading[data-panel="spacesight"] .solution-media {
-    box-shadow: 0 24px 48px -16px rgba(255, 210, 63, 0.3), 0 6px 16px rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(255, 210, 63, 0.45);
-  }
-
-  .solution-panel.is-reading[data-panel="echo"] .solution-media {
-    box-shadow: 0 24px 48px -16px rgba(0, 229, 255, 0.28), 0 6px 16px rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(0, 229, 255, 0.45);
-  }
-
-  .solution-panel.is-reading .solution-media video {
-    filter: brightness(0.9) saturate(0.9);
-  }
-
-  .solution-panel.is-reading .solution-overlay {
-    opacity: 1;
-    background: linear-gradient(180deg, rgba(11, 16, 32, 0.18) 0%, rgba(11, 16, 32, 0.55) 55%, rgba(11, 16, 32, 0.78) 100%);
-  }
-
-  .solution-panel.is-reading .solution-word,
-  .solution-panel.is-reading .solution-sub {
-    transform: translateY(0);
-  }
-
-  /* Merged finale: two panels fuse into one solution */
-  .solution-panels.is-merged {
-    gap: 0;
-  }
-
-  .solution-panels.is-merged .solution-media {
-    transform: scale(1);
-  }
-
-  .solution-panels.is-merged .solution-media video {
-    filter: brightness(0.85) saturate(0.95);
-  }
-
-  .solution-panels.is-merged .solution-matrix,
-  .solution-panels.is-merged .solution-standby {
-    opacity: 0;
-  }
-
-  .solution-panels.is-merged [data-panel="spacesight"] .solution-media {
-    border-radius: var(--radius) 0 0 var(--radius);
-    box-shadow: 0 24px 48px -16px rgba(255, 210, 63, 0.3), 0 6px 16px rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(255, 210, 63, 0.4);
-  }
-
-  .solution-panels.is-merged [data-panel="echo"] .solution-media {
-    border-radius: 0 var(--radius) var(--radius) 0;
-    box-shadow: 0 24px 48px -16px rgba(0, 229, 255, 0.28), 0 6px 16px rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(0, 229, 255, 0.4);
-  }
-
-  .merge-overlay {
-    position: absolute;
-    inset: 0;
-    z-index: 5;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: var(--space-md);
-    border-radius: var(--radius);
-    background: rgba(11, 16, 32, 0.55);
-    opacity: 0;
-    transition: opacity 0.9s ease 0.35s;
-    pointer-events: none;
-  }
-
-  .solution-panels.is-merged .merge-overlay {
-    opacity: 1;
-  }
-
-  .merge-line {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-    margin: 0;
-    text-align: center;
-    transform: translateY(16px);
-    transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.45s;
-  }
-
-  .solution-panels.is-merged .merge-line {
-    transform: translateY(0);
-  }
-
-  .merge-word {
-    font-family: var(--font-display);
-    font-size: clamp(2.2rem, 5vw, 3.8rem);
+  .solution-hint {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.68rem;
     font-weight: 700;
-    letter-spacing: -0.04em;
-    line-height: 1.05;
-    color: #FF4D8D;
-    margin: 0;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(248, 247, 244, 0.4);
   }
 
-  .merge-sub {
-    font-size: clamp(0.95rem, 1.6vw, 1.15rem);
-    color: rgba(248, 247, 244, 0.82);
-    margin: 0;
+  /* Back: video */
+  .solution-back {
+    transform: rotateY(180deg);
+    background: var(--bg-dark, #0B1020);
   }
 
-  .merge-body {
-    max-width: 56ch;
-    font-size: clamp(1rem, 1.5vw, 1.15rem);
-    line-height: 1.6;
-    color: rgba(248, 247, 244, 0.68);
-    margin: 0.25rem 0 0;
+  .solution-back video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  [data-panel="spacesight"] .solution-back {
+    box-shadow: inset 0 0 0 1px rgba(255, 210, 63, 0.5);
+  }
+
+  [data-panel="echo"] .solution-back {
+    box-shadow: inset 0 0 0 1px rgba(0, 229, 255, 0.5);
   }
 
   @media (max-width: 720px) {
     .solution-panels {
       grid-template-columns: 1fr;
     }
-
-    .solution-panels.is-merged [data-panel="spacesight"] .solution-media {
-      border-radius: var(--radius) var(--radius) 0 0;
-    }
-
-    .solution-panels.is-merged [data-panel="echo"] .solution-media {
-      border-radius: 0 0 var(--radius) var(--radius);
-    }
-
-    .solution-panels.is-merged .solution-chip {
-      opacity: 0;
-    }
   }
 
-  /* Reduced motion: no sequence — both messages stay readable */
   @media (prefers-reduced-motion: reduce) {
-    .solution-media {
-      transform: none;
+    .solution-flip {
       transition: none;
-    }
-    .solution-media video {
-      filter: none;
-      transition: none;
-    }
-    .solution-overlay {
-      opacity: 1;
-      background: rgba(11, 16, 32, 0.55);
-      transition: none;
-    }
-    .solution-word,
-    .solution-sub {
-      transform: none;
-      transition: none;
-    }
-    .solution-standby {
-      display: none;
-    }
-    .solution-matrix {
-      display: none;
     }
   }
 </style>
@@ -421,142 +227,18 @@
   (function () {
     'use strict';
 
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    /* Touch + keyboard flip (hover/focus handled in CSS) */
+    document.querySelectorAll('.solution-panel').forEach((panel) => {
+      panel.addEventListener('click', () => {
+        panel.classList.toggle('is-flipped');
+      });
 
-    const panels = Array.from(document.querySelectorAll('.solution-panel'));
-    if (panels.length < 2) return;
-
-    const LIT_MS = 3200;
-    const READ_MS = 3400;
-    const GAP_MS = 500;
-    const MERGE_MS = 7000;
-
-    let timer = null;
-    let step = 0;
-
-    const container = document.querySelector('.solution-panels');
-
-    function clearStates() {
-      panels.forEach(p => p.classList.remove('is-lit', 'is-reading'));
-      container.classList.remove('is-merged');
-    }
-
-    function runStep() {
-      clearStates();
-      const panel = panels[step % panels.length];
-      panel.classList.add('is-lit');
-
-      timer = setTimeout(() => {
-        panel.classList.remove('is-lit');
-        panel.classList.add('is-reading');
-
-        timer = setTimeout(() => {
-          panel.classList.remove('is-reading');
-          step += 1;
-
-          if (step % panels.length === 0) {
-            container.classList.add('is-merged');
-            timer = setTimeout(() => {
-              container.classList.remove('is-merged');
-              timer = setTimeout(runStep, GAP_MS);
-            }, MERGE_MS);
-          } else {
-            timer = setTimeout(runStep, GAP_MS);
-          }
-        }, READ_MS);
-      }, LIT_MS);
-    }
-
-    function start() {
-      if (timer) return;
-      runStep();
-    }
-
-    function stop() {
-      clearTimeout(timer);
-      timer = null;
-      clearStates();
-    }
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          start();
-        } else {
-          stop();
+      panel.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          panel.classList.toggle('is-flipped');
         }
       });
-    }, { threshold: 0.35 });
-
-    observer.observe(document.querySelector('.solution-panels'));
-  })();
-
-  /* Matrix rain on dormant panels */
-  (function () {
-    'use strict';
-
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-    const WORDS = {
-      spacesight: ['SEE', 'WATCH', 'DETECT', 'TRACK', 'SCAN', 'OBSERVE', 'VISION', 'FOCUS', 'CAPTURE', 'MOTION', 'FRAME', 'PIXEL'],
-      echo: ['HEAR', 'LISTEN', 'VOICE', 'AUDIO', 'SPEECH', 'SOUND', 'TONE', 'PITCH', 'DECIBEL', 'ECHO', 'TRANSCRIBE', 'FREQUENCY']
-    };
-    const FS = 14;
-
-    document.querySelectorAll('.solution-media').forEach(media => {
-      const canvas = media.querySelector('.solution-matrix');
-      const panel = media.closest('.solution-panel');
-      if (!canvas || !panel) return;
-
-      const words = WORDS[panel.dataset.panel] || WORDS.spacesight;
-      const ctx = canvas.getContext('2d');
-      let w = 0, h = 0, cols = 0, drops = [], lanes = [];
-
-      function newLane() {
-        return {
-          word: words[(Math.random() * words.length) | 0],
-          offset: (Math.random() * 24) | 0,
-          y: Math.random() * (h / FS)
-        };
-      }
-
-      function resize() {
-        w = canvas.width = media.clientWidth;
-        h = canvas.height = media.clientHeight;
-        cols = Math.ceil(w / FS);
-        lanes = Array.from({ length: cols }, newLane);
-        ctx.fillStyle = '#0B1020';
-        ctx.fillRect(0, 0, w, h);
-      }
-
-      resize();
-      window.addEventListener('resize', resize);
-
-      let last = 0;
-      function tick(t) {
-        requestAnimationFrame(tick);
-        if (t - last < 66) return;
-        last = t;
-        if (document.hidden) return;
-        if (panel.classList.contains('is-lit') || panel.classList.contains('is-reading')) return;
-        if (panel.closest('.solution-panels').classList.contains('is-merged')) return;
-
-        ctx.fillStyle = 'rgba(11, 16, 32, 0.1)';
-        ctx.fillRect(0, 0, w, h);
-        ctx.font = '700 ' + FS + "px 'Space Mono', monospace";
-
-        for (let i = 0; i < cols; i++) {
-          const lane = lanes[i];
-          const row = lane.y | 0;
-          const ch = lane.word[(row + lane.offset) % lane.word.length];
-          ctx.fillStyle = Math.random() > 0.975 ? '#8AFFC1' : 'rgba(0, 255, 106, 0.6)';
-          ctx.fillText(ch, i * FS, row * FS);
-          if (row * FS > h && Math.random() > 0.978) lanes[i] = Object.assign(newLane(), { y: 0 });
-          lane.y++;
-        }
-      }
-
-      requestAnimationFrame(tick);
     });
   })();
 </script>
