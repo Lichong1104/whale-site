@@ -2,7 +2,6 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import SpaceSightHero from '../components/SpaceSightHero.astro';
-import SpaceSightValueStream from '../components/SpaceSightValueStream.astro';
 import CTASection from '../components/CTASection.astro';
 import Footer from '../components/Footer.astro';
 
@@ -27,24 +26,176 @@ const extraSchema = [
   {
     '@type': 'BreadcrumbList',
     itemListElement: [
-      {
-        '@type': 'ListItem',
-        position: 1,
-        name: 'Home',
-        item: 'https://www.whale.sg/'
-      },
-      {
-        '@type': 'ListItem',
-        position: 2,
-        name: 'Products',
-        item: 'https://www.whale.sg/products/'
-      },
-      {
-        '@type': 'ListItem',
-        position: 3,
-        name: 'SpaceSight',
-        item: canonicalUrl
-      }
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.whale.sg/' },
+      { '@type': 'ListItem', position: 2, name: 'Products', item: 'https://www.whale.sg/products/' },
+      { '@type': 'ListItem', position: 3, name: 'SpaceSight', item: canonicalUrl }
+    ]
+  }
+];
+
+/* Content source: SpaceSight Handbook (2026 August Edition, BD draft) — 素材/SpaceSight-Handbook.md */
+
+const stats = [
+  { n: '1,600+', label: 'Global Enterprise Clients' },
+  { n: '45+', label: 'Countries Deployed' },
+  { n: '95%', label: 'Data Accuracy' },
+  { n: '2,000+', label: 'Anomalies Detected / day' }
+];
+
+const loopSteps = [
+  { verb: 'See', title: 'See everything 24/7', copy: 'VLM-powered monitoring across every zone and location.' },
+  { verb: 'Act', title: 'Act immediately', copy: 'Anomalies flagged, root causes traced, work orders dispatched in seconds.' },
+  { verb: 'Close', title: 'Close the loop', copy: 'Detection to resolution to review. One platform, no handoffs dropped.' }
+];
+
+const capabilities = [
+  {
+    name: 'AI Audit', title: 'Continuous Compliance Monitoring',
+    copy: 'VLM-based inspection monitors hygiene, planograms, safety signage, and SOP adherence 24/7. 40-minute inspections reduced to 2 minutes. Zero scene-specific training required.',
+    stat: '300% more compliance issues detected · 95%+ SOP accuracy',
+    media: '/hero/slide-1.png', mediaAlt: 'SpaceSight standards-audit dashboard over a live store camera view',
+    mediaW: 1280, mediaH: 568
+  },
+  {
+    name: 'SpaceClaw AI Agent', title: 'Full business loop from one question',
+    copy: 'Ask SpaceClaw why conversion dropped yesterday. It retrieves footage, identifies root cause, generates a work order, dispatches it, and compiles the network-wide review. No follow-up needed.',
+    stat: '70%+ AI recommendation adoption rate',
+    media: '/hero/slide-3.png', mediaAlt: 'SpaceClaw event triage — flagged incident with camera evidence attached',
+    mediaW: 1620, mediaH: 712
+  },
+  {
+    name: 'Footfall Analytics (ReID)', title: 'Traffic intelligence without facial recognition',
+    copy: 'Re-Identification tracks unique individuals across cameras using gait and clothing, not facial data. Captures passerby rate, entry rate, dwell time, and the full conversion funnel.',
+    stat: '95%+ accuracy · Privacy-compliant · No facial recognition',
+    media: '/hero/slide-2.png', mediaAlt: 'Showroom traffic analytics — visitor flow and zone counts in real time',
+    mediaW: 1624, mediaH: 716
+  },
+  {
+    name: 'Heatmap + POSM Audit', title: 'From zone dwell to display compliance',
+    copy: 'Real-time heatmaps reveal where customers stop, browse, and disengage. POSM audit flags signage and merchandising deviations the moment they occur, not on the next field visit.',
+    stat: 'Continuous coverage · Works on existing camera feeds',
+    media: '/hero/slide-4.png', mediaAlt: 'Department dwell heatmap — hot and cold zones across the floor',
+    mediaW: 1618, mediaH: 708
+  },
+  {
+    name: 'Customer Demographics', title: "Know exactly who's in your space",
+    copy: 'AI profiling by gender, age group, and visit group size. Powers targeted staffing, campaign planning, product placement, and personalized experience design.',
+    stat: '90%+ demographic accuracy',
+    panel: { big: '90%+', small: 'GENDER · AGE GROUP · PARTY SIZE' }
+  },
+  {
+    name: 'Reporting + Data Insights', title: 'Network-wide visibility in 30 seconds',
+    copy: 'AI-generated daily, weekly, and monthly reports replace hours of manual aggregation. Regional and C-level leadership see full network health on one screen. Benchmark any location in one click.',
+    stat: '95% less ops-meeting prep · 80% data-utilization lift',
+    panel: { big: '30s', small: 'DAILY · WEEKLY · MONTHLY — AUTO-COMPILED' }
+  }
+];
+
+const tiers = [
+  {
+    name: 'Small', ring: 0.45,
+    hardware: 'Whale Owl plug-and-play edge AI. No IT team or existing camera system required.',
+    deploy: 'Under 1 day',
+    caps: ['Footfall', 'Compliance audit', 'Safety alerts', 'Mobile reporting']
+  },
+  {
+    name: 'Medium', ring: 0.65,
+    hardware: 'AI Hub connects to existing cameras. No rip-and-replace.',
+    deploy: '1–3 days / site',
+    caps: ['Footfall + heatmap', 'Demographics', 'POSM audit', 'Chain-level reporting']
+  },
+  {
+    name: 'Large', ring: 0.85,
+    hardware: 'AI Camera-Hemi or AI Camera-Bullet (overhead) + AI Hub for multi-zone coverage.',
+    deploy: '1–2 weeks / batch',
+    caps: ['Full AI Audit', 'SpaceClaw', 'Cross-camera ReID', 'Network dashboard']
+  },
+  {
+    name: 'Enterprise', ring: 1,
+    hardware: 'Full suite — AI Camera-Hemi/Bullet + AI Hub + Stardust IoT across the full estate.',
+    deploy: '2–4 weeks end-to-end',
+    caps: ['Multi-zone flow analysis', '1M+ journey tracking', 'Brand attribution', 'Custom reporting']
+  }
+];
+
+const weeks = [
+  { when: 'Week 1', what: 'Site survey + hardware spec. Stardust IoT integration mapped.' },
+  { when: 'Week 2', what: 'Device install + AI model config. Zero scene-specific training needed.' },
+  { when: 'Week 3', what: 'Dashboard setup, KPI alignment, staff onboarding, mobile app rollout.' },
+  { when: 'Go-live', what: 'Full deployment. 100% service availability. <10 min response SLA.' }
+];
+
+const hardware = [
+  {
+    name: 'Whale Owl',
+    copy: 'Plug-and-play edge AI with built-in VLM. Ideal for compact or rapidly deployed spaces.',
+    img: 'https://whale-web.oss-cn-beijing.aliyuncs.com/2026-06-03/071445564.png', imgAlt: 'Whale Owl AI camera'
+  },
+  {
+    name: 'AI Hub',
+    copy: 'Connects to existing camera infrastructure. Runs edge AI on-premise. 60% more AI algorithm capacity.',
+    img: 'https://whale-web.oss-cn-beijing.aliyuncs.com/2025-09-18/164938569.png', imgAlt: 'AI Hub V2 edge compute unit'
+  },
+  {
+    name: 'AI Camera',
+    copy: 'Overhead AI cameras in two sizes: Hemi (dome) and Bullet (directional). For new installations.',
+    img: '/hardware/ai-cameras.png', imgAlt: 'Whale overhead AI cameras — Hemi dome and Bullet directional'
+  }
+];
+
+const certs = [
+  { img: '/cert-logos/soc2.png', alt: 'SOC 2 Type II', w: 117, h: 105 },
+  { img: '/cert-logos/gdpr.png', alt: 'GDPR Compliant', w: 60, h: 60 },
+  { img: '/cert-logos/iso27001.jpg', alt: 'ISO 27001', w: 74, h: 66 },
+  { img: '/cert-logos/iso9001.jpg', alt: 'ISO 9001', w: 75, h: 67 },
+  { img: '/cert-logos/cmmi.jpg', alt: 'CMMI Level 5', w: 82, h: 58 },
+  { img: '/cert-logos/imda.jpg', alt: 'SGD Accreditation', w: 219, h: 44 }
+];
+
+const cases = [
+  {
+    sector: 'SMALL · F&B', brand: 'ZUS Coffee',
+    headline: 'Managing 300 stores with 20 auditors nationwide.',
+    before: '20 auditors manually checking 300 stores monthly. Kitchen hygiene and pest activity invisible between visits. No centralized performance tracking.',
+    after: '600+ stores monitored continuously. VLM pest detection at 93% accuracy with real-time alerts. 20% audit improvement. Trends centralized for HQ.',
+    metrics: [
+      { n: '600', label: 'Stores Monitored' },
+      { n: '93%', label: 'Pest Detection Accuracy' },
+      { n: '+20%', label: 'Audit Efficiency' }
+    ]
+  },
+  {
+    sector: 'MEDIUM · EYEWEAR RETAIL', brand: 'JINS',
+    headline: 'Data-driven store layout for a high-frequency retail chain.',
+    before: 'No reliable footfall data. 20% of traffic was staff inflating KPIs. Layout and marketing decisions made without behavioral evidence.',
+    after: '95% footfall accuracy with ReID filtering out staff. 100% real-time visibility. Layout redesigned from zone dwell data. KPIs corrected, staff trust in data restored.',
+    metrics: [
+      { n: '95%', label: 'Footfall Accuracy' },
+      { n: '100%', label: 'Real-Time Visibility' },
+      { n: '-20%', label: 'KPI Inflation Removed' }
+    ]
+  },
+  {
+    sector: 'LARGE · BEAUTY CHAIN', brand: 'Watsons',
+    headline: '2,000+ stores. Existing CCTV. 80% audit cost reduction.',
+    before: 'Two separate systems, no unified view. Prior vendor cross-camera tracking failed across zones. Manual audit expensive and slow at 2,000+ location scale.',
+    after: 'Deployed on existing CCTV via AI Hub. 95% cross-camera shopper tracking with ReID. Full entry-to-exit journey mapped. Store audit cost down 80%, content audit cost down 95%.',
+    metrics: [
+      { n: '2,000+', label: 'Stores Deployed' },
+      { n: '80%', label: 'Audit Cost Reduction' },
+      { n: '95%', label: 'Shopper Tracking Accuracy' }
+    ]
+  },
+  {
+    sector: 'ENTERPRISE · DUTY FREE', brand: 'Zhuhai',
+    headline: '1.2M traveler journeys analyzed monthly.',
+    before: 'Layout decisions without footfall or heatmap data. Campaign ROI unknown. Traveler nationality and age mix invisible, limiting cross-sell planning.',
+    after: 'Hourly passenger-flow forecasts linked to shelf-dwell heatmaps. Demographic breakdown feeds the marketing calendar. Zone-to-zone flow analysis guides product adjacencies and staffing.',
+    metrics: [
+      { n: '1.2M', label: 'Journeys / Month' },
+      { n: '+22%', label: 'Entry Rate Lift' },
+      { n: '+17%', label: 'Premium SKU Sales' },
+      { n: '-10%', label: 'Queue Wait Time' }
     ]
   }
 ];
@@ -58,10 +209,225 @@ const extraSchema = [
   extraSchema={extraSchema}
 >
   <Header />
-  <main>
+  <main class="ss-page">
+    <!--
+      DIRECTION CONTRACT — /whale_spacesight/ product detail page
+      THESIS: the handbook's value loop rendered as one detector sweep — see everything,
+        act immediately, close the loop — then the evidence grid: capabilities, scale,
+        deployment, hardware, security, and four live-client proofs.
+      OWN-WORLD: Sensorium particle-detector system; SpaceSight's signal is track-vision
+        yellow (ink #A16207 on daylight, #FFD23F on ink stages). Mono reserved for data.
+      STORY: an ops leader lands from the products page, watches the demo, reads the loop,
+        matches their estate size to a tier, and books a demo believing deployment is weeks,
+        not quarters.
+      MEDIA: hero demo video (existing), 4 product-UI screenshots mapped to capabilities,
+        spacesight-sees loop in the value-loop stage, hardware imagery, cert logos.
+      CONTENT SOURCE: SpaceSight Handbook 2026 August Edition (素材/SpaceSight-Handbook.md).
+    -->
+
     <SpaceSightHero />
 
-    <SpaceSightValueStream />
+    <!-- Network proof strip -->
+    <section class="section ss-stats" aria-label="SpaceSight network scale">
+      <div class="container">
+        <dl class="ss-stats-row">
+          {stats.map((s) => (
+            <div class="ss-stat">
+              <dt class="ss-stat-label">{s.label}</dt>
+              <dd class="ss-stat-n">{s.n}</dd>
+            </div>
+          ))}
+        </dl>
+        <p class="ss-stats-note">Powered by Stardust IoT — 120+ device types connected · 530K+ edge devices managed · 99.999% availability</p>
+      </div>
+    </section>
+
+    <!-- The value loop -->
+    <section class="section section-tint ss-loop">
+      <div class="container">
+        <div class="section-head center">
+          <h2>See everything. Act immediately. Close the loop.</h2>
+          <p>One platform from detection to resolution to review — no handoffs dropped.</p>
+        </div>
+        <div class="ss-loop-grid">
+          <ol class="ss-loop-steps">
+            {loopSteps.map((step, i) => (
+              <li class="ss-loop-step">
+                <span class="ss-loop-marker" aria-hidden="true"><span class="ss-loop-verb">{step.verb}</span></span>
+                <div class="ss-loop-body">
+                  <h3 class="ss-loop-title">{step.title}</h3>
+                  <p class="ss-loop-copy">{step.copy}</p>
+                </div>
+                {i < loopSteps.length - 1 && <span class="ss-loop-link" aria-hidden="true" />}
+              </li>
+            ))}
+          </ol>
+          <div class="ss-loop-stage">
+            <video src="/hero/spacesight-sees.mp4" poster="/hero/spacesight-sees-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="SpaceSight live monitoring loop across store zones"></video>
+            <span class="viewfinder-corner viewfinder-corner-tl" aria-hidden="true" />
+            <span class="viewfinder-corner viewfinder-corner-tr" aria-hidden="true" />
+            <span class="viewfinder-corner viewfinder-corner-bl" aria-hidden="true" />
+            <span class="viewfinder-corner viewfinder-corner-br" aria-hidden="true" />
+            <span class="hud-chip hud-chip-live" aria-hidden="true"><span class="hud-live-dot" />LIVE</span>
+            <span class="hud-chip hud-chip-zone" aria-hidden="true">ALL ZONES</span>
+            <span class="hud-chip hud-chip-count" aria-hidden="true">24 / 7</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Capabilities -->
+    <section class="section ss-cap" aria-label="SpaceSight capabilities">
+      <div class="container">
+        <div class="section-head center">
+          <h2>Everything SpaceSight sees, knows, &amp; does.</h2>
+          <p>Six capabilities on one stream of space intelligence — powered by Whale's Business World Model, which reads cameras, sensors, and audio the way large language models read text.</p>
+        </div>
+        <div class="ss-cap-list">
+          {capabilities.map((cap, i) => (
+            <article class={`ss-cap-row${i % 2 === 1 ? ' ss-cap-flip' : ''}`}>
+              <div class="ss-cap-media">
+                {cap.media ? (
+                  <figure class="ss-cap-frame">
+                    <img src={cap.media} alt={cap.mediaAlt} width={cap.mediaW} height={cap.mediaH} loading="lazy" />
+                    <figcaption class="ss-cap-tag">{cap.name}</figcaption>
+                  </figure>
+                ) : (
+                  <div class="ss-cap-panel" role="img" aria-label={`${cap.name} — ${cap.stat}`}>
+                    <span class="ss-cap-panel-ring" aria-hidden="true" />
+                    <span class="ss-cap-panel-big" aria-hidden="true">{cap.panel.big}</span>
+                    <span class="ss-cap-panel-small" aria-hidden="true">{cap.panel.small}</span>
+                    <span class="ss-cap-tag ss-cap-tag-panel">{cap.name}</span>
+                  </div>
+                )}
+              </div>
+              <div class="ss-cap-copy">
+                <h3 class="ss-cap-title">{cap.title}</h3>
+                <p class="ss-cap-text">{cap.copy}</p>
+                <p class="ss-cap-stat">{cap.stat}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Scale tiers -->
+    <section class="section section-tint ss-scale">
+      <div class="container">
+        <div class="section-head center">
+          <h2>Built for every scale of operation.</h2>
+          <p>Deploys across any physical space and any existing infrastructure — calibrated to your operation.</p>
+        </div>
+        <div class="ss-tier-grid">
+          {tiers.map((t) => (
+            <article class="ss-tier">
+              <span class="ss-tier-ring" style={`--ring:${t.ring}`} aria-hidden="true" />
+              <h3 class="ss-tier-name">{t.name}</h3>
+              <p class="ss-tier-deploy">{t.deploy}</p>
+              <p class="ss-tier-hw">{t.hardware}</p>
+              <ul class="ss-tier-caps">
+                {t.caps.map((c) => <li>{c}</li>)}
+              </ul>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Deployment timeline -->
+    <section class="section ss-deploy">
+      <div class="container">
+        <div class="section-head center">
+          <h2>End-to-end deployment in three weeks.</h2>
+          <p>Zero scene-specific training — the Business World Model reads your floor from day one.</p>
+        </div>
+        <ol class="ss-weeks">
+          {weeks.map((w, i) => (
+            <li class="ss-week">
+              <span class="ss-week-dot" aria-hidden="true" />
+              <span class="ss-week-when">{w.when}</span>
+              <p class="ss-week-what">{w.what}</p>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    <!-- Hardware -->
+    <section class="section section-tint ss-hardware">
+      <div class="container">
+        <div class="section-head center">
+          <h2>Hardware options.</h2>
+          <p>Plug-and-play edge AI, an upgrade path for existing cameras, or overhead AI cameras for new builds.</p>
+        </div>
+        <div class="ss-hw-grid">
+          {hardware.map((h) => (
+            <article class="ss-hw">
+              <div class="ss-hw-media">
+                <img src={h.img} alt={h.imgAlt} loading="lazy" />
+              </div>
+              <h3 class="ss-hw-name">{h.name}</h3>
+              <p class="ss-hw-copy">{h.copy}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Security -->
+    <section class="section ss-security">
+      <div class="container">
+        <div class="section-head center">
+          <h2>Privacy engineered in, not bolted on.</h2>
+        </div>
+        <div class="ss-sec-grid">
+          <article class="ss-sec">
+            <h3>ReID — not facial recognition</h3>
+            <p>People tracking uses Re-Identification: body shape, gait, and clothing pattern matching. No biometric facial data is collected, stored, or processed at any point.</p>
+          </article>
+          <article class="ss-sec">
+            <h3>Edge AI — videos stay local</h3>
+            <p>All video processing happens on-device via Stardust's P2P-encrypted streams. Only metadata and anomaly events reach the cloud — an 80% bandwidth reduction.</p>
+          </article>
+        </div>
+        <ul class="ss-certs" aria-label="Certifications">
+          {certs.map((c) => (
+            <li class="ss-cert"><img src={c.img} alt={c.alt} width={c.w} height={c.h} loading="lazy" /></li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- Case studies -->
+    <section class="section ss-cases">
+      <div class="container">
+        <div class="section-head center">
+          <h2>Live clients. Real results.</h2>
+          <p>Four deployments, four scales — measured after go-live, not promised before it.</p>
+        </div>
+        <div class="ss-case-grid">
+          {cases.map((c) => (
+            <article class="ss-case">
+              <h3 class="ss-case-brand">{c.brand}<span class="ss-case-sector">{c.sector}</span></h3>
+              <p class="ss-case-headline">{c.headline}</p>
+              <div class="ss-case-ba">
+                <p><span class="ss-case-tag">Before</span>{c.before}</p>
+                <p><span class="ss-case-tag ss-case-tag-after">After SpaceSight</span>{c.after}</p>
+              </div>
+              <dl class="ss-case-metrics">
+                {c.metrics.map((m) => (
+                  <div class="ss-case-metric">
+                    <dt>{m.label}</dt>
+                    <dd>{m.n}</dd>
+                  </div>
+                ))}
+              </dl>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
 
     <CTASection
       headline="See what's happening<br><strong>in your spaces.</strong>"
@@ -74,3 +440,691 @@ const extraSchema = [
   </main>
   <Footer />
 </Layout>
+
+<script is:inline>
+  (function () {
+    'use strict';
+    /* Video governance: honor reduced-motion (pause everything, posters stay),
+       and pause decorative loops while offscreen. */
+    const videos = Array.from(document.querySelectorAll('video'));
+    if (!videos.length) return;
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      videos.forEach((v) => {
+        v.removeAttribute('autoplay');
+        v.pause();
+        /* no poster attr: park on the first frame once data arrives */
+        if (!v.hasAttribute('poster')) {
+          v.addEventListener('loadeddata', () => { try { v.currentTime = 0.01; } catch (e) {} }, { once: true });
+        }
+      });
+      return;
+    }
+
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((en) => {
+          if (en.isIntersecting) {
+            const p = en.target.play();
+            if (p && p.catch) p.catch(() => {});
+          } else {
+            en.target.pause();
+          }
+        });
+      }, { rootMargin: '80px' });
+      videos.forEach((v) => io.observe(v));
+    }
+  })();
+</script>
+
+<style>
+  .ss-page {
+    background: var(--bg);
+  }
+
+  /* ---------- Stats strip ---------- */
+  .ss-stats {
+    padding-top: 0;
+    padding-bottom: var(--space-lg);
+  }
+
+  .ss-stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-md);
+    border-top: 1px solid rgba(15, 23, 42, 0.1);
+    padding-top: var(--space-lg);
+  }
+
+  .ss-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .ss-stat-n {
+    font-family: var(--font-mono);
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    order: -1;
+  }
+
+  .ss-stat-label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+  }
+
+  .ss-stats-note {
+    margin-top: var(--space-md);
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    color: var(--text-secondary);
+    text-align: center;
+  }
+
+  /* ---------- Value loop ---------- */
+  .ss-loop-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+    gap: clamp(var(--space-lg), 5vw, var(--space-xxl));
+    align-items: center;
+  }
+
+  .ss-loop-steps {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+
+  .ss-loop-step {
+    position: relative;
+    display: flex;
+    gap: var(--space-sm);
+    align-items: flex-start;
+  }
+
+  .ss-loop-marker {
+    flex: none;
+    width: 64px;
+    height: 64px;
+    border-radius: 999px;
+    display: grid;
+    place-items: center;
+    background: var(--bg-dark);
+    box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.08), 0 0 0 10px rgba(255, 210, 63, 0.14);
+  }
+
+  .ss-loop-verb {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--track-vision);
+  }
+
+  .ss-loop-link {
+    position: absolute;
+    left: 31px;
+    top: 72px;
+    bottom: calc(-1 * var(--space-lg) + 8px);
+    width: 2px;
+    background: repeating-linear-gradient(to bottom, rgba(15, 23, 42, 0.25) 0 2px, transparent 2px 8px);
+  }
+
+  .ss-loop-title {
+    font-size: clamp(1.2rem, 2vw, 1.5rem);
+    margin-bottom: 0.35rem;
+  }
+
+  .ss-loop-copy {
+    color: var(--text-secondary);
+    line-height: 1.65;
+    max-width: 40ch;
+  }
+
+  .ss-loop-stage {
+    position: relative;
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--bg-dark);
+    aspect-ratio: 16 / 11;
+  }
+
+  .ss-loop-stage video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* ---------- Capabilities ---------- */
+  .ss-cap-list {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(var(--space-xl), 7vw, var(--space-xxl));
+  }
+
+  .ss-cap-row {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: clamp(var(--space-lg), 5vw, var(--space-xxl));
+    align-items: center;
+  }
+
+  .ss-cap-flip .ss-cap-media {
+    order: 2;
+  }
+
+  .ss-cap-flip .ss-cap-copy {
+    order: 1;
+  }
+
+  .ss-cap-frame {
+    position: relative;
+    margin: 0;
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid rgba(15, 23, 42, 0.1);
+    background: var(--bg-dark);
+  }
+
+  .ss-cap-frame img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .ss-cap-tag {
+    position: absolute;
+    left: var(--space-sm);
+    bottom: var(--space-sm);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(248, 247, 244, 0.85);
+    background: rgba(11, 16, 32, 0.72);
+    padding: 0.3rem 0.7rem;
+    border-radius: 999px;
+  }
+
+  /* Authored data panel for the two capabilities without UI footage */
+  .ss-cap-panel {
+    position: relative;
+    border-radius: var(--radius);
+    background: var(--bg-dark);
+    aspect-ratio: 16 / 9;
+    display: grid;
+    place-content: center;
+    justify-items: center;
+    gap: 0.75rem;
+    overflow: hidden;
+  }
+
+  .ss-cap-panel-ring {
+    position: absolute;
+    width: 78%;
+    aspect-ratio: 1;
+    border-radius: 999px;
+    border: 1.5px dashed rgba(255, 210, 63, 0.3);
+  }
+
+  .ss-cap-panel-big {
+    font-family: var(--font-mono);
+    font-size: clamp(2.6rem, 5vw, 4rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: var(--track-vision);
+  }
+
+  .ss-cap-panel-small {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: rgba(248, 247, 244, 0.6);
+  }
+
+  .ss-cap-tag-panel {
+    position: absolute;
+    top: var(--space-sm);
+    left: var(--space-sm);
+    bottom: auto;
+  }
+
+  .ss-cap-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 2.4vw, 2rem);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+    margin-bottom: var(--space-sm);
+    text-wrap: balance;
+  }
+
+  .ss-cap-text {
+    color: var(--text-secondary);
+    line-height: 1.65;
+    max-width: 52ch;
+    margin-bottom: var(--space-sm);
+  }
+
+  .ss-cap-stat {
+    position: relative;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    color: var(--text);
+    padding-left: 1.1rem;
+  }
+
+  .ss-cap-stat::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.42em;
+    width: 7px;
+    height: 7px;
+    border-radius: 999px;
+    background: var(--track-vision);
+  }
+
+  /* ---------- Scale tiers ---------- */
+  .ss-tier-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-md);
+    align-items: stretch;
+  }
+
+  .ss-tier {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    background: var(--bg-elevated);
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    border-radius: var(--radius);
+    padding: var(--space-md) var(--space-sm);
+    overflow: hidden;
+  }
+
+  .ss-tier-ring {
+    width: 72px;
+    height: 72px;
+    border-radius: 999px;
+    border: 2px solid rgba(15, 23, 42, 0.14);
+    background:
+      radial-gradient(circle, transparent calc(var(--ring) * 62%), rgba(255, 210, 63, 0.35) calc(var(--ring) * 62%), rgba(255, 210, 63, 0.35) calc(var(--ring) * 62% + 3px), transparent 0),
+      transparent;
+    margin-bottom: 0.5rem;
+  }
+
+  .ss-tier-name {
+    font-size: clamp(1.15rem, 1.6vw, 1.4rem);
+  }
+
+  .ss-tier-deploy {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    color: var(--track-vision-ink);
+  }
+
+  .ss-tier-hw {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  .ss-tier-caps {
+    list-style: none;
+    margin-top: auto;
+    padding-top: var(--space-sm);
+    border-top: 1px solid rgba(15, 23, 42, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .ss-tier-caps li {
+    position: relative;
+    padding-left: 1rem;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+  }
+
+  .ss-tier-caps li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 6px;
+    height: 6px;
+    border-radius: 999px;
+    background: var(--track-vision);
+  }
+
+  /* ---------- Deployment timeline ---------- */
+  .ss-weeks {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-md);
+    counter-reset: week;
+  }
+
+  .ss-week {
+    position: relative;
+    padding-top: var(--space-md);
+  }
+
+  .ss-week::before {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: rgba(15, 23, 42, 0.14);
+  }
+
+  .ss-week-dot {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 11px;
+    height: 11px;
+    border-radius: 999px;
+    background: var(--track-vision);
+    box-shadow: 0 0 0 4px rgba(255, 210, 63, 0.25);
+  }
+
+  .ss-week-when {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--text);
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .ss-week-what {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    font-size: 0.95rem;
+    max-width: 34ch;
+  }
+
+  /* ---------- Hardware ---------- */
+  .ss-hw-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-md);
+  }
+
+  .ss-hw {
+    text-align: center;
+  }
+
+  .ss-hw-media {
+    background: var(--bg-elevated);
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    border-radius: var(--radius);
+    padding: var(--space-md);
+    display: grid;
+    place-items: center;
+    aspect-ratio: 4 / 3;
+    margin-bottom: var(--space-sm);
+  }
+
+  .ss-hw-media img {
+    max-width: 72%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+
+  .ss-hw-name {
+    font-size: clamp(1.15rem, 1.6vw, 1.4rem);
+    margin-bottom: 0.35rem;
+  }
+
+  .ss-hw-copy {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    font-size: 0.95rem;
+    max-width: 40ch;
+    margin-inline: auto;
+  }
+
+  /* ---------- Security ---------- */
+  .ss-sec-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(var(--space-lg), 5vw, var(--space-xxl));
+    margin-bottom: var(--space-lg);
+  }
+
+  .ss-sec h3 {
+    font-size: clamp(1.2rem, 2vw, 1.5rem);
+    margin-bottom: 0.5rem;
+  }
+
+  .ss-sec p {
+    color: var(--text-secondary);
+    line-height: 1.65;
+    max-width: 52ch;
+  }
+
+  .ss-certs {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-md) var(--space-lg);
+    border-top: 1px solid rgba(15, 23, 42, 0.08);
+    padding-top: var(--space-lg);
+  }
+
+  .ss-cert img {
+    height: 44px;
+    width: auto;
+    display: block;
+    filter: grayscale(1);
+    opacity: 0.75;
+  }
+
+  /* ---------- Cases ---------- */
+  .ss-case-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-md);
+  }
+
+  .ss-case {
+    background: var(--bg-elevated);
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    border-radius: var(--radius);
+    padding: clamp(var(--space-md), 3vw, var(--space-lg));
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .ss-case-sector {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--track-vision-ink);
+    margin-left: 0.75rem;
+    vertical-align: baseline;
+    white-space: nowrap;
+  }
+
+  .ss-case-brand {
+    font-size: clamp(1.2rem, 2vw, 1.5rem);
+    letter-spacing: -0.02em;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+  }
+
+  .ss-case-headline {
+    color: var(--text-secondary);
+    font-size: 1.15rem;
+    line-height: 1.5;
+    margin-bottom: 0.5rem;
+  }
+
+  .ss-case-ba {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .ss-case-tag {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin-right: 0.5rem;
+  }
+
+  .ss-case-tag-after {
+    color: var(--track-vision-ink);
+  }
+
+  .ss-case-metrics {
+    margin-top: auto;
+    padding-top: var(--space-sm);
+    border-top: 1px solid rgba(15, 23, 42, 0.08);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm) var(--space-md);
+  }
+
+  .ss-case-metric dd {
+    font-family: var(--font-mono);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--track-vision-ink);
+    order: -1;
+  }
+
+  .ss-case-metric {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .ss-case-metric dt {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 980px) {
+    .ss-loop-grid,
+    .ss-cap-row,
+    .ss-sec-grid,
+    .ss-case-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .ss-cap-flip .ss-cap-media {
+      order: 0;
+    }
+
+    .ss-cap-flip .ss-cap-copy {
+      order: 1;
+    }
+
+    .ss-tier-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .ss-weeks {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-lg) var(--space-md);
+    }
+
+    .ss-stats-row {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-lg) var(--space-md);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .ss-tier-grid,
+    .ss-hw-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .ss-weeks {
+      position: relative;
+      grid-template-columns: 1fr;
+      gap: var(--space-lg);
+    }
+
+    /* one continuous rail behind the dots, not per-item segments */
+    .ss-weeks::before {
+      content: '';
+      position: absolute;
+      left: 5px;
+      top: 8px;
+      bottom: 8px;
+      width: 1px;
+      background: rgba(15, 23, 42, 0.14);
+    }
+
+    .ss-week::before {
+      content: none;
+    }
+
+    .ss-week {
+      padding-top: 0;
+      padding-left: var(--space-md);
+    }
+
+    .ss-week-dot {
+      top: 4px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ss-loop-stage video {
+      display: none;
+    }
+
+    .ss-loop-stage {
+      background: var(--bg-dark) url('/hero/spacesight-sees-poster.jpg') center / cover no-repeat;
+    }
+  }
+</style>
