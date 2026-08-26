@@ -1,0 +1,969 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import CTASection from '../components/CTASection.astro';
+import Footer from '../components/Footer.astro';
+
+const canonicalUrl = 'https://www.whale.sg/solutions/';
+const pageDescription = 'Whale industry solutions: SpaceSight and Echo adapt to automotive, luxury retail, food and beverage, healthcare, casinos, and museums — real-time intelligence for how your industry actually runs.';
+
+const extraSchema = [
+  {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.whale.sg/' },
+      { '@type': 'ListItem', position: 2, name: 'Solutions', item: canonicalUrl }
+    ]
+  }
+];
+
+// Authored placeholder scenes — line-drawn detector subjects standing in for
+// industry footage still to come. Stroke inherits the scene's accent color.
+const RING = `<circle cx="100" cy="112" r="88" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.22" stroke-dasharray="2 8"/><circle cx="100" cy="112" r="64" fill="none" stroke="currentColor" stroke-width="1" opacity="0.12"/><circle cx="100" cy="24" r="4" fill="currentColor" stroke="none"/>`;
+
+const industries = [
+  {
+    id: 'automotive',
+    short: 'Automotive',
+    name: 'Automotive',
+    tagline: 'Every conversation. Every showroom standard. Finally visible.',
+    body: "Top performers carry their playbook in their heads — until they leave. Echo scores every sales conversation and turns what your best people do differently into something the whole team can learn. SpaceSight keeps showroom and service bay standards enforced without another manual walkthrough.",
+    accent: 'voice',
+    hover: '#0E7490',
+    track: '#22D3EE',
+    products: ['spacesight', 'echo'],
+    img: '/solutions/automotive.png',
+    imgAlt: 'SpaceSight view of an automotive showroom — camera coverage zones and regional passenger-flow filtering over the exhibition floor',
+    scene: `<path d="M42 130 h116 v-16 l-26-6 -15-22 h-40 l-17 22 -20 6 a8 8 0 0 0 -6 8 z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><path d="M78 108 l12-18 h22 l12 18" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><circle cx="72" cy="134" r="10" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="128" cy="134" r="10" fill="none" stroke="currentColor" stroke-width="3"/>`
+  },
+  {
+    id: 'luxury-retail',
+    short: 'Luxury',
+    name: 'Luxury & Fashion Retail',
+    tagline: 'Brand standards, enforced at every location, every day.',
+    body: "Manual audits reach maybe 10% of stores a quarter — the rest run unchecked in between. SpaceSight audits every location around the clock, catching planogram and display issues before they become a pattern. Echo scores every sales-floor interaction, turning what your top performers do differently into something the whole team can learn.",
+    accent: 'vision',
+    hover: '#DB2777',
+    track: '#FF4D8D',
+    products: ['spacesight', 'echo'],
+    img: '/solutions/luxury-retail.png',
+    imgAlt: 'SpaceSight retail analytics — in-store customer-flow heat map and journey chart over a boutique camera view',
+    scene: `<rect x="62" y="98" width="76" height="54" rx="10" fill="none" stroke="currentColor" stroke-width="3"/><path d="M84 98 v-10 a16 16 0 0 1 32 0 v10" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="100" cy="124" r="4" fill="currentColor" stroke="none"/>`
+  },
+  {
+    id: 'food-beverage',
+    short: 'F&B',
+    name: 'Food & Beverage',
+    tagline: 'Food safety, monitored continuously — not sampled.',
+    body: "Health-code compliance across hundreds of locations is impossible to manage by walkthrough alone, and with high turnover, training rarely survives past the first few shifts. SpaceSight monitors kitchens in real time — hygiene, PPE, prep protocol — flagging deviations the moment they happen, so every shift meets the same standard. Echo scores customer-facing service quality across every shift, not just the ones someone happened to observe.",
+    accent: 'vision',
+    hover: '#B45309',
+    track: '#F59E0B',
+    products: ['spacesight', 'echo'],
+    img: '/solutions/food-beverage.png',
+    imgAlt: 'SpaceSight kitchen monitoring — PPE detection flags a cook not wearing a mask, with review timeline over the camera feed',
+    scene: `<path d="M54 128 a46 38 0 0 1 92 0" fill="none" stroke="currentColor" stroke-width="3"/><path d="M44 128 h112" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><circle cx="100" cy="82" r="5" fill="none" stroke="currentColor" stroke-width="3"/><path d="M86 62 c-3-6 3-8 0-14 M114 62 c-3-6 3-8 0-14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" opacity="0.6"/>`
+  },
+  {
+    id: 'healthcare',
+    short: 'Healthcare',
+    name: 'Healthcare',
+    tagline: 'Patient safety, monitored around the clock.',
+    body: "Hand hygiene, PPE compliance, and restricted-area access need continuous oversight — exactly what no shift supervisor can provide alone, which is why incidents are typically caught after the fact. SpaceSight watches high-risk zones continuously, flagging violations in real time and compiling audit-ready documentation automatically. Echo flags patient-experience breakdowns before they ever surface in a survey score.",
+    accent: 'vision',
+    hover: '#15803D',
+    track: '#34D399',
+    products: ['spacesight', 'echo'],
+    img: '/solutions/healthcare.png',
+    imgAlt: 'SpaceSight hospital console — ward camera feed with AI personnel analysis and playback timeline, plus mobile ward list',
+    scene: `<circle cx="100" cy="112" r="40" fill="none" stroke="currentColor" stroke-width="3"/><path d="M100 92 v40 M80 112 h40" stroke="currentColor" stroke-width="8" stroke-linecap="round"/>`
+  },
+  {
+    id: 'casinos',
+    short: 'Casinos',
+    name: 'Casinos',
+    tagline: 'Every table, every guest interaction — under continuous watch.',
+    body: "Gaming Control Board standards require floor coverage no headcount can fully deliver, and reconstructing an incident after the fact can take days. SpaceSight monitors every pit continuously — dealer procedure, chip handling, staff presence — while Echo captures guest interactions across the property and scores service before it becomes a complaint. Together, they turn days of investigation into minutes.",
+    accent: 'vision',
+    hover: '#7C3AED',
+    track: '#A78BFA',
+    products: ['spacesight', 'echo'],
+    scene: `<circle cx="100" cy="112" r="42" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="100" cy="112" r="24" fill="none" stroke="currentColor" stroke-width="3"/><path d="M100 70 v12 M100 142 v12 M58 112 h12 M130 112 h12 M70 82 l8 8 M122 134 l8 8 M130 82 l-8 8 M78 134 l-8 8" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>`
+  },
+  {
+    id: 'museums',
+    short: 'Museums',
+    name: 'Museums & Cultural Institutions',
+    tagline: 'See how visitors actually experience your museum.',
+    body: "Curators rearrange exhibits on instinct, not data on where guests actually linger, and security relies on patrols that can't cover every gallery at once. SpaceSight maps real-time visitor flow and flags unauthorized access near your collection, while Echo captures interaction quality at info desks and guided tours.",
+    accent: 'vision',
+    hover: '#1D4ED8',
+    track: '#60A5FA',
+    products: ['spacesight', 'echo'],
+    scene: `<rect x="66" y="70" width="68" height="52" rx="4" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="100" cy="96" r="11" fill="none" stroke="currentColor" stroke-width="2.5" opacity="0.7"/><path d="M84 132 v16 M116 132 v16 M74 148 h52" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>`
+  }
+];
+
+const headlineWords = [
+  { t: 'See', c: 'vision' }, { t: 'it.', c: 'vision' },
+  { t: 'Hear', c: 'voice' }, { t: 'it.', c: 'voice' },
+  { t: 'Fix', c: 'fusion' }, { t: 'it', c: 'fusion' },
+  { t: '—' }, { t: 'before' }, { t: 'it' }, { t: 'becomes' }, { t: 'a' }, { t: 'pattern.' }
+];
+---
+
+<Layout
+  title="Solutions by Industry | Whale AI"
+  description={pageDescription}
+  canonical={canonicalUrl}
+  extraSchema={extraSchema}
+>
+  <Header />
+  <main>
+    <!--
+      DIRECTION CONTRACT — /solutions/ (seed key 1237225c; reel form chosen by user over the pinned scroll-showcase)
+      THESIS: one frame is one floor — each industry owns the full viewport width like a
+        captured event frame, and the reel rail makes the whole patrol skippable. Refuses the
+        default industry-card grid every B2B solutions page ships.
+      OWN-WORLD: Sensorium particle-detector system — daylight ground, ink detector stage,
+        signal yellow/cyan/magenta encoding See/Hear/Fix, orbital rings, mono data labels.
+      STORY: a first-time buyer reads "See it. Hear it. Fix it", swipes to their industry on
+        the stage, and leaves to book a demo believing Whale already speaks their floor's language.
+      FIRST VIEWPORT: h1 with signal-colored See/Hear/Fix triad over the merged eyebrow subhead
+        and mono industry index, header CTA top-right; the reel's first stage peeks below the fold.
+      FORM: horizontal snap reel (full-width slides: ink stage left, copy right; arrows, labeled
+        ticks, and counter as the rail) — user-selected over the brief-pinned scroll-showcase.
+      FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review,
+        the verdict, and DESIGN.md
+    -->
+
+    <section class="section sol-hero" id="solutions">
+      <div class="container">
+        <h1 class="sol-headline" data-sol-head>
+          {headlineWords.slice(0, 4).map((word, i) => (
+            <Fragment><span class="wm"><span class={`w${word.c ? ` w-${word.c}` : ''}`} style={`--i:${i}`}>{word.t}</span></span>{' '}</Fragment>
+          ))}
+          <span class="w-fix">
+            {headlineWords.slice(4, 6).map((word, k) => (
+              <Fragment><span class="wm"><span class={`w w-${word.c}`} style={`--i:${4 + k}`}>{word.t}</span></span>{' '}</Fragment>
+            ))}
+            <span class="w-lock-ring" aria-hidden="true"></span>
+          </span>
+          {headlineWords.slice(6).map((word, i) => (
+            <Fragment><span class="wm"><span class={`w${word.c ? ` w-${word.c}` : ''}`} style={`--i:${6 + i}`}>{word.t}</span></span>{' '}</Fragment>
+          ))}
+        </h1>
+        <p class="sol-subhead">Built for how your industry actually runs — Whale adapts to what matters most, from showroom floors to hospital corridors. Here's how.</p>
+        <nav class="sol-index" aria-label="Jump to industry">
+          {industries.map((ind) => (
+            <a href={`#${ind.id}`} class="sol-index-link" style={`--hover: ${ind.hover}; --track: ${ind.track}`}>{ind.short}<span class="sol-index-track" aria-hidden="true" /></a>
+          ))}
+        </nav>
+      </div>
+    </section>
+
+    <section class="section sol-reel-section" aria-label="Industry solutions">
+      <div class="container">
+        <div class="sol-reel" data-reel tabindex="0" role="region" aria-roledescription="carousel" aria-label="Industry solutions — swipe, drag, or use arrow keys">
+          {industries.map((ind, i) => (
+            <article class="reel-slide" id={ind.id} data-slide={i} role="group" aria-roledescription="slide" aria-label={`${i + 1} of ${industries.length}: ${ind.name}`}>
+              <div class={`reel-stage scene-${ind.accent}${ind.img ? ' has-img' : ''}`}>
+                <span class="ind-hud ind-hud-name">{ind.name}</span>
+                {ind.img ? (
+                  <img class="ind-scene-img" src={ind.img} alt={ind.imgAlt} loading={i === 0 ? 'eager' : 'lazy'} />
+                ) : (
+                  <Fragment>
+                    <svg viewBox="0 0 200 200" role="img" aria-label={`${ind.name} placeholder visual`}>
+                      <g class="scene-ring" set:html={RING} />
+                      <g set:html={ind.scene} />
+                    </svg>
+                    <span class="ind-stage-caption">Placeholder visual — footage to come</span>
+                  </Fragment>
+                )}
+                <span class="ind-hud ind-hud-prods">SpaceSight + Echo</span>
+              </div>
+              <div class="reel-copy">
+                <h2 class="ind-name">{ind.name}</h2>
+                <p class="ind-tagline">{ind.tagline}</p>
+                <p class="ind-body">{ind.body}</p>
+                <div class="ind-chips" aria-label="Products in this solution">
+                  {ind.products.map((p) => (
+                    <span class={`ind-chip ind-chip-${p}`}>{p === 'echo' ? 'Echo · Hears' : 'SpaceSight · Sees'}</span>
+                  ))}
+                </div>
+                <a class="ind-link" href="#contact" aria-label={`See how it works for ${ind.name} — book a demo`}>
+                  See how it works for {ind.name}{' '}<span class="ind-link-arrow" aria-hidden="true">→</span>
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        <div class="reel-controls">
+          <div class="reel-arrows">
+            <button type="button" class="reel-arrow" data-prev aria-label="Previous industry">
+              <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3 L5 8 l5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <button type="button" class="reel-arrow" data-next aria-label="Next industry">
+              <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3 l5 5 -5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+          <div class="reel-ticks">
+            {industries.map((ind, i) => (
+              <button type="button" class={`reel-tick${i === 0 ? ' is-active' : ''}`} data-tick={i} aria-label={`Go to ${ind.name}`} aria-current={i === 0 ? 'true' : undefined}>
+                <span class="reel-tick-dot" aria-hidden="true"></span>
+                <span class="reel-tick-label">{ind.short}</span>
+              </button>
+            ))}
+          </div>
+          <span class="reel-counter" data-counter aria-live="polite">01 / 06</span>
+        </div>
+      </div>
+    </section>
+
+    <CTASection
+      headline="Don't see your industry?<br>We probably still do this."
+      lead="SpaceSight and Echo are built to adapt — if your business runs on physical locations and real conversations, there's a good chance we already know your pain points."
+      primaryLabel="Book a Demo"
+    />
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  /* ---------- Hero ---------- */
+  .sol-hero {
+    padding: calc(var(--header-height) + var(--space-xl)) 0 var(--space-xl);
+  }
+
+  .sol-headline {
+    max-width: 20ch;
+    margin-bottom: var(--space-md);
+  }
+
+  .sol-headline .wm {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: top;
+    padding-bottom: 0.12em;
+    margin-bottom: -0.12em;
+  }
+
+  .sol-headline .w {
+    display: inline-block;
+  }
+
+  .sol-headline.is-live .w {
+    animation: sol-rise 0.65s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+    animation-delay: calc(var(--i, 0) * 70ms + 80ms);
+  }
+
+  @keyframes sol-rise {
+    from { transform: translateY(110%); }
+  }
+
+  /*
+    Hit & deposit: See/Hear land in their raw track color with a small
+    energy glow — the detector hit — then settle into recorded daylight
+    ink. The tail of the sentence gets no flash: it is prose, not a hit.
+  */
+  .sol-headline.is-live .w-vision,
+  .sol-headline.is-live .w-voice {
+    animation:
+      sol-rise 0.65s cubic-bezier(0.16, 1, 0.3, 1) backwards,
+      sol-deposit 0.7s ease-out backwards;
+    animation-delay:
+      calc(var(--i, 0) * 70ms + 80ms),
+      calc(var(--i, 0) * 70ms + 430ms);
+  }
+
+  @keyframes sol-deposit {
+    from {
+      color: var(--flash);
+      text-shadow: 0 0 16px var(--flash);
+    }
+    to {
+      color: var(--ink);
+      text-shadow: 0 0 0 transparent;
+    }
+  }
+
+  /*
+    Collision lock-on: Fix it is the decision, not another reading — a
+    sensor ring converges onto the phrase as it lands, holds, and lets go.
+    Ring is invisible by default so no-JS and reduced-motion never see it.
+  */
+  .w-fix {
+    position: relative;
+    display: inline-block;
+  }
+
+  .w-lock-ring {
+    position: absolute;
+    inset: -0.1em -0.14em -0.1em -0.28em;
+    border: 2px solid var(--track-sensor);
+    border-radius: 999px;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .sol-headline.is-live .w-lock-ring {
+    animation: sol-lockon 1s cubic-bezier(0.16, 1, 0.3, 1) 0.95s backwards;
+  }
+
+  @keyframes sol-lockon {
+    0%   { transform: scale(1.55); opacity: 0; }
+    12%  { opacity: 1; }
+    55%  { transform: scale(1); opacity: 1; }
+    78%  { transform: scale(1); opacity: 1; }
+    100% { transform: scale(0.985); opacity: 0; }
+  }
+
+  /* Signal colors stepped for daylight ground — same hue, darker value */
+  .w-vision { --ink: var(--track-vision-ink); --flash: var(--track-vision); color: var(--ink); }
+  .w-voice { --ink: var(--track-voice-ink); --flash: var(--track-voice); color: var(--ink); }
+  .w-fusion { --ink: var(--track-sensor-ink); --flash: var(--track-sensor); color: var(--ink); }
+
+  .sol-subhead {
+    max-width: 56ch;
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    line-height: 1.55;
+    color: var(--text-secondary);
+  }
+
+  /* ---------- Industry index ---------- */
+  .sol-index {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.25rem;
+    margin-top: var(--space-md);
+  }
+
+  .sol-index-link {
+    position: relative;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    padding: 0.3rem 0;
+    transition: color 0.25s ease;
+  }
+
+  .sol-index-link:hover,
+  .sol-index-link.is-active {
+    color: var(--hover, var(--text));
+  }
+
+  /* Detector track: line sweeps in under the word, energy marker deposits at its end */
+  .sol-index-track {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    height: 2px;
+    pointer-events: none;
+  }
+
+  .sol-index-track::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 1px;
+    background: var(--track, currentColor);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.18s ease-in;
+  }
+
+  .sol-index-track::before {
+    content: '';
+    position: absolute;
+    right: -3px;
+    top: 50%;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--track, currentColor);
+    transform: translateY(-50%) scale(0.3);
+    opacity: 0;
+    transition:
+      opacity 0.1s ease-out,
+      transform 0.15s ease-in;
+  }
+
+  .sol-index-link:hover .sol-index-track::after,
+  .sol-index-link:focus-visible .sol-index-track::after,
+  .sol-index-link.is-active .sol-index-track::after {
+    transform: scaleX(1);
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .sol-index-link:hover .sol-index-track::before,
+  .sol-index-link:focus-visible .sol-index-track::before {
+    opacity: 1;
+    transform: translateY(-50%) scale(1);
+    transition:
+      opacity 0.12s ease-out 0.32s,
+      transform 0.28s cubic-bezier(0.16, 1, 0.3, 1) 0.32s;
+  }
+
+  /* Active state: track already lit, marker rests at the end — no re-entry */
+  .sol-index-link.is-active .sol-index-track::before {
+    opacity: 1;
+    transform: translateY(-50%) scale(1);
+  }
+
+  .sol-index-link:focus-visible {
+    outline: 2px solid var(--track, var(--hover, currentColor));
+    outline-offset: 3px;
+    border-radius: 1px;
+    color: var(--hover, var(--text));
+  }
+
+  @media (min-width: 720px) {
+    .sol-index {
+      gap: 0.35rem 0;
+    }
+
+    .sol-index-link + .sol-index-link::before {
+      content: '·';
+      margin: 0 0.75rem;
+      color: rgba(15, 23, 42, 0.3);
+    }
+  }
+
+  /* ---------- Stage HUD ---------- */
+  .ind-hud {
+    position: absolute;
+    z-index: 2;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(248, 247, 244, 0.6);
+    pointer-events: none;
+  }
+
+  .ind-hud-name {
+    top: 0.85rem;
+    left: var(--space-sm);
+  }
+
+  .ind-hud-prods {
+    bottom: 0.85rem;
+    right: var(--space-sm);
+  }
+
+  .ind-stage-caption {
+    position: absolute;
+    left: var(--space-sm);
+    bottom: 0.85rem;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(248, 247, 244, 0.6);
+  }
+
+  /* ---------- Horizontal snap reel ---------- */
+  .sol-reel-section {
+    padding-top: 0;
+  }
+
+  .sol-reel {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    cursor: grab;
+    border-radius: var(--radius);
+  }
+
+  .sol-reel::-webkit-scrollbar {
+    display: none;
+  }
+
+  .sol-reel:focus-visible {
+    outline: 3px solid var(--track-voice);
+    outline-offset: 3px;
+  }
+
+  /* Text selection owns the copy column — the cursor must not promise drag */
+  .reel-copy {
+    cursor: text;
+  }
+
+  .sol-reel.is-dragging {
+    cursor: grabbing;
+    scroll-snap-type: none;
+    user-select: none;
+  }
+
+  .reel-slide {
+    min-width: 100%;
+    scroll-snap-align: center;
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: clamp(var(--space-lg), 5vw, var(--space-xxl));
+    align-items: center;
+    padding: var(--space-sm) 0.25rem;
+  }
+
+  .reel-stage {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    max-height: 62vh;
+    background: var(--bg-dark);
+    border: 1px solid rgba(248, 247, 244, 0.08);
+    border-radius: var(--radius);
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+  }
+
+  .reel-stage svg {
+    width: 62%;
+    height: auto;
+    display: block;
+  }
+
+  /* Real footage fills the stage edge to edge; HUD labels float above it */
+  .ind-scene-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Edge scrim keeps the mono HUD labels readable over bright footage */
+  .reel-stage.has-img::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      rgba(11, 16, 32, 0.5),
+      transparent 24%,
+      transparent 76%,
+      rgba(11, 16, 32, 0.5)
+    );
+    pointer-events: none;
+  }
+
+  .scene-voice { color: var(--track-voice); }
+  .scene-vision { color: var(--track-vision); }
+
+  .scene-ring {
+    transform-origin: 100px 112px;
+    animation: scene-spin 28s linear infinite;
+  }
+
+  @keyframes scene-spin {
+    to { transform: rotate(360deg); }
+  }
+
+  .reel-copy {
+    max-width: 56ch;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .ind-name {
+    font-size: clamp(1.5rem, 2.6vw, 2rem);
+    max-width: none;
+    margin-bottom: 0.5rem;
+  }
+
+  .ind-tagline {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(1.15rem, 1.6vw, 1.5rem);
+    line-height: 1.4;
+    color: var(--text);
+    margin-bottom: var(--space-sm);
+    text-wrap: balance;
+  }
+
+  .ind-body {
+    max-width: 52ch;
+    color: var(--text-secondary);
+    line-height: 1.65;
+    margin-bottom: var(--space-md);
+  }
+
+  .ind-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: var(--space-md);
+  }
+
+  .ind-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    border: 1px solid rgba(15, 23, 42, 0.14);
+    border-radius: 999px;
+    padding: 0.3rem 0.75rem;
+  }
+
+  .ind-chip::before {
+    content: '';
+    width: 7px;
+    height: 7px;
+    border-radius: 999px;
+  }
+
+  .ind-chip-echo::before { background: var(--track-voice); }
+  .ind-chip-spacesight::before { background: var(--track-vision); }
+
+  .ind-link {
+    font-weight: 600;
+    color: var(--text);
+    display: inline;
+    text-decoration: underline;
+    text-decoration-color: rgba(15, 23, 42, 0.3);
+    text-underline-offset: 4px;
+    transition: text-decoration-color 0.2s ease;
+  }
+
+  .ind-link:hover {
+    text-decoration-color: currentColor;
+  }
+
+  .ind-link-arrow {
+    display: inline-block;
+    transition: transform 0.2s ease;
+  }
+
+  .ind-link:hover .ind-link-arrow {
+    transform: translateX(4px);
+  }
+
+  /* ---------- Reel rail: arrows, industry ticks, counter ---------- */
+  .reel-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-sm);
+    margin-top: var(--space-md);
+  }
+
+  .reel-arrows {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .reel-arrow {
+    width: 40px;
+    height: 40px;
+    display: inline-grid;
+    place-items: center;
+    border: none;
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text);
+    box-shadow: inset 0 0 0 2px var(--text);
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease, opacity 0.2s ease;
+  }
+
+  .reel-arrow svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .reel-arrow:hover:not(:disabled) {
+    background: var(--text);
+    color: var(--bg);
+  }
+
+  .reel-arrow:disabled {
+    opacity: 0.3;
+    cursor: default;
+  }
+
+  .reel-ticks {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.25rem;
+  }
+
+  .reel-tick {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    border: none;
+    background: transparent;
+    padding: 0.4rem 0.55rem;
+    border-radius: 999px;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+
+  .reel-tick-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 999px;
+    border: 1.5px solid currentColor;
+    transition: background 0.2s ease;
+  }
+
+  .reel-tick:hover {
+    color: var(--text);
+  }
+
+  .reel-tick.is-active {
+    color: var(--text);
+    background: var(--bg-elevated);
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.1);
+  }
+
+  .reel-tick.is-active .reel-tick-dot {
+    background: currentColor;
+  }
+
+  .reel-counter {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--text-secondary);
+    min-width: 5.5ch;
+    text-align: right;
+  }
+
+  /* ---------- Mobile ---------- */
+  @media (max-width: 980px) {
+    .reel-slide {
+      grid-template-columns: 1fr;
+      gap: var(--space-md);
+      align-items: start;
+    }
+
+    .reel-stage {
+      aspect-ratio: 16 / 10;
+      max-height: none;
+    }
+
+    .reel-stage svg {
+      width: 52%;
+    }
+
+    /* Touch targets ≥ 44px (WCAG 2.5.5) */
+    .sol-index-link {
+      padding: 1rem 0;
+    }
+
+    .reel-arrow {
+      width: 44px;
+      height: 44px;
+    }
+
+    .reel-tick {
+      min-width: 44px;
+      min-height: 44px;
+      justify-content: center;
+      padding: 0.55rem;
+    }
+
+    .ind-link {
+      display: inline-block;
+      padding: 0.6rem 0;
+    }
+
+    .reel-tick-label {
+      display: none;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .reel-controls {
+      flex-wrap: wrap;
+    }
+
+    .reel-ticks {
+      order: 3;
+      flex-basis: 100%;
+      margin-top: 0.25rem;
+    }
+
+    .ind-hud-prods {
+      display: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sol-headline.is-live .w {
+      animation: none;
+    }
+
+    .scene-ring {
+      animation: none;
+    }
+
+    .reel-arrow,
+    .reel-tick,
+    .reel-tick-dot,
+    .ind-link,
+    .ind-link-arrow,
+    .sol-index-link,
+    .sol-index-track::before,
+    .sol-index-track::after {
+      transition: none;
+    }
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    'use strict';
+
+    /* Hero entrance */
+    const head = document.querySelector('[data-sol-head]');
+    if (head) {
+      requestAnimationFrame(() => head.classList.add('is-live'));
+    }
+
+    /* Horizontal snap reel */
+    const reel = document.querySelector('[data-reel]');
+    if (!reel) return;
+
+    const slides = Array.from(reel.querySelectorAll('.reel-slide'));
+    const ticks = Array.from(document.querySelectorAll('[data-tick]'));
+    const indexLinks = Array.from(document.querySelectorAll('.sol-index-link'));
+    const prev = document.querySelector('[data-prev]');
+    const next = document.querySelector('[data-next]');
+    const counter = document.querySelector('[data-counter]');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let index = 0;
+
+    const slideWidth = () => slides[0].getBoundingClientRect().width;
+
+    const update = () => {
+      /* offscreen slides leave the tab order — focus must not walk
+         invisible links and scroll the reel as a side effect */
+      slides.forEach((s, i) => s.toggleAttribute('inert', i !== index));
+      ticks.forEach((t, i) => {
+        t.classList.toggle('is-active', i === index);
+        if (i === index) {
+          t.setAttribute('aria-current', 'true');
+        } else {
+          t.removeAttribute('aria-current');
+        }
+      });
+      indexLinks.forEach((a, i) => {
+        a.classList.toggle('is-active', i === index);
+        if (i === index) {
+          a.setAttribute('aria-current', 'true');
+        } else {
+          a.removeAttribute('aria-current');
+        }
+      });
+      if (prev) prev.disabled = index === 0;
+      if (next) next.disabled = index === slides.length - 1;
+      if (counter) counter.textContent = String(index + 1).padStart(2, '0') + ' / ' + String(slides.length).padStart(2, '0');
+    };
+
+    const go = (i, smooth = true) => {
+      index = Math.max(0, Math.min(slides.length - 1, i));
+      reel.scrollTo({
+        left: index * slideWidth(),
+        behavior: smooth && !reduceMotion.matches ? 'smooth' : 'auto'
+      });
+      update();
+    };
+
+    let scrollRaf = 0;
+    reel.addEventListener('scroll', () => {
+      cancelAnimationFrame(scrollRaf);
+      scrollRaf = requestAnimationFrame(() => {
+        const i = Math.round(reel.scrollLeft / slideWidth());
+        if (i !== index) {
+          index = Math.max(0, Math.min(slides.length - 1, i));
+          update();
+        }
+      });
+    }, { passive: true });
+
+    if (prev) prev.addEventListener('click', () => go(index - 1));
+    if (next) next.addEventListener('click', () => go(index + 1));
+    ticks.forEach((t, i) => t.addEventListener('click', () => go(i)));
+
+    reel.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') { e.preventDefault(); go(index - 1); }
+      if (e.key === 'ArrowRight') { e.preventDefault(); go(index + 1); }
+      if (e.key === 'Home') { e.preventDefault(); go(0); }
+      if (e.key === 'End') { e.preventDefault(); go(slides.length - 1); }
+    });
+
+    /* Mouse drag-to-scroll (touch is native overflow scroll).
+       Drags that start on the copy column belong to text selection —
+       checking getSelection() mid-gesture races the browser, so the
+       gesture is decided by where it starts, not by what it becomes. */
+    let dragging = false, dragStartX = 0, dragStartLeft = 0, dragMoved = 0;
+    reel.addEventListener('pointerdown', (e) => {
+      if (e.pointerType !== 'mouse' || e.button !== 0) return;
+      if (e.target.closest('.reel-copy')) return;
+      dragging = true;
+      dragMoved = 0;
+      dragStartX = e.clientX;
+      dragStartLeft = reel.scrollLeft;
+    });
+    window.addEventListener('pointermove', (e) => {
+      if (!dragging) return;
+      const dx = e.clientX - dragStartX;
+      dragMoved = Math.max(dragMoved, Math.abs(dx));
+      if (dragMoved > 6) reel.classList.add('is-dragging');
+      else if (!reel.classList.contains('is-dragging')) return;
+      reel.scrollLeft = dragStartLeft - dx;
+    });
+    window.addEventListener('pointerup', () => {
+      if (!dragging) return;
+      dragging = false;
+      const wasDragging = reel.classList.contains('is-dragging');
+      reel.classList.remove('is-dragging');
+      if (wasDragging) {
+        go(Math.round(reel.scrollLeft / slideWidth()));
+        /* swallow the click that follows a real drag so links don't fire */
+        reel.addEventListener('click', (ev) => {
+          ev.stopPropagation();
+          ev.preventDefault();
+        }, { capture: true, once: true });
+      }
+    });
+
+    /* Hero index links drive the reel */
+    document.querySelectorAll('.sol-index-link').forEach((a) => {
+      a.addEventListener('click', (e) => {
+        const id = a.getAttribute('href').slice(1);
+        const i = slides.findIndex((s) => s.id === id);
+        if (i < 0) return;
+        e.preventDefault();
+        go(i);
+        reel.focus({ preventScroll: true });
+      });
+    });
+
+    update();
+  })();
+</script>

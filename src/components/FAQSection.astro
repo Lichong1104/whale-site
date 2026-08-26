@@ -54,10 +54,10 @@ const faqs = [
       <h2 class="hero-shimmer">Frequently Asked Questions</h2>
       <p>Everything you need to know about SpaceSight before scaling across your sites.</p>
     </div>
-    <div class="faq-list">
+    <div class="faq-list" data-collapsed>
       {
         faqs.map((faq, index) => (
-          <details class="faq-item" name="faq">
+          <details class="faq-item" name="faq" data-extra={index >= 5 ? '' : undefined}>
             <summary class="faq-question">
               <span class="faq-number">{String(index + 1).padStart(2, '0')}</span>
               <span class="faq-text">{faq.question}</span>
@@ -70,5 +70,61 @@ const faqs = [
         ))
       }
     </div>
+    {
+      faqs.length > 5 && (
+        <div class="faq-more-wrap">
+          <button class="faq-more" type="button" aria-expanded="false">
+            <span class="faq-more-label" data-more>Show {faqs.length - 5} more</span>
+            <span class="faq-more-label" data-less>Show less</span>
+          </button>
+        </div>
+      )
+    }
   </div>
 </section>
+
+<style>
+  .faq-list[data-collapsed] .faq-item[data-extra] {
+    display: none;
+  }
+
+  .faq-more-wrap {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
+  }
+
+  .faq-more {
+    appearance: none;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    background: transparent;
+    color: inherit;
+    padding: 0.6rem 1.4rem;
+    border-radius: 999px;
+    font: inherit;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+
+  .faq-more:hover {
+    background: rgba(0, 0, 0, 0.04);
+  }
+
+  .faq-more[aria-expanded='false'] [data-less] {
+    display: none;
+  }
+
+  .faq-more[aria-expanded='true'] [data-more] {
+    display: none;
+  }
+</style>
+
+<script>
+  const faqList = document.querySelector('.faq-list');
+  const faqMore = document.querySelector('.faq-more');
+  faqMore?.addEventListener('click', () => {
+    const expanded = faqMore.getAttribute('aria-expanded') === 'true';
+    faqMore.setAttribute('aria-expanded', String(!expanded));
+    faqList?.toggleAttribute('data-collapsed', expanded);
+  });
+</script>

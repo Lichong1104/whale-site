@@ -48,6 +48,8 @@
   /* Detector lock-on: fusion magenta owns the verb, orbital ring pings onto it */
   .platform-headline .w-decide {
     color: #DB2777;
+    position: relative;
+    left: -0.12em;
   }
 
   .platform-headline .wm-decide {
@@ -58,6 +60,7 @@
     content: '';
     position: absolute;
     inset: -0.06em -0.26em;
+    translate: -0.12em 0; /* track the word's left nudge */
     border: 2px solid rgba(219, 39, 119, 0.55);
     border-radius: 999px;
     opacity: 0;

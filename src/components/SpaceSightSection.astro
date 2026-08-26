@@ -14,7 +14,6 @@
           <div class="solution-face solution-front">
             <span class="solution-chip solution-chip-spacesight">SpaceSight · Sees</span>
             <p class="solution-word"><span class="hl-vision">SpaceSight</span> monitors your operations in <span class="hl-vision">real time</span>.</p>
-            <span class="solution-hint">Hover or tap to watch</span>
           </div>
           <div class="solution-face solution-back">
             <video src="/hero/spacesight-sees.mp4" poster="/hero/spacesight-sees-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="SpaceSight monitoring demo"></video>
@@ -27,11 +26,30 @@
           <div class="solution-face solution-front">
             <span class="solution-chip solution-chip-echo">Echo · Hears</span>
             <p class="solution-word"><span class="hl-voice">Echo</span> captures the <span class="hl-voice">communication</span> around it.</p>
-            <span class="solution-hint">Hover or tap to watch</span>
           </div>
           <div class="solution-face solution-back">
             <video src="/hero/echo-hears.mp4" poster="/hero/echo-hears-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Echo voice capture demo"></video>
           </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="fusion-tracks" aria-hidden="true">
+      <span class="fusion-track fusion-track-vision"></span>
+      <span class="fusion-track fusion-track-voice"></span>
+    </div>
+
+    <div class="solution-panel fusion-panel" data-panel="fusion" tabindex="0" role="button" aria-label="Decide card — activate to watch both streams fused">
+      <div class="solution-flip fusion-flip">
+        <div class="solution-face solution-front fusion-front">
+          <span class="solution-chip solution-chip-fusion">SpaceSight + Echo · Decides</span>
+          <p class="fusion-word">Decide</p>
+          <p class="fusion-sub">Clear insight, instantly</p>
+          <p class="fusion-body">SpaceSight and Echo flow straight into our AI — both streams analyzed together, turning raw signals into clear, <span class="hl-fusion">decision-ready insight</span> for the people who need to act on it.</p>
+        </div>
+        <div class="solution-face solution-back fusion-back" aria-label="SpaceSight and Echo streams side by side">
+          <video src="/hero/spacesight-sees.mp4" autoplay muted loop playsinline preload="metadata" aria-label="SpaceSight monitoring stream"></video>
+          <video src="/hero/echo-hears.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Echo voice capture stream"></video>
         </div>
       </div>
     </div>
@@ -180,15 +198,6 @@
   .hl-vision { color: #FFD23F; }
   .hl-voice { color: #00E5FF; }
 
-  .solution-hint {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.68rem;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: rgba(248, 247, 244, 0.4);
-  }
-
   /* Back: video */
   .solution-back {
     transform: rotateY(180deg);
@@ -213,6 +222,105 @@
   @media (max-width: 720px) {
     .solution-panels {
       grid-template-columns: 1fr;
+    }
+  }
+
+  /* Converging signal tracks: SpaceSight yellow + Echo cyan fuse into magenta */
+  .fusion-tracks {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 1100px;
+    margin: var(--space-md) auto 0;
+  }
+
+  .fusion-track {
+    width: clamp(70px, 12vw, 130px);
+    height: 2px;
+    border-radius: 2px;
+  }
+
+  .fusion-track-vision {
+    background: linear-gradient(90deg, transparent, #FFD23F 55%, #FF4D8D);
+    transform: rotate(9deg);
+    transform-origin: right center;
+  }
+
+  .fusion-track-voice {
+    background: linear-gradient(-90deg, transparent, #00E5FF 55%, #FF4D8D);
+    transform: rotate(-9deg);
+    transform-origin: left center;
+  }
+
+  /* Fusion flip card: full width below the two product cards */
+  .fusion-panel {
+    max-width: 1100px;
+    margin: var(--space-sm) auto 0;
+  }
+
+  .fusion-flip {
+    aspect-ratio: 21 / 9;
+  }
+
+  .fusion-front {
+    --panel-ring: rgba(255, 77, 141, 0.4);
+  }
+
+  .solution-chip-fusion::before { background: #FF4D8D; }
+
+  .fusion-word {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4.5vw, 3.2rem);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 1.05;
+    color: #FF4D8D;
+    margin: 0;
+  }
+
+  .fusion-sub {
+    font-size: clamp(0.95rem, 1.6vw, 1.1rem);
+    color: rgba(248, 247, 244, 0.82);
+    margin: 0;
+  }
+
+  .fusion-body {
+    max-width: 56ch;
+    margin: 0;
+    font-size: clamp(0.9rem, 1.4vw, 1.05rem);
+    line-height: 1.55;
+    color: rgba(248, 247, 244, 0.68);
+  }
+
+  .hl-fusion {
+    color: #FF4D8D;
+    font-weight: 600;
+  }
+
+  /* Back: the two streams fused — split-screen videos with a magenta seam */
+  .fusion-back {
+    display: flex;
+    box-shadow: inset 0 0 0 1px rgba(255, 77, 141, 0.5);
+  }
+
+  .fusion-back video {
+    width: 50%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .fusion-back video + video {
+    border-left: 2px solid rgba(255, 77, 141, 0.65);
+  }
+
+  @media (max-width: 720px) {
+    .fusion-flip {
+      aspect-ratio: 16 / 11;
+    }
+
+    .fusion-body {
+      display: none; /* front stays a clean Decide beat on small screens */
     }
   }
 

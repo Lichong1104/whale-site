@@ -14,6 +14,10 @@
   --track-vision: #FFD23F;
   --track-voice: #00E5FF;
   --track-sensor: #FF4D8D;
+  /* Signal hues stepped darker for daylight-ground text (DESIGN.md track-*-ink) */
+  --track-vision-ink: #A16207;
+  --track-voice-ink: #0E7490;
+  --track-sensor-ink: #DB2777;
   --accent-purple: #8B5CF6;
   --accent-red: #FF4B4B;
   --radius: 18px;
