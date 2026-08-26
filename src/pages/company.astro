@@ -1,0 +1,1160 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import CTASection from '../components/CTASection.astro';
+import Footer from '../components/Footer.astro';
+
+const canonicalUrl = 'https://www.whale.sg/company/';
+const pageDescription = 'About Whale: our mission, growth from Hangzhou to Singapore and beyond, the leadership team, careers, and the latest company news — including the $100M Series C.';
+
+const extraSchema = [
+  {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.whale.sg/' },
+      { '@type': 'ListItem', position: 2, name: 'Company', item: canonicalUrl }
+    ]
+  }
+];
+
+const JOBS_URL = 'https://www.linkedin.com/jobs/view/4452199038/?trk=mcm';
+
+const headlineWords = [
+  { t: 'The' }, { t: 'real' }, { t: 'value' }, { t: 'in' }, { t: 'AI' },
+  { t: "isn't" }, { t: 'being' }, { t: 'AI-native', c: 'cool' },
+  { t: '—' },
+  { t: "it's" }, { t: 'turning' }, { t: 'intelligence' },
+  { t: 'into', c: 'hot' }, { t: 'outcomes', c: 'hot' },
+  { t: 'at' }, { t: 'scale.', c: 'hot' }
+];
+
+const heroStats = [
+  { n: '1,600+', label: 'Enterprise clients' },
+  { n: '45+', label: 'Countries deployed' },
+  { n: '600,000+', label: 'Edge AI nodes managed' },
+  { n: '$100M', label: 'Total Series C raised' }
+];
+
+const milestones = [
+  { year: '2017', text: 'Founded in Hangzhou' },
+  { year: '2019', text: "SpaceSight's foundational technology launched" },
+  { year: '2020', text: 'Series A+', detail: 'NIO' },
+  { year: '2021', text: 'Echo launched · Series B', detail: 'NIO, Temasek' },
+  { year: '2022', text: 'Global HQ in Singapore · Series C', detail: 'Temasek' },
+  { year: '2024', text: '500+ enterprise clients, 100,000+ locations deployed worldwide' },
+  { year: '2025', text: 'US office established · Series C2', detail: 'Bosch, Singtel' },
+  { year: '2026', text: 'Continued global expansion · Series C3', detail: 'Singtel, SMBC' }
+];
+
+const investors = [
+  'Temasek', 'NIO Capital', 'Bosch Ventures', 'Singtel Innov8', 'SMBC Asia Rising Fund',
+  'CMB International', 'Hyundai Motor Group', 'Krungsri Finnovate', 'Linear Capital'
+];
+
+const leaders = [
+  {
+    id: 'jerry',
+    name: 'Jerry Ye',
+    role: 'CEO & Founder',
+    photo: '/company/jerry.jpg',
+    photoAlt: 'Portrait of Jerry Ye, CEO and Founder of Whale',
+    bio: 'Jerry Ye is Chief Executive Officer of Whale, an enterprise AI platform that helps organizations turn real-world operational data into faster, smarter decisions. Under his leadership, Whale brings together AI, data, and intelligent automation to help consumer and retail businesses improve execution, customer experience, and performance at scale.',
+    more: [
+      'Jerry brings more than a decade of experience in data science and machine learning, with deep expertise in consumer and retail applications. Before joining Whale, he worked as a data scientist and engineer at Meta and served as a Research Associate at Harvard Business School, where he developed a perspective spanning technology, business, and consumer behavior.',
+      'Jerry holds an M.S. in Computation and Neural Systems from the California Institute of Technology (Caltech), as well as a B.S. in Computer Science, Economics, and Bioengineering from the University of Virginia.'
+    ]
+  },
+  {
+    id: 'shukun',
+    name: 'Shukun Xie',
+    role: 'CTO & Co-founder',
+    photo: '/company/shukun.jpg',
+    photoAlt: 'Portrait of Shukun Xie, CTO and Co-founder of Whale',
+    bio: 'Shukun is Chief Technology Officer of Whale, where he leads the development of the AI, data, and platform infrastructure powering the company’s enterprise solutions. He brings deep expertise in building reliable, high-performance systems that transform complex operational data into intelligence businesses can use at scale.',
+    more: [
+      'Before joining Whale, Shukun spent more than five years at Meta, where he served as a technical lead for Feed Ranking Infrastructure and Feed Machine Learning. His experience spans large-scale event tracking, machine learning model training, service architecture, and performance optimization—capabilities central to developing AI products that perform in real-world environments.',
+      'Shukun holds a Bachelor of Science from Hong Kong Baptist University and a Master of Science from the Illinois Institute of Technology.'
+    ]
+  },
+  {
+    id: 'smile',
+    name: 'Smile Huang',
+    role: 'VP of Sales, APAC & Japan',
+    photo: '/company/smile.jpg',
+    photoAlt: 'Portrait of Smile Huang, VP of Sales for APAC & Japan at Whale',
+    bio: 'Smile Huang is Vice President of Sales for APAC & Japan at Whale, bringing more than 13 years of experience in IT sales, channel development, and management. She leads Whale’s commercial growth across the region, helping enterprise customers realize meaningful operational and business impact through AI.',
+    more: [
+      'Before joining Whale, Smile led Channels and Business for Greater China at OutSystems, a global low-code technology company. Her career also includes leadership and commercial roles at Palo Alto Networks, Salesforce, and Ant Group, giving her extensive experience across cybersecurity, cloud software, enterprise technology, and digital innovation.',
+      'Smile holds an M.S. in Technopreneurship and Innovation from Nanyang Technological University and a bachelor’s degree in Economics and Finance in Business from RMIT University.'
+    ]
+  },
+  {
+    id: 'chris',
+    name: 'Chris May',
+    role: 'VP of Sales, North America',
+    photo: '/company/chris.jpg',
+    photoAlt: 'Portrait of Chris May, VP of Sales for North America at Whale',
+    bio: 'Chris May is Vice President of Sales for North America at Whale, leading the company’s growth with enterprise customers across the region. He brings more than eight years of experience selling AI solutions to Fortune 100 companies across the United States, Greater China, and APAC, with a focus on helping organizations turn emerging technology into measurable business value.',
+    more: [
+      'Before joining Whale, Chris held sales leadership roles at Danaher and Clarifai, and served as Senior Director of Sales at Sapient. Throughout his career, he has built and led multi-region sales teams and developed repeatable go-to-market systems spanning pipeline generation, forecasting, and disciplined deal execution.',
+      'Chris holds a B.S. in Biochemistry and Mathematics from UCLA and an MBA focused on Technology Management from NYU Stern School of Business.'
+    ]
+  }
+];
+
+const values = [
+  {
+    n: '01',
+    name: 'Lead to Win',
+    body: 'We take ownership and meet challenges head-on. We act decisively, move with urgency, and remove obstacles to deliver results. Winning is not only about individual achievement—it is about leading our teams to succeed and making the pursuit of excellence instinctive.'
+  },
+  {
+    n: '02',
+    name: 'Customer First',
+    body: 'We begin with earning the customer’s trust and make their needs our highest priority. We immerse ourselves in their business, uncover the problems that matter most, and deliver practical, high-quality solutions that create measurable results. Our success is defined by our customers’ success, and their trust is the foundation we build on.'
+  },
+  {
+    n: '03',
+    name: 'Always Growing',
+    body: 'We do not settle for the comfort zone. We treat every challenge as an opportunity to strengthen our expertise and raise our impact. Through continuous learning, deep thinking, and higher standards, we keep improving how we work. We set ambitious goals, optimize for stronger returns, and grow at the pace required to help our team win.'
+  },
+  {
+    n: '04',
+    name: 'Build Trust',
+    body: 'Trust begins with reliable, professional execution. We think deeply, take responsibility, and earn confidence through the quality of our work. We communicate openly, address problems directly, and step in to support one another. By being dependable teammates who deliver on their commitments, we build the trust that enables great teams to achieve great things.'
+  }
+];
+---
+
+<Layout
+  title="Company | Whale AI"
+  description={pageDescription}
+  canonical={canonicalUrl}
+  extraSchema={extraSchema}
+>
+  <Header />
+  <main>
+    <!--
+      DIRECTION CONTRACT — /company/
+      THESIS: a first-time visitor reads one story in three chapters — who we are
+        (mission → proof of growth → the people), what it feels like to build here
+        (careers → values), and what just happened (newsroom).
+      OWN-WORLD: same Sensorium daylight ground as the rest of the site; company
+        blue (--co-blue) replaces product track colors — this page is about the
+        company, not the signals.
+      FORM: single scrolling page, sticky chapter nav (About / Careers / News),
+        native ascending timeline rebuilt from the growth chart, 2×2 leader grid
+        with expand-on-request bios, numbered value cards.
+    -->
+
+    <!-- ================= Chapter 1 · About ================= -->
+    <section class="section co-hero" id="about" data-chapter="about">
+      <div class="container">
+        <p class="co-eyebrow">Company · About us</p>
+        <h1 class="co-headline" data-co-head>
+          {headlineWords.map((word, i) => (
+            <Fragment><span class="wm"><span class={`w${word.c ? ` w-${word.c}` : ''}`} style={`--i:${i}`}>{word.t}</span></span>{' '}</Fragment>
+          ))}
+        </h1>
+        <p class="co-subhead">Whale builds AI that encodes human expertise and brings it into the real world through our edge devices, making that expertise scalable everywhere.</p>
+
+        <div class="co-stats" data-reveal>
+          {heroStats.map((s, i) => (
+            <div class="co-stat" style={`--i:${i}`}>
+              <span class="co-stat-n">{s.n}</span>
+              <span class="co-stat-label">{s.label}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <nav class="co-chapters" aria-label="Company page chapters" data-chapters>
+      <div class="container co-chapters-row">
+        <a href="#about" class="co-chapter-link" data-chapter-link="about">About us</a>
+        <a href="#careers" class="co-chapter-link" data-chapter-link="careers">Careers</a>
+        <a href="#news" class="co-chapter-link" data-chapter-link="news">Newsroom</a>
+      </div>
+    </nav>
+
+    <section class="section co-growth" id="growth" aria-label="Our growth">
+      <div class="container">
+        <div class="section-head">
+          <h2>Our Growth</h2>
+          <p>Backed by Tier-1 investors, powering the future of enterprise AI workflows across physical spaces.</p>
+        </div>
+
+        <div class="tl" data-timeline>
+          <svg class="tl-curve" viewBox="0 0 800 246" preserveAspectRatio="none" aria-hidden="true">
+            <path class="tl-path" d="M50,216 L750,6" pathLength="1" fill="none" vector-effect="non-scaling-stroke" />
+          </svg>
+          <ol class="tl-list">
+            {milestones.map((m, i) => (
+              <li class="tl-item" style={`--i:${i}`}>
+                <span class="tl-dot" aria-hidden="true"></span>
+                <span class="tl-year">{m.year}</span>
+                <span class="tl-text">{m.text}{m.detail && <span class="tl-detail">{m.detail}</span>}</span>
+              </li>
+            ))}
+          </ol>
+        </div>
+
+        <div class="co-investors" data-reveal>
+          <span class="co-investors-label">Backed by</span>
+          <ul class="co-investor-chips">
+            {investors.map((inv) => <li>{inv}</li>)}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-tint co-team" id="team" aria-label="Our team">
+      <div class="container">
+        <div class="section-head">
+          <h2>Our Team</h2>
+          <p>The people turning enterprise AI into operational outcomes.</p>
+        </div>
+
+        <div class="team-grid" data-team>
+          {leaders.map((p, i) => (
+            <article class="team-card" data-reveal style={`--i:${i}`} data-bio-card={p.id}>
+              <div class="team-photo-wrap">
+                <img class="team-photo" src={p.photo} alt={p.photoAlt} width="800" height="1200" loading="lazy" decoding="async" />
+              </div>
+              <div class="team-info">
+                <h3 class="team-name">{p.name}</h3>
+                <p class="team-role">{p.role}</p>
+                <p class="team-bio">{p.bio}</p>
+                <div class="team-bio-more" data-bio-more>
+                  <div class="team-bio-more-inner">
+                    {p.more.map((para) => <p class="team-bio">{para}</p>)}
+                  </div>
+                </div>
+                <button type="button" class="team-bio-toggle" data-bio-toggle aria-expanded="false">
+                  <span class="team-bio-toggle-open">Read full bio</span>
+                  <span class="team-bio-toggle-close">Show less</span>
+                </button>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= Chapter 2 · Careers ================= -->
+    <section class="section co-careers" id="careers" data-chapter="careers">
+      <div class="container">
+        <p class="co-eyebrow">Careers · Come to work with us</p>
+        <div class="co-split">
+          <div class="co-split-copy">
+            <h2 class="co-h2">Build the AI that powers better operations</h2>
+            <p>At Whale, we build AI that helps enterprises see more, understand more, and act faster. Our platform brings together spatial intelligence, voice intelligence, content and knowledge operations, and AI agents to help organizations run their operations with greater clarity and precision.</p>
+            <p>This is meaningful work with real-world impact. Whether you are building products, serving customers, growing our business, or strengthening the teams behind it all, you will help turn complex data into better decisions and better outcomes.</p>
+            <p class="co-join"><strong>Join Whale. Build what’s next.</strong></p>
+            <a href={JOBS_URL} class="btn btn-primary btn-large" target="_blank" rel="noopener noreferrer">View Open Roles</a>
+          </div>
+          <figure class="co-split-media" data-reveal>
+            <img src="/company/team-group.jpg" alt="The Whale team celebrating the company's 8th anniversary at the office" width="1280" height="960" loading="lazy" decoding="async" />
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-tint co-why" aria-label="Why Whale">
+      <div class="container">
+        <div class="co-split co-split--flip">
+          <div class="co-split-copy">
+            <h2 class="co-h2">Why Whale</h2>
+            <p>We move quickly, think deeply, and take ownership. We are a team of builders who believe that the best technology solves real problems — and that the strongest results come from high standards, close collaboration, and an unwavering focus on customers.</p>
+            <p>Here, you will work alongside people who are ambitious about what we can achieve together and committed to helping one another do their best work.</p>
+          </div>
+          <div class="co-collage" data-reveal>
+            <img class="co-collage-main" src="/company/culture-wall.jpg" alt="Whale office culture wall — playful murals around the Whale logo and 'AI for Revenue Growth'" width="1280" height="960" loading="lazy" decoding="async" />
+            <img class="co-collage-small" src="/company/customer-first.jpg" alt="A Whale team member walking customers through a solution at an expo booth" width="1280" height="853" loading="lazy" decoding="async" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section co-values" id="values" aria-label="Our values">
+      <div class="container">
+        <div class="section-head">
+          <h2>Our Values</h2>
+          <p>Four instincts behind how we build, sell, and support.</p>
+        </div>
+        <div class="values-grid">
+          {values.map((v, i) => (
+            <article class="value-card" data-reveal style={`--i:${i}`}>
+              <span class="value-n" aria-hidden="true">{v.n}</span>
+              <h3 class="value-name">{v.name}</h3>
+              <p class="value-body">{v.body}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-dark co-challenge" aria-label="Find your next challenge">
+      <div class="container co-challenge-inner">
+        <h2>Find Your Next Challenge</h2>
+        <p>If you are ready to take ownership, grow quickly, and build AI that makes a difference for enterprises around the world, we would love to hear from you.</p>
+        <a href={JOBS_URL} class="btn btn-primary btn-large" target="_blank" rel="noopener noreferrer">Explore Open Roles</a>
+      </div>
+    </section>
+
+    <!-- ================= Chapter 3 · Newsroom ================= -->
+    <section class="section co-news" id="news" data-chapter="news">
+      <div class="container">
+        <div class="section-head">
+          <h2>Newsroom</h2>
+          <p>The latest from Whale.</p>
+        </div>
+
+        <a class="news-card" href="/company/news/series-c3/" data-reveal>
+          <div class="news-card-main">
+            <p class="news-card-meta"><span class="news-card-tag">Funding</span><time datetime="2026-07">July 2026</time></p>
+            <h3 class="news-card-title">Whale Raises $40M Series C3 Extension, Bringing Total Series C to $100M, to Scale Global Enterprise AI Operations</h3>
+            <p class="news-card-excerpt">Led by CMB International and SMBC Asia Rising Fund, with participation from Krungsri Finnovate, Singtel Innov8, Hyundai Motor Group, and Charisma Partners — the round scales Whale’s enterprise AI deployments across North America, APAC, and beyond.</p>
+            <span class="news-card-link">Read the full story<span class="news-card-arrow" aria-hidden="true">→</span></span>
+          </div>
+          <div class="news-card-stats" aria-hidden="true">
+            <div class="news-stat"><span class="news-stat-n">$40M</span><span class="news-stat-l">Series C3 extension</span></div>
+            <div class="news-stat"><span class="news-stat-n">$100M</span><span class="news-stat-l">Total Series C</span></div>
+            <div class="news-stat"><span class="news-stat-n">6</span><span class="news-stat-l">Strategic investors in the round</span></div>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <CTASection
+      headline="Never miss what matters,<br>or wonder what it means."
+      lead="Find out how space intelligence can power your operations forward."
+      primaryLabel="Book a Demo"
+    />
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  :root {
+    --co-blue: #2563EB;
+    --co-blue-ink: #1D4ED8;
+    --co-blue-soft: #EFF4FF;
+  }
+
+  [id] {
+    scroll-margin-top: calc(var(--header-height) + 64px);
+  }
+
+  /* ---------- Shared bits ---------- */
+  .co-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--co-blue-ink);
+    margin: 0 0 var(--space-sm);
+  }
+
+  .co-h2 {
+    margin: 0 0 var(--space-sm);
+  }
+
+  .co-split {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+    gap: clamp(2rem, 5vw, 4.5rem);
+    align-items: center;
+  }
+
+  .co-split-copy p {
+    color: var(--text-secondary);
+    line-height: 1.7;
+    max-width: 58ch;
+  }
+
+  .co-join {
+    color: var(--text) !important;
+    font-size: 1.15rem;
+    margin-top: var(--space-sm);
+  }
+
+  .co-split-copy .btn {
+    margin-top: var(--space-sm);
+  }
+
+  .co-split-media img,
+  .co-collage img {
+    height: auto;
+    display: block;
+    border-radius: var(--radius);
+    /* brief noted the source photos look dated — freshen with grade */
+    filter: saturate(1.18) contrast(1.06) brightness(1.02);
+  }
+
+  /* width kept off the shared rule: the collage inset sizes itself (46%) */
+  .co-split-media img,
+  .co-collage .co-collage-main {
+    width: 100%;
+  }
+
+  .co-split--flip .co-split-copy {
+    order: 2;
+  }
+
+  .co-split--flip .co-collage {
+    order: 1;
+  }
+
+  /* reveal on scroll — static by default so no-JS stays readable */
+  [data-reveal] {
+    --reveal-d: calc(var(--i, 0) * 90ms);
+  }
+
+  [data-reveal].is-in {
+    animation: co-rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+    animation-delay: var(--reveal-d);
+  }
+
+  @keyframes co-rise {
+    from { opacity: 0; transform: translateY(28px); }
+  }
+
+  /* ---------- Hero ---------- */
+  .co-hero {
+    padding: calc(var(--header-height) + var(--space-xl)) 0 var(--space-lg);
+  }
+
+  .co-headline {
+    max-width: 24ch;
+    margin: 0 0 var(--space-md);
+  }
+
+  .co-headline .wm {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: top;
+    padding-bottom: 0.12em;
+    margin-bottom: -0.12em;
+  }
+
+  .co-headline .w {
+    display: inline-block;
+  }
+
+  .co-headline.is-live .w {
+    animation: co-word-rise 0.65s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+    animation-delay: calc(var(--i, 0) * 55ms + 60ms);
+  }
+
+  @keyframes co-word-rise {
+    from { transform: translateY(110%); }
+  }
+
+  .w-cool { color: var(--text-secondary); }
+  .w-hot { color: var(--co-blue-ink); }
+
+  .co-subhead {
+    max-width: 54ch;
+    font-size: clamp(1.1rem, 2vw, 1.35rem);
+    line-height: 1.55;
+    color: var(--text-secondary);
+  }
+
+  .co-stats {
+    margin-top: var(--space-lg);
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--space-md);
+    border-top: 1px solid rgba(15, 23, 42, 0.1);
+    padding-top: var(--space-md);
+  }
+
+  .co-stat-n {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 700;
+    color: var(--co-blue-ink);
+    line-height: 1.1;
+  }
+
+  .co-stat-label {
+    display: block;
+    margin-top: 0.35rem;
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+  }
+
+  /* ---------- Chapter nav ---------- */
+  .co-chapters {
+    position: sticky;
+    top: var(--header-height);
+    z-index: 40;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(15, 23, 42, 0.08);
+    border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+  }
+
+  .co-chapters-row {
+    display: flex;
+    gap: clamp(1rem, 3vw, 2.5rem);
+    overflow-x: auto;
+  }
+
+  .co-chapter-link {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    text-decoration: none;
+    padding: 0.85rem 0.15rem 0.7rem;
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+    transition: color 0.2s ease, border-color 0.2s ease;
+  }
+
+  .co-chapter-link:hover {
+    color: var(--text);
+  }
+
+  .co-chapter-link.is-active {
+    color: var(--co-blue-ink);
+    border-bottom-color: var(--co-blue);
+  }
+
+  /* ---------- Growth timeline ---------- */
+  .tl {
+    position: relative;
+    margin-top: var(--space-lg);
+  }
+
+  .tl-curve {
+    position: absolute;
+    inset: 0 0 auto 0;
+    width: 100%;
+    height: 246px;
+    pointer-events: none;
+  }
+
+  .tl-path {
+    stroke: var(--co-blue);
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    opacity: 0.55;
+    transition: stroke-dashoffset 1.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
+  }
+
+  .tl.is-in .tl-path {
+    stroke-dashoffset: 0;
+  }
+
+  .tl-list {
+    position: relative;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+    /* no grid gap: column centers must stay at (i+.5)/8 so dots land on the line */
+    gap: 0;
+    align-items: end;
+  }
+
+  .tl-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* exact rising heights put each dot exactly on the growth line */
+    height: calc(150px + var(--i) * 30px);
+    position: relative;
+  }
+
+  .tl-dot {
+    flex: none;
+    width: 12px;
+    height: 12px;
+    /* big gap: the rising line passes the column's left edge ~15px below
+       the dot center — keep the year label clear of it */
+    margin-bottom: 1.2rem;
+    border-radius: 50%;
+    background: var(--co-blue);
+    box-shadow: 0 0 0 4px var(--co-blue-soft);
+    transform: scale(0);
+    transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transition-delay: calc(0.25s + var(--i) * 0.16s);
+  }
+
+  .tl.is-in .tl-dot {
+    transform: scale(1);
+  }
+
+  .tl-year {
+    align-self: stretch;
+    padding-right: clamp(0.75rem, 2vw, 1.75rem);
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--co-blue-ink);
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    transition-delay: calc(0.3s + var(--i) * 0.16s);
+  }
+
+  .tl-text {
+    align-self: stretch;
+    padding-right: clamp(0.75rem, 2vw, 1.75rem);
+    margin-top: 0.4rem;
+    font-size: 0.85rem;
+    line-height: 1.45;
+    color: var(--text-secondary);
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    transition-delay: calc(0.38s + var(--i) * 0.16s);
+  }
+
+  .tl-detail {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--co-blue-ink);
+    margin-top: 0.15rem;
+  }
+
+  .tl.is-in .tl-year,
+  .tl.is-in .tl-text {
+    opacity: 1;
+    transform: none;
+  }
+
+  .co-investors {
+    margin-top: var(--space-lg);
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+  }
+
+  .co-investors-label {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+  }
+
+  .co-investor-chips {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  .co-investor-chips li {
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--text);
+    background: var(--bg-elevated);
+    border: 1px solid rgba(15, 23, 42, 0.12);
+    border-radius: 999px;
+    padding: 0.35rem 0.9rem;
+  }
+
+  /* ---------- Team ---------- */
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-md);
+    align-items: start;
+  }
+
+  .team-card {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+    gap: var(--space-md);
+    background: var(--bg-elevated);
+    border-radius: var(--radius);
+    padding: var(--space-md);
+    border: 1px solid rgba(15, 23, 42, 0.08);
+  }
+
+  .team-photo-wrap {
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    background: #d9dbe0;
+  }
+
+  .team-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    aspect-ratio: 4 / 5;
+  }
+
+  .team-name {
+    margin: 0;
+    font-size: 1.25rem;
+  }
+
+  .team-role {
+    margin: 0.25rem 0 0.8rem;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--co-blue-ink);
+  }
+
+  .team-bio {
+    margin: 0 0 0.75rem;
+    font-size: 0.92rem;
+    line-height: 1.65;
+    color: var(--text-secondary);
+  }
+
+  .team-bio-more {
+    display: grid;
+    grid-template-rows: 1fr;
+    transition: grid-template-rows 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .team-bio-more-inner {
+    overflow: hidden;
+  }
+
+  .team-bio-toggle {
+    display: none;
+    background: none;
+    border: none;
+    /* keeps the tap target >= 24px (WCAG 2.5.8) */
+    padding: 0.4rem 0;
+    font: inherit;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--co-blue-ink);
+    cursor: pointer;
+  }
+
+  .team-bio-toggle .team-bio-toggle-close {
+    display: none;
+  }
+
+  /* JS armed: collapse the extra bio and drive it with the toggle */
+  .team-grid[data-armed] .team-bio-more {
+    grid-template-rows: 0fr;
+  }
+
+  .team-grid[data-armed] .team-card.is-open .team-bio-more {
+    grid-template-rows: 1fr;
+  }
+
+  .team-grid[data-armed] .team-bio-toggle {
+    display: inline-block;
+  }
+
+  .team-grid[data-armed] .team-card.is-open .team-bio-toggle-open {
+    display: none;
+  }
+
+  .team-grid[data-armed] .team-card.is-open .team-bio-toggle-close {
+    display: inline;
+  }
+
+  /* ---------- Careers collage ---------- */
+  .co-collage {
+    position: relative;
+  }
+
+  .co-collage-small {
+    position: absolute;
+    right: -4%;
+    bottom: -12%;
+    width: 46%;
+    border: 5px solid var(--bg-elevated);
+    box-shadow: 0 18px 44px rgba(15, 23, 42, 0.18);
+  }
+
+  .co-why .co-split {
+    padding-bottom: var(--space-md);
+  }
+
+  /* ---------- Values ---------- */
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-md);
+  }
+
+  .value-card {
+    background: var(--bg-elevated);
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    border-radius: var(--radius);
+    padding: var(--space-md);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .value-card::before {
+    content: '';
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 3px;
+    background: var(--co-blue);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+
+  .value-card:hover::before {
+    opacity: 1;
+  }
+
+  .value-n {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--co-blue-ink);
+    letter-spacing: 0.1em;
+  }
+
+  .value-name {
+    margin: 0.5rem 0 0.75rem;
+    font-size: 1.35rem;
+  }
+
+  .value-body {
+    margin: 0;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    font-size: 0.95rem;
+  }
+
+  /* ---------- Challenge band ---------- */
+  .co-challenge-inner {
+    text-align: center;
+    max-width: 720px;
+  }
+
+  .co-challenge h2 {
+    color: var(--text-on-dark);
+    margin: 0 0 var(--space-sm);
+  }
+
+  .co-challenge p {
+    color: var(--text-on-dark-secondary, rgba(240, 244, 255, 0.75));
+    line-height: 1.7;
+    margin: 0 auto var(--space-md);
+    max-width: 56ch;
+  }
+
+  /* ---------- Newsroom ---------- */
+  .news-card {
+    display: grid;
+    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+    gap: var(--space-md);
+    background: var(--bg-elevated);
+    border: 1px solid rgba(15, 23, 42, 0.1);
+    border-radius: var(--radius);
+    padding: clamp(1.5rem, 3vw, 2.5rem);
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+  }
+
+  .news-card:hover {
+    border-color: var(--co-blue);
+    box-shadow: 0 16px 44px rgba(37, 99, 235, 0.12);
+    transform: translateY(-2px);
+  }
+
+  .news-card-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 0 0 0.9rem;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+  }
+
+  .news-card-tag {
+    background: var(--co-blue-soft);
+    color: var(--co-blue-ink);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    border-radius: 999px;
+    padding: 0.25rem 0.7rem;
+  }
+
+  .news-card-title {
+    margin: 0 0 0.9rem;
+    font-size: clamp(1.3rem, 2.2vw, 1.7rem);
+    line-height: 1.3;
+    color: var(--text);
+  }
+
+  .news-card-excerpt {
+    margin: 0 0 1.1rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+    max-width: 62ch;
+  }
+
+  .news-card-link {
+    font-weight: 600;
+    color: var(--co-blue-ink);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .news-card-arrow {
+    transition: transform 0.25s ease;
+  }
+
+  .news-card:hover .news-card-arrow {
+    transform: translateX(4px);
+  }
+
+  .news-card-stats {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--space-sm);
+    border-left: 1px solid rgba(15, 23, 42, 0.1);
+    padding-left: var(--space-md);
+  }
+
+  .news-stat-n {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--co-blue-ink);
+    line-height: 1.1;
+  }
+
+  .news-stat-l {
+    display: block;
+    margin-top: 0.2rem;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 960px) {
+    .team-grid,
+    .values-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .news-card {
+      grid-template-columns: 1fr;
+    }
+
+    .news-card-stats {
+      flex-direction: row;
+      justify-content: space-between;
+      border-left: none;
+      border-top: 1px solid rgba(15, 23, 42, 0.1);
+      padding-left: 0;
+      padding-top: var(--space-md);
+      gap: var(--space-sm);
+    }
+  }
+
+  @media (max-width: 860px) {
+    .co-split {
+      grid-template-columns: 1fr;
+    }
+
+    .co-split--flip .co-split-copy {
+      order: 1;
+    }
+
+    .co-split--flip .co-collage {
+      order: 2;
+    }
+
+    .co-stats {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    /* timeline goes vertical */
+    .tl-curve {
+      display: none;
+    }
+
+    .tl-list {
+      grid-template-columns: 1fr;
+      gap: 0;
+      align-items: stretch;
+    }
+
+    .tl-item {
+      height: auto;
+      min-height: 0;
+      padding: 0 0 var(--space-md) 2rem;
+      align-items: flex-start;
+    }
+
+    .tl-item::before {
+      content: '';
+      position: absolute;
+      left: 5px;
+      top: 14px;
+      bottom: -4px;
+      width: 2px;
+      background: var(--co-blue);
+      opacity: 0.25;
+    }
+
+    .tl-item:last-child::before {
+      display: none;
+    }
+
+    .tl-dot {
+      position: absolute;
+      left: 0;
+      top: 4px;
+      margin-bottom: 0;
+    }
+
+    .tl-year {
+      font-size: 1.15rem;
+    }
+
+    .tl-text {
+      font-size: 0.92rem;
+    }
+
+    .co-collage-small {
+      right: 2%;
+      bottom: -8%;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .team-card {
+      grid-template-columns: 1fr;
+    }
+
+    .team-photo {
+      aspect-ratio: 4 / 3;
+    }
+
+    .news-card-stats {
+      flex-wrap: wrap;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .co-headline.is-live .w,
+    [data-reveal].is-in {
+      animation: none;
+    }
+
+    .tl-path {
+      transition: none;
+      stroke-dashoffset: 0;
+    }
+
+    .tl-dot,
+    .tl-year,
+    .tl-text {
+      transition: none;
+      opacity: 1;
+      transform: none;
+    }
+
+    .tl-dot {
+      transform: scale(1);
+    }
+
+    .team-bio-more {
+      transition: none;
+    }
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    'use strict';
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    /* Hero entrance */
+    const head = document.querySelector('[data-co-head]');
+    if (head) {
+      requestAnimationFrame(() => head.classList.add('is-live'));
+    }
+
+    /* Reveal on scroll */
+    const revealEls = Array.from(document.querySelectorAll('[data-reveal]'));
+    const timeline = document.querySelector('[data-timeline]');
+    if ('IntersectionObserver' in window && !reduceMotion.matches) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('is-in');
+          io.unobserve(entry.target);
+        });
+      }, { threshold: 0.18, rootMargin: '0px 0px -8% 0px' });
+      revealEls.forEach((el) => io.observe(el));
+      if (timeline) io.observe(timeline);
+    } else {
+      revealEls.forEach((el) => el.classList.add('is-in'));
+      if (timeline) timeline.classList.add('is-in');
+    }
+
+    /* Team bio expanders — content stays fully visible without JS */
+    const teamGrid = document.querySelector('[data-team]');
+    if (teamGrid) {
+      teamGrid.setAttribute('data-armed', '');
+      teamGrid.querySelectorAll('[data-bio-toggle]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const card = btn.closest('[data-bio-card]');
+          const open = card.classList.toggle('is-open');
+          btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+      });
+    }
+
+    /* Chapter scrollspy */
+    const chapterLinks = Array.from(document.querySelectorAll('[data-chapter-link]'));
+    const chapterSections = chapterLinks
+      .map((a) => document.getElementById(a.getAttribute('data-chapter-link')))
+      .filter(Boolean);
+    if ('IntersectionObserver' in window && chapterSections.length) {
+      let active = null;
+      const setActive = (id) => {
+        if (id === active) return;
+        active = id;
+        chapterLinks.forEach((a) => {
+          const on = a.getAttribute('data-chapter-link') === id;
+          a.classList.toggle('is-active', on);
+          if (on) a.setAttribute('aria-current', 'true');
+          else a.removeAttribute('aria-current');
+        });
+      };
+      const spy = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActive(entry.target.id);
+        });
+      }, { rootMargin: '-30% 0px -55% 0px', threshold: 0 });
+      chapterSections.forEach((s) => spy.observe(s));
+      setActive('about');
+    }
+  })();
+</script>
