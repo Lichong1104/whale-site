@@ -47,8 +47,15 @@ const milestones = [
 ];
 
 const investors = [
-  'Temasek', 'NIO Capital', 'Bosch Ventures', 'Singtel Innov8', 'SMBC Asia Rising Fund',
-  'CMB International', 'Hyundai Motor Group', 'Krungsri Finnovate', 'Linear Capital'
+  { name: 'Temasek', logo: '/client-logos/temasek.svg' },
+  { name: 'NIO Capital', logo: '/company/investors/nio.svg' },
+  { name: 'Bosch Ventures', logo: '/company/investors/bosch.svg' },
+  { name: 'Singtel Innov8', logo: '/company/investors/singtel.svg' },
+  { name: 'SMBC Asia Rising Fund', logo: '/company/investors/smbc.svg' },
+  { name: 'CMB International', logo: '/company/investors/cmbi.svg' },
+  { name: 'Hyundai Motor Group', logo: '/company/investors/hyundai.svg' },
+  { name: 'Krungsri Finnovate', logo: '/company/investors/krungsri.svg' },
+  { name: 'Linear Capital', logo: '/company/investors/linear.svg' }
 ];
 
 const leaders = [
@@ -201,8 +208,10 @@ const values = [
 
         <div class="co-investors" data-reveal>
           <span class="co-investors-label">Backed by</span>
-          <ul class="co-investor-chips">
-            {investors.map((inv) => <li>{inv}</li>)}
+          <ul class="co-investor-logos">
+            {investors.map((inv) => (
+              <li><img src={inv.logo} alt={inv.name} title={inv.name} loading="lazy" decoding="async" /></li>
+            ))}
           </ul>
         </div>
       </div>
@@ -662,23 +671,35 @@ const values = [
     color: var(--text-secondary);
   }
 
-  .co-investor-chips {
+  .co-investor-logos {
     list-style: none;
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
+    align-items: center;
+    gap: clamp(1.25rem, 3vw, 2.25rem);
     margin: 0;
     padding: 0;
   }
 
-  .co-investor-chips li {
-    font-size: 0.88rem;
-    font-weight: 500;
-    color: var(--text);
-    background: var(--bg-elevated);
-    border: 1px solid rgba(15, 23, 42, 0.12);
-    border-radius: 999px;
-    padding: 0.35rem 0.9rem;
+  .co-investor-logos li {
+    display: flex;
+    align-items: center;
+  }
+
+  .co-investor-logos img {
+    height: 24px;
+    width: auto;
+    max-width: 150px;
+    object-fit: contain;
+    color: var(--text-secondary);
+    filter: grayscale(1);
+    opacity: 0.62;
+    transition: filter 0.25s ease, opacity 0.25s ease;
+  }
+
+  .co-investor-logos img:hover {
+    filter: none;
+    opacity: 1;
   }
 
   /* ---------- Team ---------- */
