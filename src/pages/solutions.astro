@@ -335,14 +335,14 @@ const headlineWords = [
   .sol-index {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem 1.25rem;
+    gap: 0.75rem 2rem;
     margin-top: var(--space-md);
   }
 
   .sol-index-link {
     position: relative;
     font-family: var(--font-mono);
-    font-size: 0.7rem;
+    font-size: 1.4rem;
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -362,7 +362,7 @@ const headlineWords = [
     left: 0;
     right: 0;
     bottom: -1px;
-    height: 2px;
+    height: 4px;
     pointer-events: none;
   }
 
@@ -380,10 +380,10 @@ const headlineWords = [
   .sol-index-track::before {
     content: '';
     position: absolute;
-    right: -3px;
+    right: -6px;
     top: 50%;
-    width: 6px;
-    height: 6px;
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
     background: var(--track, currentColor);
     transform: translateY(-50%) scale(0.3);
