@@ -186,7 +186,7 @@ const values = [
 
         <div class="tl" data-timeline>
           <svg class="tl-curve" viewBox="0 -10 820 256" preserveAspectRatio="none" aria-hidden="true">
-            <path class="tl-path" d="M51.25,206 L789,-10" fill="none" vector-effect="non-scaling-stroke" />
+            <path class="tl-path" d="M31,212 L789,-10" fill="none" vector-effect="non-scaling-stroke" />
           </svg>
           <ol class="tl-list">
             {milestones.map((m, i) => (
@@ -552,8 +552,8 @@ const values = [
      (CSS dash transitions + pathLength proved flaky in Chromium:
      paint froze at exactly 2/3 of the path) */
   .tl.tl-armed .tl-path {
-    stroke-dasharray: 770;
-    stroke-dashoffset: 770;
+    stroke-dasharray: 790;
+    stroke-dashoffset: 790;
   }
 
   .tl-list {
@@ -1105,7 +1105,7 @@ const values = [
     const drawLine = (tl) => {
       const path = tl.querySelector('.tl-path');
       if (!path) return;
-      const LEN = 770; /* matches .tl-armed dasharray; path real length 768.72 */
+      const LEN = 790; /* matches .tl-armed dasharray; path real length 789.83 */
       const DUR = 1100;
       const start = performance.now();
       const ease = (t) => 1 - Math.pow(1 - t, 3);
