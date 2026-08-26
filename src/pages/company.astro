@@ -1160,15 +1160,21 @@ const values = [
       revealEls.forEach((el) => el.classList.add('is-in'));
     }
 
-    /* Team bio expanders — content stays fully visible without JS */
+    /* Team bio expanders — accordion: opening one collapses the rest.
+       Content stays fully visible without JS */
     const teamGrid = document.querySelector('[data-team]');
     if (teamGrid) {
       teamGrid.setAttribute('data-armed', '');
+      const cards = Array.from(teamGrid.querySelectorAll('[data-bio-card]'));
       teamGrid.querySelectorAll('[data-bio-toggle]').forEach((btn) => {
         btn.addEventListener('click', () => {
           const card = btn.closest('[data-bio-card]');
-          const open = card.classList.toggle('is-open');
-          btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+          const willOpen = !card.classList.contains('is-open');
+          cards.forEach((c) => {
+            c.classList.toggle('is-open', c === card && willOpen);
+            const t = c.querySelector('[data-bio-toggle]');
+            if (t) t.setAttribute('aria-expanded', c === card && willOpen ? 'true' : 'false');
+          });
         });
       });
     }
