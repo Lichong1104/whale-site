@@ -1161,6 +1161,9 @@ const values = [
     }
 
     /* Team bio expanders — accordion: opening one collapses the rest.
+       Closed cards get pinned at their current height so the expanding
+       card doesn't stretch its row sibling (grid default is stretch);
+       pins release when everything is closed, restoring equal heights.
        Content stays fully visible without JS */
     const teamGrid = document.querySelector('[data-team]');
     if (teamGrid) {
@@ -1170,10 +1173,16 @@ const values = [
         btn.addEventListener('click', () => {
           const card = btn.closest('[data-bio-card]');
           const willOpen = !card.classList.contains('is-open');
+          const stillClosed = cards.filter((c) => !c.classList.contains('is-open') && c !== card);
+          const pinH = willOpen && stillClosed.length
+            ? Math.round(stillClosed[0].getBoundingClientRect().height)
+            : 0;
           cards.forEach((c) => {
-            c.classList.toggle('is-open', c === card && willOpen);
+            const open = c === card && willOpen;
+            c.classList.toggle('is-open', open);
             const t = c.querySelector('[data-bio-toggle]');
-            if (t) t.setAttribute('aria-expanded', c === card && willOpen ? 'true' : 'false');
+            if (t) t.setAttribute('aria-expanded', open ? 'true' : 'false');
+            c.style.height = !open && willOpen ? `${pinH}px` : '';
           });
         });
       });
