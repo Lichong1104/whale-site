@@ -8,15 +8,39 @@
   <nav class="site-nav" aria-label="Primary">
     <a href="/products/" class="nav-link">Products</a>
     <a href="/solutions/" class="nav-link">Solutions</a>
-    <a href="/products/#user-cases" class="nav-link">User Cases</a>
+    <a href="/user-cases/" class="nav-link">User Cases</a>
     <a href="/company/" class="nav-link">Company</a>
 
     <a href="/blog/" class="nav-link">Blog</a>
 
     <a href="/#contact" class="nav-link">Contact</a>
   </nav>
-  <button type="button" class="btn btn-primary" data-open-modal data-source-type="官网立即咨询留资">Request a Demo</button>
+  <button type="button" class="btn btn-primary header-cta" data-open-modal data-source-type="官网立即咨询留资">Request a Demo</button>
+  <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="mobile-nav-drawer" aria-label="Open menu">
+    <span class="nav-toggle-bar"></span>
+    <span class="nav-toggle-bar"></span>
+    <span class="nav-toggle-bar"></span>
+  </button>
 </header>
+
+<div class="nav-drawer-backdrop" aria-hidden="true"></div>
+<nav class="nav-drawer" id="mobile-nav-drawer" aria-label="Mobile navigation">
+  <div class="nav-drawer-head">
+    <span class="nav-drawer-title">Menu</span>
+    <button type="button" class="nav-drawer-close" data-nav-close aria-label="Close menu">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+  </div>
+  <a href="/products/" class="nav-drawer-link">Products</a>
+  <a href="/solutions/" class="nav-drawer-link">Solutions</a>
+  <a href="/user-cases/" class="nav-drawer-link">User Cases</a>
+  <a href="/company/" class="nav-drawer-link">Company</a>
+  <a href="/blog/" class="nav-drawer-link">Blog</a>
+  <a href="/#contact" class="nav-drawer-link">Contact</a>
+  <button type="button" class="btn btn-primary nav-drawer-cta" data-open-modal data-source-type="官网立即咨询留资">Request a Demo</button>
+</nav>
 
 <style>
   .site-nav {
@@ -34,9 +58,203 @@
     padding: 0.5rem 0;
     text-decoration: none;
     font-weight: 500;
+    white-space: nowrap;
     transition: color 0.2s ease;
   }
   .nav-link:hover {
     color: var(--text);
   }
+
+  /* Hamburger — mobile only */
+  .nav-toggle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: none;
+    border-radius: var(--radius-sm);
+    background: transparent;
+    cursor: pointer;
+    flex: 0 0 auto;
+  }
+  .nav-toggle-bar {
+    width: 20px;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--text);
+  }
+
+  /* Drawer + backdrop — hidden on desktop by media query below */
+  .nav-drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 160;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    width: min(320px, 84vw);
+    height: 100dvh;
+    padding: var(--space-sm) var(--space-md) var(--space-md);
+    background: var(--bg-elevated);
+    box-shadow: -12px 0 40px rgba(11, 16, 32, 0.18);
+    transform: translateX(100%);
+    visibility: hidden;
+    transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), visibility 0s linear 0.28s;
+    overflow-y: auto;
+  }
+  .nav-drawer.is-open {
+    transform: translateX(0);
+    visibility: visible;
+    transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), visibility 0s;
+  }
+  .nav-drawer-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 150;
+    background: rgba(11, 16, 32, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.28s ease, visibility 0s linear 0.28s;
+  }
+  .nav-drawer-backdrop.is-open {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.28s ease, visibility 0s;
+  }
+  .nav-drawer-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: var(--space-xs);
+    margin-bottom: var(--space-xs);
+    border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+  }
+  .nav-drawer-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1rem;
+  }
+  .nav-drawer-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border: none;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--text-secondary);
+    cursor: pointer;
+  }
+  .nav-drawer-link {
+    display: block;
+    padding: 0.75rem 0.25rem;
+    font-weight: 500;
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+  }
+  .nav-drawer-link:hover {
+    color: var(--text);
+  }
+  .nav-drawer-cta {
+    margin-top: var(--space-sm);
+  }
+
+  @media (min-width: 721px) {
+    .nav-toggle,
+    .nav-drawer,
+    .nav-drawer-backdrop {
+      display: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .nav-drawer,
+    .nav-drawer-backdrop {
+      transition: none;
+    }
+  }
 </style>
+
+<script is:inline>
+(function () {
+  'use strict';
+  var toggle = document.querySelector('.nav-toggle');
+  var drawer = document.getElementById('mobile-nav-drawer');
+  var backdrop = document.querySelector('.nav-drawer-backdrop');
+  if (!toggle || !drawer || !backdrop) return;
+
+  var lastFocused = null;
+  var lockedScrollY = 0;
+
+  function focusables() {
+    return drawer.querySelectorAll('a[href], button:not([disabled])');
+  }
+  function lockScroll() {
+    lockedScrollY = window.scrollY;
+    document.body.style.overflow = 'hidden';   /* mirrors leads.js openModal */
+    document.body.style.position = 'fixed';    /* iOS Safari body-lock */
+    document.body.style.top = '-' + lockedScrollY + 'px';
+    document.body.style.left = '0';
+    document.body.style.right = '0';
+  }
+  function unlockScroll() {
+    document.body.style.overflow = '';
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.left = '';
+    document.body.style.right = '';
+    window.scrollTo(0, lockedScrollY);
+  }
+  function openDrawer() {
+    lastFocused = document.activeElement;
+    drawer.classList.add('is-open');
+    backdrop.classList.add('is-open');
+    toggle.setAttribute('aria-expanded', 'true');
+    lockScroll();
+    var first = focusables()[0];
+    if (first) first.focus();
+  }
+  function closeDrawer() {
+    drawer.classList.remove('is-open');
+    backdrop.classList.remove('is-open');
+    toggle.setAttribute('aria-expanded', 'false');
+    unlockScroll();
+    if (lastFocused && document.contains(lastFocused)) lastFocused.focus();
+  }
+  function isOpen() { return drawer.classList.contains('is-open'); }
+
+  toggle.addEventListener('click', function () { isOpen() ? closeDrawer() : openDrawer(); });
+  backdrop.addEventListener('click', closeDrawer);
+  drawer.querySelectorAll('[data-nav-close]').forEach(function (el) {
+    el.addEventListener('click', closeDrawer);
+  });
+  /* close on link click and on drawer CTA (leads.js opens modal after this handler) */
+  drawer.querySelectorAll('a, [data-open-modal]').forEach(function (el) {
+    el.addEventListener('click', closeDrawer);
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (!isOpen()) return;
+    if (e.key === 'Escape') { closeDrawer(); return; }
+    if (e.key === 'Tab') {  /* minimal focus trap */
+      var items = Array.prototype.slice.call(focusables());
+      if (!items.length) return;
+      var first = items[0], last = items[items.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+  });
+
+  /* safety: never leave the drawer open across the breakpoint */
+  window.matchMedia('(min-width: 721px)').addEventListener('change', function (e) {
+    if (e.matches && isOpen()) closeDrawer();
+  });
+})();
+</script>

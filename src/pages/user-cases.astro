@@ -1,0 +1,836 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import CTASection from '../components/CTASection.astro';
+import Footer from '../components/Footer.astro';
+
+const canonicalUrl = 'https://www.whale.sg/user-cases/';
+const pageDescription = 'Whale customer stories: Watsons reads real foot traffic across 4,000+ stores with SpaceSight, OCBC makes every sales conversation visible with Echo, and LVMH replaces human-led training with a closed-loop AI system.';
+
+const extraSchema = [
+  {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.whale.sg/' },
+      { '@type': 'ListItem', position: 2, name: 'User Cases', item: canonicalUrl }
+    ]
+  }
+];
+
+const headlineWords = [
+  { t: 'See', c: 'vision' }, { t: 'the' }, { t: 'proof.' },
+  { t: 'Hear', c: 'voice' }, { t: 'the' }, { t: 'numbers.' }
+];
+
+const cases = [
+  {
+    id: 'watsons',
+    index: '01',
+    name: 'Watsons',
+    industry: 'Retail',
+    product: 'SpaceSight',
+    productChip: 'SpaceSight · Sees',
+    accent: 'vision',
+    title: 'Turning foot traffic into real insight, across 4,000+ stores',
+    img: '/user-cases/watsons.jpg',
+    imgW: 1600,
+    imgH: 900,
+    imgAlt: 'Shoppers walking out of a Watsons health-and-beauty store inside a shopping mall',
+    challenge: [
+      'Watsons already had CCTV running in every store — the infrastructure existed, but the data it produced wasn’t reliable.',
+      'Customer counts were inflated by delivery riders and couriers constantly moving through stores, muddying any real read on actual shopper behavior.',
+      'Genuine customers had to be separated from operational foot traffic — without ripping out and replacing a system that was already in place.'
+    ],
+    helpedTitle: 'How SpaceSight helped',
+    helped: [
+      'SpaceSight deployed directly on Watsons’ existing CCTV via AI Hub — no new hardware required. Using re-identification (person re-ID) across the store-wide customer flow, it automatically filters out delivery staff and couriers, pushing customer flow data accuracy above 90%.',
+      'On top of clean traffic data, SpaceSight’s Store Audit function monitors staff behavior and service compliance — combining manual store visits with AI-driven audit, so service standards get enforced consistently, not just when someone happens to be watching.'
+    ],
+    stats: [
+      { n: '200%', label: 'Increase in customer flow insight capability' },
+      { n: '80%', label: 'Increase in service capability' },
+      { n: '200+', label: 'Analyzed data reports generated' },
+      { n: '4,000+', label: 'Stores covered' }
+    ]
+  },
+  {
+    id: 'ocbc',
+    index: '02',
+    name: 'OCBC',
+    industry: 'Banking',
+    product: 'Echo',
+    productChip: 'Echo · Hears',
+    accent: 'voice',
+    title: 'Making every sales conversation visible',
+    img: '/user-cases/ocbc.jpg',
+    imgW: 1600,
+    imgH: 1066,
+    imgAlt: 'Pedestrians walking past the OCBC bank headquarters facade in Singapore',
+    challenge: [
+      'Credit-card sales conversations were essentially a black box.',
+      'OCBC had no visibility into whether representatives were following communication standards, no way to catch compliance violations as they happened, and no way to measure which conversations actually converted to sales.'
+    ],
+    helpedTitle: 'How Echo helped',
+    helped: [
+      'OCBC deployed Echo Mini to record and analyze live sales conversations at scale — now processing 480,000+ hours of audio a month, and growing. Because OCBC’s frontline conversations happen largely in Bahasa Indonesia, Whale built specific ASR and language models tuned for it, reaching over 80% accuracy.',
+      'The resulting quality scores didn’t just sit in a dashboard — OCBC built them directly into sales KPIs and commission structures, so service quality became something reps were actually incentivized to improve, not just measured on.'
+    ],
+    stats: [
+      { n: '150%', label: 'Increase in sales productivity' },
+      { n: '20%', label: 'Increase in conversion rate' },
+      { n: '80+', label: 'Serving capability' },
+      { n: '100+', label: 'Deployments' }
+    ]
+  },
+  {
+    id: 'lvmh',
+    index: '03',
+    name: 'LVMH',
+    industry: 'Luxury',
+    product: 'Whale',
+    productChip: 'Whale · Teaches',
+    accent: 'sensor',
+    title: 'Replacing costly human-led training with a closed-loop AI system',
+    img: '/user-cases/lvmh.jpg',
+    imgW: 1000,
+    imgH: 666,
+    imgAlt: 'Gold Louis Vuitton signage above the entrance of a Paris storefront',
+    challenge: [
+      'Training sales associates at LVMH’s scale, purely through human-led programs, was expensive and hard to sustain — and skill gaps were difficult to identify quickly.',
+      'New employees took too long to adapt to brand culture and responsibilities; without continuous learning support, skills stagnated over time.',
+      'Worst of all, it was genuinely hard to know whether training was working — its effects were difficult to measure or optimize.'
+    ],
+    helpedTitle: 'How Whale helped',
+    helped: [
+      'Whale built a complete, closed-loop training system spanning course design, realistic scenario simulation, and automated training analytics — all in one controllable platform. The system runs on three connected layers, each feeding the next in a continuous loop.',
+      'In practice, that means an associate can complete a course chapter, run an AI role-play drill against a simulated customer, get an instant drill score and detailed feedback, and earn a training badge on completion — all trackable at scale across the organization.'
+    ],
+    loop: [
+      { name: 'Data', desc: 'Training data collected and cleaned into structured courses' },
+      { name: 'Training', desc: 'AI role-play drills with a simulated customer, task summaries, content generation' },
+      { name: 'Insights', desc: 'Performance feedback and intelligent test generation' }
+    ],
+    stats: [
+      { n: '30%+', label: 'Increase in training efficiency' },
+      { n: '23%+', label: 'Increase in service quality' },
+      { n: '45+', label: 'Simulated customer scenarios built' }
+    ]
+  }
+];
+---
+
+<Layout
+  title="User Cases | Whale AI"
+  description={pageDescription}
+  canonical={canonicalUrl}
+  extraSchema={extraSchema}
+>
+  <Header />
+  <main>
+    <!--
+      DIRECTION CONTRACT — /user-cases/
+      THESIS: this is the evidence page — three named deployments told as
+        challenge → deployment → measured outcome. Numbers carry the pitch;
+        adjectives stay home.
+      OWN-WORLD: Sensorium particle-detector system. Each case is a captured
+        event: mono CASE index, track color per product (SpaceSight = vision
+        yellow, Echo = voice cyan, Whale training = sensor magenta), HUD
+        brackets on the stage frame, and a dark detector-readout panel for
+        the outcome stats.
+      FORM: hero (word-rise headline + case index) → three full chapters with
+        sticky photo stage alternating sides → dark CTA. No carousel: each
+        case earns a whole chapter.
+    -->
+
+    <section class="section uc-hero" id="user-cases">
+      <div class="container">
+        <p class="uc-eyebrow">User Cases · Customer stories</p>
+        <h1 class="uc-headline" data-uc-head>
+          {headlineWords.map((word, i) => (
+            <Fragment><span class="wm"><span class={`w${word.c ? ` w-${word.c}` : ''}`} style={`--i:${i}`}>{word.t}</span></span>{' '}</Fragment>
+          ))}
+        </h1>
+        <p class="uc-subhead">Three deployments across retail, banking, and luxury — what was broken, what Whale deployed on it, and what the numbers say after.</p>
+        <nav class="uc-index" aria-label="Jump to case study">
+          {cases.map((c) => (
+            <a href={`#${c.id}`} class="uc-index-link" style={`--acc: var(--track-${c.accent}-ink); --acc-raw: var(--track-${c.accent})`}>
+              <span class="uc-index-n" aria-hidden="true">{c.index}</span>
+              <span class="uc-index-id">
+                <span class="uc-index-name">{c.name}</span>
+                <span class="uc-index-ind">{c.industry} · {c.product}</span>
+              </span>
+              <svg class="uc-index-arrow" viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 10h13M11 4.5l5.5 5.5-5.5 5.5"/></svg>
+            </a>
+          ))}
+        </nav>
+      </div>
+    </section>
+
+    {cases.map((c, i) => (
+      <section
+        class={`section uc-case${i % 2 === 0 ? ' section-tint' : ''}`}
+        id={c.id}
+        style={`--acc: var(--track-${c.accent}-ink); --acc-raw: var(--track-${c.accent})`}
+        aria-labelledby={`${c.id}-title`}
+      >
+        <div class="container">
+          <div class={`uc-layout${i % 2 === 1 ? ' uc-layout--flip' : ''}`}>
+            <header class="uc-case-head" data-reveal>
+              <p class="uc-case-meta"><span class="uc-case-dot" aria-hidden="true"></span>Case {c.index} · {c.industry} · {c.product}</p>
+              <h2 class="uc-case-title" id={`${c.id}-title`}>
+                <span class="uc-case-name">{c.name}</span>
+                <span class="uc-case-sub">{c.title}</span>
+              </h2>
+              <span class="uc-ghost" aria-hidden="true">{c.index}</span>
+            </header>
+
+            <figure class="uc-stage" data-reveal>
+              <img src={c.img} alt={c.imgAlt} width={c.imgW} height={c.imgH} loading={i === 0 ? 'eager' : 'lazy'} decoding="async" />
+              <span class="uc-hud uc-hud-top">Case {c.index} — {c.name}</span>
+              <span class="uc-hud uc-hud-bottom">{c.productChip}</span>
+            </figure>
+
+            <div class="uc-body">
+              <div class="uc-block" data-reveal>
+                <h3 class="uc-block-label">The challenge</h3>
+                <ul class="uc-challenge">
+                  {c.challenge.map((item) => <li>{item}</li>)}
+                </ul>
+              </div>
+
+              <div class="uc-block uc-helped" data-reveal>
+                <h3 class="uc-block-label">{c.helpedTitle}</h3>
+                {c.helped.map((p) => <p class="uc-prose">{p}</p>)}
+                {c.loop && (
+                  <div class="uc-loop-wrap">
+                    <ol class="uc-loop">
+                      {c.loop.map((l, li) => (
+                        <li class="uc-loop-step">
+                          <span class="uc-loop-name"><span class="uc-loop-n" aria-hidden="true">{String(li + 1).padStart(2, '0')}</span>{l.name}</span>
+                          <span class="uc-loop-desc">{l.desc}</span>
+                        </li>
+                      ))}
+                    </ol>
+                    <p class="uc-loop-note"><span class="uc-loop-return" aria-hidden="true">↺</span> Each layer feeds the next — a continuous loop.</p>
+                  </div>
+                )}
+              </div>
+
+              <div class="uc-outcome" data-reveal>
+                <h3 class="uc-block-label uc-block-label--dark">The outcome</h3>
+                <div class="uc-stats">
+                  {c.stats.map((s) => (
+                    <div class="uc-stat">
+                      <span class="uc-stat-n">{s.n}</span>
+                      <span class="uc-stat-label">{s.label}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    ))}
+
+    <CTASection
+      headline="Your operation could be<br>the next case study."
+      lead="SpaceSight and Echo deploy on the infrastructure you already have. Tell us about your floor — we'll show you what we'd measure first."
+      primaryLabel="Request a Demo"
+    />
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  /* ---------- Hero ---------- */
+  .uc-hero {
+    padding: calc(var(--header-height) + var(--space-xl)) 0 var(--space-lg);
+  }
+
+  .uc-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin-bottom: var(--space-sm);
+  }
+
+  .uc-headline {
+    max-width: 18ch;
+    margin-bottom: var(--space-md);
+  }
+
+  .uc-headline .wm {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: top;
+    padding-bottom: 0.12em;
+    margin-bottom: -0.12em;
+  }
+
+  .uc-headline .w {
+    display: inline-block;
+  }
+
+  .uc-headline.is-live .w {
+    animation: uc-rise 0.65s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+    animation-delay: calc(var(--i, 0) * 70ms + 80ms);
+  }
+
+  @keyframes uc-rise {
+    from { transform: translateY(110%); }
+  }
+
+  .uc-headline .w-vision { color: var(--track-vision-ink); }
+  .uc-headline .w-voice { color: var(--track-voice-ink); }
+
+  .uc-subhead {
+    max-width: 56ch;
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-bottom: var(--space-lg);
+  }
+
+  /* Case index — each card owns its case's signal color as a washed
+     daylight tint; ink variant carries the mono data, near-black the name.
+     Hover = detector lock-on: tint deepens, corner brackets appear. */
+  .uc-index {
+    display: grid;
+    gap: var(--space-sm);
+  }
+
+  @media (min-width: 721px) {
+    .uc-index {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .uc-index-link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-md);
+    background: color-mix(in srgb, var(--acc-raw) 9%, var(--bg-elevated));
+    border: 1px solid color-mix(in srgb, var(--acc) 22%, transparent);
+    border-radius: var(--radius);
+    transition: background 0.22s ease, border-color 0.22s ease,
+      transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .uc-index-link:hover {
+    background: color-mix(in srgb, var(--acc-raw) 15%, var(--bg-elevated));
+    border-color: color-mix(in srgb, var(--acc) 45%, transparent);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(15, 23, 42, 0.08);
+  }
+
+  /* lock-on brackets — hidden at rest, appear on hover/focus */
+  .uc-index-link::before,
+  .uc-index-link::after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    opacity: 0;
+    transition: opacity 0.22s ease;
+    pointer-events: none;
+  }
+
+  .uc-index-link::before {
+    top: 8px;
+    left: 8px;
+    border-top: 2px solid var(--acc-raw);
+    border-left: 2px solid var(--acc-raw);
+  }
+
+  .uc-index-link::after {
+    bottom: 8px;
+    right: 8px;
+    border-bottom: 2px solid var(--acc-raw);
+    border-right: 2px solid var(--acc-raw);
+  }
+
+  .uc-index-link:hover::before,
+  .uc-index-link:hover::after,
+  .uc-index-link:focus-visible::before,
+  .uc-index-link:focus-visible::after {
+    opacity: 1;
+  }
+
+  .uc-index-n {
+    font-family: var(--font-mono);
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--acc);
+    flex: 0 0 auto;
+  }
+
+  .uc-index-id {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    min-width: 0;
+  }
+
+  .uc-index-name {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.25rem;
+    letter-spacing: -0.01em;
+    color: var(--text);
+  }
+
+  .uc-index-ind {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    /* hue-derived but stepped darker: 11.5px text needs 4.5:1 on the tint */
+    color: color-mix(in srgb, var(--acc) 80%, var(--text));
+  }
+
+  .uc-index-arrow {
+    margin-left: auto;
+    flex: 0 0 auto;
+    color: var(--acc);
+    opacity: 0.45;
+    transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.22s ease;
+  }
+
+  .uc-index-link:hover .uc-index-arrow,
+  .uc-index-link:focus-visible .uc-index-arrow {
+    opacity: 1;
+    transform: translateX(4px);
+  }
+
+  /* ---------- Case chapters ---------- */
+  .uc-case {
+    scroll-margin-top: calc(var(--header-height) + var(--space-sm));
+  }
+
+  .uc-layout {
+    display: grid;
+    gap: var(--space-md);
+  }
+
+  .uc-case-head {
+    position: relative;
+  }
+
+  .uc-case-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin-bottom: var(--space-xs);
+  }
+
+  .uc-case-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--acc-raw);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--acc) 18%, transparent);
+  }
+
+  .uc-case-title {
+    max-width: none;
+  }
+
+  .uc-case-name {
+    display: block;
+    font-size: clamp(2rem, 4.5vw, 3.2rem);
+    color: var(--acc);
+  }
+
+  .uc-case-sub {
+    display: block;
+    margin-top: 0.3rem;
+    font-size: clamp(1.15rem, 2.2vw, 1.6rem);
+    font-weight: 600;
+    line-height: 1.25;
+    max-width: 34ch;
+  }
+
+  .uc-ghost {
+    display: none;
+  }
+
+  /* Stage */
+  .uc-stage {
+    position: relative;
+    margin: 0;
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid rgba(15, 23, 42, 0.1);
+    box-shadow: 0 18px 48px rgba(15, 23, 42, 0.12);
+  }
+
+  .uc-stage img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+  }
+
+  /* detector corner brackets — top-left via ::before, bottom-right via ::after */
+  .uc-stage::before,
+  .uc-stage::after {
+    content: '';
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    pointer-events: none;
+    filter: drop-shadow(0 1px 3px rgba(11, 16, 32, 0.5));
+  }
+
+  .uc-stage::before {
+    top: 12px;
+    left: 12px;
+    border-top: 2.5px solid var(--acc-raw);
+    border-left: 2.5px solid var(--acc-raw);
+  }
+
+  .uc-stage::after {
+    bottom: 12px;
+    right: 12px;
+    border-bottom: 2.5px solid var(--acc-raw);
+    border-right: 2.5px solid var(--acc-raw);
+  }
+
+  .uc-hud {
+    position: absolute;
+    left: var(--space-sm);
+    padding: 0.32rem 0.75rem;
+    border-radius: 999px;
+    background: rgba(11, 16, 32, 0.85);
+    color: var(--text-on-dark);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .uc-hud-top {
+    top: var(--space-sm);
+  }
+
+  .uc-hud-bottom {
+    bottom: var(--space-sm);
+    color: var(--acc-raw);
+  }
+
+  /* Body blocks */
+  .uc-body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    min-width: 0;
+  }
+
+  .uc-block-label {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin-bottom: var(--space-sm);
+  }
+
+  .uc-block-label::before {
+    content: '';
+    width: 1.1rem;
+    height: 3px;
+    background: var(--acc);
+    flex: 0 0 auto;
+  }
+
+  .uc-challenge {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+
+  .uc-challenge li {
+    position: relative;
+    padding-left: 1.35rem;
+    color: var(--text-secondary);
+    max-width: 62ch;
+  }
+
+  .uc-challenge li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.62em;
+    width: 0.7rem;
+    height: 2px;
+    background: var(--acc);
+  }
+
+  /* Helped — tinted deployment card */
+  .uc-helped {
+    padding: var(--space-md);
+    background: color-mix(in srgb, var(--acc) 5%, var(--bg-elevated));
+    border: 1px solid color-mix(in srgb, var(--acc) 16%, transparent);
+    border-radius: var(--radius);
+  }
+
+  .uc-prose {
+    color: var(--text-secondary);
+    max-width: 65ch;
+  }
+
+  .uc-prose + .uc-prose {
+    margin-top: 0.7rem;
+  }
+
+  /* Closed-loop diagram (LVMH) */
+  .uc-loop-wrap {
+    margin-top: var(--space-md);
+  }
+
+  .uc-loop {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: var(--space-sm);
+  }
+
+  .uc-loop-step {
+    position: relative;
+    padding: 0.75rem 0.9rem;
+    background: var(--bg-elevated);
+    border: 1px solid color-mix(in srgb, var(--acc) 22%, transparent);
+    border-radius: var(--radius-sm);
+  }
+
+  .uc-loop-name {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.98rem;
+  }
+
+  .uc-loop-n {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--acc);
+  }
+
+  .uc-loop-desc {
+    display: block;
+    margin-top: 0.25rem;
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+  }
+
+  .uc-loop-note {
+    margin-top: 0.6rem;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    color: var(--text-secondary);
+  }
+
+  .uc-loop-return {
+    color: var(--acc);
+    font-weight: 700;
+  }
+
+  @media (min-width: 721px) {
+    .uc-loop {
+      grid-template-columns: repeat(3, 1fr);
+      align-items: stretch;
+    }
+
+    /* arrows between loop steps, pointing right on desktop */
+    .uc-loop-step:not(:last-child)::after {
+      content: '→';
+      position: absolute;
+      right: -0.95rem;
+      top: 0.75rem;
+      z-index: 1;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      color: var(--acc);
+    }
+  }
+
+  @media (max-width: 720px) {
+    .uc-loop-step:not(:last-child)::after {
+      content: '↓';
+      position: absolute;
+      left: 1rem;
+      bottom: -1.05rem;
+      z-index: 1;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      color: var(--acc);
+    }
+  }
+
+  /* Outcome — dark detector readout */
+  .uc-outcome {
+    padding: var(--space-md);
+    background: var(--bg-dark);
+    border-radius: var(--radius);
+    box-shadow: 0 14px 36px rgba(11, 16, 32, 0.22);
+  }
+
+  .uc-block-label--dark {
+    color: var(--text-on-dark-secondary);
+  }
+
+  .uc-block-label--dark::before {
+    background: var(--acc-raw);
+  }
+
+  .uc-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(128px, 1fr));
+    gap: var(--space-md) var(--space-sm);
+  }
+
+  .uc-stat-n {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    color: var(--acc-raw);
+  }
+
+  .uc-stat-label {
+    display: block;
+    margin-top: 0.35rem;
+    font-size: 0.85rem;
+    line-height: 1.45;
+    color: var(--text-on-dark-secondary);
+  }
+
+  /* ---------- Two-column chapter layout ---------- */
+  @media (min-width: 900px) {
+    .uc-layout {
+      grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+      column-gap: var(--space-lg);
+    }
+
+    .uc-case-head {
+      grid-column: 1 / -1;
+      margin-bottom: var(--space-sm);
+      padding-right: 7.5rem;
+    }
+
+    .uc-ghost {
+      display: block;
+      position: absolute;
+      right: 0;
+      top: 0.35rem;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: clamp(4.5rem, 9vw, 7rem);
+      line-height: 1;
+      color: color-mix(in srgb, var(--acc) 22%, transparent);
+      user-select: none;
+    }
+
+    .uc-stage {
+      align-self: start;
+      position: sticky;
+      top: calc(var(--header-height) + var(--space-md));
+    }
+
+    .uc-layout--flip .uc-stage {
+      order: 2;
+    }
+
+    .uc-layout--flip .uc-body {
+      order: 1;
+    }
+  }
+
+  /* reveal on scroll — static by default so no-JS stays readable */
+  [data-reveal] {
+    --reveal-d: calc(var(--i, 0) * 90ms);
+  }
+
+  [data-reveal].is-in {
+    animation: uc-reveal 0.7s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+    animation-delay: var(--reveal-d);
+  }
+
+  @keyframes uc-reveal {
+    from { opacity: 0; transform: translateY(28px); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .uc-headline.is-live .w,
+    [data-reveal].is-in {
+      animation: none;
+    }
+
+    .uc-index-link,
+    .uc-index-link:hover,
+    .uc-index-arrow,
+    .uc-index-link:hover .uc-index-arrow,
+    .uc-index-link::before,
+    .uc-index-link::after {
+      transition: none;
+      transform: none;
+    }
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    'use strict';
+
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    /* Hero entrance */
+    var head = document.querySelector('[data-uc-head]');
+    if (head) {
+      requestAnimationFrame(function () { head.classList.add('is-live'); });
+    }
+
+    /* Reveal on scroll */
+    var revealEls = Array.prototype.slice.call(document.querySelectorAll('[data-reveal]'));
+    if ('IntersectionObserver' in window && !reduceMotion.matches) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('is-in');
+          io.unobserve(entry.target);
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -6% 0px' });
+      revealEls.forEach(function (el) { io.observe(el); });
+    } else {
+      revealEls.forEach(function (el) { el.classList.add('is-in'); });
+    }
+  })();
+</script>
