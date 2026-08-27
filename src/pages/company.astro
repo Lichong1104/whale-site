@@ -188,22 +188,11 @@ const values = [
       <div class="container">
         <div class="section-head">
           <h2>Our Growth</h2>
-          <p>Backed by Tier-1 investors, powering the future of enterprise AI workflows across physical spaces.</p>
+          <p class="growth-lede"><span class="growth-lede-proof">Backed by <strong>Tier-1 investors</strong>,</span> powering the future of enterprise AI workflows across physical spaces.</p>
         </div>
 
-        <div class="tl" data-timeline>
-          <svg class="tl-curve" viewBox="0 -10 820 256" preserveAspectRatio="none" aria-hidden="true">
-            <path class="tl-path" d="M31,212 L789,-10" fill="none" vector-effect="non-scaling-stroke" />
-          </svg>
-          <ol class="tl-list">
-            {milestones.map((m, i) => (
-              <li class="tl-item" style={`--i:${i}`}>
-                <span class="tl-dot" aria-hidden="true"></span>
-                <span class="tl-year">{m.year}</span>
-                <span class="tl-text">{m.text}{m.detail && <span class="tl-detail">{m.detail}</span>}</span>
-              </li>
-            ))}
-          </ol>
+        <div class="co-growth-chart" data-reveal>
+          <img src="/company/growth-chart.jpg" alt="Whale funding and growth timeline: founded in Hangzhou 2017, SpaceSight launched 2019, Echo launched 2021, global headquarters in Singapore 2022, 500+ enterprise clients and 100,000+ locations by 2024, US office 2025, continued global expansion 2026 — backed by Series A+ through Series C3 investors including NIO, Temasek, Bosch and Singtel" width="1280" height="720" loading="lazy" decoding="async" />
         </div>
 
         <div class="co-investors" data-reveal>
@@ -533,6 +522,37 @@ const values = [
   .co-chapter-link.is-active {
     color: var(--co-blue-ink);
     border-bottom-color: var(--co-blue);
+  }
+
+  /* ---------- Growth chart ---------- */
+  .growth-lede {
+    font-size: clamp(1.2rem, 2vw, 1.5rem);
+    line-height: 1.45;
+    letter-spacing: -0.01em;
+    max-width: 36ch;
+    text-wrap: balance;
+    color: var(--text-secondary);
+  }
+
+  .growth-lede-proof {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  .growth-lede-proof strong {
+    color: var(--ring);
+    font-weight: 700;
+  }
+
+  .co-growth-chart {
+    margin-top: var(--space-lg);
+  }
+
+  .co-growth-chart img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius);
   }
 
   /* ---------- Growth timeline ---------- */
@@ -1085,6 +1105,16 @@ const values = [
 
     .team-photo {
       aspect-ratio: 4 / 3;
+      /* portraits are 800x1200 with the face in the top quarter;
+         anchor the cover crop there so heads are never cut off */
+      object-position: center 22%;
+    }
+
+    /* jerry and shukun's hair nearly touches the top edge of the source
+       photo — anchor their crop at the very top so the full head shows */
+    .team-card[data-bio-card="jerry"] .team-photo,
+    .team-card[data-bio-card="shukun"] .team-photo {
+      object-position: center top;
     }
 
     .news-card-stats {

@@ -52,6 +52,11 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+html, body {
+  /* clip (not hidden): sticky legal TOC / company timeline must keep working */
+  overflow-x: clip;
+}
+
 /* Typography */
 h1, h2, h3 {
   font-family: var(--font-display);
@@ -173,9 +178,9 @@ input:focus-visible {
     padding: var(--space-sm);
   }
 
-  .site-header .btn {
-    padding: 0.5rem 1rem;
-    font-size: 0.85rem;
+  /* CTA moves into the nav drawer below 721px */
+  .site-header .header-cta {
+    display: none;
   }
 }
 
@@ -240,7 +245,7 @@ input:focus-visible {
 .btn-small {
   padding: 0.35rem 0.5rem;
   font-size: 0.8rem;
-  min-width: 200px;
+  min-width: min(200px, 100%);
 }
 
 /* Hero */
@@ -446,6 +451,12 @@ input:focus-visible {
   color: var(--text-secondary);
 }
 
+@media (min-width: 721px) and (max-width: 900px) {
+  .stats-band-inner {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 720px) {
   .stats-band-inner {
     grid-template-columns: 1fr;
@@ -619,7 +630,17 @@ input:focus-visible {
 
   .hero-carousel-track {
     flex: none;
-    aspect-ratio: 2.26;
+    aspect-ratio: 16 / 10;
+  }
+
+  /* 44px touch target, visual dot stays 8px via ::after */
+  .hero-carousel-dot {
+    width: 44px;
+    height: 44px;
+  }
+
+  .hero-carousel-dot::after {
+    inset: 18px;
   }
 }
 
@@ -717,8 +738,11 @@ input:focus-visible {
   font-family: var(--font-mono);
   font-size: 0.85rem;
   color: var(--text-secondary);
-  transform: scale(1.2);
-  transform-origin: left center;
+}
+
+/* stats band carries both classes; grid must win over .track-legend's flex */
+.stats-band-inner.track-legend {
+  display: grid;
 }
 
 .track-item {
@@ -1200,7 +1224,7 @@ input:focus-visible {
   gap: var(--space-md);
 }
 
-@media (min-width: 720px) {
+@media (min-width: 840px) {
   .usecase-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: var(--space-sm);
@@ -1779,6 +1803,12 @@ a.platform-carousel-slide:hover {
 @media (min-width: 840px) {
   .case-grid {
     grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 721px) and (max-width: 839px) {
+  .case-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -2515,8 +2545,16 @@ a.platform-carousel-slide:hover {
 
 @media (min-width: 720px) {
   .footer-grid {
-    grid-template-columns: 1.5fr repeat(4, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
     align-items: start;
+  }
+}
+
+@media (min-width: 1025px) {
+  .footer-grid {
+    grid-template-columns: 1.5fr repeat(4, 1fr);
+    gap: var(--space-lg);
   }
 }
 
@@ -3139,6 +3177,10 @@ a.platform-carousel-slide:hover {
 }
 
 @media (max-width: 900px) {
+  .roles-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 720px) {
   .roles-grid { grid-template-columns: 1fr; }
 }
 

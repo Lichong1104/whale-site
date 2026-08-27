@@ -423,7 +423,7 @@ const moreArticles = articles.slice(4).filter((a) => a !== companyArticle);
 
   .blog-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
     gap: var(--space-md);
   }
   .blog-card {
