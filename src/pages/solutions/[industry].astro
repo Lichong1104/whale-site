@@ -311,7 +311,7 @@ const extraSchema = [
               <span class="unit-status"><i aria-hidden="true"></i>Active</span>
             </header>
             <p class="unit-body">{ind.see}</p>
-            <footer class="unit-foot">{ind.seeMode}</footer>
+            <footer class="unit-foot">{ind.seeMode} · <a href="/spacesight/" class="unit-link">Explore SpaceSight →</a></footer>
           </article>
           <article class="unit unit-hear">
             <span class="uc uc-tl" aria-hidden="true"></span>
@@ -1002,6 +1002,17 @@ const extraSchema = [
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--text-on-dark-secondary);
+  }
+
+  .unit-foot .unit-link {
+    color: var(--y, #FFD23F);
+    text-decoration: none;
+    border-bottom: 1px solid color-mix(in srgb, currentColor 45%, transparent);
+    padding-bottom: 1px;
+  }
+
+  .unit-foot .unit-link:hover {
+    border-bottom-color: currentColor;
   }
 
   /* ---------------- Outcome: all-green checklist ---------------- */

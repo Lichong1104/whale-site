@@ -5,8 +5,8 @@ import CTASection from '../components/CTASection.astro';
 import Footer from '../components/Footer.astro';
 
 const canonicalUrl = 'https://www.whale.sg/spacesight/';
-const pageTitle = 'SpaceSight | Physical Operations Intelligence and Retail Video Analytics';
-const pageDescription = 'SpaceSight is a Physical Operations Intelligence platform for AI audit, retail video analytics, customer flow analytics, loss prevention, and store optimization across enterprise locations.';
+const pageTitle = 'SpaceSight | Physical Operations Intelligence Platform';
+const pageDescription = 'SpaceSight turns camera footage into AI audit, customer flow analytics, and loss prevention insights across every store and site — no rip-and-replace.';
 
 const extraSchema = [
   {
@@ -88,8 +88,8 @@ const unitWide = {
 const devices = [
   { name: 'Existing Cameras', sub: 'CCTV · NVR · VMS', tag: 'Reuse', glyph: 'cctv' },
   { name: 'Video Hub', sub: 'Connects and manages video streams', tag: 'Edge', glyph: 'hub' },
-  { name: 'AI Hub', sub: 'Processes video locally at the edge', tag: 'Edge AI', img: '/spacesight/ai-hub.webp', imgAlt: 'Whale AI Hub — edge device that processes video locally to generate analytics, events, and alerts' },
-  { name: 'Edge AI Camera', sub: 'Including Whale Owl', tag: 'Edge AI', img: '/spacesight/edge-ai-camera.webp', imgAlt: 'Whale Owl Edge AI Camera — AI processing built directly into the camera' },
+  { name: 'AI Hub', sub: 'Processes video locally at the edge', tag: 'Edge AI', img: '/spacesight/ai-hub.webp', imgAlt: 'Whale AI Hub — edge device that processes video locally to generate analytics, events, and alerts', imgW: 391, imgH: 200 },
+  { name: 'Edge AI Camera', sub: 'Including Whale Owl', tag: 'Edge AI', img: '/spacesight/edge-ai-camera.webp', imgAlt: 'Whale Owl Edge AI Camera — AI processing built directly into the camera', imgW: 960, imgH: 960 },
   { name: 'SpaceSight Cloud Platform', sub: 'Dashboards · Alerts · Automated reports · SpaceClaw', tag: 'Space Intelligence layer', glyph: 'cloud' }
 ];
 
@@ -220,12 +220,12 @@ const scaleBars = [
         <div class="ssx-dashgrid">
           <figure class="ssx-frame">
             <div class="ssx-frame-bar"><span>Analytics // Demographics</span><i aria-hidden="true"></i></div>
-            <img src="/spacesight/analytics-demographics.webp" alt="SpaceSight analytics dashboard — customer demographics breakdown by age and gender" loading="lazy" />
+            <img src="/spacesight/analytics-demographics.webp" alt="SpaceSight analytics dashboard — customer demographics breakdown by age and gender" width="1184" height="854" loading="lazy" />
             <figcaption class="ssx-figcap"><span class="ssx-figcap-id">Fig. 01</span><span class="ssx-figcap-alt">Customer demographics dashboard</span></figcaption>
           </figure>
           <figure class="ssx-frame">
             <div class="ssx-frame-bar"><span>Analytics // Entry rate</span><i aria-hidden="true"></i></div>
-            <img src="/spacesight/analytics-entry-rate.webp" alt="SpaceSight analytics dashboard — entry rate and customer-flow funnel across stores" loading="lazy" />
+            <img src="/spacesight/analytics-entry-rate.webp" alt="SpaceSight analytics dashboard — entry rate and customer-flow funnel across stores" width="1186" height="846" loading="lazy" />
             <figcaption class="ssx-figcap"><span class="ssx-figcap-id">Fig. 02</span><span class="ssx-figcap-alt">Entry-rate and traffic funnel dashboard</span></figcaption>
           </figure>
         </div>
@@ -374,7 +374,7 @@ const scaleBars = [
               <article class="ssx-device">
                 <div class="ssx-device-view">
                   {d.img ? (
-                    <img src={d.img} alt={d.imgAlt} loading="lazy" />
+                    <img src={d.img} alt={d.imgAlt} width={d.imgW} height={d.imgH} loading="lazy" />
                   ) : d.glyph === 'cctv' ? (
                     <svg viewBox="0 0 120 90" role="img" aria-label="Existing CCTV camera line drawing">
                       <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
@@ -440,7 +440,7 @@ const scaleBars = [
 
         <div class="ssx-pipe-meta">
           <span>Deployment pipeline — Ten stages</span>
-          <span class="ssx-pipe-meta-right">Site survey → Ongoing optimization</span>
+          <span class="ssx-pipe-meta-right">Site survey → Ongoing optimization · <a href="/whale_spacesight/" class="ssx-handbook-link">Full technical handbook →</a></span>
         </div>
 
         <div class="ssx-flow">
@@ -499,7 +499,7 @@ const scaleBars = [
         </div>
 
         <figure class="ssx-cert">
-          <img src="/spacesight/compliance-strip.webp" alt="Enterprise compliance certifications — SOC 2 Type II, GDPR Compliant, ISO 27001, ISO 9001, CMMI Level 5" loading="lazy" />
+          <img src="/spacesight/compliance-strip.webp" alt="Enterprise compliance certifications — SOC 2 Type II, GDPR Compliant, ISO 27001, ISO 9001, CMMI Level 5" width="1630" height="194" loading="lazy" />
           <figcaption class="ssx-figcap"><span class="ssx-figcap-id">Fig. 03</span><span class="ssx-figcap-alt">SOC 2 Type II · GDPR Compliant · ISO 27001 · ISO 9001 · CMMI Level 5</span></figcaption>
         </figure>
       </div>
@@ -1621,6 +1621,17 @@ const scaleBars = [
 
   .ssx-pipe-meta-right {
     color: var(--y);
+  }
+
+  .ssx-handbook-link {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255, 210, 63, 0.45);
+    padding-bottom: 1px;
+  }
+
+  .ssx-handbook-link:hover {
+    border-bottom-color: currentColor;
   }
 
   .ssx-flow {

@@ -49,6 +49,7 @@
 
         <div class="pd-cta">
           <button type="button" class="btn btn-primary btn-large" data-open-modal data-source-type="products页Book a demo留资">Book a demo</button>
+          <a href="/spacesight/" class="pd-more">Explore SpaceSight in depth <span aria-hidden="true">→</span></a>
         </div>
       </div>
     </section>
@@ -565,6 +566,26 @@
   .pd-cta {
     margin-top: var(--space-lg);
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-sm);
+  }
+
+  .pd-more {
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(15, 23, 42, 0.35);
+    padding-bottom: 2px;
+  }
+
+  .pd-more:hover {
+    border-bottom-color: var(--ink);
   }
 
   /* Match header Request a Demo: gradient fill + pulse */

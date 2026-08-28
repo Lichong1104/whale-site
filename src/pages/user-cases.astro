@@ -30,6 +30,7 @@ const cases = [
     industry: 'Retail',
     product: 'SpaceSight',
     productChip: 'SpaceSight · Sees',
+    productHref: '/spacesight/',
     accent: 'vision',
     title: 'Turning foot traffic into real insight, across 4,000+ stores',
     img: '/user-cases/watsons.jpg',
@@ -201,6 +202,9 @@ const cases = [
               <div class="uc-block uc-helped" data-reveal>
                 <h3 class="uc-block-label">{c.helpedTitle}</h3>
                 {c.helped.map((p) => <p class="uc-prose">{p}</p>)}
+                {c.productHref && (
+                  <a href={c.productHref} class="uc-product-link">Explore {c.product} in depth <span aria-hidden="true">→</span></a>
+                )}
                 {c.loop && (
                   <div class="uc-loop-wrap">
                     <ol class="uc-loop">
@@ -599,6 +603,24 @@ const cases = [
   .uc-prose {
     color: var(--text-secondary);
     max-width: 65ch;
+  }
+
+  .uc-product-link {
+    display: inline-block;
+    margin-top: var(--space-sm);
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid color-mix(in srgb, var(--acc) 55%, transparent);
+    padding-bottom: 2px;
+  }
+
+  .uc-product-link:hover {
+    border-bottom-color: var(--acc);
   }
 
   .uc-prose + .uc-prose {
