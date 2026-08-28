@@ -195,7 +195,7 @@ const headlineWords = [
                     <span class={`ind-chip ind-chip-${p}`}>{p === 'echo' ? 'Echo · Hears' : 'SpaceSight · Sees'}</span>
                   ))}
                 </div>
-                <a class="ind-link" href="#contact" aria-label={`See how it works for ${ind.name} — book a demo`}>
+                <a class="ind-link" href={`/solutions/${ind.id}/`} aria-label={`See how it works for ${ind.name} — industry solution detail`}>
                   See how it works for {ind.name}{' '}<span class="ind-link-arrow" aria-hidden="true">→</span>
                 </a>
               </div>

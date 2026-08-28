@@ -292,11 +292,23 @@ const values = [
       </div>
     </section>
 
-    <section class="section section-dark co-challenge" aria-label="Find your next challenge">
+    <section class="section co-challenge" aria-label="Find your next challenge">
       <div class="container co-challenge-inner">
-        <h2>Find Your Next Challenge</h2>
-        <p>If you are ready to take ownership, grow quickly, and build AI that makes a difference for enterprises around the world, we would love to hear from you.</p>
-        <a href={JOBS_URL} class="btn btn-primary btn-large" target="_blank" rel="noopener noreferrer">Explore Open Roles</a>
+        <div class="co-challenge-copy">
+          <p class="co-eyebrow">Careers at Whale</p>
+          <h2>Find Your Next Challenge</h2>
+          <p>If you are ready to take ownership, grow quickly, and build AI that makes a difference for enterprises around the world, we would love to hear from you.</p>
+          <a href={JOBS_URL} class="btn btn-primary btn-large" target="_blank" rel="noopener noreferrer">Explore Open Roles</a>
+        </div>
+        <figure class="co-challenge-fig">
+          <img
+            src="/company/find-challenge.webp"
+            srcset="/company/find-challenge-800.webp 800w, /company/find-challenge.webp 1600w"
+            sizes="(max-width: 900px) 100vw, 44vw"
+            alt="A Whale team member in the workshop, holding a small robot and celebrating"
+            loading="lazy"
+          />
+        </figure>
       </div>
     </section>
 
@@ -892,21 +904,79 @@ const values = [
   }
 
   /* ---------- Challenge band ---------- */
+  .co-challenge {
+    background: linear-gradient(135deg, var(--co-blue-soft) 0%, #F8FAFF 55%, #FFFFFF 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .co-challenge::before {
+    content: '';
+    position: absolute;
+    top: -140px;
+    right: -140px;
+    width: 420px;
+    height: 420px;
+    border: 1.5px dashed rgba(37, 99, 235, 0.25);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
   .co-challenge-inner {
-    text-align: center;
-    max-width: 720px;
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+    align-items: center;
+    gap: clamp(2rem, 5vw, 4.5rem);
+    position: relative;
+  }
+
+  .co-challenge-copy .co-eyebrow {
+    color: var(--co-blue);
+    margin: 0 0 var(--space-sm);
   }
 
   .co-challenge h2 {
-    color: var(--text-on-dark);
     margin: 0 0 var(--space-sm);
   }
 
   .co-challenge p {
-    color: var(--text-on-dark-secondary, rgba(240, 244, 255, 0.75));
+    color: var(--text-secondary);
     line-height: 1.7;
-    margin: 0 auto var(--space-md);
-    max-width: 56ch;
+    margin: 0 0 var(--space-md);
+    max-width: 52ch;
+  }
+
+  .co-challenge-fig {
+    margin: 0;
+    border-radius: var(--radius-lg, 24px);
+    overflow: hidden;
+    border: 1px solid rgba(37, 99, 235, 0.14);
+    box-shadow: 0 24px 48px -24px rgba(29, 78, 216, 0.25);
+    transform: rotate(1.2deg);
+    transition: transform 0.4s ease;
+  }
+
+  .co-challenge-fig:hover {
+    transform: rotate(0deg);
+  }
+
+  .co-challenge-fig img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    object-position: center 30%;
+  }
+
+  @media (max-width: 900px) {
+    .co-challenge-inner {
+      grid-template-columns: 1fr;
+    }
+
+    .co-challenge-fig {
+      transform: none;
+    }
   }
 
   /* ---------- Newsroom ---------- */

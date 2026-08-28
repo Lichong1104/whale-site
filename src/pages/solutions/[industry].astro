@@ -1,0 +1,331 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import CTASection from '../../components/CTASection.astro';
+import Footer from '../../components/Footer.astro';
+
+export function getStaticPaths() {
+  const industries = [
+    {
+      id: 'automotive',
+      short: 'Automotive',
+      name: 'Automotive',
+      headline: 'Every conversation. Every showroom standard. Finally visible.',
+      challenge: "On a dealership floor, the only record of what actually happened is whatever the salesperson typed into the CRM afterward — if they typed anything at all. Top performers carry their playbook in their heads, and when they leave, it leaves with them. Meanwhile, showroom compliance and service bay SOPs only get checked when a manager happens to walk by, which isn't nearly often enough across a busy floor with high-value transactions on the line.",
+      see: "SpaceSight keeps a continuous eye on the floor — vehicle placement, pricing accuracy, safety protocols in the service bay — so nothing waits for the next manual walkthrough to get caught. Instead of a compliance snapshot once a week, you get one all day, every day.",
+      hear: "Echo records and scores every sales conversation — greeting, needs discovery, objection handling, closing — across every associate and every shift. And it doesn't just look back afterward: Echo can surface real-time coaching cues to managers during a live customer interaction, before a deal is lost rather than after. What used to live only in your best performer's head becomes something the whole team can learn from.",
+      outcome: "Every customer interaction captured and scored. Top performer technique made trainable across the network. Showroom and service compliance enforced without another manual checklist.",
+      img: '/solutions/automotive.png',
+      imgAlt: 'SpaceSight view of an automotive showroom — camera coverage zones and regional passenger-flow filtering over the exhibition floor',
+      hover: '#0E7490',
+      track: '#22D3EE'
+    },
+    {
+      id: 'luxury-retail',
+      short: 'Luxury',
+      name: 'Luxury & Fashion Retail',
+      headline: 'Brand standards, enforced at every location, every day.',
+      challenge: 'Multi-location luxury and fashion brands live and die by consistency — but manual store visits typically reach only about 10% of locations per quarter, leaving the rest unmonitored between audits. Compliance erodes quietly at the store level. Top-performer sales habits stay local instead of spreading. And customer experience is measured anecdotally ("it felt slow in the fitting room") instead of with real data.',
+      see: "SpaceSight runs continuous AI audits across every location — planogram compliance, display standards, staff presence, fitting room activity — and routes violations automatically to the right manager the moment they're detected, including a live check on whether in-store signage and displays still match approved brand assets.",
+      hear: 'Echo captures and scores every customer interaction on the sales floor, identifying what your top performers do differently and turning those patterns into something trainable across the full team — not just tribal knowledge that lives with a handful of associates.',
+      outcome: 'Brand standards enforced across every location, every day. Best-practice sales behavior scaled to every associate. Customer experience made measurable instead of anecdotal.',
+      img: '/solutions/luxury-retail.png',
+      imgAlt: 'SpaceSight retail analytics — in-store customer-flow heat map and journey chart over a boutique camera view',
+      hover: '#DB2777',
+      track: '#FF4D8D'
+    },
+    {
+      id: 'food-beverage',
+      short: 'F&B',
+      name: 'Food & Beverage',
+      headline: 'Food safety, monitored continuously — not sampled.',
+      challenge: "Food safety compliance — FDA standards, state health codes — across hundreds of locations is structurally impossible to manage by manual walkthrough. Kitchen behavior (gloves, sanitizing, prep protocol) is largely invisible to HQ. High staff turnover means training rarely sticks, so a new hire's third shift often looks nothing like what corporate SOPs prescribe. And loss prevention at the register tends to be reactive — you find out about a problem only after it's already a pattern.",
+      see: 'SpaceSight monitors kitchen operations in real time — hygiene compliance, PPE adherence, food safety protocol deviations — with violations triggering immediate alerts to the store manager. The same continuous coverage extends to the register, catching loss-prevention issues as they happen rather than after the fact.',
+      hear: 'Echo captures customer-facing interactions and scores service quality across every shift — not just the ones a supervisor happened to observe — surfacing the patterns that actually correlate with higher satisfaction and repeat visits.',
+      outcome: 'Food safety incidents caught before they become health code violations. Compliance documentation generated automatically, not compiled by hand. A consistent customer experience regardless of location or shift.',
+      img: '/solutions/food-beverage.png',
+      imgAlt: 'SpaceSight kitchen monitoring — PPE detection flags a cook not wearing a mask, with review timeline over the camera feed',
+      hover: '#B45309',
+      track: '#F59E0B'
+    },
+    {
+      id: 'healthcare',
+      short: 'Healthcare',
+      name: 'Healthcare',
+      headline: 'Patient safety, monitored around the clock.',
+      challenge: 'Hand hygiene, PPE adherence, restricted-zone access, fall prevention — these are exactly the standards CMS and The Joint Commission expect continuous oversight for, and exactly the ones no shift supervisor can physically watch every minute of. Incidents are typically discovered after they happen, not prevented in real time. Compliance documentation, meanwhile, is largely manual — pulling clinical staff away from patient care to produce it.',
+      see: 'SpaceSight provides continuous AI monitoring of high-risk zones — ICUs, pharmacies, isolation rooms — flagging PPE and hand-hygiene violations, restricted-area access, and fall-risk behavior in real time, and compiling audit-ready compliance documentation automatically instead of by hand.',
+      hear: 'Echo captures patient-facing interactions and scores communication quality, flagging service breakdowns before they show up in HCAHPS survey data — giving you a chance to fix a problem before it affects reimbursement.',
+      outcome: 'Patient safety incidents flagged before they escalate. Regulatory audit documentation generated automatically. Staff compliance measurable and continuously improving.',
+      img: '/solutions/healthcare.png',
+      imgAlt: 'SpaceSight hospital console — ward camera feed with AI personnel analysis and playback timeline, plus mobile ward list',
+      hover: '#15803D',
+      track: '#34D399'
+    },
+    {
+      id: 'casinos',
+      short: 'Casinos',
+      name: 'Casinos',
+      headline: 'Every table, every guest interaction — under continuous watch.',
+      challenge: "Gaming floor compliance — dealer behavior, table procedures, chip handling — has to meet strict Gaming Control Board standards, but can't realistically be reviewed manually at scale. High-value guest interactions across the casino floor, hotel, and F&B outlets go unrecorded, making personalized, consistent service hard to operationalize. And when an incident does happen, reconstructing what actually occurred — pulling footage, building a timeline, documenting it for regulatory review — can take days.",
+      see: 'SpaceSight monitors gaming floor operations in real time — dealer procedure compliance, table coverage, chip handling, staff presence across every pit — with violations surfaced automatically instead of caught on the next walkthrough.',
+      hear: 'Echo captures guest-facing interactions across service touchpoints — check-in, F&B, guest services — and scores service quality at scale, catching breakdowns before they turn into a negative review or a regulatory complaint.',
+      outcome: "SpaceSight's video and Echo's audio combine into a single reconstructed timeline of an incident, turning an investigation that used to take days into one that takes minutes. Gaming floor compliance monitored continuously, not sampled. Guest experience consistent across every shift and property.",
+      img: '/solutions/casinos.png',
+      imgAlt: 'SpaceSight casino floor monitoring — dealer at a blackjack table tracked with pose overlay, staff and guest IDs, tables staffed and incident lookup readouts',
+      hover: '#7C3AED',
+      track: '#A78BFA'
+    },
+    {
+      id: 'museums',
+      short: 'Museums',
+      name: 'Museums & Cultural Institutions',
+      headline: 'See how visitors actually experience your museum.',
+      challenge: "Curators typically rearrange exhibits based on instinct, not on data showing where guests actually stop, linger, and disengage. Security and artifact protection rely on staff patrols that can't achieve continuous coverage across large, multi-gallery facilities. Staff scheduling is built on historical patterns rather than real-time visitor density, leading to understaffed galleries during surges. And grant applications or donor reports often need visitor-engagement data most institutions still collect through manual counters and periodic surveys.",
+      see: 'SpaceSight maps real-time visitor flow across every gallery — dwell time by exhibit, traffic patterns, crowd density — giving curators real data to guide layout and exhibit placement, while continuously flagging unauthorized access near your collection or unusual behavior near an exhibit.',
+      hear: 'Echo captures interaction quality at information desks, guided tours, and interactive stations, scoring staff engagement and identifying exactly where the visitor experience tends to break down.',
+      outcome: 'Exhibit layout guided by actual visitor behavior. Collection security strengthened without added headcount. Visitor engagement data ready whenever a grant application or donor update needs it.',
+      img: '/solutions/museums.png',
+      imgAlt: 'SpaceSight museum gallery analytics — visitors tracked with pose overlays and dwell-time labels, visitor path traced across the exhibition floor',
+      hover: '#1D4ED8',
+      track: '#60A5FA'
+    }
+  ];
+
+  return industries.map((ind) => ({ params: { industry: ind.id }, props: { ind } }));
+}
+
+const { ind } = Astro.props;
+
+const canonicalUrl = `https://www.whale.sg/solutions/${ind.id}/`;
+const pageDescription = `${ind.name} solution: ${ind.headline} SpaceSight and Echo bring real-time visibility and conversation intelligence to ${ind.name.toLowerCase()} operations.`;
+
+const extraSchema = [
+  {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.whale.sg/' },
+      { '@type': 'ListItem', position: 2, name: 'Solutions', item: 'https://www.whale.sg/solutions/' },
+      { '@type': 'ListItem', position: 3, name: ind.name, item: canonicalUrl }
+    ]
+  }
+];
+---
+
+<Layout
+  title={`${ind.name} Solution | Whale AI`}
+  description={pageDescription}
+  canonical={canonicalUrl}
+  extraSchema={extraSchema}
+>
+  <Header />
+  <main class="ind" style={`--hover: ${ind.hover}; --track: ${ind.track}`}>
+    <!-- Hero -->
+    <section class="section ind-hero">
+      <div class="container">
+        <a class="ind-back" href="/solutions/"><span aria-hidden="true">←</span> All industries</a>
+        <p class="ind-eyebrow">Industry Solution · {ind.short}</p>
+        <h1 class="ind-headline">{ind.headline}</h1>
+        <figure class="ind-figure">
+          <img src={ind.img} alt={ind.imgAlt} loading="eager" />
+        </figure>
+      </div>
+    </section>
+
+    <!-- The challenge -->
+    <section class="section ind-challenge">
+      <div class="container ind-narrow">
+        <p class="ind-kicker">The challenge</p>
+        <p class="ind-challenge-body">{ind.challenge}</p>
+      </div>
+    </section>
+
+    <!-- Whale's solutions: See / Hear -->
+    <section class="section ind-products">
+      <div class="container">
+        <p class="ind-kicker">Whale's solutions</p>
+        <div class="ind-grid">
+          <article class="ind-card ind-card-see">
+            <header class="ind-card-head">
+              <h2>SpaceSight</h2>
+              <span class="ind-card-tag">Sees</span>
+            </header>
+            <p>{ind.see}</p>
+          </article>
+          <article class="ind-card ind-card-hear">
+            <header class="ind-card-head">
+              <h2>Echo</h2>
+              <span class="ind-card-tag">Hears</span>
+            </header>
+            <p>{ind.hear}</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- The outcome -->
+    <section class="section ind-outcome">
+      <div class="container ind-narrow">
+        <p class="ind-kicker">The outcome</p>
+        <p class="ind-outcome-body">{ind.outcome}</p>
+        <a class="ind-others" href="/solutions/">
+          See how it works for other industries <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </section>
+
+    <CTASection
+      headline={`See it. Hear it. Fix it —<br>for ${ind.name}.`}
+      lead="Book a demo and we'll walk through your floor, your shifts, and your standards — and show you what continuous visibility looks like."
+      primaryLabel="Book a Demo"
+    />
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .ind-hero {
+    padding: calc(var(--header-height) + var(--space-xl)) 0 var(--space-lg);
+  }
+
+  .ind-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    font-size: 0.875rem;
+    color: var(--ink-soft, #555);
+    text-decoration: none;
+    margin-bottom: var(--space-md);
+  }
+
+  .ind-back:hover {
+    color: var(--hover);
+  }
+
+  .ind-eyebrow {
+    font-size: 0.8125rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--hover);
+    font-weight: 600;
+    margin-bottom: var(--space-sm);
+  }
+
+  .ind-headline {
+    max-width: 22ch;
+    margin-bottom: var(--space-lg);
+  }
+
+  .ind-figure {
+    margin: 0;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .ind-figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .ind-narrow {
+    max-width: 46rem;
+  }
+
+  .ind-kicker {
+    font-size: 0.8125rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--ink-soft, #555);
+    margin-bottom: var(--space-sm);
+  }
+
+  .ind-challenge-body {
+    font-size: 1.25rem;
+    line-height: 1.65;
+  }
+
+  .ind-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-md);
+    margin-top: var(--space-md);
+  }
+
+  .ind-card {
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 16px;
+    padding: var(--space-lg);
+    background: #fff;
+  }
+
+  .ind-card-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1em;
+    margin-bottom: var(--space-sm);
+  }
+
+  .ind-card-head h2 {
+    margin: 0;
+  }
+
+  .ind-card-tag {
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .ind-card-see .ind-card-tag {
+    color: #0E7490;
+  }
+
+  .ind-card-hear .ind-card-tag {
+    color: #7C3AED;
+  }
+
+  .ind-card p {
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .ind-outcome-body {
+    font-size: 1.25rem;
+    line-height: 1.65;
+    padding-left: 1em;
+    border-left: 3px solid var(--track);
+  }
+
+  .ind-others {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    margin-top: var(--space-md);
+    font-weight: 600;
+    color: var(--hover);
+    text-decoration: none;
+  }
+
+  .ind-others span {
+    transition: transform 0.2s ease;
+  }
+
+  .ind-others:hover span {
+    transform: translateX(4px);
+  }
+
+  @media (max-width: 768px) {
+    .ind-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .ind-challenge-body,
+    .ind-outcome-body {
+      font-size: 1.0625rem;
+    }
+  }
+</style>
