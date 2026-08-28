@@ -11,10 +11,25 @@ export function getStaticPaths() {
       short: 'Automotive',
       name: 'Automotive',
       headline: 'Every conversation. Every showroom standard. Finally visible.',
+      lines: ['Every conversation.', 'Every showroom standard.', 'Finally visible.'],
       challenge: "On a dealership floor, the only record of what actually happened is whatever the salesperson typed into the CRM afterward — if they typed anything at all. Top performers carry their playbook in their heads, and when they leave, it leaves with them. Meanwhile, showroom compliance and service bay SOPs only get checked when a manager happens to walk by, which isn't nearly often enough across a busy floor with high-value transactions on the line.",
+      log: [
+        { metric: 'CRM', label: 'The only record of what happened — if they typed anything at all', flag: 'Gap', level: 'red' },
+        { metric: 'Walk-by', label: 'How showroom & service-bay SOPs get checked today', flag: 'Manual', level: 'amber' },
+        { metric: '1×/wk', label: 'A compliance snapshot once a week — then nothing until the next one', flag: 'Sparse', level: 'amber' }
+      ],
       see: "SpaceSight keeps a continuous eye on the floor — vehicle placement, pricing accuracy, safety protocols in the service bay — so nothing waits for the next manual walkthrough to get caught. Instead of a compliance snapshot once a week, you get one all day, every day.",
       hear: "Echo records and scores every sales conversation — greeting, needs discovery, objection handling, closing — across every associate and every shift. And it doesn't just look back afterward: Echo can surface real-time coaching cues to managers during a live customer interaction, before a deal is lost rather than after. What used to live only in your best performer's head becomes something the whole team can learn from.",
-      outcome: "Every customer interaction captured and scored. Top performer technique made trainable across the network. Showroom and service compliance enforced without another manual checklist.",
+      seeMode: 'Mode · Continuous — all day, every day',
+      hearMode: 'Mode · Real-time — every conversation, every shift',
+      outcomeRows: [
+        'Every customer interaction captured and scored.',
+        'Top performer technique made trainable across the network.',
+        'Showroom and service compliance enforced without another manual checklist.'
+      ],
+      scope: ['Showroom', 'Service bay', 'Sales floor'],
+      camLabel: 'Showroom floor · Regional flow',
+      time: 'All day / Every day',
       img: '/solutions/automotive.png',
       imgAlt: 'SpaceSight view of an automotive showroom — camera coverage zones and regional passenger-flow filtering over the exhibition floor',
       hover: '#0E7490',
@@ -25,10 +40,25 @@ export function getStaticPaths() {
       short: 'Luxury',
       name: 'Luxury & Fashion Retail',
       headline: 'Brand standards, enforced at every location, every day.',
+      lines: ['Brand standards,', 'enforced at every location,', 'every day.'],
       challenge: 'Multi-location luxury and fashion brands live and die by consistency — but manual store visits typically reach only about 10% of locations per quarter, leaving the rest unmonitored between audits. Compliance erodes quietly at the store level. Top-performer sales habits stay local instead of spreading. And customer experience is measured anecdotally ("it felt slow in the fitting room") instead of with real data.',
+      log: [
+        { metric: '~10%', label: 'Of stores reached by manual audits each quarter — the rest run unchecked', flag: 'Sparse', level: 'amber' },
+        { metric: 'Anecdote', label: '"It felt slow in the fitting room" stands in for customer-experience data', flag: 'Gap', level: 'red' },
+        { metric: 'Local', label: 'Top-performer sales habits stay in one store instead of spreading', flag: 'Siloed', level: 'amber' }
+      ],
       see: "SpaceSight runs continuous AI audits across every location — planogram compliance, display standards, staff presence, fitting room activity — and routes violations automatically to the right manager the moment they're detected, including a live check on whether in-store signage and displays still match approved brand assets.",
       hear: 'Echo captures and scores every customer interaction on the sales floor, identifying what your top performers do differently and turning those patterns into something trainable across the full team — not just tribal knowledge that lives with a handful of associates.',
-      outcome: 'Brand standards enforced across every location, every day. Best-practice sales behavior scaled to every associate. Customer experience made measurable instead of anecdotal.',
+      seeMode: 'Mode · Continuous — every location, every day',
+      hearMode: 'Mode · Sales floor — every interaction scored',
+      outcomeRows: [
+        'Brand standards enforced across every location, every day.',
+        'Best-practice sales behavior scaled to every associate.',
+        'Customer experience made measurable instead of anecdotal.'
+      ],
+      scope: ['Sales floor', 'Fitting rooms', 'Displays'],
+      camLabel: 'Boutique floor · Flow heat map',
+      time: 'Every location / Every day',
       img: '/solutions/luxury-retail.png',
       imgAlt: 'SpaceSight retail analytics — in-store customer-flow heat map and journey chart over a boutique camera view',
       hover: '#DB2777',
@@ -39,10 +69,25 @@ export function getStaticPaths() {
       short: 'F&B',
       name: 'Food & Beverage',
       headline: 'Food safety, monitored continuously — not sampled.',
+      lines: ['Food safety,', 'monitored continuously —', 'not sampled.'],
       challenge: "Food safety compliance — FDA standards, state health codes — across hundreds of locations is structurally impossible to manage by manual walkthrough. Kitchen behavior (gloves, sanitizing, prep protocol) is largely invisible to HQ. High staff turnover means training rarely sticks, so a new hire's third shift often looks nothing like what corporate SOPs prescribe. And loss prevention at the register tends to be reactive — you find out about a problem only after it's already a pattern.",
+      log: [
+        { metric: 'Invisible', label: 'Kitchen behavior — gloves, sanitizing, prep protocol — to HQ', flag: 'Gap', level: 'red' },
+        { metric: 'Turnover', label: "A new hire's third shift often looks nothing like corporate SOPs", flag: 'Churn', level: 'amber' },
+        { metric: 'Reactive', label: "Register loss prevention found only after it's already a pattern", flag: 'Late', level: 'red' }
+      ],
       see: 'SpaceSight monitors kitchen operations in real time — hygiene compliance, PPE adherence, food safety protocol deviations — with violations triggering immediate alerts to the store manager. The same continuous coverage extends to the register, catching loss-prevention issues as they happen rather than after the fact.',
       hear: 'Echo captures customer-facing interactions and scores service quality across every shift — not just the ones a supervisor happened to observe — surfacing the patterns that actually correlate with higher satisfaction and repeat visits.',
-      outcome: 'Food safety incidents caught before they become health code violations. Compliance documentation generated automatically, not compiled by hand. A consistent customer experience regardless of location or shift.',
+      seeMode: 'Mode · Real-time — kitchen to register',
+      hearMode: 'Mode · Every shift — service quality scored',
+      outcomeRows: [
+        'Food safety incidents caught before they become health code violations.',
+        'Compliance documentation generated automatically, not compiled by hand.',
+        'A consistent customer experience regardless of location or shift.'
+      ],
+      scope: ['Kitchen', 'Prep line', 'Register'],
+      camLabel: 'Kitchen line · PPE detection',
+      time: 'Real-time / Every shift',
       img: '/solutions/food-beverage.png',
       imgAlt: 'SpaceSight kitchen monitoring — PPE detection flags a cook not wearing a mask, with review timeline over the camera feed',
       hover: '#B45309',
@@ -53,10 +98,25 @@ export function getStaticPaths() {
       short: 'Healthcare',
       name: 'Healthcare',
       headline: 'Patient safety, monitored around the clock.',
+      lines: ['Patient safety,', 'monitored around the clock.'],
       challenge: 'Hand hygiene, PPE adherence, restricted-zone access, fall prevention — these are exactly the standards CMS and The Joint Commission expect continuous oversight for, and exactly the ones no shift supervisor can physically watch every minute of. Incidents are typically discovered after they happen, not prevented in real time. Compliance documentation, meanwhile, is largely manual — pulling clinical staff away from patient care to produce it.',
+      log: [
+        { metric: 'After', label: 'Incidents typically discovered after they happen, not prevented in real time', flag: 'Late', level: 'red' },
+        { metric: 'Manual', label: 'Compliance documentation pulls clinical staff away from patient care', flag: 'Manual', level: 'amber' },
+        { metric: 'CMS · TJC', label: 'Standards that expect continuous oversight of hygiene, PPE, restricted zones', flag: 'Expected', level: 'ind' }
+      ],
       see: 'SpaceSight provides continuous AI monitoring of high-risk zones — ICUs, pharmacies, isolation rooms — flagging PPE and hand-hygiene violations, restricted-area access, and fall-risk behavior in real time, and compiling audit-ready compliance documentation automatically instead of by hand.',
       hear: 'Echo captures patient-facing interactions and scores communication quality, flagging service breakdowns before they show up in HCAHPS survey data — giving you a chance to fix a problem before it affects reimbursement.',
-      outcome: 'Patient safety incidents flagged before they escalate. Regulatory audit documentation generated automatically. Staff compliance measurable and continuously improving.',
+      seeMode: 'Mode · Continuous — high-risk zones, around the clock',
+      hearMode: 'Mode · Real-time — before survey scores move',
+      outcomeRows: [
+        'Patient safety incidents flagged before they escalate.',
+        'Regulatory audit documentation generated automatically.',
+        'Staff compliance measurable and continuously improving.'
+      ],
+      scope: ['ICU', 'Pharmacy', 'Isolation rooms'],
+      camLabel: 'Ward · Personnel analysis',
+      time: 'Around the clock',
       img: '/solutions/healthcare.png',
       imgAlt: 'SpaceSight hospital console — ward camera feed with AI personnel analysis and playback timeline, plus mobile ward list',
       hover: '#15803D',
@@ -67,10 +127,25 @@ export function getStaticPaths() {
       short: 'Casinos',
       name: 'Casinos',
       headline: 'Every table, every guest interaction — under continuous watch.',
+      lines: ['Every table,', 'every guest interaction —', 'under continuous watch.'],
       challenge: "Gaming floor compliance — dealer behavior, table procedures, chip handling — has to meet strict Gaming Control Board standards, but can't realistically be reviewed manually at scale. High-value guest interactions across the casino floor, hotel, and F&B outlets go unrecorded, making personalized, consistent service hard to operationalize. And when an incident does happen, reconstructing what actually occurred — pulling footage, building a timeline, documenting it for regulatory review — can take days.",
+      log: [
+        { metric: 'Days', label: 'To reconstruct one incident — footage, timeline, regulatory documentation', flag: 'Slow', level: 'red' },
+        { metric: 'Unrecorded', label: 'High-value guest interactions across floor, hotel, and F&B outlets', flag: 'Gap', level: 'red' },
+        { metric: 'GCB', label: 'Gaming Control Board floor standards no headcount can fully deliver', flag: 'Strict', level: 'amber' }
+      ],
       see: 'SpaceSight monitors gaming floor operations in real time — dealer procedure compliance, table coverage, chip handling, staff presence across every pit — with violations surfaced automatically instead of caught on the next walkthrough.',
       hear: 'Echo captures guest-facing interactions across service touchpoints — check-in, F&B, guest services — and scores service quality at scale, catching breakdowns before they turn into a negative review or a regulatory complaint.',
-      outcome: "SpaceSight's video and Echo's audio combine into a single reconstructed timeline of an incident, turning an investigation that used to take days into one that takes minutes. Gaming floor compliance monitored continuously, not sampled. Guest experience consistent across every shift and property.",
+      seeMode: 'Mode · Continuous — every pit, every table',
+      hearMode: 'Mode · Every touchpoint — check-in, F&B, guest services',
+      outcomeRows: [
+        "Days of incident reconstruction compressed into minutes — one timeline from SpaceSight's video and Echo's audio.",
+        'Gaming floor compliance monitored continuously, not sampled.',
+        'Guest experience consistent across every shift and property.'
+      ],
+      scope: ['Gaming floor', 'Check-in', 'F&B outlets'],
+      camLabel: 'Gaming floor · Pit coverage',
+      time: 'Every pit / Continuous',
       img: '/solutions/casinos.png',
       imgAlt: 'SpaceSight casino floor monitoring — dealer at a blackjack table tracked with pose overlay, staff and guest IDs, tables staffed and incident lookup readouts',
       hover: '#7C3AED',
@@ -81,10 +156,25 @@ export function getStaticPaths() {
       short: 'Museums',
       name: 'Museums & Cultural Institutions',
       headline: 'See how visitors actually experience your museum.',
+      lines: ['See how visitors actually', 'experience your museum.'],
       challenge: "Curators typically rearrange exhibits based on instinct, not on data showing where guests actually stop, linger, and disengage. Security and artifact protection rely on staff patrols that can't achieve continuous coverage across large, multi-gallery facilities. Staff scheduling is built on historical patterns rather than real-time visitor density, leading to understaffed galleries during surges. And grant applications or donor reports often need visitor-engagement data most institutions still collect through manual counters and periodic surveys.",
+      log: [
+        { metric: 'Instinct', label: 'How exhibits get rearranged — no data on where guests actually linger', flag: 'No data', level: 'red' },
+        { metric: 'Patrols', label: "Security coverage that can't watch every gallery at once", flag: 'Sparse', level: 'amber' },
+        { metric: 'Counters', label: 'Manual counts and periodic surveys feed grant and donor reports', flag: 'Manual', level: 'amber' }
+      ],
       see: 'SpaceSight maps real-time visitor flow across every gallery — dwell time by exhibit, traffic patterns, crowd density — giving curators real data to guide layout and exhibit placement, while continuously flagging unauthorized access near your collection or unusual behavior near an exhibit.',
       hear: 'Echo captures interaction quality at information desks, guided tours, and interactive stations, scoring staff engagement and identifying exactly where the visitor experience tends to break down.',
-      outcome: 'Exhibit layout guided by actual visitor behavior. Collection security strengthened without added headcount. Visitor engagement data ready whenever a grant application or donor update needs it.',
+      seeMode: 'Mode · Continuous — every gallery mapped',
+      hearMode: 'Mode · Real-time — desks, tours, stations',
+      outcomeRows: [
+        'Exhibit layout guided by actual visitor behavior.',
+        'Collection security strengthened without added headcount.',
+        'Visitor engagement data ready whenever a grant application or donor update needs it.'
+      ],
+      scope: ['Galleries', 'Info desks', 'Guided tours'],
+      camLabel: 'Gallery · Visitor flow',
+      time: 'Real-time / Every gallery',
       img: '/solutions/museums.png',
       imgAlt: 'SpaceSight museum gallery analytics — visitors tracked with pose overlays and dwell-time labels, visitor path traced across the exhibition floor',
       hover: '#1D4ED8',
@@ -119,56 +209,159 @@ const extraSchema = [
   extraSchema={extraSchema}
 >
   <Header />
-  <main class="ind" style={`--hover: ${ind.hover}; --track: ${ind.track}`}>
-    <!-- Hero -->
-    <section class="section ind-hero">
-      <div class="container">
-        <a class="ind-back" href="/solutions/"><span aria-hidden="true">←</span> All industries</a>
-        <p class="ind-eyebrow">Industry Solution · {ind.short}</p>
-        <h1 class="ind-headline">{ind.headline}</h1>
-        <figure class="ind-figure">
-          <img src={ind.img} alt={ind.imgAlt} loading="eager" />
-        </figure>
+  <main class="hud" style={`--ind: ${ind.hover}; --ind-track: ${ind.track}`}>
+
+    <!-- Hero: brief left, monitored frame right -->
+    <section class="ind-hero">
+      <div class="container ind-hero-grid">
+        <div class="ind-hero-copy">
+          <a class="back" href="/solutions/"><span aria-hidden="true">←</span> All industries</a>
+          <p class="eyebrow">Industry Solution · {ind.short}</p>
+          <h1 class="headline">
+            {ind.lines.map((line, i) => (
+              <span class={`line${i === ind.lines.length - 1 ? ' tail' : ''}`}>{line}</span>
+            ))}
+          </h1>
+          <ul class="scope" aria-label="Products and coverage">
+            <li class="capsule capsule-see"><i aria-hidden="true"></i>SpaceSight · Sees</li>
+            <li class="capsule capsule-hear"><i aria-hidden="true"></i>Echo · Hears</li>
+            {ind.scope.map((zone) => <li class="zone">{zone}</li>)}
+          </ul>
+        </div>
+
+        <div class="frame-wrap">
+          <figure class="console">
+            <div class="console-bar">
+              <span class="rec"><i aria-hidden="true"></i>REC</span>
+              <span class="console-cam">{ind.camLabel}</span>
+              <span class="console-time">{ind.time}</span>
+            </div>
+            <div class="console-view">
+              <img src={ind.img} alt={ind.imgAlt} loading="eager" />
+              <span class="vc vc-tl" aria-hidden="true"></span>
+              <span class="vc vc-tr" aria-hidden="true"></span>
+              <span class="vc vc-bl" aria-hidden="true"></span>
+              <span class="vc vc-br" aria-hidden="true"></span>
+              <span class="scanline" aria-hidden="true"></span>
+            </div>
+            <dl class="telemetry">
+              <div>
+                <dt>Coverage</dt>
+                <dd>{ind.time}</dd>
+              </div>
+              <div>
+                <dt>Compliance</dt>
+                <dd>Continuous</dd>
+              </div>
+              <div>
+                <dt>Zones</dt>
+                <dd>{ind.scope.join(' · ')}</dd>
+              </div>
+            </dl>
+          </figure>
+          <p class="figcap"><span class="figcap-id">Fig. 01</span><span class="figcap-alt">{ind.imgAlt}</span></p>
+        </div>
       </div>
     </section>
 
-    <!-- The challenge -->
-    <section class="section ind-challenge">
-      <div class="container ind-narrow">
-        <p class="ind-kicker">The challenge</p>
-        <p class="ind-challenge-body">{ind.challenge}</p>
+    <!-- SEC.01 — The challenge -->
+    <section class="sec" aria-labelledby="sec-challenge">
+      <div class="container">
+        <header class="ruler">
+          <span class="ruler-id">SEC.01</span>
+          <span class="ruler-line" aria-hidden="true"></span>
+          <h2 class="ruler-name" id="sec-challenge">The challenge</h2>
+        </header>
+        <div class="challenge-grid">
+          <p class="challenge-body">{ind.challenge}</p>
+          <aside class="log" aria-label="Field log — status quo">
+            <div class="log-head"><i aria-hidden="true"></i>Field log — status quo</div>
+            <ul>
+              {ind.log.map((row) => (
+                <li>
+                  <span class="log-metric">{row.metric}</span>
+                  <span class="log-label">{row.label}</span>
+                  <span class={`log-flag flag-${row.level}`}>{row.flag}</span>
+                </li>
+              ))}
+            </ul>
+          </aside>
+        </div>
       </div>
     </section>
 
-    <!-- Whale's solutions: See / Hear -->
-    <section class="section ind-products">
+    <!-- SEC.02 — Whale's solutions (ink stage band) -->
+    <section class="sec sec-units" aria-labelledby="sec-solutions">
       <div class="container">
-        <p class="ind-kicker">Whale's solutions</p>
-        <div class="ind-grid">
-          <article class="ind-card ind-card-see">
-            <header class="ind-card-head">
-              <h2>SpaceSight</h2>
-              <span class="ind-card-tag">Sees</span>
+        <header class="ruler">
+          <span class="ruler-id">SEC.02</span>
+          <span class="ruler-line" aria-hidden="true"></span>
+          <h2 class="ruler-name" id="sec-solutions">Whale's solutions</h2>
+        </header>
+        <div class="units">
+          <article class="unit unit-see">
+            <span class="uc uc-tl" aria-hidden="true"></span>
+            <span class="uc uc-tr" aria-hidden="true"></span>
+            <span class="uc uc-bl" aria-hidden="true"></span>
+            <span class="uc uc-br" aria-hidden="true"></span>
+            <header class="unit-head">
+              <span class="unit-id">Unit.01</span>
+              <h3 class="unit-name">SpaceSight</h3>
+              <span class="unit-tag">Sees</span>
+              <span class="unit-status"><i aria-hidden="true"></i>Active</span>
             </header>
-            <p>{ind.see}</p>
+            <p class="unit-body">{ind.see}</p>
+            <footer class="unit-foot">{ind.seeMode}</footer>
           </article>
-          <article class="ind-card ind-card-hear">
-            <header class="ind-card-head">
-              <h2>Echo</h2>
-              <span class="ind-card-tag">Hears</span>
+          <article class="unit unit-hear">
+            <span class="uc uc-tl" aria-hidden="true"></span>
+            <span class="uc uc-tr" aria-hidden="true"></span>
+            <span class="uc uc-bl" aria-hidden="true"></span>
+            <span class="uc uc-br" aria-hidden="true"></span>
+            <header class="unit-head">
+              <span class="unit-id">Unit.02</span>
+              <h3 class="unit-name">Echo</h3>
+              <span class="unit-tag">Hears</span>
+              <span class="unit-status"><i aria-hidden="true"></i>Active</span>
             </header>
-            <p>{ind.hear}</p>
+            <p class="unit-body">{ind.hear}</p>
+            <footer class="unit-foot">{ind.hearMode}</footer>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- The outcome -->
-    <section class="section ind-outcome">
-      <div class="container ind-narrow">
-        <p class="ind-kicker">The outcome</p>
-        <p class="ind-outcome-body">{ind.outcome}</p>
-        <a class="ind-others" href="/solutions/">
+    <!-- SEC.03 — The outcome -->
+    <section class="sec sec-outcome" aria-labelledby="sec-outcome">
+      <div class="container">
+        <header class="ruler">
+          <span class="ruler-id">SEC.03</span>
+          <span class="ruler-line" aria-hidden="true"></span>
+          <h2 class="ruler-name" id="sec-outcome">The outcome</h2>
+        </header>
+        <div class="outcome-grid">
+          <div class="result">
+            <div class="result-head"><i aria-hidden="true"></i>Results — all systems go</div>
+            <ul>
+              {ind.outcomeRows.map((row) => (
+                <li>
+                  <span class="check" aria-hidden="true">
+                    <svg viewBox="0 0 12 12" fill="none"><path d="M2.2 6.3 4.8 8.8 9.8 3.4" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </span>
+                  <p>{row}</p>
+                  <span class="pass">Pass</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <aside class="scoreboard" aria-label="Outcome checks summary" data-rail="Event · Captured">
+            <span class="score-label">Outcome checks</span>
+            <span class="score-value">{ind.outcomeRows.length}<span class="score-total">/{ind.outcomeRows.length}</span></span>
+            <span class="score-state"><i aria-hidden="true"></i>All green</span>
+            <span class="score-bars" aria-hidden="true">{ind.outcomeRows.map(() => <b></b>)}</span>
+          </aside>
+        </div>
+        <a class="others" href="/solutions/">
           See how it works for other industries <span aria-hidden="true">→</span>
         </a>
       </div>
@@ -184,148 +377,1004 @@ const extraSchema = [
 </Layout>
 
 <style>
-  .ind-hero {
-    padding: calc(var(--header-height) + var(--space-xl)) 0 var(--space-lg);
+  .hud {
+    --ok: #16A34A;
+    --warn: #B45309;
+    --alert: #B91C1C;
+    --hairline: rgba(15, 23, 42, 0.14);
+    --hairline-soft: rgba(15, 23, 42, 0.08);
+    /* fixed header measures ~81px here (the 60px token is stale site-wide) */
+    padding-top: calc(var(--header-height) + 22px);
   }
 
-  .ind-back {
+  .hud .ruler-name,
+  .hud .unit-name {
+    font-family: var(--font-display);
+  }
+
+  /* ---------------- Hero ---------------- */
+  .ind-hero {
+    background-image:
+      linear-gradient(rgba(15, 23, 42, 0.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(15, 23, 42, 0.045) 1px, transparent 1px);
+    background-size: 56px 56px;
+    background-position: center top;
+    padding: var(--space-lg) 0 var(--space-xl);
+  }
+
+  .ind-hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.06fr) minmax(0, 0.94fr);
+    gap: clamp(var(--space-md), 4vw, var(--space-xl));
+    align-items: center;
+  }
+
+  .back {
     display: inline-flex;
     align-items: center;
     gap: 0.5em;
-    font-size: 0.875rem;
-    color: var(--ink-soft, #555);
-    text-decoration: none;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin-bottom: var(--space-md);
+    transition: color 0.2s ease;
+  }
+
+  .back:hover {
+    color: var(--ind);
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ind);
+    border: 1px solid color-mix(in srgb, var(--ind) 40%, transparent);
+    background: color-mix(in srgb, var(--ind-track) 9%, transparent);
+    border-radius: 3px;
+    padding: 0.4rem 0.7rem;
     margin-bottom: var(--space-md);
   }
 
-  .ind-back:hover {
-    color: var(--hover);
+  /* 45° signal diamond — the kicker marker from the landing page system */
+  .eyebrow::before {
+    content: '';
+    width: 7px;
+    height: 7px;
+    transform: rotate(45deg);
+    background: var(--ind);
+    box-shadow: 0 0 8px color-mix(in srgb, var(--ind-track) 80%, transparent);
   }
 
-  .ind-eyebrow {
-    font-size: 0.8125rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--hover);
-    font-weight: 600;
-    margin-bottom: var(--space-sm);
+  .headline {
+    font-size: clamp(2rem, 4vw, 3.4rem);
+    line-height: 1.06;
+    letter-spacing: -0.03em;
+    max-width: none;
+    margin-bottom: var(--space-md);
+    text-wrap: balance;
   }
 
-  .ind-headline {
-    max-width: 22ch;
-    margin-bottom: var(--space-lg);
+  .headline .line {
+    display: block;
   }
 
-  .ind-figure {
+  .headline .tail {
+    color: var(--ind);
+  }
+
+  .headline .tail::after {
+    content: '';
+    display: inline-block;
+    width: 0.42em;
+    height: 0.82em;
+    margin-left: 0.16em;
+    transform: translateY(0.09em);
+    background: var(--ind-track);
+    animation: hud-blink 1.15s steps(1) infinite;
+  }
+
+  .scope {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    list-style: none;
+    padding: 0;
     margin: 0;
-    border-radius: 16px;
-    overflow: hidden;
-    border: 1px solid rgba(0, 0, 0, 0.08);
   }
 
-  .ind-figure img {
+  .scope li {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-radius: 3px;
+    padding: 0.35rem 0.65rem;
+  }
+
+  .capsule {
+    color: var(--text);
+    border: 1px solid var(--hairline);
+    background: var(--bg-elevated);
+  }
+
+  .capsule i {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+  }
+
+  .capsule-see i {
+    background: #FFD23F;
+    box-shadow: 0 0 8px rgba(255, 210, 63, 0.9);
+  }
+
+  .capsule-hear i {
+    background: #00E5FF;
+    box-shadow: 0 0 8px rgba(0, 229, 255, 0.9);
+  }
+
+  .zone {
+    color: var(--text-secondary);
+    border: 1px dashed var(--hairline);
+  }
+
+  /* ---------------- Monitored frame (hero console) ---------------- */
+  .frame-wrap {
+    margin: 0;
+  }
+
+  .console {
+    margin: 0;
+    background: var(--bg-dark);
+    border: 1px solid rgba(11, 16, 32, 0.7);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 32px 72px rgba(11, 16, 32, 0.3);
+  }
+
+  .console-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-sm);
+    padding: 0.75rem var(--space-sm);
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(248, 247, 244, 0.62);
+  }
+
+  .rec {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    color: #FF7070;
+    white-space: nowrap;
+  }
+
+  .rec i {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #FF4B4B;
+    box-shadow: 0 0 10px rgba(255, 75, 75, 0.9);
+    animation: hud-pulse 1.6s ease-in-out infinite;
+  }
+
+  .console-time {
+    color: var(--ind-track);
+    white-space: nowrap;
+  }
+
+  .console-view {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .console-view img {
     display: block;
     width: 100%;
     height: auto;
   }
 
-  .ind-narrow {
-    max-width: 46rem;
+  .vc {
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    border: 2px solid var(--ind-track);
+    filter: drop-shadow(0 0 4px color-mix(in srgb, var(--ind-track) 60%, transparent));
+    pointer-events: none;
   }
 
-  .ind-kicker {
-    font-size: 0.8125rem;
+  .vc-tl { top: 12px; left: 12px; border-right: none; border-bottom: none; }
+  .vc-tr { top: 12px; right: 12px; border-left: none; border-bottom: none; }
+  .vc-bl { bottom: 12px; left: 12px; border-right: none; border-top: none; }
+  .vc-br { bottom: 12px; right: 12px; border-left: none; border-top: none; }
+
+  .scanline {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -18%;
+    height: 18%;
+    background: linear-gradient(
+      180deg,
+      transparent 0%,
+      color-mix(in srgb, var(--ind-track) 10%, transparent) 42%,
+      color-mix(in srgb, var(--ind-track) 40%, transparent) 50%,
+      color-mix(in srgb, var(--ind-track) 10%, transparent) 58%,
+      transparent 100%
+    );
+    pointer-events: none;
+    animation: hud-sweep 6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .telemetry {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin: 0;
+    border-top: 1px solid rgba(248, 247, 244, 0.1);
+  }
+
+  .telemetry > div {
+    padding: 0.85rem var(--space-sm) 0.95rem;
+    border-left: 1px solid rgba(248, 247, 244, 0.1);
+    min-width: 0;
+  }
+
+  .telemetry > div:first-child {
+    border-left: none;
+  }
+
+  .telemetry dt {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    font-weight: 600;
-    color: var(--ink-soft, #555);
-    margin-bottom: var(--space-sm);
+    color: var(--text-on-dark-secondary);
+    margin-bottom: 0.25rem;
   }
 
-  .ind-challenge-body {
-    font-size: 1.25rem;
-    line-height: 1.65;
+  .telemetry dd {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: var(--text-on-dark);
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
-  .ind-grid {
+  .figcap {
+    display: flex;
+    align-items: baseline;
+    gap: 0.7rem;
+    margin: 0.6rem 0 0;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+  }
+
+  .figcap-id {
+    color: var(--ind);
+    white-space: nowrap;
+  }
+
+  .figcap-alt {
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* ---------------- Ruler section dividers ---------------- */
+  .sec {
+    padding: var(--space-xl) 0;
+  }
+
+  .ruler {
+    display: flex;
+    align-items: flex-end;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-lg);
+  }
+
+  .ruler-id {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--ind);
+    padding-bottom: 0.15rem;
+    white-space: nowrap;
+  }
+
+  .ruler-line {
+    flex: 1 1 auto;
+    height: 16px;
+    border-bottom: 1px solid rgba(15, 23, 42, 0.28);
+    background-image:
+      repeating-linear-gradient(90deg, rgba(15, 23, 42, 0.38) 0, rgba(15, 23, 42, 0.38) 1px, transparent 1px, transparent 76px),
+      repeating-linear-gradient(90deg, rgba(15, 23, 42, 0.2) 0, rgba(15, 23, 42, 0.2) 1px, transparent 1px, transparent 19px);
+    background-size: auto 12px, auto 6px;
+    background-repeat: repeat-x;
+    background-position: left bottom;
+  }
+
+  .ruler-name {
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text);
+    padding-bottom: 0.15rem;
+    white-space: nowrap;
+  }
+
+  /* ---------------- Challenge + field log ---------------- */
+  .challenge-grid {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: clamp(var(--space-md), 4vw, var(--space-xl));
+    align-items: start;
+  }
+
+  .challenge-body {
+    font-size: clamp(1.12rem, 1.65vw, 1.32rem);
+    line-height: 1.7;
+    color: var(--text);
+    max-width: 56ch;
+    margin: 0;
+  }
+
+  .log {
+    background: var(--bg-elevated);
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-sm);
+    box-shadow: 0 20px 48px rgba(15, 23, 42, 0.08);
+    overflow: hidden;
+  }
+
+  .log-head {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.8rem var(--space-md);
+    border-bottom: 1px dashed var(--hairline);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+  }
+
+  .log-head i {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #F59E0B;
+    box-shadow: 0 0 8px rgba(245, 158, 11, 0.7);
+  }
+
+  .log ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .log li {
+    display: grid;
+    grid-template-columns: 6.5rem 1fr auto;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: 1.05rem var(--space-md);
+    border-bottom: 1px solid var(--hairline-soft);
+  }
+
+  .log li:last-child {
+    border-bottom: none;
+  }
+
+  .log-metric {
+    font-family: var(--font-mono);
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: var(--text);
+  }
+
+  .log-label {
+    font-size: 0.92rem;
+    line-height: 1.5;
+    color: var(--text-secondary);
+  }
+
+  .log-flag {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.55rem;
+    border-radius: 3px;
+    white-space: nowrap;
+  }
+
+  .flag-red {
+    color: var(--alert);
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.32);
+  }
+
+  .flag-amber {
+    color: var(--warn);
+    background: rgba(245, 158, 11, 0.13);
+    border: 1px solid rgba(245, 158, 11, 0.36);
+  }
+
+  .flag-ind {
+    color: var(--ind);
+    background: color-mix(in srgb, var(--ind-track) 12%, transparent);
+    border: 1px solid color-mix(in srgb, var(--ind) 36%, transparent);
+  }
+
+  /* ---------------- Ink stage band: unit console panels ---------------- */
+  .sec-units {
+    background: var(--bg-dark);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .sec-units::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(720px 320px at 12% -8%, color-mix(in srgb, var(--ind-track) 8%, transparent), transparent 62%),
+      radial-gradient(720px 320px at 88% 108%, rgba(0, 229, 255, 0.05), transparent 62%);
+    pointer-events: none;
+  }
+
+  .sec-units .ruler-id {
+    color: var(--ind-track);
+  }
+
+  .sec-units .ruler-line {
+    border-bottom-color: rgba(248, 247, 244, 0.3);
+    background-image:
+      repeating-linear-gradient(90deg, rgba(248, 247, 244, 0.4) 0, rgba(248, 247, 244, 0.4) 1px, transparent 1px, transparent 76px),
+      repeating-linear-gradient(90deg, rgba(248, 247, 244, 0.22) 0, rgba(248, 247, 244, 0.22) 1px, transparent 1px, transparent 19px);
+  }
+
+  .sec-units .ruler-name {
+    color: var(--text-on-dark);
+  }
+
+  .units {
+    position: relative;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: var(--space-md);
-    margin-top: var(--space-md);
   }
 
-  .ind-card {
-    border: 1px solid rgba(0, 0, 0, 0.08);
-    border-radius: 16px;
-    padding: var(--space-lg);
-    background: #fff;
-  }
-
-  .ind-card-head {
+  .unit {
+    --u: #FFD23F;
+    --u-glow: rgba(255, 210, 63, 0.09);
+    position: relative;
     display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 1em;
+    flex-direction: column;
+    background: rgba(248, 247, 244, 0.045);
+    color: var(--text-on-dark);
+    border: 1px solid rgba(248, 247, 244, 0.12);
+    border-radius: var(--radius);
+    padding: calc(var(--space-md) + 6px) var(--space-lg) var(--space-md);
+    overflow: hidden;
+    box-shadow: 0 24px 56px rgba(0, 0, 0, 0.35);
+  }
+
+  .unit::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(560px 220px at 18% -12%, var(--u-glow), transparent 62%);
+    pointer-events: none;
+  }
+
+  .unit-hear {
+    --u: #00E5FF;
+    --u-glow: rgba(0, 229, 255, 0.09);
+  }
+
+  .uc {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border: 2px solid var(--u);
+    opacity: 0.9;
+    pointer-events: none;
+  }
+
+  .uc-tl { top: 10px; left: 10px; border-right: none; border-bottom: none; }
+  .uc-tr { top: 10px; right: 10px; border-left: none; border-bottom: none; }
+  .uc-bl { bottom: 10px; left: 10px; border-right: none; border-top: none; }
+  .uc-br { bottom: 10px; right: 10px; border-left: none; border-top: none; }
+
+  .unit-head {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.7rem;
     margin-bottom: var(--space-sm);
   }
 
-  .ind-card-head h2 {
-    margin: 0;
-  }
-
-  .ind-card-tag {
-    font-size: 0.75rem;
+  .unit-id {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    font-weight: 600;
+    color: var(--text-on-dark-secondary);
   }
 
-  .ind-card-see .ind-card-tag {
-    color: #0E7490;
+  .unit-name {
+    margin: 0;
+    font-size: clamp(1.5rem, 2.4vw, 2rem);
+    letter-spacing: -0.02em;
+    color: var(--text-on-dark);
   }
 
-  .ind-card-hear .ind-card-tag {
-    color: #7C3AED;
+  .unit-tag {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--u);
+    border: 1px solid var(--u);
+    border-radius: 3px;
+    padding: 0.28rem 0.5rem;
   }
 
-  .ind-card p {
-    line-height: 1.7;
+  .unit-status {
+    margin-left: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--u);
+  }
+
+  .unit-status i {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--u);
+    box-shadow: 0 0 8px var(--u);
+    animation: hud-pulse 1.8s ease-in-out infinite;
+  }
+
+  .unit-body {
+    position: relative;
+    color: #B9C6DA;
+    line-height: 1.75;
+    font-size: 0.98rem;
+    margin: 0 0 var(--space-md);
+  }
+
+  .unit-foot {
+    position: relative;
+    margin-top: auto;
+    border-top: 1px dashed rgba(248, 247, 244, 0.16);
+    padding-top: 0.8rem;
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-on-dark-secondary);
+  }
+
+  /* ---------------- Outcome: all-green checklist ---------------- */
+  .outcome-grid {
+    display: grid;
+    grid-template-columns: 1.55fr 1fr;
+    gap: var(--space-md);
+    align-items: stretch;
+  }
+
+  .result {
+    background: var(--bg-elevated);
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius);
+    box-shadow: 0 24px 60px rgba(15, 23, 42, 0.09);
+    overflow: hidden;
+  }
+
+  .result-head {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.85rem var(--space-md);
+    border-bottom: 1px solid var(--hairline-soft);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+  }
+
+  .result-head i {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--ok);
+    box-shadow: 0 0 8px rgba(22, 163, 74, 0.7);
+  }
+
+  .result ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .result li {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: 1.15rem var(--space-md);
+    border-bottom: 1px solid var(--hairline-soft);
+  }
+
+  .result li:last-child {
+    border-bottom: none;
+  }
+
+  .check {
+    flex: 0 0 auto;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--ok);
+    display: inline-grid;
+    place-items: center;
+    box-shadow: 0 0 0 4px rgba(22, 163, 74, 0.14);
+  }
+
+  .check svg {
+    width: 12px;
+    height: 12px;
+    display: block;
+  }
+
+  .result p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    color: var(--text);
     margin: 0;
   }
 
-  .ind-outcome-body {
-    font-size: 1.25rem;
-    line-height: 1.65;
-    padding-left: 1em;
-    border-left: 3px solid var(--track);
+  .pass {
+    margin-left: auto;
+    flex: 0 0 auto;
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ok);
+    border: 1px solid rgba(22, 163, 74, 0.4);
+    background: rgba(22, 163, 74, 0.08);
+    border-radius: 3px;
+    padding: 0.3rem 0.55rem;
   }
 
-  .ind-others {
+  /* Scoreboard tile — dark console readout next to the result list,
+     vertical EVENT · CAPTURED rail on its left edge (landing-page motif) */
+  .scoreboard {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.4rem;
+    background: var(--bg-dark);
+    color: var(--text-on-dark);
+    border: 1px solid rgba(11, 16, 32, 0.7);
+    border-radius: var(--radius);
+    padding: var(--space-md) var(--space-lg) var(--space-md) calc(var(--space-lg) + 1.4rem);
+    box-shadow: 0 24px 56px rgba(11, 16, 32, 0.22);
+  }
+
+  .scoreboard::before {
+    content: attr(data-rail);
+    position: absolute;
+    left: 1.05rem;
+    top: var(--space-md);
+    bottom: var(--space-md);
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--text-on-dark-secondary);
+    border-left: 1px dashed rgba(248, 247, 244, 0.18);
+    padding-left: 0.5rem;
+  }
+
+  .score-label {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-on-dark-secondary);
+  }
+
+  .score-value {
+    font-family: var(--font-display);
+    font-size: clamp(3.2rem, 5vw, 4.6rem);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    color: #4ADE80;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .score-total {
+    font-size: 0.42em;
+    color: var(--text-on-dark-secondary);
+    letter-spacing: 0;
+  }
+
+  .score-state {
     display: inline-flex;
     align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #4ADE80;
+  }
+
+  .score-state i {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #4ADE80;
+    box-shadow: 0 0 10px rgba(74, 222, 128, 0.8);
+    animation: hud-pulse 1.8s ease-in-out infinite;
+  }
+
+  .score-bars {
+    display: flex;
+    gap: 6px;
+    margin-top: var(--space-sm);
+  }
+
+  .score-bars b {
+    flex: 1 1 0;
+    height: 6px;
+    border-radius: 3px;
+    background: #4ADE80;
+    box-shadow: 0 0 8px rgba(74, 222, 128, 0.45);
+  }
+
+  /* Hairline-bound, right-aligned exit link (editorial finish) */
+  .others {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
     gap: 0.5em;
-    margin-top: var(--space-md);
-    font-weight: 600;
-    color: var(--hover);
+    margin-top: var(--space-lg);
+    border-top: 1px solid var(--hairline);
+    padding-top: var(--space-md);
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ind);
     text-decoration: none;
   }
 
-  .ind-others span {
+  .others span {
     transition: transform 0.2s ease;
   }
 
-  .ind-others:hover span {
+  .others:hover span {
     transform: translateX(4px);
   }
 
-  @media (max-width: 768px) {
-    .ind-grid {
+  /* ---------------- Animations ---------------- */
+  @keyframes hud-pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.45; transform: scale(0.8); }
+  }
+
+  @keyframes hud-blink {
+    0%, 55% { opacity: 1; }
+    56%, 100% { opacity: 0; }
+  }
+
+  @keyframes hud-sweep {
+    0% { top: -18%; }
+    55% { top: 104%; }
+    100% { top: 104%; }
+  }
+
+  /* ---------------- Responsive ---------------- */
+  @media (max-width: 980px) {
+    .ind-hero-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-lg);
+    }
+
+    .challenge-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-md);
+    }
+
+    .outcome-grid {
       grid-template-columns: 1fr;
     }
 
-    .ind-challenge-body,
-    .ind-outcome-body {
-      font-size: 1.0625rem;
+    .units {
+      grid-template-columns: 1fr;
+    }
+
+    .unit-status {
+      margin-left: 0;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .hud {
+      padding-top: calc(var(--header-height) + 18px);
+    }
+
+    .ind-hero {
+      padding: var(--space-md) 0 var(--space-lg);
+      background-size: 44px 44px;
+    }
+
+    .headline {
+      font-size: clamp(1.9rem, 8.4vw, 2.5rem);
+    }
+
+    .console-bar {
+      font-size: 0.58rem;
+      gap: 0.5rem;
+    }
+
+    .console-cam {
+      display: none;
+    }
+
+    .vc {
+      width: 15px;
+      height: 15px;
+    }
+
+    .vc-tl { top: 8px; left: 8px; }
+    .vc-tr { top: 8px; right: 8px; }
+    .vc-bl { bottom: 8px; left: 8px; }
+    .vc-br { bottom: 8px; right: 8px; }
+
+    .telemetry {
+      grid-template-columns: 1fr;
+    }
+
+    .telemetry > div {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: var(--space-sm);
+      padding: 0.65rem 0.75rem;
+      border-left: none;
+      border-top: 1px solid rgba(248, 247, 244, 0.1);
+    }
+
+    .telemetry > div:first-child {
+      border-top: none;
+    }
+
+    .telemetry dt {
+      margin-bottom: 0;
+    }
+
+    .figcap-alt {
+      display: none;
+    }
+
+    .ruler {
+      gap: 0.6rem;
+      margin-bottom: var(--space-md);
+    }
+
+    .log li {
+      grid-template-columns: 1fr auto;
+      gap: 0.4rem 0.75rem;
+      padding: 0.95rem var(--space-sm);
+    }
+
+    .log-metric {
+      grid-column: 1;
+    }
+
+    .log-flag {
+      grid-column: 2;
+      grid-row: 1;
+    }
+
+    .log-label {
+      grid-column: 1 / -1;
+    }
+
+    .unit {
+      padding: var(--space-md) var(--space-sm) var(--space-sm);
+    }
+
+    .scoreboard {
+      padding-left: calc(var(--space-md) + 1.4rem);
+    }
+
+    .result p {
+      font-size: 1rem;
+    }
+
+    .pass {
+      display: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .rec i,
+    .unit-status i,
+    .score-state i,
+    .headline .tail::after {
+      animation: none;
+    }
+
+    .scanline {
+      display: none;
+    }
+
+    .others span {
+      transition: none;
     }
   }
 </style>
