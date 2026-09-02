@@ -37,12 +37,7 @@ Whale shared how leading EV brands are deploying SpaceSight and Echo to transfor
 
 - **Automating Operations & CX** — Smart audio badges give frontline staff real-time visibility into customer interactions, raising service consistency across locations while cutting manual audit costs.
 
-- **Maximizing LTV **— Offline behavioral data flows into CRM systems to sharpen post-delivery follow-ups, deepen customer retention, and strengthen dealer margins.
-
-****
-
-**
-**
+- **Maximizing LTV** — Offline behavioral data flows into CRM systems to sharpen post-delivery follow-ups, deepen customer retention, and strengthen dealer margins.
 
 **What This Means for Japan**
 

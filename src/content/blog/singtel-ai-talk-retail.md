@@ -37,7 +37,7 @@ Prof. Gemma Calvert, Deputy Director of the Nanyang Centre for Marketing and Tec
 
 Jerry Ye, Founder & CEO of Whale, pointed out that AI-powered stores will fundamentally redefine retail experiences. However, the biggest barrier to transformation is not technology–it is mindset. The true value of AI lies in how effectively it is applied to real business scenarios.
 
-**1. AI-First is a mindset shift. **
+**1. AI-First is a mindset shift.**
 
 AI transforms complex information into structured content and significantly boosts productivity. The key is adopting an AI-First mindset and seeing AI as a trusted partner rather than a threat. Organizations that embrace AI-Native ways of working will gain a competitive edge.
 
@@ -45,7 +45,7 @@ AI transforms complex information into structured content and significantly boos
 
 AI is built on mathematics and algorithms. Using it at the application level is one thing. Understanding its underlying theory and core algorithms is another.
 
-**3. AI evolves as you collaborate. **
+**3. AI evolves as you collaborate.**
 
 AI is not perfect. It is a copilot, not a replacement. When treated as a tool and refined through continuous use, feedback, and optimization, it evolves into an efficient and reliable assistant.
 

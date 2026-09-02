@@ -12,7 +12,7 @@ const blogCollection = defineCollection({
     subcategory: z.string(),
     author: z.string().default('Whale Team'),
     featured: z.boolean().default(false),
-    coverImage: z.string().url(),
+    coverImage: z.string().url().or(z.string().regex(/^\//, 'local path must start with /')),
     externalUrl: z.string().url().optional(),
     tags: z.array(z.string()).default([]),
     seo: z
