@@ -19,4 +19,14 @@ seo:
   description: "How AI is transforming production management at scale."
 ---
 
-AI is transforming production management by automating defect detection, tracking line performance in real time, and surfacing actionable insights for factory operators.
+Hengchang Lighting, based in Ningbo, China, is transforming its manufacturing operations with Whale's AI-powered inspection system.
+
+By shifting from manual oversight to intelligent automation, the system captures data with millisecond-level precision, detecting defects, predicting risks, and optimizing workflows.
+
+**Key benefits:**
+
+• Lower defect rates and more consistent product quality
+
+• Reduced labor costs and improved management efficiency
+
+Together with Whale as its trusted AI partner, Hengchang Lighting is accelerating its journey toward smart manufacturing.
