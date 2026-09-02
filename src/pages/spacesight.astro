@@ -136,9 +136,9 @@ const scaleBars = [
           <p class="ssx-eyebrow">SpaceSight · Space Intelligence</p>
           <h1 class="ssx-h1">
             Physical Operations Intelligence for
-            <span class="ssx-tail">Every Store, Site, and Space</span>
+            <span class="ssx-tail">Better Compliance, Customer Flow, and Store Performance</span>
           </h1>
-          <p class="ssx-sub">SpaceSight turns cameras, sensors, and edge devices into real-time Space Intelligence, helping enterprises audit operations, understand customer flow, and optimize store performance before small issues become business problems.</p>
+          <p class="ssx-sub">SpaceSight turns existing cameras into real-time operational intelligence, helping teams improve compliance, customer flow, and store performance across every location.</p>
           <div class="ssx-hero-cta">
             <button type="button" class="btn btn-primary btn-large ssx-btn-yellow" data-open-modal data-source-type="spacesight页-Hero留资">Book a demo</button>
           </div>
@@ -151,7 +151,7 @@ const scaleBars = [
             <span class="ssx-console-mode">Real-time</span>
           </div>
           <div class="ssx-console-view">
-            <video src="/products/spacesight-demo-eng.mp4" poster="/products/spacesight-demo-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="SpaceSight product demo video"></video>
+            <img src="/products/spacesight-hero.png" alt="SpaceSight operations console — real-time store intelligence" loading="eager" decoding="async" />
             <span class="ssx-vc ssx-vc-tl" aria-hidden="true"></span>
             <span class="ssx-vc ssx-vc-tr" aria-hidden="true"></span>
             <span class="ssx-vc ssx-vc-bl" aria-hidden="true"></span>
@@ -721,7 +721,18 @@ const scaleBars = [
     gap: var(--space-sm);
   }
 
-  /* hero CTA falls through to the global near-black btn-primary — same as /company/ */
+  /* Book a demo buttons match the header "Request a Demo" gradient pill */
+  .ssx .btn-primary,
+  .ssx :global(.cta-actions .btn-primary) {
+    background: linear-gradient(135deg, #7c3aed 0%, #06b6d4 100%);
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1) inset, 0 6px 24px rgba(124, 58, 237, 0.45);
+    animation: cta-pulse 2.4s ease-in-out infinite;
+  }
+
+  .ssx .btn-primary:hover,
+  .ssx :global(.cta-actions .btn-primary:hover) {
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.14) inset, 0 10px 30px rgba(124, 58, 237, 0.55);
+  }
 
   /* Hero console frame */
   .ssx-console {
@@ -774,7 +785,8 @@ const scaleBars = [
     overflow: hidden;
   }
 
-  .ssx-console-view video {
+  .ssx-console-view video,
+  .ssx-console-view img {
     display: block;
     width: 100%;
     height: auto;
@@ -2236,6 +2248,7 @@ const scaleBars = [
     .ssx-unit-status i,
     .ssx-claw-bar i,
     .ssx-score-state i,
+    .ssx .btn-primary,
     .ssx-tail::after {
       animation: none;
     }
@@ -2243,6 +2256,10 @@ const scaleBars = [
     .ssx-pipe-flow,
     .ssx-pipe-flow2,
     .ssx-rail {
+      animation: none;
+    }
+
+    .ssx :global(.cta-actions .btn-primary) {
       animation: none;
     }
 
