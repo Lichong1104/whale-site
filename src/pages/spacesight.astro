@@ -209,49 +209,12 @@ const tabs = [
           </div>
           <figure class="ss2-plate ss2-fig" data-reveal>
             <div class="ss2-plate-media ss2-fig-media">
-              <svg viewBox="0 0 560 380" role="img" aria-label="Schematic of an automated compliance audit: camera frame with checklist rows marked pass and exception">
-                <rect x="18" y="18" width="300" height="210" fill="none" stroke="currentColor" stroke-width="1.5" class="ss2-svg-ink"/>
-                <path d="M18 48 h300" stroke="currentColor" stroke-width="1" class="ss2-svg-ink" opacity=".4"/>
-                <text x="30" y="39" class="ss2-svg-mono">CAM 04 · AISLE VIEW</text>
-                <rect x="42" y="82" width="120" height="86" fill="none" stroke="#2563EB" stroke-width="2"/>
-                <text x="42" y="76" class="ss2-svg-mono ss2-svg-blue">QUEUE · 6</text>
-                <rect x="196" y="112" width="90" height="60" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="5 4" class="ss2-svg-ink"/>
-                <text x="196" y="106" class="ss2-svg-mono">DISPLAY</text>
-                <g class="ss2-svg-ink">
-                  <text x="340" y="60" class="ss2-svg-mono ss2-svg-head">AUDIT CHECKS</text>
-                  <g transform="translate(340,84)">
-                    <rect width="14" height="14" fill="none" stroke="#2563EB" stroke-width="2"/>
-                    <path d="M3 7.5 l3 3.5 l5.5 -7" fill="none" stroke="#2563EB" stroke-width="2"/>
-                    <text x="24" y="12" class="ss2-svg-mono">Queue length ≤ 8</text>
-                  </g>
-                  <g transform="translate(340,116)">
-                    <rect width="14" height="14" fill="none" stroke="#2563EB" stroke-width="2"/>
-                    <path d="M3 7.5 l3 3.5 l5.5 -7" fill="none" stroke="#2563EB" stroke-width="2"/>
-                    <text x="24" y="12" class="ss2-svg-mono">Aisle clearance</text>
-                  </g>
-                  <g transform="translate(340,148)">
-                    <rect width="14" height="14" fill="none" stroke="#2563EB" stroke-width="2"/>
-                    <path d="M3 7.5 l3 3.5 l5.5 -7" fill="none" stroke="#2563EB" stroke-width="2"/>
-                    <text x="24" y="12" class="ss2-svg-mono">Display execution</text>
-                  </g>
-                  <g transform="translate(340,180)">
-                    <rect width="14" height="14" fill="none" stroke="#DC2626" stroke-width="2"/>
-                    <path d="M3 3 l8 8 M11 3 l-8 8" stroke="#DC2626" stroke-width="2"/>
-                    <text x="24" y="12" class="ss2-svg-mono">Safety exit blocked</text>
-                  </g>
-                </g>
-                <path d="M318 228 h224 v120 h-224 z" fill="none" stroke="currentColor" stroke-width="1" class="ss2-svg-ink" opacity=".35"/>
-                <text x="330" y="252" class="ss2-svg-mono ss2-svg-head">EVIDENCE</text>
-                <text x="330" y="276" class="ss2-svg-mono">Clip 14:02:33–14:02:49</text>
-                <text x="330" y="298" class="ss2-svg-mono">Snapshot attached</text>
-                <text x="330" y="320" class="ss2-svg-mono">Owner: Store #118</text>
-                <path d="M18 262 h300" stroke="currentColor" stroke-width="1" class="ss2-svg-ink" opacity=".25"/>
-                <text x="18" y="284" class="ss2-svg-mono">SOP COMPLIANCE — STORE #118</text>
-                <text x="18" y="310" class="ss2-svg-data">94.2%</text>
-                <text x="18" y="334" class="ss2-svg-mono">LAST 24H · 41 CHECKS · 1 EXCEPTION</text>
-              </svg>
+              <picture>
+                <source srcset="/products/ss2-audit-vlm.webp" type="image/webp" />
+                <img src="/products/ss2-audit-vlm.png" alt="SpaceSight VLM model builder — human fall detector scenario with trial-run test results all matched" width="1600" height="938" loading="lazy" decoding="async" />
+              </picture>
             </div>
-            <figcaption class="ss2-plate-cap"><span>FIG. A</span><span>Automated compliance audit — schematic, synthetic data</span></figcaption>
+            <figcaption class="ss2-plate-cap"><span>FIG. A</span><span>VLM scenario audit — live product view</span></figcaption>
           </figure>
         </article>
 
@@ -818,34 +781,9 @@ const tabs = [
     margin-right: 0.6rem;
   }
 
-  /* SVG figures */
+  /* figure plates: padded matte around screenshots */
   .ss2-fig-media {
     padding: 1rem;
-  }
-  .ss2-fig svg {
-    display: block;
-    width: 100%;
-    height: auto;
-    color: var(--text);
-  }
-  .ss2-svg-mono {
-    font-family: 'Space Mono', monospace;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    fill: currentColor;
-  }
-  .ss2-svg-head {
-    fill: var(--ss2-blue-ink);
-  }
-  .ss2-svg-blue {
-    fill: var(--ss2-blue-ink);
-  }
-  .ss2-svg-data {
-    font-family: 'Space Mono', monospace;
-    font-size: 30px;
-    font-weight: 700;
-    fill: var(--ss2-blue-ink);
   }
 
   /* ===== visibility ===== */
@@ -927,6 +865,9 @@ const tabs = [
   .ss2-ledger-hw .ss2-ledger-head,
   .ss2-ledger-hw .ss2-ledger-row {
     grid-template-columns: 5.5rem 14rem 1fr 7rem;
+  }
+  .ss2-ledger-hw .ss2-ledger-row {
+    align-items: center;
   }
   .ss2-ledger-thumb {
     align-self: center;
