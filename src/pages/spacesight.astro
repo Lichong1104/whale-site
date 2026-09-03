@@ -18,7 +18,7 @@ const extraSchema = [
   }
 ];
 
-const headlineBase = 'SpaceSight — Physical Operations Intelligence for'.split(' ');
+const headlineBase = 'Physical Operations Intelligence for'.split(' ');
 const headlineTail = 'Better Compliance, Customer Flow, and Store Performance'.split(' ');
 
 const heroProof = [
@@ -34,21 +34,26 @@ const procedures = [
     name: 'Audit Every Site Consistently',
     tags: 'AI Audit Platform · Automated Compliance Audit',
     paras: [
-      'Replace manual checks with consistent, visual compliance workflows. SpaceSight continuously reviews site conditions, flags exceptions, and gives teams the evidence they need to act.',
-      'Monitor standards such as queue conditions, cleanliness, display execution, safety procedures, merchandising, and SOP compliance across every site, every day.'
+      'Replace manual checks with consistent, visual compliance workflows.'
     ],
-    impact: 'Faster audits · Fewer missed exceptions · Clearer accountability'
+    checksIntro: 'Monitor standards such as:',
+    checks: ['Queue conditions', 'Cleanliness', 'Display execution', 'Safety procedures', 'Merchandising', 'SOP compliance'],
+    checksTail: 'Across every site, every day.'
   },
   {
     id: 'proc-b',
     ref: 'B',
     name: 'Understand Customer Movement',
     tags: 'Retail Video Analytics · Customer Flow Analytics',
+    metricsIntro: 'SpaceSight measures:',
+    metrics: ['Footfall', 'Passerby rate', 'Entry rate', 'Dwell time', 'Conversion', 'Queueing', 'Traffic patterns'],
+    metricsTail: 'By store, zone, or campaign.',
     paras: [
-      'See how customers move, stop, queue, and convert across stores and spaces. SpaceSight measures footfall, passerby rate, entry rate, dwell time, conversion, queueing, and traffic patterns by store, zone, or campaign.',
-      'Privacy-conscious video analysis uses non-biometric signals such as body shape, gait, and clothing, not facial recognition. These insights help teams improve staffing, layouts, campaign evaluation, store optimization, and space optimization with real behavioral data.'
+      'Privacy-conscious video analysis uses non-biometric signals such as body shape, gait, and clothing, not facial recognition.'
     ],
-    impact: 'Better staffing decisions · Smarter layouts · More measurable campaigns'
+    outcomesIntro: 'These insights help teams improve:',
+    outcomes: ['Staffing', 'Layouts', 'Campaign evaluation', 'Store optimization', 'Space optimization'],
+    outcomesTail: 'With real behavioral data.'
   },
   {
     id: 'proc-c',
@@ -56,10 +61,12 @@ const procedures = [
     name: 'Turn Insights Into Action',
     tags: 'Enterprise AIOS · Agent Orchestration · SpaceClaw',
     paras: [
-      'SpaceClaw connects analytics with action. Teams can ask operational questions such as “Why did conversion drop yesterday?” or “Which stores showed abnormal dwell time?”',
-      'SpaceSight retrieves relevant footage, identifies possible root causes, creates work orders, dispatches follow-up tasks, and generates operational reports automatically. Agent orchestration creates a closed operational loop from detection to resolution.'
+      'SpaceClaw connects analytics with action. Teams can ask operational questions such as:'
     ],
-    impact: 'Faster root-cause analysis · Less manual reporting · Quicker issue resolution'
+    queries: ['Why did conversion drop yesterday?', 'Which stores showed abnormal dwell time?'],
+    actionsIntro: 'SpaceSight acts — automatically:',
+    actions: ['Retrieves relevant footage', 'Identifies possible root causes', 'Creates work orders', 'Dispatches follow-up tasks', 'Generates operational reports'],
+    actionsTail: 'Agent orchestration creates a closed operational loop — from detection to resolution.'
   }
 ];
 
@@ -72,11 +79,11 @@ const hwIcons = {
 };
 
 const hardware = [
-  { icon: 'camera', name: 'Existing cameras', desc: 'Reuse current CCTV, NVR, and VMS infrastructure as the signal source.', img: 'ss2-hw-cameras', w: 640, h: 640, alt: 'Typical white PTZ camera reused as a signal source' },
-  { icon: 'videoHub', name: 'Video Hub', desc: 'Aggregates and routes video streams where coverage needs to expand.', img: 'ss2-hw-video-hub', w: 528, h: 281, alt: 'Video Hub — fanless edge unit with USB and Type-C ports' },
-  { icon: 'aiHub', name: 'AI Hub', desc: 'On-premises edge AI processing for video analytics at the site.', img: 'ss2-hw-ai-hub', w: 449, h: 260, alt: 'AI Hub — industrial edge AI box with antenna and COM ports' },
-  { icon: 'edgeCam', name: 'Edge AI Camera', desc: 'Cameras with onboard AI processing for new or upgraded zones.', img: 'ss2-hw-edge-cam', w: 640, h: 724, alt: 'Edge AI Camera — ceiling-mounted dome unit with onboard AI' },
-  { icon: 'hybrid', name: 'Hybrid deployment', desc: 'A mix assessed per site — coverage, network, and use cases decide.', img: 'ss2-hw-hybrid', w: 640, h: 452, alt: 'White dome camera used in hybrid deployments' }
+  { icon: 'camera', name: 'Existing cameras', desc: 'Reuse current CCTV, NVR, and VMS infrastructure as the signal source.' },
+  { icon: 'videoHub', name: 'Video Hub', desc: 'Aggregates and routes video streams where coverage needs to expand.' },
+  { icon: 'aiHub', name: 'AI Hub', desc: 'On-premises edge AI processing for video analytics at the site.' },
+  { icon: 'edgeCam', name: 'Edge AI Camera', desc: 'Cameras with onboard AI processing for new or upgraded zones.' },
+  { icon: 'hybrid', name: 'Hybrid deployment', desc: 'A mix assessed per site — coverage, network, and use cases decide.' }
 ];
 
 const deploySteps = [
@@ -153,14 +160,10 @@ const tabs = [
               ))}
               <span class="ss2-tail">
                 {headlineTail.map((word, i) => (
-                  <Fragment><span class="wm"><span class="w" style={`--i:${i + 6}`}>{word}</span></span>{' '}</Fragment>
+                  <Fragment><span class="wm"><span class="w" style={`--i:${i + 4}`}>{word}</span></span>{' '}</Fragment>
                 ))}
               </span>
             </h1>
-            <p class="ss2-sub" data-reveal style="--i:8">
-              SpaceSight turns existing cameras into <em class="ss2-hl">real-time operational intelligence</em>,
-              helping teams improve <em class="ss2-hl">compliance, customer flow, and store performance</em> across every location.
-            </p>
             <div class="ss2-cover-cta" data-reveal style="--i:9">
               <button type="button" class="btn btn-primary btn-large" data-open-modal data-source-type="spacesight2页-Hero留资">Book a Demo</button>
               <a href="/user-cases/" class="btn btn-ghost btn-large">See Use Cases</a>
@@ -205,7 +208,11 @@ const tabs = [
               <p class="ss2-tags">{procedures[0].tags}</p>
             </header>
             {procedures[0].paras.map((t) => <p class="ss2-body">{t}</p>)}
-            <p class="ss2-stamp"><span>Result</span>{procedures[0].impact}</p>
+            <p class="ss2-mon-label">{procedures[0].checksIntro}</p>
+            <ul class="ss2-checks">
+              {procedures[0].checks.map((c) => <li>{c}</li>)}
+            </ul>
+            <p class="ss2-mon-tail">{procedures[0].checksTail}</p>
           </div>
           <figure class="ss2-plate ss2-fig" data-reveal>
             <div class="ss2-plate-media ss2-fig-media">
@@ -225,8 +232,17 @@ const tabs = [
               <h3 class="ss2-h3">{procedures[1].name}</h3>
               <p class="ss2-tags">{procedures[1].tags}</p>
             </header>
+            <p class="ss2-mon-label">{procedures[1].metricsIntro}</p>
+            <ul class="ss2-chips ss2-chips--measure">
+              {procedures[1].metrics.map((m) => <li>{m}</li>)}
+            </ul>
+            <p class="ss2-mon-tail">{procedures[1].metricsTail}</p>
             {procedures[1].paras.map((t) => <p class="ss2-body">{t}</p>)}
-            <p class="ss2-stamp"><span>Result</span>{procedures[1].impact}</p>
+            <p class="ss2-mon-label">{procedures[1].outcomesIntro}</p>
+            <ul class="ss2-chips ss2-chips--outcome">
+              {procedures[1].outcomes.map((o) => <li>{o}</li>)}
+            </ul>
+            <p class="ss2-mon-tail">{procedures[1].outcomesTail}</p>
           </div>
           <figure class="ss2-plate ss2-fig" data-reveal>
             <div class="ss2-plate-media ss2-fig-media">
@@ -247,7 +263,14 @@ const tabs = [
               <p class="ss2-tags">{procedures[2].tags}</p>
             </header>
             {procedures[2].paras.map((t) => <p class="ss2-body">{t}</p>)}
-            <p class="ss2-stamp"><span>Result</span>{procedures[2].impact}</p>
+            <ul class="ss2-queries">
+              {procedures[2].queries.map((q) => <li>{q}</li>)}
+            </ul>
+            <p class="ss2-mon-label">{procedures[2].actionsIntro}</p>
+            <ol class="ss2-chain">
+              {procedures[2].actions.map((a, i) => <li><span class="ss2-chain-no">{String(i + 1).padStart(2, '0')}</span>{a}</li>)}
+            </ol>
+            <p class="ss2-mon-tail">{procedures[2].actionsTail}</p>
           </div>
           <figure class="ss2-plate ss2-plate-phone" data-reveal>
             <div class="ss2-plate-media">
@@ -292,18 +315,12 @@ const tabs = [
         </header>
 
         <div class="ss2-ledger ss2-ledger-hw" data-reveal>
-          <p class="ss2-ledger-head"><span>HW</span><span>Option</span><span>Role in deployment</span><span>Unit</span></p>
+          <p class="ss2-ledger-head"><span>HW</span><span>Option</span><span>Role in deployment</span></p>
           {hardware.map((h) => (
             <div class="ss2-ledger-row">
               <span class="ss2-ledger-ic" set:html={hwIcons[h.icon]} />
               <span class="ss2-ledger-name">{h.name}</span>
               <span class="ss2-ledger-desc">{h.desc}</span>
-              <span class="ss2-ledger-thumb">
-                <picture>
-                  <source srcset={`/products/${h.img}.webp`} type="image/webp" />
-                  <img src={`/products/${h.img}.png`} alt={h.alt} width={h.w} height={h.h} loading="lazy" decoding="async" />
-                </picture>
-              </span>
             </div>
           ))}
         </div>
@@ -337,20 +354,17 @@ const tabs = [
           <h2 class="ss2-h2" id="ss2-sec-h">Security, Privacy, and Compliance by Design</h2>
         </header>
 
-        <div class="ss2-ledger" data-reveal>
-          <p class="ss2-ledger-head"><span>REF</span><span>Provision</span><span>What it means</span></p>
+        <div class="ss2-ledger ss2-ledger-trust" data-reveal>
+          <p class="ss2-ledger-head"><span>Provision</span><span>What it means</span></p>
           <div class="ss2-ledger-row">
-            <span class="ss2-ledger-no">T-1</span>
             <span class="ss2-ledger-name">No Facial Recognition</span>
             <span class="ss2-ledger-desc">People tracking uses non-biometric re-identification signals, not facial recognition.</span>
           </div>
           <div class="ss2-ledger-row">
-            <span class="ss2-ledger-no">T-2</span>
             <span class="ss2-ledger-name">Edge AI Processing</span>
             <span class="ss2-ledger-desc">Video can be processed locally on AI Hub or Edge AI Camera. Only metadata, analytics, and anomaly events need to be sent to the cloud, reducing bandwidth use by up to 80%.</span>
           </div>
           <div class="ss2-ledger-row">
-            <span class="ss2-ledger-no">T-3</span>
             <span class="ss2-ledger-name">Enterprise-Grade Standards</span>
             <span class="ss2-ledger-desc">Certified and audited against the standards enterprise IT and legal teams ask for.</span>
           </div>
@@ -529,20 +543,6 @@ const tabs = [
   }
   @keyframes ss2-rise {
     to { transform: translateY(0); }
-  }
-
-  .ss2-sub {
-    font-size: clamp(1.05rem, 1.6vw, 1.25rem);
-    line-height: 1.55;
-    color: var(--text-secondary);
-    max-width: 34rem;
-    margin: 0 0 2rem;
-  }
-
-  .ss2-hl {
-    font-style: normal;
-    font-weight: 600;
-    color: var(--ss2-blue-ink);
   }
 
   .ss2-cover-cta {
@@ -750,6 +750,198 @@ const tabs = [
     max-width: 68ch;
     margin: 0 0 1rem;
   }
+  .ss2-mon-label {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin: 1.6rem 0 0.7rem;
+  }
+  .ss2-checks {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+    max-width: 34rem;
+  }
+  .ss2-checks li {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.55rem 0.8rem;
+    background: var(--bg-elevated, #fff);
+    border: 1px solid var(--ss2-rule);
+    border-radius: 6px;
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text);
+    transition: border-color 0.3s ease, transform 0.3s ease;
+  }
+  .ss2-checks li::before {
+    content: '';
+    flex-shrink: 0;
+    width: 0.72rem;
+    height: 0.72rem;
+    border: 1.5px solid var(--ss2-blue);
+    border-radius: 2px;
+    transition: background 0.25s ease;
+  }
+  .ss2-checks li::after {
+    content: '';
+    position: absolute;
+    left: calc(0.8rem + 0.16rem);
+    top: 50%;
+    width: 0.4rem;
+    height: 0.22rem;
+    border-left: 1.5px solid #fff;
+    border-bottom: 1.5px solid #fff;
+    transform: translateY(-70%) rotate(-45deg) scale(0);
+    transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .ss2-checks li:hover {
+    border-color: var(--ss2-blue);
+    transform: translateY(-1px);
+  }
+  .ss2-checks li:hover::before {
+    background: var(--ss2-blue);
+  }
+  .ss2-checks li:hover::after {
+    transform: translateY(-70%) rotate(-45deg) scale(1);
+  }
+  .ss2-mon-tail {
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+    margin: 0.7rem 0 1rem;
+  }
+  .ss2-mon-tail::before {
+    content: '— ';
+    color: var(--ss2-blue);
+  }
+  /* signal/outcome chips (proc B): same ledger-cell family as checks, different markers */
+  .ss2-chips {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .ss2-chips li {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.5rem 0.8rem;
+    background: var(--bg-elevated, #fff);
+    border: 1px solid var(--ss2-rule);
+    border-radius: 999px;
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text);
+    transition: border-color 0.3s ease, transform 0.3s ease;
+  }
+  .ss2-chips li:hover {
+    border-color: var(--ss2-blue);
+    transform: translateY(-1px);
+  }
+  .ss2-chips--measure li::before {
+    content: '';
+    width: 0.5rem;
+    height: 0.5rem;
+    background: var(--ss2-blue);
+    flex-shrink: 0;
+  }
+  .ss2-chips--outcome li::before {
+    content: '';
+    width: 0.42rem;
+    height: 0.42rem;
+    border-top: 2px solid var(--ss2-blue);
+    border-right: 2px solid var(--ss2-blue);
+    transform: rotate(45deg);
+    flex-shrink: 0;
+    transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .ss2-chips--outcome li:hover::before {
+    transform: rotate(45deg) translate(1px, -1px);
+  }
+  @media (max-width: 640px) {
+    .ss2-checks { grid-template-columns: 1fr; max-width: none; }
+    .ss2-chips { gap: 0.4rem; }
+  }
+  /* proc C: example queries as quote cards */
+  .ss2-queries {
+    list-style: none;
+    margin: 0.4rem 0 1.4rem;
+    padding: 0;
+    display: grid;
+    gap: 0.6rem;
+    max-width: 34rem;
+  }
+  .ss2-queries li {
+    position: relative;
+    padding: 0.7rem 1rem 0.7rem 2.6rem;
+    background: var(--bg-elevated, #fff);
+    border: 1px solid var(--ss2-rule);
+    border-radius: 6px;
+    font-size: 0.98rem;
+    line-height: 1.5;
+    color: var(--text);
+    transition: border-color 0.3s ease, transform 0.3s ease;
+  }
+  .ss2-queries li::before {
+    content: '\201C';
+    position: absolute;
+    left: 0.9rem;
+    top: 0.28rem;
+    font-family: var(--font-mono);
+    font-size: 1.7rem;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--ss2-blue);
+  }
+  .ss2-queries li:hover {
+    border-color: var(--ss2-blue);
+    transform: translateY(-1px);
+  }
+  /* proc C: action chain */
+  .ss2-chain {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    max-width: 34rem;
+    border-top: 1px solid var(--ss2-rule);
+  }
+  .ss2-chain li {
+    display: flex;
+    align-items: baseline;
+    gap: 0.9rem;
+    padding: 0.6rem 0.25rem;
+    border-bottom: 1px solid var(--ss2-rule);
+    font-size: 0.98rem;
+    color: var(--text);
+  }
+  .ss2-chain-no {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: var(--ss2-blue-ink);
+    flex-shrink: 0;
+    min-width: 1.6em;
+  }
   .ss2-lede {
     font-size: clamp(1.1rem, 1.8vw, 1.35rem);
     line-height: 1.5;
@@ -760,25 +952,6 @@ const tabs = [
   .ss2-lede strong {
     color: var(--ss2-blue-ink);
     font-weight: 600;
-  }
-
-  /* result stamp */
-  .ss2-stamp {
-    display: inline-block;
-    font-family: var(--font-mono);
-    font-size: 0.78rem;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    color: var(--ss2-blue-ink);
-    border: 1.5px solid color-mix(in srgb, var(--ss2-blue) 55%, transparent);
-    border-radius: 2px;
-    padding: 0.55rem 0.9rem;
-    margin: 0.75rem 0 0;
-  }
-  .ss2-stamp span {
-    color: var(--text-secondary);
-    margin-right: 0.6rem;
   }
 
   /* figure plates: padded matte around screenshots */
@@ -834,12 +1007,6 @@ const tabs = [
     text-transform: uppercase;
     color: var(--text-secondary);
   }
-  .ss2-ledger-no {
-    font-family: var(--font-mono);
-    font-size: 0.78rem;
-    font-weight: 700;
-    color: var(--ss2-blue-ink);
-  }
   .ss2-ledger-ic {
     display: inline-flex;
     align-items: center;
@@ -861,33 +1028,14 @@ const tabs = [
     border-color: var(--ss2-blue);
     background: var(--ss2-blue-soft);
   }
-  /* hardware rows gain a uniform product-thumb column */
-  .ss2-ledger-hw .ss2-ledger-head,
-  .ss2-ledger-hw .ss2-ledger-row {
-    grid-template-columns: 5.5rem 14rem 1fr 7rem;
+  /* trust ledger: two columns, no ref column */
+  .ss2-ledger-trust .ss2-ledger-head,
+  .ss2-ledger-trust .ss2-ledger-row {
+    grid-template-columns: 14rem 1fr;
   }
+  /* hardware rows: icon column + name + role, vertically centered */
   .ss2-ledger-hw .ss2-ledger-row {
     align-items: center;
-  }
-  .ss2-ledger-thumb {
-    align-self: center;
-    justify-self: end;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 7rem;
-    height: 4.6rem;
-    background: var(--bg-elevated, #fff);
-    border: 1px solid var(--ss2-rule);
-    border-radius: 8px;
-    overflow: hidden;
-  }
-  .ss2-ledger-thumb img {
-    max-width: 82%;
-    max-height: 82%;
-    width: auto;
-    height: auto;
-    object-fit: contain;
   }
   .ss2-ledger-name {
     font-family: var(--font-display);
@@ -1102,19 +1250,12 @@ const tabs = [
       grid-template-areas: 'no name' 'no desc';
       row-gap: 0.35rem;
     }
-    .ss2-ledger-no { grid-area: no; }
     .ss2-ledger-ic { grid-area: no; }
     .ss2-ledger-name { grid-area: name; }
     .ss2-ledger-desc { grid-area: desc; }
-    .ss2-ledger-hw .ss2-ledger-row {
-      grid-template-columns: 4.5rem 1fr 5.4rem;
-      grid-template-areas: 'no name thumb' 'no desc thumb';
-      align-items: center;
-    }
-    .ss2-ledger-thumb {
-      grid-area: thumb;
-      width: 5.4rem;
-      height: 3.6rem;
+    .ss2-ledger-trust .ss2-ledger-row {
+      grid-template-columns: 1fr;
+      grid-template-areas: 'name' 'desc';
     }
     .ss2-step {
       grid-template-columns: 1fr;
