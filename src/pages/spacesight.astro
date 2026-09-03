@@ -1,2270 +1,1258 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
+import FAQSection from '../components/FAQSection.astro';
 import CTASection from '../components/CTASection.astro';
 import Footer from '../components/Footer.astro';
 
 const canonicalUrl = 'https://www.whale.sg/spacesight/';
-const pageTitle = 'SpaceSight | Physical Operations Intelligence Platform';
-const pageDescription = 'SpaceSight turns camera footage into AI audit, customer flow analytics, and loss prevention insights across every store and site — no rip-and-replace.';
+const pageDescription = 'SpaceSight turns existing cameras into real-time operational intelligence, helping teams improve compliance, customer flow, and store performance across every location.';
 
 const extraSchema = [
-  {
-    '@type': 'SoftwareApplication',
-    name: 'Whale SpaceSight',
-    applicationCategory: 'BusinessApplication',
-    operatingSystem: 'Web, Edge, Cloud',
-    description: pageDescription,
-    url: canonicalUrl
-  },
   {
     '@type': 'BreadcrumbList',
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.whale.sg/' },
-      { '@type': 'ListItem', position: 2, name: 'Products', item: 'https://www.whale.sg/products/' },
-      { '@type': 'ListItem', position: 3, name: 'SpaceSight', item: canonicalUrl }
+      { '@type': 'ListItem', position: 2, name: 'SpaceSight', item: canonicalUrl }
     ]
   }
 ];
+
+const headlineBase = 'SpaceSight — Physical Operations Intelligence for'.split(' ');
+const headlineTail = 'Better Compliance, Customer Flow, and Store Performance'.split(' ');
 
 const heroProof = [
-  { value: '1,600+', label: 'enterprise clients' },
-  { value: '45+', label: 'countries' },
-  { value: '530,000+', label: 'connected edge devices' },
-  { value: '99.999%', label: 'uptime' }
+  { n: '1,600+', label: 'Enterprise clients' },
+  { n: '45+', label: 'Countries deployed' },
+  { n: '600,000+', label: 'Edge AI nodes globally' }
 ];
 
-const aboutProof = [
-  { value: '1,600+', label: 'global enterprise clients' },
-  { value: '45+', label: 'countries deployed' },
-  { value: '95%+', label: 'data accuracy' },
-  { value: '2,000+', label: 'anomalies detected per day' }
-];
-
-const units = [
+const procedures = [
   {
-    id: 'UNIT.01',
-    name: 'See & Audit',
-    sub: 'AI Audit Platform for Automated Compliance Audit',
-    body: [
-      'SpaceSight continuously audits physical operations across hygiene, planograms, safety signage, shelf execution, merchandising standards, and SOP compliance. Instead of relying only on manual walkthroughs, teams can use an AI Audit Platform to detect issues automatically, around the clock.',
-      'The system works across different store layouts and operational scenarios without heavy scene-specific training. A manual inspection that used to take around 40 minutes can be reduced to about two minutes, while real-time alerts and heatmaps show where compliance problems actually happen.'
+    id: 'proc-a',
+    ref: 'A',
+    name: 'Audit Every Site Consistently',
+    tags: 'AI Audit Platform · Automated Compliance Audit',
+    paras: [
+      'Replace manual checks with consistent, visual compliance workflows. SpaceSight continuously reviews site conditions, flags exceptions, and gives teams the evidence they need to act.',
+      'Monitor standards such as queue conditions, cleanliness, display execution, safety procedures, merchandising, and SOP compliance across every site, every day.'
     ],
-    impact: [
-      { value: '300%', label: 'more compliance issues detected' },
-      { value: '95%+', label: 'SOP accuracy' }
-    ]
+    impact: 'Faster audits · Fewer missed exceptions · Clearer accountability'
   },
   {
-    id: 'UNIT.02',
-    name: 'Understand Your Space',
-    sub: 'Retail Video Analytics and Customer Flow Analytics',
-    body: [
-      'SpaceSight helps enterprises understand how customers move through physical spaces. Using privacy-conscious video analysis, it measures footfall, passerby rate, entry rate, dwell time, conversion, queueing, and traffic patterns across stores and zones.',
-      'Unlike facial recognition systems, SpaceSight uses re-identification based on non-biometric signals such as body shape, gait, and clothing. This enables customer flow analytics and retail analysis while supporting privacy and compliance requirements.',
-      'These insights help teams improve staffing, layout, campaign evaluation, store optimization, and space optimization with real behavioral data instead of guesswork.'
+    id: 'proc-b',
+    ref: 'B',
+    name: 'Understand Customer Movement',
+    tags: 'Retail Video Analytics · Customer Flow Analytics',
+    paras: [
+      'See how customers move, stop, queue, and convert across stores and spaces. SpaceSight measures footfall, passerby rate, entry rate, dwell time, conversion, queueing, and traffic patterns by store, zone, or campaign.',
+      'Privacy-conscious video analysis uses non-biometric signals such as body shape, gait, and clothing, not facial recognition. These insights help teams improve staffing, layouts, campaign evaluation, store optimization, and space optimization with real behavioral data.'
     ],
-    impact: [
-      { value: '95%+', label: 'tracking accuracy, privacy-compliant' },
-      { value: '90%+', label: 'demographic accuracy' }
-    ]
+    impact: 'Better staffing decisions · Smarter layouts · More measurable campaigns'
+  },
+  {
+    id: 'proc-c',
+    ref: 'C',
+    name: 'Turn Insights Into Action',
+    tags: 'Enterprise AIOS · Agent Orchestration · SpaceClaw',
+    paras: [
+      'SpaceClaw connects analytics with action. Teams can ask operational questions such as “Why did conversion drop yesterday?” or “Which stores showed abnormal dwell time?”',
+      'SpaceSight retrieves relevant footage, identifies possible root causes, creates work orders, dispatches follow-up tasks, and generates operational reports automatically. Agent orchestration creates a closed operational loop from detection to resolution.'
+    ],
+    impact: 'Faster root-cause analysis · Less manual reporting · Quicker issue resolution'
   }
 ];
 
-const unitWide = {
-  id: 'UNIT.03',
-  name: 'Act Automatically',
-  sub: 'Enterprise AIOS and Agent Orchestration',
-  body: [
-    'SpaceSight connects analytics with action. Through SpaceClaw, teams can ask operational questions such as why conversion dropped yesterday, which stores had abnormal dwell time, or where compliance issues increased.',
-    'The Enterprise AIOS retrieves relevant footage, analyzes the root cause, generates work orders, dispatches tasks, and creates daily, weekly, or monthly reports automatically. Agent orchestration turns scattered video, alerts, and operational data into a closed-loop workflow from detection to action.'
-  ],
-  impact: [
-    { value: '70%+', label: 'AI recommendation adoption rate' },
-    { value: '95%', label: 'reduction in operations meeting preparation' }
-  ]
+const hwIcons = {
+  camera: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="12" height="7" rx="1"/><circle cx="9" cy="10.5" r="1.8"/><path d="M15 9.3l5-1.8v6l-5-1.8M7.5 14v3.2M5 17.2h5"/></svg>',
+  videoHub: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="10" width="18" height="7" rx="1"/><path d="M6.5 13.5h.01M9.5 13.5h.01M12.5 13.5h.01"/><path d="M16 12.2v2.6M18.6 12.2v2.6"/><path d="M12 10V5.5m0 0L10.4 7.1M12 5.5l1.6 1.6"/></svg>',
+  aiHub: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="7" width="10" height="10" rx="1.5"/><rect x="10.2" y="10.2" width="3.6" height="3.6" rx="0.5"/><path d="M9.5 7V4m2.5 3V4m2.5 3V4M9.5 20v-3m2.5 3v-3m2.5 3v-3M7 9.5H4m3 2.5H4m3 2.5H4M20 9.5h-3m3 2.5h-3m3 2.5h-3"/></svg>',
+  edgeCam: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="9" width="12" height="8" rx="1.5"/><circle cx="9" cy="13" r="2.2"/><path d="M15 11.3l5-1.8v7l-5-1.8"/><path d="M18.6 2.8l.55 1.5 1.5.55-1.5.55-.55 1.5-.55-1.5-1.5-.55 1.5-.55z" fill="currentColor" stroke="none"/></svg>',
+  hybrid: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="10.5" height="10.5" rx="1.5" stroke-dasharray="3.2 2.6"/><rect x="9.5" y="9.5" width="11" height="11" rx="1.5"/></svg>'
 };
 
-const devices = [
-  { name: 'Existing Cameras', sub: 'CCTV · NVR · VMS', tag: 'Reuse', glyph: 'cctv' },
-  { name: 'Video Hub', sub: 'Connects and manages video streams', tag: 'Edge', glyph: 'hub' },
-  { name: 'AI Hub', sub: 'Processes video locally at the edge', tag: 'Edge AI', img: '/spacesight/ai-hub.webp', imgAlt: 'Whale AI Hub — edge device that processes video locally to generate analytics, events, and alerts', imgW: 391, imgH: 200 },
-  { name: 'Edge AI Camera', sub: 'Including Whale Owl', tag: 'Edge AI', img: '/spacesight/edge-ai-camera.webp', imgAlt: 'Whale Owl Edge AI Camera — AI processing built directly into the camera', imgW: 960, imgH: 960 },
-  { name: 'SpaceSight Cloud Platform', sub: 'Dashboards · Alerts · Automated reports · SpaceClaw', tag: 'Space Intelligence layer', glyph: 'cloud' }
+const hardware = [
+  { icon: 'camera', name: 'Existing cameras', desc: 'Reuse current CCTV, NVR, and VMS infrastructure as the signal source.', img: 'ss2-hw-cameras', w: 640, h: 640, alt: 'Typical white PTZ camera reused as a signal source' },
+  { icon: 'videoHub', name: 'Video Hub', desc: 'Aggregates and routes video streams where coverage needs to expand.', img: 'ss2-hw-video-hub', w: 528, h: 281, alt: 'Video Hub — fanless edge unit with USB and Type-C ports' },
+  { icon: 'aiHub', name: 'AI Hub', desc: 'On-premises edge AI processing for video analytics at the site.', img: 'ss2-hw-ai-hub', w: 449, h: 260, alt: 'AI Hub — industrial edge AI box with antenna and COM ports' },
+  { icon: 'edgeCam', name: 'Edge AI Camera', desc: 'Cameras with onboard AI processing for new or upgraded zones.', img: 'ss2-hw-edge-cam', w: 640, h: 724, alt: 'Edge AI Camera — ceiling-mounted dome unit with onboard AI' },
+  { icon: 'hybrid', name: 'Hybrid deployment', desc: 'A mix assessed per site — coverage, network, and use cases decide.', img: 'ss2-hw-hybrid', w: 640, h: 452, alt: 'White dome camera used in hybrid deployments' }
 ];
 
-const steps = [
-  { n: '01', title: 'Site survey and requirement confirmation', desc: 'We confirm store layout, camera positions, network conditions, target use cases, and success criteria, such as footfall, dwell time, queueing, loss prevention, or AI inspection.' },
-  { n: '02', title: 'Camera and video source preparation', desc: 'Existing cameras are reused where possible, or new cameras are installed if coverage is insufficient. The key requirement is stable video access from cameras, NVR, or VMS systems.' },
-  { n: '03', title: 'Edge AI device deployment', desc: 'AI Hub, Video Hub, or Edge AI Cameras are deployed on site based on the solution scope. Video data can be processed locally to reduce bandwidth and improve response speed.' },
-  { n: '04', title: 'Video ingestion and channel configuration', desc: 'Camera channels are added into the system, mapped to store areas, and configured for live view, video access, AI analysis, and event tracking.' },
-  { n: '05', title: 'AI model and scenario configuration', desc: 'Relevant AI capabilities are configured for the business scenario, such as entrance counting, customer flow analytics, dwell time analysis, queue detection, table-cleaning inspection, or compliance audit.' },
-  { n: '06', title: 'ROI and business rule setup', desc: 'Detection zones, virtual lines, regions of interest, and thresholds are configured based on operational rules, such as dwell time limits, queue length, or cleaning response time.' },
-  { n: '07', title: 'Cloud platform connection', desc: 'Processed events, metadata, images, trajectories, and analytics are uploaded to the SpaceSight platform for dashboards, reporting, alerts, and enterprise-level review.' },
-  { n: '08', title: 'Testing and calibration', desc: 'The system is tested with real site footage to validate camera coverage, model accuracy, network stability, and whether the results match business expectations.' },
-  { n: '09', title: 'Go-live and monitoring', desc: 'After validation, the site goes live. Teams monitor device health, stream stability, AI results, and business dashboards during the initial operation period.' },
-  { n: '10', title: 'Ongoing optimization', desc: 'Based on customer feedback and real-world data, camera angles, ROI settings, thresholds, and AI configurations can be adjusted to improve accuracy and business usability.' }
+const deploySteps = [
+  { n: '1', name: 'Assess', body: 'Review site layout, camera placement, network conditions, priority use cases, and success metrics, from footfall and dwell time to loss prevention and AI inspection.' },
+  { n: '2', name: 'Connect', body: 'Reuse existing CCTV, NVR, and VMS infrastructure where possible. Add Edge AI Cameras, AI Hub, or Video Hub where coverage or local processing needs to expand.' },
+  { n: '3', name: 'Configure', body: 'Set up camera channels, AI models, zones of interest, thresholds, and business rules for workflows such as customer flow analytics, queue detection, table-cleaning inspection, and compliance audit.' },
+  { n: '4', name: 'Optimize', body: 'Validate with real site footage, monitor device and stream health, then fine-tune camera angles, zones, thresholds, and AI configurations as operations evolve.' }
 ];
 
-const compliance = [
-  { label: 'No facial recognition:', text: 'People tracking uses re-identification based on non-biometric signals, not facial recognition.' },
-  { label: 'Edge AI processing:', text: 'Video can be processed locally on AI Hub or Edge AI Camera. Only metadata, analytics, and anomaly events need to be sent to the cloud, reducing bandwidth usage by up to 80%.' },
-  { label: 'Enterprise-grade compliance:', text: 'SOC 2 Type II · GDPR Compliant · ISO 27001 · ISO 9001 · CMMI Level 5' }
+const certs = [
+  { src: '/cert-logos/soc2.png', alt: 'SOC 2 Type II', label: 'SOC 2 Type II' },
+  { src: '/cert-logos/gdpr.png', alt: 'GDPR Compliant', label: 'GDPR Compliant' },
+  { src: '/cert-logos/iso27001.jpg', alt: 'ISO 27001', label: 'ISO 27001' },
+  { src: '/cert-logos/iso9001.jpg', alt: 'ISO 9001', label: 'ISO 9001' },
+  { src: '/cert-logos/cmmi.jpg', alt: 'CMMI Level 5', label: 'CMMI Level 5' }
 ];
 
-const scaleBars = [
-  { label: 'Store', h: '34%' },
-  { label: 'Shopping mall', h: '54%' },
-  { label: 'Airport', h: '76%' },
-  { label: 'Campus', h: '100%' }
+const tabs = [
+  { id: 'cover', label: 'COVER' },
+  { id: 'proc-a', label: 'A·AUDIT' },
+  { id: 'proc-b', label: 'B·FLOW' },
+  { id: 'proc-c', label: 'C·ACT' },
+  { id: 'visibility', label: 'VISION' },
+  { id: 'deployment', label: 'DEPLOY' },
+  { id: 'security', label: 'TRUST' },
+  { id: 'faq', label: 'FAQ' }
 ];
 ---
+
 <Layout
-  title={pageTitle}
+  title="SpaceSight | Physical Operations Intelligence Platform"
   description={pageDescription}
   canonical={canonicalUrl}
-  ogImage="https://www.whale.sg/og/spacesight.png"
   extraSchema={extraSchema}
 >
   <Header />
-  <main class="ssx">
+  <main class="ss2">
+    <!--
+      DIRECTION CONTRACT — /spacesight2/
+      THESIS: the page is SpaceSight's own field manual — the product audits SOP
+        compliance and operational procedure, so the surface takes the form of the
+        procedure document its buyer lives inside. Refuses the standard
+        hero-plus-alternating-features landing grid.
+      OWN-WORLD: company blue #2563EB on vacuum white, Poppins display / Manrope
+        body / Space Mono for doc-control, figure captions, and spec data. Figure
+        plates with mono caption strips, ledger hairlines, stamp-style result
+        lines, fore-edge tab rail.
+      STORY: an operations leader reads cover (offer + proof) → three procedures
+        (audit, flow, act) → why footage is not intelligence → deployment hardware
+        → four-step rollout → trust and compliance → FAQ → book a demo.
+      FIRST VIEWPORT: doc-control strip across the top (DOC SS-OPS-01 · REV
+        2026.09 · FIELD MANUAL), title block left with blue-highlighted key
+        phrases, FIG.00 plate right (AI Audit capture), proof ledger below,
+        Book a Demo primary + See Use Cases ghost.
+      FORM: field manual / spec-sheet — candidate 4 of the grounded list, seed
+        key 77fc822f; acetate-tab challenger fused as the fore-edge tab rail.
+      FINISH: unreviewed and undocumented is unfinished; this build ends with the
+        finish review, the verdict, and DESIGN.md.
+    -->
 
-    <!-- ============ HERO — live operations console ============ -->
-    <section class="ssx-hero">
-      <div class="container ssx-hero-grid">
-        <div class="ssx-hero-copy">
-          <p class="ssx-eyebrow">SpaceSight · Space Intelligence</p>
-          <h1 class="ssx-h1">
-            Physical Operations Intelligence for
-            <span class="ssx-tail">Better Compliance, Customer Flow, and Store Performance</span>
-          </h1>
-          <p class="ssx-sub">SpaceSight turns existing cameras into real-time operational intelligence, helping teams improve compliance, customer flow, and store performance across every location.</p>
-          <div class="ssx-hero-cta">
-            <button type="button" class="btn btn-primary btn-large ssx-btn-yellow" data-open-modal data-source-type="spacesight页-Hero留资">Book a demo</button>
-          </div>
+    <!-- ================= COVER ================= -->
+    <section class="section ss2-cover" id="cover" data-tab="cover">
+      <div class="container">
+        <div class="ss2-doc" data-reveal>
+          <span class="ss2-doc-title"><span class="ss2-doc-mark" aria-hidden="true"></span>SpaceSight <span class="ss2-doc-sep" aria-hidden="true">·</span> Field Manual</span>
+          <span>DOC SS-OPS-01 · REV 2026.09</span>
         </div>
 
-        <figure class="ssx-console">
-          <div class="ssx-console-bar">
-            <span class="ssx-rec"><i aria-hidden="true"></i>REC</span>
-            <span class="ssx-console-name">SpaceSight // Operations console</span>
-            <span class="ssx-console-mode">Real-time</span>
-          </div>
-          <div class="ssx-console-view">
-            <img src="/products/spacesight-hero.png" alt="SpaceSight operations console — real-time store intelligence" loading="eager" decoding="async" />
-            <span class="ssx-vc ssx-vc-tl" aria-hidden="true"></span>
-            <span class="ssx-vc ssx-vc-tr" aria-hidden="true"></span>
-            <span class="ssx-vc ssx-vc-bl" aria-hidden="true"></span>
-            <span class="ssx-vc ssx-vc-br" aria-hidden="true"></span>
-            <span class="ssx-scanline" aria-hidden="true"></span>
-          </div>
-          <dl class="ssx-telemetry">
-            <div>
-              <dt>Detection</dt>
-              <dd>Real-time</dd>
-            </div>
-            <div>
-              <dt>Processing</dt>
-              <dd>Edge AI + Cloud</dd>
-            </div>
-            <div>
-              <dt>Device types</dt>
-              <dd>120+</dd>
-            </div>
-          </dl>
-          <figcaption class="ssx-figcap"><span class="ssx-figcap-id">Fig. 00</span><span class="ssx-figcap-alt">Live product demo — SpaceSight operations console</span></figcaption>
-        </figure>
-      </div>
-
-      <div class="container ssx-proof" aria-label="Proof points">
-        {heroProof.map((p) => (
-          <div class="ssx-proof-cell">
-            <span class="ssx-proof-value">{p.value}</span>
-            <span class="ssx-proof-label">{p.label}</span>
-          </div>
-        ))}
-      </div>
-    </section>
-
-    <!-- ============ SEC.01 — About SpaceSight ============ -->
-    <section class="ssx-sec" aria-labelledby="ssx-about">
-      <div class="container">
-        <header class="ssx-ruler">
-          <span class="ssx-ruler-id">SEC.01</span>
-          <span class="ssx-ruler-line" aria-hidden="true"></span>
-          <h2 class="ssx-ruler-name" id="ssx-about">About SpaceSight</h2>
-        </header>
-
-        <p class="ssx-lede">Most monitoring systems capture footage. <span class="ssx-lede-em">SpaceSight captures <span class="ssx-hl">meaning</span>.</span></p>
-
-        <div class="ssx-about-grid">
-          <div class="ssx-about-copy">
-            <p>Built as a Physical Operations Intelligence platform, SpaceSight transforms video and sensor data from physical spaces into actionable insights for store operations, compliance, loss prevention, and customer experience. It connects with existing CCTV, AI cameras, sensors, and audio devices, then uses edge AI and cloud intelligence to detect what is happening across every location in real time.</p>
-            <p>Powered by Whale's Space Intelligence capabilities and IoT infrastructure, SpaceSight supports 120+ device types across 530,000+ edge devices with 99.999% availability. That means enterprises can deploy AI-powered retail video analytics and automated compliance audit workflows on top of the infrastructure they already have, without replacing every camera.</p>
-          </div>
-
-          <aside class="ssx-proofband" aria-label="Proof band — deployment scale">
-            <div class="ssx-proofband-head"><i aria-hidden="true"></i>Proof — Global deployment</div>
-            <div class="ssx-proofband-grid">
-              {aboutProof.map((p) => (
-                <div class="ssx-proofband-cell">
-                  <span class="ssx-proofband-value">{p.value}</span>
-                  <span class="ssx-proofband-label">{p.label}</span>
-                </div>
+        <div class="ss2-cover-grid">
+          <div class="ss2-cover-copy">
+            <h1 class="ss2-h1" data-ss2-head>
+              {headlineBase.map((word, i) => (
+                <Fragment><span class="wm"><span class="w" style={`--i:${i}`}>{word}</span></span>{' '}</Fragment>
               ))}
+              <span class="ss2-tail">
+                {headlineTail.map((word, i) => (
+                  <Fragment><span class="wm"><span class="w" style={`--i:${i + 6}`}>{word}</span></span>{' '}</Fragment>
+                ))}
+              </span>
+            </h1>
+            <p class="ss2-sub" data-reveal style="--i:8">
+              SpaceSight turns existing cameras into <em class="ss2-hl">real-time operational intelligence</em>,
+              helping teams improve <em class="ss2-hl">compliance, customer flow, and store performance</em> across every location.
+            </p>
+            <div class="ss2-cover-cta" data-reveal style="--i:9">
+              <button type="button" class="btn btn-primary btn-large" data-open-modal data-source-type="spacesight2页-Hero留资">Book a Demo</button>
+              <a href="/user-cases/" class="btn btn-ghost btn-large">See Use Cases</a>
             </div>
-          </aside>
-        </div>
+          </div>
 
-        <div class="ssx-dashgrid">
-          <figure class="ssx-frame">
-            <div class="ssx-frame-bar"><span>Analytics // Demographics</span><i aria-hidden="true"></i></div>
-            <img src="/spacesight/analytics-demographics.webp" alt="SpaceSight analytics dashboard — customer demographics breakdown by age and gender" width="1184" height="854" loading="lazy" />
-            <figcaption class="ssx-figcap"><span class="ssx-figcap-id">Fig. 01</span><span class="ssx-figcap-alt">Customer demographics dashboard</span></figcaption>
-          </figure>
-          <figure class="ssx-frame">
-            <div class="ssx-frame-bar"><span>Analytics // Entry rate</span><i aria-hidden="true"></i></div>
-            <img src="/spacesight/analytics-entry-rate.webp" alt="SpaceSight analytics dashboard — entry rate and customer-flow funnel across stores" width="1186" height="846" loading="lazy" />
-            <figcaption class="ssx-figcap"><span class="ssx-figcap-id">Fig. 02</span><span class="ssx-figcap-alt">Entry-rate and traffic funnel dashboard</span></figcaption>
+          <figure class="ss2-plate" data-reveal style="--i:5">
+            <div class="ss2-plate-media">
+              <picture>
+                <source srcset="/products/ss2-ai-audit.webp" type="image/webp" />
+                <img src="/products/ss2-ai-audit.png" alt="SpaceSight AI audit interface reviewing store compliance on live camera footage" width="1376" height="768" loading="eager" decoding="async" />
+              </picture>
+            </div>
+            <figcaption class="ss2-plate-cap"><span>FIG. 00</span><span>AI audit pass — exception flagged, evidence attached</span></figcaption>
           </figure>
         </div>
-      </div>
-    </section>
 
-    <!-- ============ SEC.02 — Core capabilities (dark console band) ============ -->
-    <section class="ssx-sec ssx-dark" aria-labelledby="ssx-cap">
-      <div class="container">
-        <header class="ssx-ruler">
-          <span class="ssx-ruler-id">SEC.02</span>
-          <span class="ssx-ruler-line" aria-hidden="true"></span>
-          <h2 class="ssx-ruler-name" id="ssx-cap">Core capabilities</h2>
-        </header>
-
-        <div class="ssx-units">
-          {units.map((u) => (
-            <article class="ssx-unit">
-              <span class="ssx-uc ssx-uc-tl" aria-hidden="true"></span>
-              <span class="ssx-uc ssx-uc-tr" aria-hidden="true"></span>
-              <span class="ssx-uc ssx-uc-bl" aria-hidden="true"></span>
-              <span class="ssx-uc ssx-uc-br" aria-hidden="true"></span>
-              <header class="ssx-unit-head">
-                <span class="ssx-unit-id">{u.id}</span>
-                <h3 class="ssx-unit-name">{u.name}</h3>
-                <span class="ssx-unit-status"><i aria-hidden="true"></i>Active</span>
-              </header>
-              <p class="ssx-unit-sub">{u.sub}</p>
-              <div class="ssx-unit-body">
-                {u.body.map((para) => <p>{para}</p>)}
-              </div>
-              <footer class="ssx-unit-foot">
-                <p class="ssx-impact-label">Business impact</p>
-                <div class="ssx-impact-row">
-                  {u.impact.map((m) => (
-                    <div class="ssx-metric">
-                      <b>{m.value}</b>
-                      <span>{m.label}</span>
-                    </div>
-                  ))}
-                </div>
-              </footer>
-            </article>
+        <dl class="ss2-proof" data-reveal style="--i:10">
+          {heroProof.map((p) => (
+            <div class="ss2-proof-cell">
+              <dt>{p.label}</dt>
+              <dd>{p.n.replace(/\+$/, '')}{p.n.endsWith('+') && <span class="ss2-proof-plus">+</span>}</dd>
+            </div>
           ))}
+        </dl>
+      </div>
+    </section>
 
-          <article class="ssx-unit ssx-unit--wide">
-            <span class="ssx-uc ssx-uc-tl" aria-hidden="true"></span>
-            <span class="ssx-uc ssx-uc-tr" aria-hidden="true"></span>
-            <span class="ssx-uc ssx-uc-bl" aria-hidden="true"></span>
-            <span class="ssx-uc ssx-uc-br" aria-hidden="true"></span>
-            <div class="ssx-unit-inner">
-              <div class="ssx-unit-main">
-                <header class="ssx-unit-head">
-                  <span class="ssx-unit-id">{unitWide.id}</span>
-                  <h3 class="ssx-unit-name">{unitWide.name}</h3>
-                  <span class="ssx-unit-status"><i aria-hidden="true"></i>Active</span>
-                </header>
-                <p class="ssx-unit-sub">{unitWide.sub}</p>
-                <div class="ssx-unit-body">
-                  {unitWide.body.map((para) => <p>{para}</p>)}
-                </div>
-                <footer class="ssx-unit-foot">
-                  <p class="ssx-impact-label">Business impact</p>
-                  <div class="ssx-impact-row">
-                    {unitWide.impact.map((m) => (
-                      <div class="ssx-metric">
-                        <b>{m.value}</b>
-                        <span>{m.label}</span>
-                      </div>
-                    ))}
-                  </div>
-                </footer>
-              </div>
-              <div class="ssx-claw">
-                <div class="ssx-claw-bar"><span>SpaceClaw // Agent session</span><i aria-hidden="true"></i></div>
-                <video src="/spacesight/spaceclaw-demo.mp4" poster="/spacesight/spaceclaw-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="SpaceClaw agent conversation demo"></video>
-              </div>
+    <!-- ================= PART 01 · OPERATING PROCEDURES ================= -->
+    <section class="section section-tint ss2-part" aria-labelledby="ss2-part1">
+      <div class="container">
+        <header class="ss2-part-head" data-reveal>
+          <span class="ss2-part-no">Part 01 — Operating Procedures</span>
+          <h2 class="ss2-h2" id="ss2-part1">One Platform for Insight and Action</h2>
+        </header>
+
+        <!-- PROC A -->
+        <article class="ss2-proc" id="proc-a" data-tab="proc-a">
+          <div class="ss2-proc-copy" data-reveal>
+            <header class="ss2-proc-head">
+              <h3 class="ss2-h3">{procedures[0].name}</h3>
+              <p class="ss2-tags">{procedures[0].tags}</p>
+            </header>
+            {procedures[0].paras.map((t) => <p class="ss2-body">{t}</p>)}
+            <p class="ss2-stamp"><span>Result</span>{procedures[0].impact}</p>
+          </div>
+          <figure class="ss2-plate ss2-fig" data-reveal>
+            <div class="ss2-plate-media ss2-fig-media">
+              <svg viewBox="0 0 560 380" role="img" aria-label="Schematic of an automated compliance audit: camera frame with checklist rows marked pass and exception">
+                <rect x="18" y="18" width="300" height="210" fill="none" stroke="currentColor" stroke-width="1.5" class="ss2-svg-ink"/>
+                <path d="M18 48 h300" stroke="currentColor" stroke-width="1" class="ss2-svg-ink" opacity=".4"/>
+                <text x="30" y="39" class="ss2-svg-mono">CAM 04 · AISLE VIEW</text>
+                <rect x="42" y="82" width="120" height="86" fill="none" stroke="#2563EB" stroke-width="2"/>
+                <text x="42" y="76" class="ss2-svg-mono ss2-svg-blue">QUEUE · 6</text>
+                <rect x="196" y="112" width="90" height="60" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="5 4" class="ss2-svg-ink"/>
+                <text x="196" y="106" class="ss2-svg-mono">DISPLAY</text>
+                <g class="ss2-svg-ink">
+                  <text x="340" y="60" class="ss2-svg-mono ss2-svg-head">AUDIT CHECKS</text>
+                  <g transform="translate(340,84)">
+                    <rect width="14" height="14" fill="none" stroke="#2563EB" stroke-width="2"/>
+                    <path d="M3 7.5 l3 3.5 l5.5 -7" fill="none" stroke="#2563EB" stroke-width="2"/>
+                    <text x="24" y="12" class="ss2-svg-mono">Queue length ≤ 8</text>
+                  </g>
+                  <g transform="translate(340,116)">
+                    <rect width="14" height="14" fill="none" stroke="#2563EB" stroke-width="2"/>
+                    <path d="M3 7.5 l3 3.5 l5.5 -7" fill="none" stroke="#2563EB" stroke-width="2"/>
+                    <text x="24" y="12" class="ss2-svg-mono">Aisle clearance</text>
+                  </g>
+                  <g transform="translate(340,148)">
+                    <rect width="14" height="14" fill="none" stroke="#2563EB" stroke-width="2"/>
+                    <path d="M3 7.5 l3 3.5 l5.5 -7" fill="none" stroke="#2563EB" stroke-width="2"/>
+                    <text x="24" y="12" class="ss2-svg-mono">Display execution</text>
+                  </g>
+                  <g transform="translate(340,180)">
+                    <rect width="14" height="14" fill="none" stroke="#DC2626" stroke-width="2"/>
+                    <path d="M3 3 l8 8 M11 3 l-8 8" stroke="#DC2626" stroke-width="2"/>
+                    <text x="24" y="12" class="ss2-svg-mono">Safety exit blocked</text>
+                  </g>
+                </g>
+                <path d="M318 228 h224 v120 h-224 z" fill="none" stroke="currentColor" stroke-width="1" class="ss2-svg-ink" opacity=".35"/>
+                <text x="330" y="252" class="ss2-svg-mono ss2-svg-head">EVIDENCE</text>
+                <text x="330" y="276" class="ss2-svg-mono">Clip 14:02:33–14:02:49</text>
+                <text x="330" y="298" class="ss2-svg-mono">Snapshot attached</text>
+                <text x="330" y="320" class="ss2-svg-mono">Owner: Store #118</text>
+                <path d="M18 262 h300" stroke="currentColor" stroke-width="1" class="ss2-svg-ink" opacity=".25"/>
+                <text x="18" y="284" class="ss2-svg-mono">SOP COMPLIANCE — STORE #118</text>
+                <text x="18" y="310" class="ss2-svg-data">94.2%</text>
+                <text x="18" y="334" class="ss2-svg-mono">LAST 24H · 41 CHECKS · 1 EXCEPTION</text>
+              </svg>
             </div>
-          </article>
-        </div>
-      </div>
-    </section>
+            <figcaption class="ss2-plate-cap"><span>FIG. A</span><span>Automated compliance audit — schematic, synthetic data</span></figcaption>
+          </figure>
+        </article>
 
-    <!-- ============ SEC.03 — Built for Every Scale ============ -->
-    <section class="ssx-sec" aria-labelledby="ssx-scale">
-      <div class="container">
-        <header class="ssx-ruler">
-          <span class="ssx-ruler-id">SEC.03</span>
-          <span class="ssx-ruler-line" aria-hidden="true"></span>
-          <h2 class="ssx-ruler-name" id="ssx-scale">Built for Every Scale of Operation</h2>
-        </header>
-
-        <div class="ssx-scale-grid">
-          <div class="ssx-scale-copy">
-            <p>SpaceSight deploys across any physical space and any existing infrastructure — sized to match how many cameras your operation actually needs.</p>
-            <p>For larger or more complex properties — such as shopping malls, airports, and multi-building campuses — hardware sizing, deployment timeline, and AI capabilities should be assessed case by case rather than forced into a fixed tier.</p>
-            <p class="ssx-note"><b>NOTE</b><span>final deployment time and hardware configuration depend on camera readiness, network access, video stream availability, and selected AI modules.</span></p>
+        <!-- PROC B -->
+        <article class="ss2-proc ss2-proc-flip" id="proc-b" data-tab="proc-b">
+          <div class="ss2-proc-copy" data-reveal>
+            <header class="ss2-proc-head">
+              <h3 class="ss2-h3">{procedures[1].name}</h3>
+              <p class="ss2-tags">{procedures[1].tags}</p>
+            </header>
+            {procedures[1].paras.map((t) => <p class="ss2-body">{t}</p>)}
+            <p class="ss2-stamp"><span>Result</span>{procedures[1].impact}</p>
           </div>
-
-          <aside class="ssx-gauge" aria-label="Deployment scale — sized to camera count">
-            <div class="ssx-gauge-head">
-              <span>Scale // Sized to camera count</span>
-              <span class="ssx-gauge-chip">Case by case</span>
+          <figure class="ss2-plate ss2-fig" data-reveal>
+            <div class="ss2-plate-media ss2-fig-media">
+              <picture>
+                <source srcset="/products/ss2-flow-heatmap.webp" type="image/webp" />
+                <img src="/products/ss2-flow-heatmap.png" alt="SpaceSight heatmap analysis showing dwell time by zone on a store floor plan" width="1600" height="1004" loading="lazy" decoding="async" />
+              </picture>
             </div>
-            <div class="ssx-bars">
-              {scaleBars.map((b) => (
-                <div class="ssx-bar">
-                  <i style={`--h:${b.h}`} aria-hidden="true"></i>
-                  <span>{b.label}</span>
-                </div>
-              ))}
+            <figcaption class="ss2-plate-cap"><span>FIG. B</span><span>Heatmap analysis — dwell time by zone, live product view</span></figcaption>
+          </figure>
+        </article>
+
+        <!-- PROC C -->
+        <article class="ss2-proc" id="proc-c" data-tab="proc-c">
+          <div class="ss2-proc-copy" data-reveal>
+            <header class="ss2-proc-head">
+              <h3 class="ss2-h3">{procedures[2].name}</h3>
+              <p class="ss2-tags">{procedures[2].tags}</p>
+            </header>
+            {procedures[2].paras.map((t) => <p class="ss2-body">{t}</p>)}
+            <p class="ss2-stamp"><span>Result</span>{procedures[2].impact}</p>
+          </div>
+          <figure class="ss2-plate ss2-plate-phone" data-reveal>
+            <div class="ss2-plate-media">
+              <video src="/products/ss2-spaceclaw-app.mp4" poster="/products/ss2-spaceclaw-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="SpaceSight mobile app — SpaceClaw operational assistant in use" style="aspect-ratio: 720/1558"></video>
             </div>
-            <dl class="ssx-telemetry ssx-gauge-foot">
-              <div>
-                <dt>Space</dt>
-                <dd>Any physical</dd>
-              </div>
-              <div>
-                <dt>Infrastructure</dt>
-                <dd>Any existing</dd>
-              </div>
-              <div>
-                <dt>Sizing</dt>
-                <dd>Per camera count</dd>
-              </div>
-            </dl>
-          </aside>
-        </div>
+            <figcaption class="ss2-plate-cap"><span>FIG. C</span><span>SpaceClaw on mobile — ask, retrieve, dispatch</span></figcaption>
+          </figure>
+        </article>
       </div>
     </section>
 
-    <!-- ============ SEC.04 — Hardware Options (device rack) ============ -->
-    <section class="ssx-sec ssx-sec-tint" aria-labelledby="ssx-hw">
+    <!-- ================= PART 02 · VISIBILITY ================= -->
+    <section class="section ss2-part" id="visibility" data-tab="visibility" aria-labelledby="ss2-vis-h">
       <div class="container">
-        <header class="ssx-ruler">
-          <span class="ssx-ruler-id">SEC.04</span>
-          <span class="ssx-ruler-line" aria-hidden="true"></span>
-          <h2 class="ssx-ruler-name" id="ssx-hw">Hardware Options</h2>
+        <header class="ss2-part-head" data-reveal>
+          <span class="ss2-part-no">Part 02 — Visibility</span>
+          <h2 class="ss2-h2" id="ss2-vis-h">From Passive Cameras to Actionable Operations</h2>
         </header>
 
-        <p class="ssx-rack-intro">SpaceSight works with existing cameras, new Edge AI Cameras, AI Hub, Video Hub, or a mixed deployment model. The same Space Intelligence layer runs across different hardware setups.</p>
-
-        <div class="ssx-rack">
-          <div class="ssx-rack-grid">
-            {devices.map((d) => (
-              <article class="ssx-device">
-                <div class="ssx-device-view">
-                  {d.img ? (
-                    <img src={d.img} alt={d.imgAlt} width={d.imgW} height={d.imgH} loading="lazy" />
-                  ) : d.glyph === 'cctv' ? (
-                    <svg viewBox="0 0 120 90" role="img" aria-label="Existing CCTV camera line drawing">
-                      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="18" y="26" width="62" height="26" rx="6" />
-                        <path d="M80 32 l22 -10 v34 l-22 -10" />
-                        <path d="M40 52 v16 M32 68 h16" />
-                      </g>
-                      <circle cx="34" cy="39" r="5" fill="#3B82F6" stroke="none" />
-                    </svg>
-                  ) : d.glyph === 'hub' ? (
-                    <svg viewBox="0 0 120 90" role="img" aria-label="Video Hub line drawing">
-                      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="22" y="16" width="76" height="18" rx="5" />
-                        <rect x="22" y="40" width="76" height="18" rx="5" />
-                        <rect x="22" y="64" width="76" height="14" rx="5" />
-                      </g>
-                      <circle cx="34" cy="25" r="3.5" fill="#3B82F6" stroke="none" />
-                      <circle cx="34" cy="49" r="3.5" fill="#3B82F6" stroke="none" />
-                      <circle cx="34" cy="71" r="3.5" fill="currentColor" stroke="none" />
-                    </svg>
-                  ) : (
-                    <svg viewBox="0 0 120 90" role="img" aria-label="SpaceSight Cloud Platform line drawing">
-                      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M36 66 a14 14 0 0 1 -2 -27.8 a20 20 0 0 1 38.6 -4.4 A16 16 0 0 1 86 66 z" />
-                        <path d="M46 52 h10 M62 52 h12 M46 60 h20" />
-                      </g>
-                      <circle cx="88" cy="30" r="5" fill="#3B82F6" stroke="none" />
-                    </svg>
-                  )}
-                </div>
-                <div class="ssx-device-body">
-                  <h3 class="ssx-device-name">{d.name}</h3>
-                  <p class="ssx-device-sub">{d.sub}</p>
-                  <span class="ssx-device-tag">{d.tag}</span>
-                </div>
-              </article>
-            ))}
-          </div>
-          <div class="ssx-rail" aria-hidden="true"></div>
-        </div>
-
-        <div class="ssx-lanes">
-          <div class="ssx-lane">
-            <p class="ssx-lane-chip">Path A — Existing infrastructure</p>
-            <p>For locations with existing CCTV or NVR/VMS systems, Video Hub connects and manages video streams, while AI Hub processes video locally at the edge to generate analytics, events, and alerts in real time.</p>
-          </div>
-          <div class="ssx-lane">
-            <p class="ssx-lane-chip">Path B — New installation</p>
-            <p>For new installations, Edge AI Cameras, including Whale Owl, bring AI processing directly into the camera. Results flow into the SpaceSight Cloud Platform, where teams can view dashboards, receive alerts, generate automated reports, and search operational events through SpaceClaw.</p>
+        <div class="ss2-vis-grid">
+          <figure class="ss2-plate" data-reveal>
+            <div class="ss2-plate-media">
+              <video src="/products/ss2-visibility.mp4" poster="/products/ss2-visibility-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="SpaceSight platform demo — natural-language video search across cameras"></video>
+            </div>
+            <figcaption class="ss2-plate-cap"><span>FIG. 02</span><span>Video search — ask in plain language, get footage back</span></figcaption>
+          </figure>
+          <div class="ss2-vis-copy" data-reveal>
+            <p class="ss2-lede">Most monitoring systems only record what happened. SpaceSight helps teams understand <strong>what is happening, why it matters, and what to do next.</strong></p>
+            <p class="ss2-body">Built for physical operations intelligence, SpaceSight connects with existing CCTV, AI cameras, sensors, and edge AI devices to turn video and sensor data into real-time insights for store operations, loss prevention, compliance, and customer experience.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ============ SEC.05 — How Deployment Works (SVG pipeline) ============ -->
-    <section class="ssx-sec ssx-dark ssx-deploy" aria-labelledby="ssx-deploy">
+    <!-- ================= PART 03 · DEPLOYMENT ================= -->
+    <section class="section section-tint ss2-part" id="deployment" data-tab="deployment" aria-labelledby="ss2-dep-h">
       <div class="container">
-        <header class="ssx-ruler">
-          <span class="ssx-ruler-id">SEC.05</span>
-          <span class="ssx-ruler-line" aria-hidden="true"></span>
-          <h2 class="ssx-ruler-name" id="ssx-deploy">How Deployment Works</h2>
+        <header class="ss2-part-head" data-reveal>
+          <span class="ss2-part-no">Part 03 — Deployment</span>
+          <h2 class="ss2-h2" id="ss2-dep-h">Built for Real-World Deployment</h2>
+          <p class="ss2-body ss2-part-lede">SpaceSight works with existing CCTV, NVR/VMS systems, AI Hub, Video Hub, Edge AI Cameras, or hybrid deployments. Our team assesses camera coverage, network readiness, target use cases, and rollout priorities before recommending the right setup.</p>
         </header>
 
-        <div class="ssx-pipe-meta">
-          <span>Deployment pipeline — Ten stages</span>
-          <span class="ssx-pipe-meta-right">Site survey → Ongoing optimization · <a href="/whale_spacesight/" class="ssx-handbook-link">Full technical handbook →</a></span>
+        <div class="ss2-ledger ss2-ledger-hw" data-reveal>
+          <p class="ss2-ledger-head"><span>HW</span><span>Option</span><span>Role in deployment</span><span>Unit</span></p>
+          {hardware.map((h) => (
+            <div class="ss2-ledger-row">
+              <span class="ss2-ledger-ic" set:html={hwIcons[h.icon]} />
+              <span class="ss2-ledger-name">{h.name}</span>
+              <span class="ss2-ledger-desc">{h.desc}</span>
+              <span class="ss2-ledger-thumb">
+                <picture>
+                  <source srcset={`/products/${h.img}.webp`} type="image/webp" />
+                  <img src={`/products/${h.img}.png`} alt={h.alt} width={h.w} height={h.h} loading="lazy" decoding="async" />
+                </picture>
+              </span>
+            </div>
+          ))}
         </div>
 
-        <div class="ssx-flow">
-          <svg class="ssx-pipes" viewBox="0 0 1000 500" preserveAspectRatio="none" aria-hidden="true">
-            <path class="ssx-pipe-base" d="M 92 119 H 908 V 381 H 92" fill="none" vector-effect="non-scaling-stroke" />
-            <path class="ssx-pipe-flow" d="M 92 119 H 908 V 381 H 92" fill="none" vector-effect="non-scaling-stroke" />
-            <path class="ssx-pipe-flow ssx-pipe-flow2" d="M 92 119 H 908 V 381 H 92" fill="none" vector-effect="non-scaling-stroke" />
-          </svg>
-          <div class="ssx-nodes">
-            {steps.map((s) => (
-              <article class="ssx-node">
-                <div class="ssx-node-top">
-                  <span class="ssx-node-num">STEP {s.n}</span>
-                  <span class="ssx-node-sq" aria-hidden="true"></span>
-                </div>
-                <h3 class="ssx-node-title">{s.title}</h3>
-                <p class="ssx-node-desc">{s.desc}</p>
-              </article>
-            ))}
+        <h3 class="ss2-h3 ss2-steps-h" data-reveal>Deployment and Continuous Optimization</h3>
+        <ol class="ss2-steps" data-reveal>
+          {deploySteps.map((s) => (
+            <li class="ss2-step">
+              <span class="ss2-step-no">Step {s.n}</span>
+              <span class="ss2-step-name">{s.name}</span>
+              <p class="ss2-step-body">{s.body}</p>
+            </li>
+          ))}
+        </ol>
+        <aside class="ss2-note" data-reveal aria-label="Deployment guidance">
+          <span class="ss2-note-tag">Note — Deployment Guidance</span>
+          <div class="ss2-note-text">
+            <p class="ss2-note-q">Not sure what your site needs?</p>
+            <p class="ss2-note-a">Book a demo and we will help assess your deployment path.</p>
           </div>
-        </div>
+          <button type="button" class="btn btn-primary ss2-note-btn" data-open-modal data-source-type="spacesight2页-部署咨询留资">Book a demo</button>
+        </aside>
       </div>
     </section>
 
-    <!-- ============ SEC.06 — Data Security and Compliance ============ -->
-    <section class="ssx-sec" aria-labelledby="ssx-sec6">
+    <!-- ================= PART 04 · TRUST ================= -->
+    <section class="section ss2-part" id="security" data-tab="security" aria-labelledby="ss2-sec-h">
       <div class="container">
-        <header class="ssx-ruler">
-          <span class="ssx-ruler-id">SEC.06</span>
-          <span class="ssx-ruler-line" aria-hidden="true"></span>
-          <h2 class="ssx-ruler-name" id="ssx-sec6">Data Security and Compliance</h2>
+        <header class="ss2-part-head" data-reveal>
+          <span class="ss2-part-no">Part 04 — Trust</span>
+          <h2 class="ss2-h2" id="ss2-sec-h">Security, Privacy, and Compliance by Design</h2>
         </header>
 
-        <div class="ssx-sec6-grid">
-          <div class="ssx-result">
-            <div class="ssx-result-head"><i aria-hidden="true"></i>Security &amp; compliance — verified</div>
-            <ul>
-              {compliance.map((row) => (
-                <li>
-                  <span class="ssx-check" aria-hidden="true">
-                    <svg viewBox="0 0 12 12" fill="none"><path d="M2.2 6.3 4.8 8.8 9.8 3.4" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  </span>
-                  <p><b>{row.label}</b> {row.text}</p>
-                  <span class="ssx-pass">Pass</span>
-                </li>
-              ))}
-            </ul>
+        <div class="ss2-ledger" data-reveal>
+          <p class="ss2-ledger-head"><span>REF</span><span>Provision</span><span>What it means</span></p>
+          <div class="ss2-ledger-row">
+            <span class="ss2-ledger-no">T-1</span>
+            <span class="ss2-ledger-name">No Facial Recognition</span>
+            <span class="ss2-ledger-desc">People tracking uses non-biometric re-identification signals, not facial recognition.</span>
           </div>
-
-          <aside class="ssx-score" aria-label="Compliance checks summary" data-rail="Audit · Passed">
-            <span class="ssx-score-label">Compliance checks</span>
-            <span class="ssx-score-value">3<span class="ssx-score-total">/3</span></span>
-            <span class="ssx-score-state"><i aria-hidden="true"></i>All green</span>
-            <span class="ssx-score-bars" aria-hidden="true"><b></b><b></b><b></b></span>
-          </aside>
+          <div class="ss2-ledger-row">
+            <span class="ss2-ledger-no">T-2</span>
+            <span class="ss2-ledger-name">Edge AI Processing</span>
+            <span class="ss2-ledger-desc">Video can be processed locally on AI Hub or Edge AI Camera. Only metadata, analytics, and anomaly events need to be sent to the cloud, reducing bandwidth use by up to 80%.</span>
+          </div>
+          <div class="ss2-ledger-row">
+            <span class="ss2-ledger-no">T-3</span>
+            <span class="ss2-ledger-name">Enterprise-Grade Standards</span>
+            <span class="ss2-ledger-desc">Certified and audited against the standards enterprise IT and legal teams ask for.</span>
+          </div>
         </div>
 
-        <figure class="ssx-cert">
-          <img src="/spacesight/compliance-strip.webp" alt="Enterprise compliance certifications — SOC 2 Type II, GDPR Compliant, ISO 27001, ISO 9001, CMMI Level 5" width="1630" height="194" loading="lazy" />
-          <figcaption class="ssx-figcap"><span class="ssx-figcap-id">Fig. 03</span><span class="ssx-figcap-alt">SOC 2 Type II · GDPR Compliant · ISO 27001 · ISO 9001 · CMMI Level 5</span></figcaption>
-        </figure>
+        <ul class="ss2-certs" data-reveal>
+          {certs.map((c) => (
+            <li class="ss2-cert">
+              <img src={c.src} alt={c.alt} width="120" height="60" loading="lazy" decoding="async" />
+              <span>{c.label}</span>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
 
-    <!-- ============ SEC.07 — Closing ============ -->
-    <div class="container ssx-closing-ruler">
-      <header class="ssx-ruler">
-        <span class="ssx-ruler-id">SEC.07</span>
-        <span class="ssx-ruler-line" aria-hidden="true"></span>
-        <span class="ssx-ruler-name">Closing</span>
-      </header>
+    <!-- ================= FAQ ================= -->
+    <div data-tab="faq">
+      <FAQSection />
     </div>
 
+    <!-- ================= CLOSING ================= -->
     <CTASection
-      headline="Make Every Physical Operation Visible, Measurable, and Actionable"
-      lead="From retail video analytics to automated compliance audit, SpaceSight helps enterprises turn physical spaces into intelligent, optimized operations."
-      primaryLabel="Book a demo"
-      sourceType="spacesight页-Closing留资"
+      headline="Physical Operations Intelligence for Better Compliance, Customer Flow, and Store Performance."
+      lead="See what your existing cameras can tell you."
+      primaryLabel="Book a Demo"
+      sourceType="spacesight2页-底部留资"
+      secondaryLabel="See Use Cases"
+      secondaryHref="/user-cases/"
     />
+
+    <!-- fore-edge tab rail (inside .ss2 for token scope) -->
+    <nav class="ss2-tabs" aria-label="Manual sections">
+      {tabs.map((t) => (
+        <a href={`#${t.id}`} class="ss2-tab" data-tab-link={t.id}>{t.label}</a>
+      ))}
+    </nav>
   </main>
   <Footer />
 </Layout>
+
 <style>
-  .ssx {
-    --y: #3B82F6;
-    --y-ink: #1D4ED8;
-    --ink: #0F172A;
-    --ink2: #475569;
-    --hair: rgba(15, 23, 42, 0.14);
-    --hair-soft: rgba(15, 23, 42, 0.08);
-    --ok: #16A34A;
-    --ok-bright: #4ADE80;
-    --dark: #0B1020;
-    --on-dark: #F8F7F4;
-    --on-dark2: #94A3B8;
-    --display: var(--font-display);
-    /* fixed header measures ~81px here (the 60px token is stale site-wide) */
-    padding-top: calc(var(--header-height) + 22px);
+  /* ===== world tokens (company blue on daylight) ===== */
+  .ss2 {
+    --ss2-blue: #2563EB;
+    --ss2-blue-ink: #1D4ED8;
+    --ss2-blue-soft: #EFF4FF;
+    --ss2-rule: color-mix(in srgb, var(--text) 14%, transparent);
   }
 
-  /* ---------------- Shared SEC ruler ---------------- */
-  .ssx-ruler {
+  /* ===== doc-control strip ===== */
+  .ss2-doc {
     display: flex;
-    align-items: flex-end;
-    gap: var(--space-sm);
-    margin-bottom: var(--space-lg);
-  }
-
-  .ssx-ruler-id {
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
     font-family: var(--font-mono);
-    font-size: 0.78rem;
+    font-size: 0.72rem;
     font-weight: 700;
-    letter-spacing: 0.12em;
-    color: var(--y-ink);
-    padding-bottom: 0.15rem;
-    white-space: nowrap;
-  }
-
-  .ssx-ruler-line {
-    flex: 1 1 auto;
-    height: 16px;
-    border-bottom: 1px solid rgba(15, 23, 42, 0.28);
-    background-image:
-      repeating-linear-gradient(90deg, rgba(15, 23, 42, 0.38) 0, rgba(15, 23, 42, 0.38) 1px, transparent 1px, transparent 76px),
-      repeating-linear-gradient(90deg, rgba(15, 23, 42, 0.2) 0, rgba(15, 23, 42, 0.2) 1px, transparent 1px, transparent 19px);
-    background-size: auto 12px, auto 6px;
-    background-repeat: repeat-x;
-    background-position: left bottom;
-  }
-
-  .ssx-ruler-name {
-    margin: 0;
-    font-family: var(--display);
-    font-size: 0.95rem;
-    font-weight: 700;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--ink);
-    padding-bottom: 0.15rem;
-    white-space: nowrap;
-    max-width: none;
+    color: var(--ss2-blue-ink);
+    border-bottom: 1px solid var(--ss2-rule);
+    padding-bottom: 0.9rem;
+    margin-bottom: 3rem;
   }
-
-  .ssx-sec {
-    padding: var(--space-xl) 0;
-  }
-
-  .ssx-sec-tint {
-    background: var(--bg-tint);
-  }
-
-  .ssx-dark {
-    background: var(--dark);
-    color: var(--on-dark);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .ssx-dark::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(720px 320px at 10% -8%, rgba(37, 99, 235, 0.08), transparent 62%),
-      radial-gradient(720px 320px at 90% 108%, rgba(37, 99, 235, 0.05), transparent 62%);
-    pointer-events: none;
-  }
-
-  .ssx-dark .container {
-    position: relative;
-  }
-
-  .ssx-dark .ssx-ruler-id {
-    color: var(--y);
-  }
-
-  .ssx-dark .ssx-ruler-line {
-    border-bottom-color: rgba(248, 247, 244, 0.3);
-    background-image:
-      repeating-linear-gradient(90deg, rgba(248, 247, 244, 0.4) 0, rgba(248, 247, 244, 0.4) 1px, transparent 1px, transparent 76px),
-      repeating-linear-gradient(90deg, rgba(248, 247, 244, 0.22) 0, rgba(248, 247, 244, 0.22) 1px, transparent 1px, transparent 19px);
-  }
-
-  .ssx-dark .ssx-ruler-name {
-    color: var(--on-dark);
-  }
-
-  /* ---------------- Hero ---------------- */
-  .ssx-hero {
-    position: relative;
-    padding: var(--space-lg) 0 var(--space-xl);
-    background-image:
-      linear-gradient(rgba(15, 23, 42, 0.045) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(15, 23, 42, 0.045) 1px, transparent 1px);
-    background-size: 56px 56px;
-    background-position: center top;
-  }
-
-  .ssx-hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(760px 420px at 82% 8%, rgba(37, 99, 235, 0.14), transparent 64%);
-    pointer-events: none;
-  }
-
-  .ssx-hero-grid {
-    position: relative;
-    display: grid;
-    grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr);
-    gap: clamp(var(--space-md), 4vw, var(--space-xl));
-    align-items: center;
-  }
-
-  .ssx-eyebrow {
+  /* controlled-document stamp */
+  .ss2-doc-title {
     display: inline-flex;
     align-items: center;
-    gap: 0.6rem;
-    font-family: var(--font-mono);
+    gap: 0.6em;
+    padding: 0.5em 0.95em;
     font-size: 0.78rem;
-    font-weight: 700;
     letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--y-ink);
-    border: 1px solid rgba(37, 99, 235, 0.55);
-    background: rgba(37, 99, 235, 0.12);
-    border-radius: 3px;
-    padding: 0.4rem 0.7rem;
-    margin: 0 0 var(--space-md);
+    color: var(--ss2-blue-ink);
+    border: 1.5px solid var(--ss2-blue);
+    border-radius: 2px;
+    box-shadow: inset 0 0 0 1px rgba(37, 99, 235, 0.18);
+    animation: ss2-stamp 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.35s backwards;
+  }
+  .ss2-doc-mark {
+    width: 0.55em;
+    height: 0.55em;
+    background: var(--ss2-blue);
+    flex-shrink: 0;
+  }
+  .ss2-doc-sep {
+    color: var(--ss2-blue);
+    margin-inline: -0.2em;
+  }
+  @keyframes ss2-stamp {
+    from {
+      opacity: 0;
+      transform: scale(1.28) rotate(-1.2deg);
+    }
+    60% {
+      opacity: 1;
+      transform: scale(0.97) rotate(0.2deg);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
   }
 
-  .ssx-eyebrow::before {
-    content: '';
-    width: 7px;
-    height: 7px;
-    transform: rotate(45deg);
-    background: var(--y);
-    box-shadow: 0 0 8px rgba(37, 99, 235, 0.9);
+  /* ===== cover ===== */
+  .ss2-cover {
+    padding-top: 7rem;
   }
 
-  .ssx-h1 {
-    font-family: var(--display);
+  .ss2-cover-grid {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 3.5rem;
+    align-items: stretch;
+  }
+
+  /* hero plate stretches: top flush with headline, bottom flush with CTAs */
+  .ss2-cover-grid .ss2-plate {
+    display: flex;
+    flex-direction: column;
+  }
+  .ss2-cover-grid .ss2-plate-media {
+    flex: 1;
+    min-height: 0;
+  }
+  .ss2-cover-grid .ss2-plate-media img {
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .ss2-h1 {
+    font-family: var(--font-display);
     font-size: clamp(2.05rem, 3.8vw, 3.5rem);
     font-weight: 700;
     line-height: 1.06;
     letter-spacing: -0.03em;
     max-width: 17ch;
-    margin: 0 0 var(--space-md);
-    color: var(--ink);
+    margin: 0 0 1.5rem;
+    text-wrap: balance;
   }
 
-  .ssx-tail {
+  /* tail line: blue + blinking block cursor (spacesight v1 convention) */
+  .ss2-tail {
     display: block;
-    color: var(--y-ink);
+    color: var(--ss2-blue-ink);
   }
-
-  .ssx-tail::after {
+  .ss2-tail::after {
     content: '';
     display: inline-block;
     width: 0.42em;
     height: 0.82em;
     margin-left: 0.16em;
     transform: translateY(0.09em);
-    background: var(--y);
-    animation: ssx-blink 1.15s steps(1) infinite;
+    background: var(--ss2-blue);
+    animation: ss2-blink 1.15s steps(1) infinite;
   }
-
-  .ssx-sub {
-    font-size: clamp(1rem, 1.5vw, 1.16rem);
-    line-height: 1.65;
-    color: var(--ink2);
-    max-width: 54ch;
-    margin: 0 0 var(--space-md);
-  }
-
-  .ssx-hero-cta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-sm);
-  }
-
-  /* Book a demo buttons match the header "Request a Demo" gradient pill */
-  .ssx .btn-primary,
-  .ssx :global(.cta-actions .btn-primary) {
-    background: linear-gradient(135deg, #7c3aed 0%, #06b6d4 100%);
-    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1) inset, 0 6px 24px rgba(124, 58, 237, 0.45);
-    animation: cta-pulse 2.4s ease-in-out infinite;
-  }
-
-  .ssx .btn-primary:hover,
-  .ssx :global(.cta-actions .btn-primary:hover) {
-    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.14) inset, 0 10px 30px rgba(124, 58, 237, 0.55);
-  }
-
-  /* Hero console frame */
-  .ssx-console {
-    margin: 0;
-    background: var(--dark);
-    border: 1px solid rgba(11, 16, 32, 0.7);
-    border-radius: var(--radius);
-    overflow: hidden;
-    box-shadow: 0 32px 72px rgba(11, 16, 32, 0.3);
-  }
-
-  .ssx-console-bar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--space-sm);
-    padding: 0.75rem var(--space-sm);
-    font-family: var(--font-mono);
-    font-size: 0.68rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: rgba(248, 247, 244, 0.62);
-  }
-
-  .ssx-rec {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.45rem;
-    color: #FF7070;
-    white-space: nowrap;
-  }
-
-  .ssx-rec i {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: #FF4B4B;
-    box-shadow: 0 0 10px rgba(255, 75, 75, 0.9);
-    animation: ssx-pulse 1.6s ease-in-out infinite;
-  }
-
-  .ssx-console-mode {
-    color: var(--y);
-    white-space: nowrap;
-  }
-
-  .ssx-console-view {
-    position: relative;
-    overflow: hidden;
-  }
-
-  .ssx-console-view video,
-  .ssx-console-view img {
-    display: block;
-    width: 100%;
-    height: auto;
-  }
-
-  .ssx-vc {
-    position: absolute;
-    width: 22px;
-    height: 22px;
-    border: 2px solid var(--y);
-    filter: drop-shadow(0 0 4px rgba(37, 99, 235, 0.6));
-    pointer-events: none;
-  }
-
-  .ssx-vc-tl { top: 12px; left: 12px; border-right: none; border-bottom: none; }
-  .ssx-vc-tr { top: 12px; right: 12px; border-left: none; border-bottom: none; }
-  .ssx-vc-bl { bottom: 12px; left: 12px; border-right: none; border-top: none; }
-  .ssx-vc-br { bottom: 12px; right: 12px; border-left: none; border-top: none; }
-
-  .ssx-scanline {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: -18%;
-    height: 18%;
-    background: linear-gradient(
-      180deg,
-      transparent 0%,
-      rgba(37, 99, 235, 0.1) 42%,
-      rgba(37, 99, 235, 0.4) 50%,
-      rgba(37, 99, 235, 0.1) 58%,
-      transparent 100%
-    );
-    pointer-events: none;
-    animation: ssx-sweep 6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-  }
-
-  .ssx-telemetry {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    margin: 0;
-    border-top: 1px solid rgba(248, 247, 244, 0.1);
-  }
-
-  .ssx-telemetry > div {
-    padding: 0.85rem var(--space-sm) 0.95rem;
-    border-left: 1px solid rgba(248, 247, 244, 0.1);
-    min-width: 0;
-  }
-
-  .ssx-telemetry > div:first-child {
-    border-left: none;
-  }
-
-  .ssx-telemetry dt {
-    font-family: var(--font-mono);
-    font-size: 0.62rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--on-dark2);
-    margin-bottom: 0.25rem;
-  }
-
-  .ssx-telemetry dd {
-    font-family: var(--font-mono);
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.02em;
-    color: var(--on-dark);
-    margin: 0;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  .ssx-figcap {
-    display: flex;
-    align-items: baseline;
-    gap: 0.7rem;
-    margin: 0;
-    padding: 0.6rem 0 0;
-    font-family: var(--font-mono);
-    font-size: 0.68rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--ink2);
-  }
-
-  .ssx-console .ssx-figcap {
-    padding: 0.6rem var(--space-sm) 0.85rem;
-    color: rgba(248, 247, 244, 0.5);
-  }
-
-  .ssx-figcap-id {
-    color: var(--y-ink);
-    white-space: nowrap;
-  }
-
-  .ssx-console .ssx-figcap-id {
-    color: var(--y);
-  }
-
-  .ssx-figcap-alt {
-    font-weight: 400;
-    text-transform: none;
-    letter-spacing: 0.02em;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  /* Hero proof strip */
-  .ssx-proof {
-    position: relative;
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: var(--space-md);
-    margin-top: var(--space-lg);
-    border-top: 1px solid var(--hair);
-    padding-top: var(--space-md);
-  }
-
-  .ssx-proof-cell {
-    display: flex;
-    flex-direction: column;
-    gap: 0.15rem;
-    border-left: 3px solid var(--y);
-    padding-left: 0.9rem;
-    min-width: 0;
-  }
-
-  .ssx-proof-value {
-    font-family: var(--font-mono);
-    font-size: clamp(1.35rem, 2.4vw, 1.9rem);
-    font-weight: 700;
-    letter-spacing: -0.01em;
-    color: var(--ink);
-    font-variant-numeric: tabular-nums;
-    line-height: 1.15;
-  }
-
-  .ssx-proof-label {
-    font-family: var(--font-mono);
-    font-size: 0.68rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--ink2);
-  }
-</style>
-<style>
-  /* ---------------- SEC.01 About ---------------- */
-  .ssx-lede {
-    font-family: var(--display);
-    font-size: clamp(1.6rem, 3vw, 2.5rem);
-    font-weight: 600;
-    line-height: 1.22;
-    letter-spacing: -0.02em;
-    color: var(--ink);
-    max-width: 30ch;
-    margin: 0 0 var(--space-lg);
-  }
-
-  .ssx-lede-em {
-    color: var(--ink);
-  }
-
-  .ssx-hl {
-    background: linear-gradient(transparent 60%, rgba(37, 99, 235, 0.65) 60%, rgba(37, 99, 235, 0.65) 94%, transparent 94%);
-    padding: 0 0.08em;
-  }
-
-  .ssx-about-grid {
-    display: grid;
-    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
-    gap: clamp(var(--space-md), 4vw, var(--space-xl));
-    align-items: stretch;
-  }
-
-  .ssx-about-copy p {
-    font-size: 1.02rem;
-    line-height: 1.75;
-    color: var(--ink2);
-  }
-
-  .ssx-about-copy p + p {
-    margin-top: var(--space-sm);
-  }
-
-  .ssx-proofband {
-    display: flex;
-    flex-direction: column;
-    background: var(--dark);
-    border: 1px solid rgba(11, 16, 32, 0.7);
-    border-radius: var(--radius);
-    overflow: hidden;
-    box-shadow: 0 24px 56px rgba(11, 16, 32, 0.22);
-  }
-
-  .ssx-proofband-head {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    padding: 0.8rem var(--space-md);
-    border-bottom: 1px dashed rgba(248, 247, 244, 0.16);
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--on-dark2);
-  }
-
-  .ssx-proofband-head i {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--y);
-    box-shadow: 0 0 8px rgba(37, 99, 235, 0.8);
-    animation: ssx-pulse 1.8s ease-in-out infinite;
-  }
-
-  .ssx-proofband-grid {
-    flex: 1;
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .ssx-proofband-cell {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 0.2rem;
-    padding: var(--space-md);
-    border-left: 1px solid rgba(248, 247, 244, 0.1);
-    border-top: 1px solid rgba(248, 247, 244, 0.1);
-    min-width: 0;
-  }
-
-  .ssx-proofband-cell:nth-child(odd) {
-    border-left: none;
-  }
-
-  .ssx-proofband-cell:nth-child(-n + 2) {
-    border-top: none;
-  }
-
-  .ssx-proofband-value {
-    font-family: var(--font-mono);
-    font-size: clamp(1.4rem, 2vw, 1.8rem);
-    font-weight: 700;
-    color: var(--y);
-    line-height: 1.1;
-    font-variant-numeric: tabular-nums;
-  }
-
-  .ssx-proofband-label {
-    font-size: 0.72rem;
-    line-height: 1.4;
-    color: var(--on-dark2);
-  }
-
-  .ssx-dashgrid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--space-md);
-    margin-top: var(--space-lg);
-  }
-
-  .ssx-frame {
-    margin: 0;
-    background: var(--bg-elevated);
-    border: 1px solid var(--hair);
-    border-radius: var(--radius-sm);
-    overflow: hidden;
-    box-shadow: 0 20px 48px rgba(15, 23, 42, 0.08);
-  }
-
-  .ssx-frame-bar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--space-sm);
-    padding: 0.6rem 0.9rem;
-    border-bottom: 1px dashed var(--hair);
-    font-family: var(--font-mono);
-    font-size: 0.66rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--ink2);
-  }
-
-  .ssx-frame-bar i {
-    width: 8px;
-    height: 8px;
-    transform: rotate(45deg);
-    background: var(--y);
-    box-shadow: 0 0 6px rgba(37, 99, 235, 0.8);
-  }
-
-  .ssx-frame img {
-    display: block;
-    width: 100%;
-    height: auto;
-  }
-
-  .ssx-frame .ssx-figcap {
-    padding: 0 0.9rem 0.8rem;
-  }
-
-  /* ---------------- SEC.02 Units (dark) ---------------- */
-  .ssx-units {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    gap: var(--space-md);
-  }
-
-  .ssx-unit {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    background: rgba(248, 247, 244, 0.045);
-    border: 1px solid rgba(248, 247, 244, 0.12);
-    border-radius: var(--radius);
-    padding: calc(var(--space-md) + 6px) var(--space-lg) var(--space-md);
-    overflow: hidden;
-    box-shadow: 0 24px 56px rgba(0, 0, 0, 0.35);
-  }
-
-  .ssx-unit::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(560px 220px at 18% -12%, rgba(37, 99, 235, 0.09), transparent 62%);
-    pointer-events: none;
-  }
-
-  .ssx-unit--wide {
-    grid-column: 1 / -1;
-  }
-
-  .ssx-uc {
-    position: absolute;
-    width: 16px;
-    height: 16px;
-    border: 2px solid var(--y);
-    opacity: 0.9;
-    pointer-events: none;
-  }
-
-  .ssx-uc-tl { top: 10px; left: 10px; border-right: none; border-bottom: none; }
-  .ssx-uc-tr { top: 10px; right: 10px; border-left: none; border-bottom: none; }
-  .ssx-uc-bl { bottom: 10px; left: 10px; border-right: none; border-top: none; }
-  .ssx-uc-br { bottom: 10px; right: 10px; border-left: none; border-top: none; }
-
-  .ssx-unit-head {
-    position: relative;
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 0.7rem;
-    margin-bottom: 0.45rem;
-  }
-
-  .ssx-unit-id {
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--on-dark2);
-  }
-
-  .ssx-unit-name {
-    margin: 0;
-    font-family: var(--display);
-    font-size: clamp(1.4rem, 2.2vw, 1.9rem);
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    color: var(--on-dark);
-    max-width: none;
-  }
-
-  .ssx-unit-status {
-    margin-left: auto;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.45rem;
-    font-family: var(--font-mono);
-    font-size: 0.66rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--y);
-  }
-
-  .ssx-unit-status i {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: var(--y);
-    box-shadow: 0 0 8px var(--y);
-    animation: ssx-pulse 1.8s ease-in-out infinite;
-  }
-
-  .ssx-unit-sub {
-    position: relative;
-    margin: 0 0 var(--space-sm);
-    font-family: var(--font-mono);
-    font-size: 0.74rem;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    color: rgba(37, 99, 235, 0.85);
-  }
-
-  .ssx-unit-body {
-    position: relative;
-    margin-bottom: var(--space-md);
-  }
-
-  .ssx-unit-body p {
-    color: #B9C6DA;
-    line-height: 1.75;
-    font-size: 0.95rem;
-    margin: 0;
-  }
-
-  .ssx-unit-body p + p {
-    margin-top: 0.8rem;
-  }
-
-  .ssx-unit-foot {
-    position: relative;
-    margin-top: auto;
-    border-top: 1px dashed rgba(248, 247, 244, 0.16);
-    padding-top: 0.9rem;
-  }
-
-  .ssx-impact-label {
-    margin: 0 0 0.5rem;
-    font-family: var(--font-mono);
-    font-size: 0.62rem;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--on-dark2);
-  }
-
-  .ssx-impact-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-sm) var(--space-xl);
-  }
-
-  .ssx-metric {
-    display: flex;
-    flex-direction: column;
-    gap: 0.15rem;
-    min-width: 0;
-  }
-
-  .ssx-metric b {
-    font-family: var(--font-mono);
-    font-weight: 700;
-    font-size: 1.5rem;
-    line-height: 1.1;
-    color: var(--y);
-    font-variant-numeric: tabular-nums;
-  }
-
-  .ssx-metric span {
-    font-size: 0.74rem;
-    line-height: 1.4;
-    color: var(--on-dark2);
-    max-width: 26ch;
-  }
-
-  .ssx-unit-inner {
-    position: relative;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    gap: clamp(var(--space-md), 3.5vw, var(--space-xl));
-    align-items: center;
-  }
-
-  .ssx-unit-main {
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    align-self: stretch;
-  }
-
-  .ssx-claw {
-    width: 240px;
-    border-radius: var(--radius-sm);
-    overflow: hidden;
-    border: 1px solid rgba(37, 99, 235, 0.35);
-    background: #05070D;
-    box-shadow: 0 18px 44px rgba(0, 0, 0, 0.45);
-  }
-
-  .ssx-claw-bar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.5rem;
-    padding: 0.5rem 0.7rem;
-    font-family: var(--font-mono);
-    font-size: 0.58rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: rgba(248, 247, 244, 0.62);
-    border-bottom: 1px solid rgba(248, 247, 244, 0.1);
-  }
-
-  .ssx-claw-bar i {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: var(--y);
-    box-shadow: 0 0 8px var(--y);
-    animation: ssx-pulse 1.8s ease-in-out infinite;
-  }
-
-  .ssx-claw video {
-    display: block;
-    width: 100%;
-    height: auto;
-  }
-</style>
-<style>
-  /* ---------------- SEC.03 Scale ---------------- */
-  .ssx-scale-grid {
-    display: grid;
-    grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr);
-    gap: clamp(var(--space-md), 4vw, var(--space-xl));
-    align-items: stretch;
-  }
-
-  .ssx-scale-copy p {
-    font-size: 1.02rem;
-    line-height: 1.75;
-    color: var(--ink2);
-    margin: 0;
-  }
-
-  .ssx-scale-copy p + p {
-    margin-top: var(--space-sm);
-  }
-
-  .ssx-note {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.7rem;
-    margin-top: var(--space-md);
-    border: 1px dashed var(--hair);
-    border-radius: var(--radius-sm);
-    padding: 0.85rem 1rem;
-    background: rgba(37, 99, 235, 0.08);
-    font-family: var(--font-mono);
-    font-size: 0.78rem;
-    line-height: 1.65;
-    color: var(--ink2);
-  }
-
-  .ssx-note b {
-    flex: 0 0 auto;
-    margin-top: 0.1rem;
-    font-size: 0.62rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    color: var(--y-ink);
-    border: 1px solid rgba(37, 99, 235, 0.6);
-    background: rgba(37, 99, 235, 0.16);
-    border-radius: 3px;
-    padding: 0.22rem 0.5rem;
-  }
-
-  .ssx-gauge {
-    display: flex;
-    flex-direction: column;
-    background: var(--dark);
-    border: 1px solid rgba(11, 16, 32, 0.7);
-    border-radius: var(--radius);
-    overflow: hidden;
-    box-shadow: 0 24px 56px rgba(11, 16, 32, 0.22);
-  }
-
-  .ssx-gauge-head {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--space-sm);
-    padding: 0.8rem var(--space-md);
-    border-bottom: 1px dashed rgba(248, 247, 244, 0.16);
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--on-dark2);
-  }
-
-  .ssx-gauge-chip {
-    color: var(--y);
-    border: 1px solid rgba(37, 99, 235, 0.5);
-    border-radius: 3px;
-    padding: 0.22rem 0.5rem;
-    font-size: 0.62rem;
-    white-space: nowrap;
-  }
-
-  .ssx-bars {
-    display: flex;
-    align-items: stretch;
-    gap: clamp(0.6rem, 2vw, 1.2rem);
-    height: 168px;
-    padding: var(--space-md) var(--space-md) 0;
-  }
-
-  .ssx-bar {
-    flex: 1 1 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    min-width: 0;
-  }
-
-  .ssx-bar i {
-    display: block;
-    width: 100%;
-    height: var(--h);
-    background: rgba(248, 247, 244, 0.14);
-    border: 1px solid rgba(248, 247, 244, 0.22);
-    border-bottom: none;
-    border-radius: 5px 5px 0 0;
-  }
-
-  .ssx-bar:last-child i {
-    background: var(--y);
-    border-color: var(--y);
-    box-shadow: 0 0 18px rgba(37, 99, 235, 0.4);
-  }
-
-  .ssx-bar span {
-    padding: 0.55rem 0 0.2rem;
-    font-family: var(--font-mono);
-    font-size: 0.6rem;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--on-dark2);
-    text-align: center;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  .ssx-gauge-foot {
-    border-top: 1px solid rgba(248, 247, 244, 0.1);
-    margin-top: var(--space-sm);
-  }
-
-  /* ---------------- SEC.04 Hardware rack ---------------- */
-  .ssx-rack-intro {
-    max-width: 68ch;
-    font-size: 1.05rem;
-    line-height: 1.7;
-    color: var(--ink2);
-    margin: 0 0 var(--space-lg);
-  }
-
-  .ssx-rack-grid {
-    display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-    gap: var(--space-sm);
-  }
-
-  .ssx-device {
-    display: flex;
-    flex-direction: column;
-    background: var(--bg-elevated);
-    border: 1px solid var(--hair);
-    border-radius: var(--radius-sm);
-    overflow: hidden;
-    box-shadow: 0 10px 28px rgba(15, 23, 42, 0.06);
-    transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
-  }
-
-  .ssx-device:hover {
-    transform: translateY(-4px);
-    border-color: rgba(37, 99, 235, 0.7);
-    box-shadow: 0 16px 40px rgba(15, 23, 42, 0.1);
-  }
-
-  .ssx-device-view {
-    position: relative;
-    aspect-ratio: 4 / 3;
-    display: grid;
-    place-items: center;
-    padding: var(--space-sm);
-    background: linear-gradient(180deg, #FFFFFF 0%, var(--bg-tint) 100%);
-    border-bottom: 1px solid var(--hair-soft);
-  }
-
-  .ssx-device-view img {
-    /* Absolute so the image can never inflate the 4:3 view — equalises card height */
-    position: absolute;
-    inset: var(--space-sm);
-    width: calc(100% - var(--space-sm) * 2);
-    height: calc(100% - var(--space-sm) * 2);
-    object-fit: contain;
-  }
-
-  .ssx-device-view svg {
-    width: 60%;
-    height: auto;
-    color: var(--ink);
-  }
-
-  .ssx-device-body {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.35rem;
-    padding: 0.85rem 0.9rem 0.95rem;
-    flex: 1;
-  }
-
-  .ssx-device-name {
-    margin: 0;
-    font-family: var(--display);
-    font-size: 0.98rem;
-    font-weight: 700;
-    letter-spacing: -0.01em;
-    color: var(--ink);
-    max-width: none;
-  }
-
-  .ssx-device-sub {
-    margin: 0;
-    font-size: 0.74rem;
-    line-height: 1.45;
-    color: var(--ink2);
-    flex: 1;
-  }
-
-  .ssx-device-tag {
-    font-family: var(--font-mono);
-    font-size: 0.58rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--y-ink);
-    border: 1px solid rgba(37, 99, 235, 0.55);
-    background: rgba(37, 99, 235, 0.14);
-    border-radius: 3px;
-    padding: 0.2rem 0.5rem;
-    white-space: nowrap;
-  }
-
-  .ssx-rail {
-    height: 8px;
-    margin: 1.1rem 0.5rem 0;
-    border-radius: 999px;
-    background: rgba(15, 23, 42, 0.1);
-    background-image: repeating-linear-gradient(90deg, var(--y) 0, var(--y) 14px, transparent 14px, transparent 42px);
-    background-size: 42px 100%;
-    background-repeat: repeat-x;
-    animation: ssx-railflow 1.4s linear infinite;
-  }
-
-  .ssx-lanes {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    gap: var(--space-md);
-    margin-top: var(--space-lg);
-  }
-
-  .ssx-lane {
-    border: 1px dashed var(--hair);
-    border-radius: var(--radius-sm);
-    background: var(--bg-elevated);
-    padding: var(--space-md);
-  }
-
-  .ssx-lane-chip {
-    display: flex;
-    align-items: center;
-    gap: 0.55rem;
-    margin: 0 0 0.55rem;
-    font-family: var(--font-mono);
-    font-size: 0.64rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--y-ink);
-  }
-
-  .ssx-lane-chip::before {
-    content: '';
-    width: 8px;
-    height: 8px;
-    transform: rotate(45deg);
-    background: var(--y);
-    box-shadow: 0 0 6px rgba(37, 99, 235, 0.8);
-  }
-
-  .ssx-lane p {
-    margin: 0;
-    font-size: 0.92rem;
-    line-height: 1.7;
-    color: var(--ink2);
-  }
-</style>
-<style>
-  /* ---------------- SEC.05 Deployment pipeline ---------------- */
-  .ssx-pipe-meta {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: var(--space-xs) var(--space-md);
-    margin-bottom: var(--space-md);
-    font-family: var(--font-mono);
-    font-size: 0.68rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--on-dark2);
-  }
-
-  .ssx-pipe-meta-right {
-    color: var(--y);
-  }
-
-  .ssx-handbook-link {
-    color: inherit;
-    text-decoration: none;
-    border-bottom: 1px solid rgba(37, 99, 235, 0.45);
-    padding-bottom: 1px;
-  }
-
-  .ssx-handbook-link:hover {
-    border-bottom-color: currentColor;
-  }
-
-  .ssx-flow {
-    position: relative;
-  }
-
-  .ssx-pipes {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    display: none;
-  }
-
-  .ssx-pipe-base {
-    stroke: rgba(248, 247, 244, 0.16);
-    stroke-width: 2.5;
-  }
-
-  .ssx-pipe-flow {
-    stroke: var(--y);
-    stroke-width: 2.5;
-    stroke-dasharray: 70 1824;
-    filter: drop-shadow(0 0 5px rgba(37, 99, 235, 0.65));
-    animation: ssx-packet 6.5s linear infinite;
-  }
-
-  .ssx-pipe-flow2 {
-    animation-delay: -3.25s;
-    opacity: 0.55;
-  }
-
-  .ssx-nodes {
-    position: relative;
-    z-index: 1;
-    display: grid;
-    gap: var(--space-md);
-  }
-
-  .ssx-node {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-    /* near-solid ink panel: the signal pipe runs behind the grid and
-       must not bleed through the node copy */
-    background: #151C31;
-    border: 1px solid rgba(248, 247, 244, 0.14);
-    border-radius: var(--radius-sm);
-    padding: 0.95rem 1rem 1rem;
-  }
-
-  .ssx-node-top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.5rem;
-  }
-
-  .ssx-node-num {
-    font-family: var(--font-mono);
-    font-size: 0.66rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    color: var(--y);
-  }
-
-  .ssx-node-sq {
-    width: 8px;
-    height: 8px;
-    transform: rotate(45deg);
-    background: var(--y);
-    box-shadow: 0 0 6px rgba(37, 99, 235, 0.8);
-  }
-
-  .ssx-node-title {
-    margin: 0;
-    font-family: var(--display);
-    font-size: 0.98rem;
-    font-weight: 700;
-    line-height: 1.3;
-    letter-spacing: -0.01em;
-    color: var(--on-dark);
-    max-width: none;
-  }
-
-  .ssx-node-desc {
-    margin: 0;
-    font-size: 0.78rem;
-    line-height: 1.6;
-    color: #B9C6DA;
-  }
-
-  /* ---------------- SEC.06 Compliance ---------------- */
-  .ssx-sec6-grid {
-    display: grid;
-    grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
-    gap: var(--space-md);
-    align-items: stretch;
-  }
-
-  .ssx-result {
-    background: var(--bg-elevated);
-    border: 1px solid var(--hair);
-    border-radius: var(--radius);
-    box-shadow: 0 24px 60px rgba(15, 23, 42, 0.09);
-    overflow: hidden;
-  }
-
-  .ssx-result-head {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    padding: 0.85rem var(--space-md);
-    border-bottom: 1px solid var(--hair-soft);
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--ink2);
-  }
-
-  .ssx-result-head i {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--ok);
-    box-shadow: 0 0 8px rgba(22, 163, 74, 0.7);
-  }
-
-  .ssx-result ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-
-  .ssx-result li {
-    display: flex;
-    align-items: flex-start;
-    gap: var(--space-sm);
-    padding: 1.15rem var(--space-md);
-    border-bottom: 1px solid var(--hair-soft);
-  }
-
-  .ssx-result li:last-child {
-    border-bottom: none;
-  }
-
-  .ssx-check {
-    flex: 0 0 auto;
-    width: 24px;
-    height: 24px;
-    margin-top: 0.1rem;
-    border-radius: 50%;
-    background: var(--ok);
-    display: inline-grid;
-    place-items: center;
-    box-shadow: 0 0 0 4px rgba(22, 163, 74, 0.14);
-  }
-
-  .ssx-check svg {
-    width: 12px;
-    height: 12px;
-    display: block;
-  }
-
-  .ssx-result p {
-    margin: 0;
-    font-size: 0.98rem;
-    line-height: 1.6;
-    color: var(--ink2);
-  }
-
-  .ssx-result p b {
-    color: var(--ink);
-  }
-
-  .ssx-pass {
-    margin-left: auto;
-    flex: 0 0 auto;
-    font-family: var(--font-mono);
-    font-size: 0.62rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--ok);
-    border: 1px solid rgba(22, 163, 74, 0.4);
-    background: rgba(22, 163, 74, 0.08);
-    border-radius: 3px;
-    padding: 0.3rem 0.55rem;
-  }
-
-  .ssx-score {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 0.4rem;
-    background: var(--dark);
-    color: var(--on-dark);
-    border: 1px solid rgba(11, 16, 32, 0.7);
-    border-radius: var(--radius);
-    padding: var(--space-md) var(--space-lg) var(--space-md) calc(var(--space-lg) + 1.4rem);
-    box-shadow: 0 24px 56px rgba(11, 16, 32, 0.22);
-  }
-
-  .ssx-score::before {
-    content: attr(data-rail);
-    position: absolute;
-    left: 1.05rem;
-    top: var(--space-md);
-    bottom: var(--space-md);
-    writing-mode: vertical-rl;
-    transform: rotate(180deg);
-    font-family: var(--font-mono);
-    font-size: 0.6rem;
-    font-weight: 700;
-    letter-spacing: 0.28em;
-    text-transform: uppercase;
-    color: var(--on-dark2);
-    border-left: 1px dashed rgba(248, 247, 244, 0.18);
-    padding-left: 0.5rem;
-  }
-
-  .ssx-score-label {
-    font-family: var(--font-mono);
-    font-size: 0.68rem;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--on-dark2);
-  }
-
-  .ssx-score-value {
-    font-family: var(--display);
-    font-size: clamp(3.2rem, 5vw, 4.6rem);
-    font-weight: 700;
-    line-height: 1;
-    letter-spacing: -0.03em;
-    color: var(--ok-bright);
-    font-variant-numeric: tabular-nums;
-  }
-
-  .ssx-score-total {
-    font-size: 0.42em;
-    color: var(--on-dark2);
-    letter-spacing: 0;
-  }
-
-  .ssx-score-state {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-family: var(--font-mono);
-    font-size: 0.68rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--ok-bright);
-  }
-
-  .ssx-score-state i {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--ok-bright);
-    box-shadow: 0 0 10px rgba(74, 222, 128, 0.8);
-    animation: ssx-pulse 1.8s ease-in-out infinite;
-  }
-
-  .ssx-score-bars {
-    display: flex;
-    gap: 6px;
-    margin-top: var(--space-sm);
-  }
-
-  .ssx-score-bars b {
-    flex: 1 1 0;
-    height: 6px;
-    border-radius: 3px;
-    background: var(--ok-bright);
-    box-shadow: 0 0 8px rgba(74, 222, 128, 0.45);
-  }
-
-  .ssx-cert {
-    margin: var(--space-md) 0 0;
-    background: var(--bg-elevated);
-    border: 1px solid var(--hair);
-    border-radius: var(--radius-sm);
-    overflow: hidden;
-    box-shadow: 0 20px 48px rgba(15, 23, 42, 0.08);
-    padding: var(--space-md);
-  }
-
-  .ssx-cert img {
-    display: block;
-    width: 100%;
-    height: auto;
-  }
-
-  .ssx-cert .ssx-figcap {
-    padding-top: 0.7rem;
-  }
-
-  /* ---------------- Closing ruler ---------------- */
-  .ssx-closing-ruler {
-    padding-top: var(--space-lg);
-  }
-
-  .ssx-closing-ruler .ssx-ruler {
-    margin-bottom: 0;
-  }
-
-  /* ---------------- Keyframes ---------------- */
-  @keyframes ssx-pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.45; transform: scale(0.8); }
-  }
-
-  @keyframes ssx-blink {
+  @keyframes ss2-blink {
     0%, 55% { opacity: 1; }
     56%, 100% { opacity: 0; }
   }
 
-  @keyframes ssx-sweep {
-    0% { top: -18%; }
-    55% { top: 104%; }
-    100% { top: 104%; }
+  /* word-mask reveal (company page convention) */
+  .ss2-h1 .wm {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: bottom;
+    padding: 0.12em 0.02em 0.1em 0;
+    margin: -0.12em -0.02em -0.1em 0;
+  }
+  .ss2-h1 .w {
+    display: inline-block;
+    transform: translateY(110%);
+    animation: ss2-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation-delay: calc(var(--i) * 45ms);
+  }
+  @keyframes ss2-rise {
+    to { transform: translateY(0); }
   }
 
-  @keyframes ssx-packet {
-    to { stroke-dashoffset: -1894; }
+  .ss2-sub {
+    font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+    line-height: 1.55;
+    color: var(--text-secondary);
+    max-width: 34rem;
+    margin: 0 0 2rem;
   }
 
-  @keyframes ssx-railflow {
-    to { background-position-x: 42px; }
-  }
-</style>
-<style>
-  /* ---------------- Responsive: desktop pipeline serpentine ---------------- */
-  @media (min-width: 1081px) {
-    .ssx-pipes {
-      display: block;
-    }
-
-    .ssx-nodes {
-      grid-template-columns: repeat(5, minmax(0, 1fr));
-      gap: var(--space-md) var(--space-sm);
-    }
-
-    /* serpentine: row 2 runs right-to-left so the pipe flows 05 → 06 */
-    .ssx-node:nth-child(6) { grid-column: 5; grid-row: 2; }
-    .ssx-node:nth-child(7) { grid-column: 4; grid-row: 2; }
-    .ssx-node:nth-child(8) { grid-column: 3; grid-row: 2; }
-    .ssx-node:nth-child(9) { grid-column: 2; grid-row: 2; }
-    .ssx-node:nth-child(10) { grid-column: 1; grid-row: 2; }
-
-    .ssx-node::before,
-    .ssx-node::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      background: var(--dark);
-      border: 2px solid var(--y);
-      box-shadow: 0 0 8px rgba(37, 99, 235, 0.7);
-      transform: translateY(-50%);
-    }
-
-    .ssx-node::before { left: -5px; }
-    .ssx-node::after { right: -5px; }
+  .ss2-hl {
+    font-style: normal;
+    font-weight: 600;
+    color: var(--ss2-blue-ink);
   }
 
-  @media (min-width: 721px) and (max-width: 1080px) {
-    .ssx-nodes {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
+  .ss2-cover-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.85rem;
   }
 
-  /* ---------------- Mid ---------------- */
-  @media (max-width: 1024px) {
-    .ssx-hero-grid {
-      grid-template-columns: 1fr;
-      gap: var(--space-lg);
-    }
-
-    .ssx-console {
-      max-width: 760px;
-    }
-
-    .ssx-about-grid,
-    .ssx-scale-grid,
-    .ssx-sec6-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .ssx-units {
-      grid-template-columns: 1fr;
-    }
-
-    .ssx-rack-grid {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
+  /* ===== figure plates ===== */
+  .ss2-plate {
+    margin: 0;
+    background: var(--bg-elevated);
+    border: 1px solid var(--ss2-rule);
+    padding: 0.65rem;
+    position: relative;
+  }
+  /* plate corner ticks */
+  .ss2-plate::before,
+  .ss2-plate::after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-color: var(--ss2-blue);
+    border-style: solid;
+  }
+  .ss2-plate::before {
+    top: -1px; left: -1px;
+    border-width: 2px 0 0 2px;
+  }
+  .ss2-plate::after {
+    bottom: -1px; right: -1px;
+    border-width: 0 2px 2px 0;
   }
 
-  /* ---------------- Mobile ---------------- */
-  @media (max-width: 720px) {
-    .ssx {
-      padding-top: calc(var(--header-height) + 18px);
-    }
+  .ss2-plate-media {
+    overflow: hidden;
+    background: var(--bg-tint);
+  }
+  .ss2-plate-media img,
+  .ss2-plate-media video {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
 
-    .ssx-hero {
-      padding: var(--space-md) 0 var(--space-lg);
-      background-size: 44px 44px;
-    }
+  .ss2-plate-cap {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-top: 0.6rem;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+  }
+  .ss2-plate-cap span:first-child {
+    color: var(--ss2-blue-ink);
+    white-space: nowrap;
+  }
 
-    .ssx-h1 {
-      font-size: clamp(1.75rem, 8.4vw, 2.3rem);
-      max-width: none;
-    }
+  .ss2-plate-phone {
+    max-width: 300px;
+    margin-left: auto;
+  }
 
-    .ssx-hero-cta .btn {
-      flex: 1 1 auto;
-      padding-inline: 1rem;
+  /* ===== proof ledger ===== */
+  .ss2-proof {
+    margin: 4rem 0 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid var(--ss2-rule);
+    border-bottom: 1px solid var(--ss2-rule);
+  }
+  .ss2-proof-cell {
+    padding: 1.8rem 1.8rem 1.6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    position: relative;
+    transition: background 0.3s ease;
+  }
+  .ss2-proof-cell::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 1.8rem;
+    width: 2.2rem;
+    height: 3px;
+    background: var(--ss2-blue);
+  }
+  .ss2-proof-cell + .ss2-proof-cell {
+    border-left: 1px solid var(--ss2-rule);
+  }
+  .ss2-proof-cell:hover {
+    background: var(--ss2-blue-soft);
+  }
+  .ss2-proof-cell dt {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    order: 2;
+  }
+  .ss2-proof-cell dd {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: clamp(2.3rem, 4.6vw, 3.4rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums;
+    color: var(--text);
+    order: 1;
+    transition: color 0.3s ease;
+  }
+  .ss2-proof-cell:hover dd {
+    color: var(--ss2-blue-ink);
+  }
+  .ss2-proof-plus {
+    color: var(--ss2-blue);
+    font-size: 0.62em;
+    margin-left: 0.14em;
+    vertical-align: 0.34em;
+    letter-spacing: 0;
+  }
+
+  /* ===== part heads ===== */
+  .ss2-part-head {
+    margin-bottom: 3.5rem;
+    max-width: 52rem;
+  }
+  .ss2-part-no {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ss2-blue-ink);
+    border: 1px solid color-mix(in srgb, var(--ss2-blue) 45%, transparent);
+    padding: 0.35rem 0.7rem;
+    margin-bottom: 1.25rem;
+  }
+  .ss2-h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 3.4vw, 2.6rem);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+    margin: 0;
+    text-wrap: balance;
+  }
+  @media (min-width: 900px) {
+    #ss2-dep-h {
       white-space: nowrap;
-    }
-
-    .ssx-proof {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: var(--space-sm) var(--space-md);
-    }
-
-    .ssx-console-bar {
-      font-size: 0.58rem;
-      gap: 0.5rem;
-    }
-
-    .ssx-console-name {
-      display: none;
-    }
-
-    .ssx-vc {
-      width: 15px;
-      height: 15px;
-    }
-
-    .ssx-vc-tl { top: 8px; left: 8px; }
-    .ssx-vc-tr { top: 8px; right: 8px; }
-    .ssx-vc-bl { bottom: 8px; left: 8px; }
-    .ssx-vc-br { bottom: 8px; right: 8px; }
-
-    .ssx-telemetry {
-      grid-template-columns: 1fr;
-    }
-
-    .ssx-telemetry > div {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: var(--space-sm);
-      padding: 0.65rem 0.75rem;
-      border-left: none;
-      border-top: 1px solid rgba(248, 247, 244, 0.1);
-    }
-
-    .ssx-telemetry > div:first-child {
-      border-top: none;
-    }
-
-    .ssx-telemetry dt {
-      margin-bottom: 0;
-    }
-
-    .ssx-figcap-alt {
-      display: none;
-    }
-
-    .ssx-sec {
-      padding: var(--space-lg) 0;
-    }
-
-    .ssx-ruler {
-      gap: 0.6rem;
-      margin-bottom: var(--space-md);
-    }
-
-    .ssx-ruler-name {
-      font-size: 0.85rem;
-      letter-spacing: 0.1em;
-      /* long names (e.g. SEC.03) overflowed the viewport when nowrap */
-      white-space: normal;
-      text-align: right;
-      text-wrap: balance;
-    }
-
-    .ssx-ruler-line {
-      flex: 1 0 24px;
-    }
-
-    .ssx-lede {
-      font-size: clamp(1.4rem, 6.4vw, 1.8rem);
-    }
-
-    .ssx-dashgrid {
-      grid-template-columns: 1fr;
-    }
-
-    .ssx-unit {
-      padding: var(--space-md) var(--space-sm) var(--space-sm);
-    }
-
-    .ssx-unit-inner {
-      grid-template-columns: 1fr;
-    }
-
-    .ssx-claw {
-      width: min(230px, 100%);
-      margin: 0 auto;
-    }
-
-    .ssx-unit-status {
-      margin-left: 0;
-    }
-
-    .ssx-bars {
-      height: 132px;
-    }
-
-    .ssx-rack-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .ssx-device {
-      flex-direction: row;
-      align-items: stretch;
-    }
-
-    .ssx-device-view {
-      flex: 0 0 108px;
-      aspect-ratio: auto;
-      border-bottom: none;
-      border-right: 1px solid var(--hair-soft);
-      padding: 0.6rem;
-    }
-
-    .ssx-rail {
-      display: none;
-    }
-
-    .ssx-lanes {
-      grid-template-columns: 1fr;
-    }
-
-    /* pipeline: single column with a dashed signal rail */
-    .ssx-nodes {
-      grid-template-columns: 1fr;
-      padding-left: 1.3rem;
-    }
-
-    .ssx-nodes::before {
-      content: '';
-      position: absolute;
-      left: 4px;
-      top: 10px;
-      bottom: 10px;
-      width: 2px;
-      background: repeating-linear-gradient(180deg, rgba(37, 99, 235, 0.55) 0, rgba(37, 99, 235, 0.55) 8px, transparent 8px, transparent 16px);
-    }
-
-    .ssx-node::before {
-      content: '';
-      position: absolute;
-      left: calc(-1.3rem - 1px);
-      top: 1.1rem;
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      background: var(--dark);
-      border: 2px solid var(--y);
-      box-shadow: 0 0 8px rgba(37, 99, 235, 0.7);
-    }
-
-    .ssx-result li {
-      padding: 0.95rem var(--space-sm);
-    }
-
-    .ssx-pass {
-      display: none;
-    }
-
-    .ssx-score {
-      padding-left: calc(var(--space-md) + 1.4rem);
-    }
-
-    .ssx-closing-ruler {
-      padding-top: var(--space-lg);
+      text-wrap: none;
+      max-width: none;
+      font-size: clamp(1.5rem, 3vw, 2.5rem);
     }
   }
+  .ss2-part-lede {
+    margin-top: 1.25rem;
+  }
 
-  /* ---------------- Reduced motion ---------------- */
+  /* ===== procedures ===== */
+  .ss2-proc {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3.5rem;
+    align-items: center;
+    padding: 3rem 0;
+    border-top: 1px solid var(--ss2-rule);
+  }
+  .ss2-proc-flip .ss2-proc-copy {
+    order: 2;
+  }
+  .ss2-proc-flip .ss2-plate {
+    order: 1;
+  }
+  .ss2-h3 {
+    font-family: var(--font-display);
+    font-size: clamp(1.35rem, 2.3vw, 1.75rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    margin: 0 0 0.6rem;
+  }
+  .ss2-tags {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--ss2-blue-ink);
+    margin: 0 0 1.5rem;
+  }
+  .ss2-body {
+    font-size: 1rem;
+    line-height: 1.65;
+    color: var(--text-secondary);
+    max-width: 68ch;
+    margin: 0 0 1rem;
+  }
+  .ss2-lede {
+    font-size: clamp(1.1rem, 1.8vw, 1.35rem);
+    line-height: 1.5;
+    color: var(--text);
+    margin: 0 0 1.25rem;
+    text-wrap: pretty;
+  }
+  .ss2-lede strong {
+    color: var(--ss2-blue-ink);
+    font-weight: 600;
+  }
+
+  /* result stamp */
+  .ss2-stamp {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--ss2-blue-ink);
+    border: 1.5px solid color-mix(in srgb, var(--ss2-blue) 55%, transparent);
+    border-radius: 2px;
+    padding: 0.55rem 0.9rem;
+    margin: 0.75rem 0 0;
+  }
+  .ss2-stamp span {
+    color: var(--text-secondary);
+    margin-right: 0.6rem;
+  }
+
+  /* SVG figures */
+  .ss2-fig-media {
+    padding: 1rem;
+  }
+  .ss2-fig svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    color: var(--text);
+  }
+  .ss2-svg-mono {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    fill: currentColor;
+  }
+  .ss2-svg-head {
+    fill: var(--ss2-blue-ink);
+  }
+  .ss2-svg-blue {
+    fill: var(--ss2-blue-ink);
+  }
+  .ss2-svg-data {
+    font-family: 'Space Mono', monospace;
+    font-size: 30px;
+    font-weight: 700;
+    fill: var(--ss2-blue-ink);
+  }
+
+  /* ===== visibility ===== */
+  .ss2-vis-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 3.5rem;
+    align-items: stretch;
+  }
+  /* video plate fills the copy column's height; video crops to fit */
+  .ss2-vis-grid .ss2-plate {
+    display: flex;
+    flex-direction: column;
+  }
+  .ss2-vis-grid .ss2-plate-media {
+    position: relative;
+    flex: 1;
+    min-height: 0;
+  }
+  .ss2-vis-grid .ss2-plate-media video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* ===== ledgers ===== */
+  .ss2-ledger {
+    border-top: 1px solid var(--ss2-rule);
+    margin-bottom: 3.5rem;
+  }
+  .ss2-ledger-head,
+  .ss2-ledger-row {
+    display: grid;
+    grid-template-columns: 5.5rem 14rem 1fr;
+    gap: 1.5rem;
+    align-items: baseline;
+    padding: 1rem 0.25rem;
+    border-bottom: 1px solid var(--ss2-rule);
+    margin: 0;
+  }
+  .ss2-ledger-head {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+  }
+  .ss2-ledger-no {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--ss2-blue-ink);
+  }
+  .ss2-ledger-ic {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    color: var(--ss2-blue-ink);
+    border: 1px solid var(--ss2-rule);
+    border-radius: 8px;
+    background: var(--bg);
+    transition: border-color 0.3s ease, background 0.3s ease;
+  }
+  .ss2-ledger-ic svg {
+    width: 1.35rem;
+    height: 1.35rem;
+  }
+  .ss2-ledger-row:hover .ss2-ledger-ic {
+    border-color: var(--ss2-blue);
+    background: var(--ss2-blue-soft);
+  }
+  /* hardware rows gain a uniform product-thumb column */
+  .ss2-ledger-hw .ss2-ledger-head,
+  .ss2-ledger-hw .ss2-ledger-row {
+    grid-template-columns: 5.5rem 14rem 1fr 7rem;
+  }
+  .ss2-ledger-thumb {
+    align-self: center;
+    justify-self: end;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 7rem;
+    height: 4.6rem;
+    background: var(--bg-elevated, #fff);
+    border: 1px solid var(--ss2-rule);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .ss2-ledger-thumb img {
+    max-width: 82%;
+    max-height: 82%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+  }
+  .ss2-ledger-name {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: var(--text);
+  }
+  .ss2-ledger-desc {
+    color: var(--text-secondary);
+    font-size: 0.98rem;
+    line-height: 1.55;
+  }
+
+  /* ===== deployment steps ===== */
+  .ss2-steps-h {
+    margin-bottom: 1.75rem;
+  }
+  .ss2-steps {
+    list-style: none;
+    margin: 0 0 2rem;
+    padding: 0;
+    border-top: 1px solid var(--ss2-rule);
+    counter-reset: ss2step;
+  }
+  .ss2-step {
+    display: grid;
+    grid-template-columns: 6rem 11rem 1fr;
+    gap: 1.5rem;
+    padding: 1.5rem 0.25rem;
+    border-bottom: 1px solid var(--ss2-rule);
+    align-items: baseline;
+  }
+  .ss2-step-no {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ss2-blue-ink);
+  }
+  .ss2-step-name {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.15rem;
+    letter-spacing: -0.01em;
+  }
+  .ss2-step-body {
+    margin: 0;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    font-size: 0.98rem;
+    max-width: 68ch;
+  }
+  /* deployment guidance note — manual "NOTE" panel */
+  .ss2-note {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 2rem;
+    margin: 0;
+    padding: 1.75rem 2rem;
+    background: var(--ss2-blue-soft);
+    border: 1px solid color-mix(in srgb, var(--ss2-blue) 22%, transparent);
+    transition: border-color 0.25s ease;
+  }
+  .ss2-note:hover {
+    border-color: color-mix(in srgb, var(--ss2-blue) 45%, transparent);
+  }
+  .ss2-note-tag {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--bg);
+    background: var(--ss2-blue);
+    padding: 0.35rem 0.7rem;
+    white-space: nowrap;
+  }
+  .ss2-note-q {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--text);
+    margin: 0 0 0.25rem;
+  }
+  .ss2-note-a {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 0.98rem;
+    line-height: 1.55;
+  }
+  .ss2-note-btn {
+    white-space: nowrap;
+  }
+
+  /* ===== certs ===== */
+  .ss2-certs {
+    list-style: none;
+    margin: 0;
+    padding: 2.25rem 0 0;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    gap: 4rem;
+    align-items: center;
+  }
+  .ss2-cert {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    flex: 0 1 auto;
+  }
+  .ss2-cert img {
+    height: 84px;
+    width: auto;
+    object-fit: contain;
+    filter: grayscale(1);
+    opacity: 0.85;
+    transition: filter 0.25s ease, opacity 0.25s ease;
+  }
+  .ss2-cert:hover img {
+    filter: none;
+    opacity: 1;
+  }
+  .ss2-cert span {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+  }
+
+  /* ===== fore-edge tab rail ===== */
+  .ss2-tabs {
+    position: fixed;
+    right: 0;
+    top: calc(50% + var(--header-height, 60px) / 2);
+    transform: translateY(-50%);
+    z-index: 60;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .ss2-tab {
+    writing-mode: vertical-rl;
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    color: var(--text-secondary);
+    background: var(--bg-elevated);
+    border: 1px solid var(--ss2-rule);
+    border-right: none;
+    padding: 0.8rem 0.35rem;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+  .ss2-tab:hover {
+    color: var(--ss2-blue-ink);
+    background: var(--ss2-blue-soft);
+  }
+  .ss2-tab.is-active {
+    background: var(--ss2-blue);
+    color: #fff;
+    border-color: var(--ss2-blue);
+  }
+  @media (max-width: 1279px) {
+    .ss2-tabs { display: none; }
+  }
+
+  /* ===== reveal ===== */
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: calc(var(--i, 0) * 70ms);
+  }
+  [data-reveal].is-in {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* ===== responsive ===== */
+  @media (max-width: 960px) {
+    .ss2-cover { padding-top: 5.5rem; }
+    .ss2-cover-grid,
+    .ss2-proc,
+    .ss2-vis-grid {
+      grid-template-columns: 1fr;
+      gap: 2.25rem;
+    }
+    .ss2-cover-grid .ss2-plate-media img {
+      height: auto;
+      object-fit: initial;
+    }
+    .ss2-vis-grid .ss2-plate-media video {
+      position: static;
+      height: auto;
+      aspect-ratio: 1920/1324;
+      object-fit: initial;
+    }
+    .ss2-proc-flip .ss2-proc-copy { order: 1; }
+    .ss2-proc-flip .ss2-plate { order: 2; }
+    .ss2-plate-phone { margin-left: 0; }
+    .ss2-ledger-head { display: none; }
+    .ss2-ledger-row {
+      grid-template-columns: 4.5rem 1fr;
+      grid-template-areas: 'no name' 'no desc';
+      row-gap: 0.35rem;
+    }
+    .ss2-ledger-no { grid-area: no; }
+    .ss2-ledger-ic { grid-area: no; }
+    .ss2-ledger-name { grid-area: name; }
+    .ss2-ledger-desc { grid-area: desc; }
+    .ss2-ledger-hw .ss2-ledger-row {
+      grid-template-columns: 4.5rem 1fr 5.4rem;
+      grid-template-areas: 'no name thumb' 'no desc thumb';
+      align-items: center;
+    }
+    .ss2-ledger-thumb {
+      grid-area: thumb;
+      width: 5.4rem;
+      height: 3.6rem;
+    }
+    .ss2-step {
+      grid-template-columns: 1fr;
+      gap: 0.4rem;
+    }
+    .ss2-note {
+      grid-template-columns: 1fr;
+      gap: 1.1rem;
+      padding: 1.5rem 1.25rem;
+    }
+    .ss2-note-tag { justify-self: start; }
+    .ss2-note-btn { justify-self: start; }
+    .ss2-proof { grid-template-columns: 1fr; }
+    .ss2-proof-cell + .ss2-proof-cell {
+      border-left: none;
+      border-top: 1px solid var(--ss2-rule);
+    }
+    .ss2-doc { flex-direction: column; gap: 0.3rem; margin-bottom: 2rem; }
+    .ss2-certs { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.5rem; }
+    .ss2-cert img { height: 40px; }
+    .ss2-cert span { font-size: 0.56rem; text-align: center; }
+  }
+
   @media (prefers-reduced-motion: reduce) {
-    .ssx-scanline {
-      display: none;
-    }
-
-    .ssx-rec i,
-    .ssx-proofband-head i,
-    .ssx-unit-status i,
-    .ssx-claw-bar i,
-    .ssx-score-state i,
-    .ssx .btn-primary,
-    .ssx-tail::after {
-      animation: none;
-    }
-
-    .ssx-pipe-flow,
-    .ssx-pipe-flow2,
-    .ssx-rail {
-      animation: none;
-    }
-
-    .ssx :global(.cta-actions .btn-primary) {
-      animation: none;
-    }
-
-    .ssx-device {
-      transition: none;
-    }
+    .ss2-h1 .w { animation: none; transform: none; }
+    .ss2-tail::after { animation: none; }
+    .ss2-doc-title { animation: none; }
+    [data-reveal] { opacity: 1; transform: none; transition: none; }
   }
 </style>
+
+<script>
+  // reveal on scroll
+  const revealEls = document.querySelectorAll('.ss2 [data-reveal]');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.classList.add('is-in');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach((el) => io.observe(el));
+  } else {
+    revealEls.forEach((el) => el.classList.add('is-in'));
+  }
+
+  // fore-edge tab scroll-spy
+  const tabLinks = document.querySelectorAll('.ss2-tab');
+  const tabTargets = document.querySelectorAll('[data-tab]');
+  if (tabLinks.length && 'IntersectionObserver' in window) {
+    const spy = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        const id = e.target.getAttribute('data-tab');
+        tabLinks.forEach((l) => l.classList.toggle('is-active', l.getAttribute('data-tab-link') === id));
+      });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    tabTargets.forEach((t) => spy.observe(t));
+  }
+
+  // respect reduced motion: pause ambient looping videos, offer click to play
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const ss2Videos = document.querySelectorAll('.ss2 video[autoplay]');
+  function applyMotionPref() {
+    ss2Videos.forEach((v) => {
+      if (reduceMotion.matches) {
+        v.pause();
+        v.removeAttribute('autoplay');
+        v.setAttribute('controls', '');
+        v.dataset.pausedByPref = '1';
+      } else if (v.dataset.pausedByPref) {
+        v.removeAttribute('controls');
+        v.play().catch(() => {});
+        delete v.dataset.pausedByPref;
+      }
+    });
+  }
+  applyMotionPref();
+  reduceMotion.addEventListener('change', applyMotionPref);
+</script>
