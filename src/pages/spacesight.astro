@@ -287,6 +287,7 @@ const tabs = [
       <div class="container">
         <header class="ss2-part-head" data-reveal>
           <span class="ss2-part-no">Part 02 — Visibility</span>
+          <button type="button" class="btn btn-primary ss2-head-cta" data-open-modal data-source-type="spacesight2页-中部留资-可视化标题">Book a Demo</button>
           <h2 class="ss2-h2" id="ss2-vis-h">From Passive Cameras to Actionable Operations</h2>
         </header>
 
@@ -302,6 +303,12 @@ const tabs = [
             <p class="ss2-body">Built for physical operations intelligence, SpaceSight connects with existing CCTV, AI cameras, sensors, and edge AI devices to turn video and sensor data into real-time insights for store operations, loss prevention, compliance, and customer experience.</p>
           </div>
         </div>
+
+        <aside class="ss2-cta-strip" data-reveal aria-label="Book a demo">
+          <span class="ss2-cta-tag">Next Step</span>
+          <p class="ss2-cta-text">See what your existing cameras can tell you.</p>
+          <button type="button" class="btn btn-primary" data-open-modal data-source-type="spacesight2页-中部留资-可视化">Book a Demo</button>
+        </aside>
       </div>
     </section>
 
@@ -378,6 +385,12 @@ const tabs = [
             </li>
           ))}
         </ul>
+
+        <aside class="ss2-cta-strip" data-reveal aria-label="Book a demo">
+          <span class="ss2-cta-tag">Next Step</span>
+          <p class="ss2-cta-text">Ready to see it work on your sites?</p>
+          <button type="button" class="btn btn-primary" data-open-modal data-source-type="spacesight2页-中部留资-信任">Book a Demo</button>
+        </aside>
       </div>
     </section>
 
@@ -413,6 +426,21 @@ const tabs = [
     --ss2-blue-ink: #1D4ED8;
     --ss2-blue-soft: #EFF4FF;
     --ss2-rule: color-mix(in srgb, var(--text) 14%, transparent);
+  }
+
+  /* ===== CTA buttons: match the site header's Book a Demo ===== */
+  .ss2 .btn-primary {
+    background: linear-gradient(135deg, #7c3aed 0%, #06b6d4 100%);
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1) inset, 0 6px 24px rgba(124, 58, 237, 0.45);
+    animation: cta-pulse 2.4s ease-in-out infinite;
+  }
+  .ss2 .btn-primary:hover {
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 8px 32px rgba(124, 58, 237, 0.6);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ss2 .btn-primary {
+      animation: none;
+    }
   }
 
   /* ===== doc-control strip ===== */
@@ -709,6 +737,10 @@ const tabs = [
   }
   .ss2-part-lede {
     margin-top: 1.25rem;
+  }
+  /* primary CTA sitting directly above a part heading */
+  .ss2-head-cta {
+    margin: 0 0 1.25rem;
   }
 
   /* ===== procedures ===== */
@@ -1133,6 +1165,43 @@ const tabs = [
     white-space: nowrap;
   }
 
+  /* ===== mid-page CTA strip (every other section) ===== */
+  .ss2-cta-strip {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 3.5rem;
+    padding: 1.5rem 2rem;
+    border: 1px solid var(--ss2-rule);
+    border-left: 3px solid var(--ss2-blue);
+    background: var(--bg-elevated);
+    transition: border-color 0.25s ease;
+  }
+  .ss2-cta-strip:hover {
+    border-color: color-mix(in srgb, var(--ss2-blue) 45%, transparent);
+    border-left-color: var(--ss2-blue);
+  }
+  .ss2-cta-tag {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ss2-blue-ink);
+    border: 1px solid color-mix(in srgb, var(--ss2-blue) 45%, transparent);
+    padding: 0.35rem 0.7rem;
+    white-space: nowrap;
+  }
+  .ss2-cta-text {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--text);
+  }
+
   /* ===== certs ===== */
   .ss2-certs {
     list-style: none;
@@ -1268,6 +1337,14 @@ const tabs = [
     }
     .ss2-note-tag { justify-self: start; }
     .ss2-note-btn { justify-self: start; }
+    .ss2-cta-strip {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      padding: 1.4rem 1.25rem;
+      margin-top: 2.5rem;
+    }
+    .ss2-cta-tag { justify-self: start; }
+    .ss2-cta-strip .btn { justify-self: start; }
     .ss2-proof { grid-template-columns: 1fr; }
     .ss2-proof-cell + .ss2-proof-cell {
       border-left: none;

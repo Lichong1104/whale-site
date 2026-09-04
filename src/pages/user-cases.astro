@@ -133,11 +133,12 @@ const cases = [
       THESIS: this is the evidence page — three named deployments told as
         challenge → deployment → measured outcome. Numbers carry the pitch;
         adjectives stay home.
-      OWN-WORLD: Sensorium particle-detector system. Each case is a captured
-        event: mono CASE index, track color per product (SpaceSight = vision
-        yellow, Echo = voice cyan, Whale training = sensor magenta), HUD
-        brackets on the stage frame, and a dark detector-readout panel for
-        the outcome stats.
+      OWN-WORLD: Sensorium particle-detector system in the /company/ blue
+        scale — product track colors are retired; each case owns a tier of
+        the family instead (SpaceSight mid blue, Echo deep navy, Whale
+        training light blue). Each case is a captured event: mono CASE
+        index, HUD brackets on the stage frame, and a dark detector-readout
+        panel (blue-300 accents) for the outcome stats.
       FORM: hero (word-rise headline + case index) → three full chapters with
         sticky photo stage alternating sides → dark CTA. No carousel: each
         case earns a whole chapter.
@@ -247,6 +248,28 @@ const cases = [
 </Layout>
 
 <style>
+  /* ---------- Palette: company blue system ----------
+     Recolored to match /company/: the per-product track colors (vision
+     yellow / voice cyan / sensor magenta) resolve to the company blue scale
+     inside this page. Each case keeps its own tier within the family —
+     mid blue (SpaceSight), deep navy (Echo), light blue (Whale training) —
+     so the three chapters stay distinguishable without leaving the scale.
+     On photo stages and the dark outcome readout, raw accents step to
+     blue-300 for legibility. */
+  .uc-hero,
+  .uc-case {
+    --track-vision: #2563EB;
+    --track-voice: #1E40AF;
+    --track-sensor: #60A5FA;
+    --track-vision-ink: #1D4ED8;
+    --track-voice-ink: #1E3A8A;
+    --track-sensor-ink: #2563EB;
+  }
+  .uc-stage,
+  .uc-outcome {
+    --acc-raw: #93C5FD;
+  }
+
   /* ---------- Hero ---------- */
   .uc-hero {
     padding: calc(var(--header-height) + var(--space-xl)) 0 var(--space-lg);
@@ -715,16 +738,20 @@ const cases = [
     }
   }
 
-  /* Outcome — dark detector readout */
+  /* Outcome — deep-blue detector readout, tinted by the case's own tier */
   .uc-outcome {
     padding: var(--space-md);
-    background: var(--bg-dark);
+    background: linear-gradient(135deg,
+      color-mix(in srgb, var(--acc) 38%, #0B1020) 0%,
+      color-mix(in srgb, var(--acc) 18%, #0B1020) 55%,
+      #0B1020 100%);
+    border: 1px solid color-mix(in srgb, var(--acc-raw) 28%, transparent);
     border-radius: var(--radius);
-    box-shadow: 0 14px 36px rgba(11, 16, 32, 0.22);
+    box-shadow: 0 14px 36px color-mix(in srgb, var(--acc) 30%, rgba(11, 16, 32, 0.35));
   }
 
   .uc-block-label--dark {
-    color: var(--text-on-dark-secondary);
+    color: #B7C9F2;
   }
 
   .uc-block-label--dark::before {
@@ -752,7 +779,7 @@ const cases = [
     margin-top: 0.35rem;
     font-size: 0.85rem;
     line-height: 1.45;
-    color: var(--text-on-dark-secondary);
+    color: #9FB3E4;
   }
 
   /* ---------- Two-column chapter layout ---------- */
