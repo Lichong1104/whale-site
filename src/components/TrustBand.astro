@@ -5,12 +5,8 @@
   <div class="container">
     <p class="trust-label">Certified &amp; compliant with the standards that protect your operations</p>
     <div class="logo-bar cert-bar">
-      <img class="cert-logo" src="/cert-logos/cmmi.jpg" alt="Capability Maturity Model Integration Certification" width="120" height="60" loading="lazy">
-      <img class="cert-logo" src="/cert-logos/iso27001.jpg" alt="Information Security Management System Certification" width="120" height="60" loading="lazy">
-      <img class="cert-logo" src="/cert-logos/iso9001.jpg" alt="Quality Management System Certification" width="120" height="60" loading="lazy">
-      <img class="cert-logo" src="/cert-logos/imda.jpg" alt="Accreditation@SGD Certificate from the Singapore Infocomm Media Development Authority" width="120" height="60" loading="lazy">
-      <img class="cert-logo" src="/cert-logos/soc2.png" alt="SOC 2, System and Organization Controls 2" width="120" height="60" loading="lazy">
-      <img class="cert-logo" src="/cert-logos/gdpr.png" alt="General Data Protection Regulation (GDPR)" width="120" height="60" loading="lazy">
+      <img class="cert-logo" src="/cert-logos/soc2-shield.png" alt="SOC 2 Type II" width="120" height="60" loading="lazy">
+      <img class="cert-logo" src="/cert-logos/gdpr-badge.png" alt="GDPR Compliant" width="120" height="60" loading="lazy">
     </div>
   </div>
 </section>
@@ -24,13 +20,12 @@
     width: auto;
     max-width: 140px;
     object-fit: contain;
-    opacity: 0.85;
-    transition: opacity 0.2s ease;
-    filter: grayscale(30%);
+    opacity: 0.94;
+    transition: opacity 0.2s ease, transform 0.25s ease;
   }
   .cert-logo:hover {
     opacity: 1;
-    filter: grayscale(0%);
+    transform: translateY(-2px);
   }
   @media (max-width: 720px) {
     .cert-logo {

@@ -5,7 +5,7 @@ import CTASection from '../components/CTASection.astro';
 import Footer from '../components/Footer.astro';
 
 const canonicalUrl = 'https://www.whale.sg/solutions/';
-const pageDescription = 'Whale industry solutions: SpaceSight and Echo adapt to automotive, luxury retail, food and beverage, healthcare, casinos, and museums — real-time intelligence for how your industry actually runs.';
+const pageDescription = 'Whale industry solutions: SpaceSight and Echo adapt to automotive, luxury retail, food and beverage, healthcare, and museums — real-time intelligence for how your industry actually runs.';
 
 const extraSchema = [
   {
@@ -91,20 +91,6 @@ const industries = [
     img: '/solutions/healthcare.png',
     imgAlt: 'SpaceSight hospital console — ward camera feed with AI personnel analysis and playback timeline, plus mobile ward list',
     scene: `<circle cx="100" cy="112" r="40" fill="none" stroke="currentColor" stroke-width="3"/><path d="M100 92 v40 M80 112 h40" stroke="currentColor" stroke-width="8" stroke-linecap="round"/>`
-  },
-  {
-    id: 'casinos',
-    short: 'Casinos',
-    name: 'Casinos',
-    tagline: 'Every table, every guest interaction — under continuous watch.',
-    body: "Gaming Control Board standards require floor coverage no headcount can fully deliver, and reconstructing an incident after the fact can take days. SpaceSight monitors every pit continuously — dealer procedure, chip handling, staff presence — while Echo captures guest interactions across the property and scores service before it becomes a complaint. Together, they turn days of investigation into minutes.",
-    accent: 'vision',
-    hover: '#7C3AED',
-    track: '#A78BFA',
-    products: ['spacesight', 'echo'],
-    img: '/solutions/casinos.png',
-    imgAlt: 'SpaceSight casino floor monitoring — dealer at a blackjack table tracked with pose overlay, staff and guest IDs, tables staffed and incident lookup readouts',
-    scene: `<circle cx="100" cy="112" r="42" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="100" cy="112" r="24" fill="none" stroke="currentColor" stroke-width="3"/><path d="M100 70 v12 M100 142 v12 M58 112 h12 M130 112 h12 M70 82 l8 8 M122 134 l8 8 M130 82 l-8 8 M78 134 l-8 8" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>`
   }
 ];
 
@@ -220,7 +206,7 @@ const headlineWords = [
               </button>
             ))}
           </div>
-          <span class="reel-counter" data-counter aria-live="polite">01 / 06</span>
+          <span class="reel-counter" data-counter aria-live="polite">01 / {String(industries.length).padStart(2, '0')}</span>
         </div>
       </div>
     </section>
