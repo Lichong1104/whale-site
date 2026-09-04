@@ -186,6 +186,18 @@ const tabs = [
             </div>
           ))}
         </dl>
+
+        <div class="ss2-logowall" data-reveal style="--i:11">
+          <p class="ss2-logowall-cap"><span>Trusted by</span><span>1,600+ enterprise clients worldwide</span></p>
+          <div class="ss2-logowall-row">
+            <img src="/client-logos/temasek.svg" alt="Temasek" width="160" height="40" loading="lazy" decoding="async" />
+            <img src="/client-logos/ocbc.svg" alt="OCBC" width="140" height="40" loading="lazy" decoding="async" />
+            <img src="/client-logos/lvmh.svg" alt="LVMH" width="140" height="32" loading="lazy" decoding="async" />
+            <img src="/client-logos/byd.svg" alt="BYD" width="140" height="40" loading="lazy" decoding="async" />
+            <img src="/client-logos/daikin.svg" alt="Daikin" width="150" height="40" loading="lazy" decoding="async" />
+            <span class="ss2-logowall-text" role="img" aria-label="Arrail">Arrail</span>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -296,8 +308,15 @@ const tabs = [
             <figcaption class="ss2-plate-cap"><span>FIG. 02</span><span>Video search — ask in plain language, get footage back</span></figcaption>
           </figure>
           <div class="ss2-vis-copy" data-reveal>
-            <p class="ss2-lede">Most monitoring systems only record what happened. SpaceSight helps teams understand <strong>what is happening, why it matters, and what to do next.</strong></p>
-            <p class="ss2-body">Built for physical operations intelligence, SpaceSight connects with existing CCTV, AI cameras, sensors, and edge AI devices to turn video and sensor data into real-time insights for store operations, loss prevention, compliance, and customer experience.</p>
+            <p class="ss2-vis-note"><span>Note 02</span><span>From recording to understanding</span></p>
+            <p class="ss2-lede"><span class="ss2-lede-dim">Most monitoring systems only record what happened.</span> SpaceSight helps teams understand <strong>what is happening, why it matters, and what to do next.</strong></p>
+            <p class="ss2-body">Built for physical operations intelligence, SpaceSight connects with existing CCTV, AI cameras, sensors, and edge AI devices to turn video and sensor data into real-time insights for:</p>
+            <ul class="ss2-vis-outcomes">
+              <li>Store operations</li>
+              <li>Loss prevention</li>
+              <li>Compliance</li>
+              <li>Customer experience</li>
+            </ul>
           </div>
         </div>
 
@@ -698,6 +717,80 @@ const tabs = [
     letter-spacing: 0;
   }
 
+  /* ===== client logo wall (under the proof ledger) ===== */
+  .ss2-logowall {
+    margin-top: 0;
+    padding: 1.9rem 0 0.4rem;
+    display: flex;
+    align-items: center;
+    gap: clamp(1.5rem, 4vw, 3rem);
+  }
+  .ss2-logowall-cap {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+  }
+  .ss2-logowall-cap span:first-child {
+    color: var(--ss2-blue-ink);
+  }
+  .ss2-logowall-row {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    gap: 1rem clamp(1.25rem, 3.5vw, 3rem);
+    min-width: 0;
+  }
+  .ss2-logowall-row img {
+    height: 40px;
+    width: auto;
+    max-width: 150px;
+    min-width: 0;
+    flex: 0 1 auto;
+    object-fit: contain;
+    opacity: 0.9;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+  .ss2-logowall-row img:hover {
+    opacity: 1;
+    transform: translateY(-2px);
+  }
+  .ss2-logowall-text {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: var(--text);
+  }
+  @media (max-width: 960px) {
+    .ss2-logowall {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.1rem;
+    }
+    .ss2-logowall-row {
+      width: 100%;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+    }
+    .ss2-logowall-row img {
+      height: 32px;
+      max-width: 130px;
+    }
+    .ss2-logowall-text {
+      font-size: 1.15rem;
+    }
+  }
+
   /* ===== part heads ===== */
   .ss2-part-head {
     margin-bottom: 3.5rem;
@@ -972,16 +1065,74 @@ const tabs = [
     flex-shrink: 0;
     min-width: 1.6em;
   }
+  .ss2-vis-note {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-bottom: 0.6rem;
+    margin: 0 0 1.15rem;
+    border-bottom: 1px solid var(--ss2-rule);
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+  }
+  .ss2-vis-note span:first-child {
+    color: var(--ss2-blue-ink);
+    white-space: nowrap;
+  }
   .ss2-lede {
-    font-size: clamp(1.1rem, 1.8vw, 1.35rem);
-    line-height: 1.5;
+    font-family: var(--font-display);
+    font-size: clamp(1.3rem, 2vw, 1.6rem);
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    line-height: 1.35;
     color: var(--text);
     margin: 0 0 1.25rem;
     text-wrap: pretty;
   }
+  .ss2-lede-dim {
+    color: var(--text-secondary);
+    font-weight: 500;
+  }
   .ss2-lede strong {
     color: var(--ss2-blue-ink);
+    font-weight: 700;
+  }
+  .ss2-vis-copy > .ss2-body {
+    margin-bottom: 0;
+  }
+  .ss2-vis-outcomes {
+    list-style: none;
+    margin: 1.5rem 0 0;
+    padding: 0;
+    border-top: 1px solid var(--ss2-rule);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 1.5rem;
+  }
+  .ss2-vis-outcomes li {
+    display: flex;
+    align-items: baseline;
+    gap: 0.55rem;
+    padding: 0.55rem 0.1rem;
+    border-bottom: 1px solid var(--ss2-rule);
+    font-size: 0.92rem;
     font-weight: 600;
+    color: var(--text);
+  }
+  .ss2-vis-outcomes li::before {
+    content: '';
+    width: 0.42rem;
+    height: 0.42rem;
+    background: var(--ss2-blue);
+    flex-shrink: 0;
+    transform: translateY(-1px);
+  }
+  @media (max-width: 480px) {
+    .ss2-vis-outcomes { grid-template-columns: 1fr; }
   }
 
   /* figure plates: padded matte around screenshots */
