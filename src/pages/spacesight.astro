@@ -94,11 +94,9 @@ const deploySteps = [
 ];
 
 const certs = [
-  { src: '/cert-logos/soc2.png', alt: 'SOC 2 Type II', label: 'SOC 2 Type II' },
-  { src: '/cert-logos/gdpr.png', alt: 'GDPR Compliant', label: 'GDPR Compliant' },
-  { src: '/cert-logos/iso27001.jpg', alt: 'ISO 27001', label: 'ISO 27001' },
-  { src: '/cert-logos/iso9001.jpg', alt: 'ISO 9001', label: 'ISO 9001' },
-  { src: '/cert-logos/cmmi.jpg', alt: 'CMMI Level 5', label: 'CMMI Level 5' }
+  { src: '/cert-logos/soc2-shield.png', alt: 'SOC 2 Type II', label: 'SOC 2 Type II' },
+  { src: '/cert-logos/gdpr-badge.png', alt: 'GDPR Compliant', label: 'GDPR Compliant' },
+  { src: '/cert-logos/gdpr-banner.png', alt: 'GDPR — General Data Protection Regulation', label: 'GDPR · EU Data Protection', wide: true }
 ];
 
 const tabs = [
@@ -271,6 +269,7 @@ const tabs = [
               {procedures[2].actions.map((a, i) => <li><span class="ss2-chain-no">{String(i + 1).padStart(2, '0')}</span>{a}</li>)}
             </ol>
             <p class="ss2-mon-tail">{procedures[2].actionsTail}</p>
+            <button type="button" class="btn btn-primary ss2-proc-cta" data-open-modal data-source-type="spacesight2页-中部留资-行动">Book a Demo</button>
           </div>
           <figure class="ss2-plate ss2-plate-phone" data-reveal>
             <div class="ss2-plate-media">
@@ -287,7 +286,6 @@ const tabs = [
       <div class="container">
         <header class="ss2-part-head" data-reveal>
           <span class="ss2-part-no">Part 02 — Visibility</span>
-          <button type="button" class="btn btn-primary ss2-head-cta" data-open-modal data-source-type="spacesight2页-中部留资-可视化标题">Book a Demo</button>
           <h2 class="ss2-h2" id="ss2-vis-h">From Passive Cameras to Actionable Operations</h2>
         </header>
 
@@ -379,7 +377,7 @@ const tabs = [
 
         <ul class="ss2-certs" data-reveal>
           {certs.map((c) => (
-            <li class="ss2-cert">
+            <li class={`ss2-cert${c.wide ? ' ss2-cert--wide' : ''}`}>
               <img src={c.src} alt={c.alt} width="120" height="60" loading="lazy" decoding="async" />
               <span>{c.label}</span>
             </li>
@@ -738,9 +736,10 @@ const tabs = [
   .ss2-part-lede {
     margin-top: 1.25rem;
   }
-  /* primary CTA sitting directly above a part heading */
-  .ss2-head-cta {
-    margin: 0 0 1.25rem;
+  /* CTA pinned to the foot of a procedure column (proc C) */
+  .ss2-proc-cta {
+    margin-top: 1.4rem;
+    align-self: flex-start;
   }
 
   /* ===== procedures ===== */
@@ -1209,8 +1208,8 @@ const tabs = [
     padding: 2.25rem 0 0;
     display: flex;
     flex-wrap: nowrap;
-    justify-content: space-between;
-    gap: 4rem;
+    justify-content: center;
+    gap: clamp(2.5rem, 7vw, 5rem);
     align-items: center;
   }
   .ss2-cert {
@@ -1221,16 +1220,20 @@ const tabs = [
     flex: 0 1 auto;
   }
   .ss2-cert img {
-    height: 84px;
+    height: 88px;
     width: auto;
     object-fit: contain;
-    filter: grayscale(1);
-    opacity: 0.85;
-    transition: filter 0.25s ease, opacity 0.25s ease;
+    opacity: 0.94;
+    transition: opacity 0.25s ease, transform 0.25s ease;
   }
   .ss2-cert:hover img {
-    filter: none;
     opacity: 1;
+    transform: translateY(-2px);
+  }
+  /* wide navy banner reads as a chip next to the badge silhouettes */
+  .ss2-cert--wide img {
+    height: 64px;
+    border-radius: 10px;
   }
   .ss2-cert span {
     font-family: var(--font-mono);
@@ -1351,8 +1354,9 @@ const tabs = [
       border-top: 1px solid var(--ss2-rule);
     }
     .ss2-doc { flex-direction: column; gap: 0.3rem; margin-bottom: 2rem; }
-    .ss2-certs { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.5rem; }
-    .ss2-cert img { height: 40px; }
+    .ss2-certs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; }
+    .ss2-cert img { height: 44px; }
+    .ss2-cert--wide img { height: 34px; }
     .ss2-cert span { font-size: 0.56rem; text-align: center; }
   }
 
