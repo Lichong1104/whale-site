@@ -95,8 +95,7 @@ const deploySteps = [
 
 const certs = [
   { src: '/cert-logos/soc2-shield.png', alt: 'SOC 2 Type II', label: 'SOC 2 Type II' },
-  { src: '/cert-logos/gdpr-badge.png', alt: 'GDPR Compliant', label: 'GDPR Compliant' },
-  { src: '/cert-logos/gdpr-banner.png', alt: 'GDPR — General Data Protection Regulation', label: 'GDPR · EU Data Protection', wide: true }
+  { src: '/cert-logos/gdpr-badge.png', alt: 'GDPR Compliant', label: 'GDPR Compliant' }
 ];
 
 const tabs = [
@@ -377,7 +376,7 @@ const tabs = [
 
         <ul class="ss2-certs" data-reveal>
           {certs.map((c) => (
-            <li class={`ss2-cert${c.wide ? ' ss2-cert--wide' : ''}`}>
+            <li class="ss2-cert">
               <img src={c.src} alt={c.alt} width="120" height="60" loading="lazy" decoding="async" />
               <span>{c.label}</span>
             </li>
@@ -1230,11 +1229,6 @@ const tabs = [
     opacity: 1;
     transform: translateY(-2px);
   }
-  /* wide navy banner reads as a chip next to the badge silhouettes */
-  .ss2-cert--wide img {
-    height: 64px;
-    border-radius: 10px;
-  }
   .ss2-cert span {
     font-family: var(--font-mono);
     font-size: 0.68rem;
@@ -1354,9 +1348,8 @@ const tabs = [
       border-top: 1px solid var(--ss2-rule);
     }
     .ss2-doc { flex-direction: column; gap: 0.3rem; margin-bottom: 2rem; }
-    .ss2-certs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; }
+    .ss2-certs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
     .ss2-cert img { height: 44px; }
-    .ss2-cert--wide img { height: 34px; }
     .ss2-cert span { font-size: 0.56rem; text-align: center; }
   }
 
