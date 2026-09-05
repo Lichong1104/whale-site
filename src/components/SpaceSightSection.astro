@@ -21,35 +21,22 @@
         </div>
       </div>
 
-      <div class="solution-panel" data-panel="echo" tabindex="0" role="button" aria-label="Echo card — activate to watch the demo">
-        <div class="solution-flip">
-          <div class="solution-face solution-front">
-            <span class="solution-chip solution-chip-echo">Echo · Hears</span>
-            <p class="solution-word"><span class="hl-voice">Echo</span> captures the <span class="hl-voice">communication</span> around it.</p>
-          </div>
-          <div class="solution-face solution-back">
-            <video src="/hero/echo-hears.mp4" poster="/hero/echo-hears-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Echo voice capture demo"></video>
-          </div>
-        </div>
-      </div>
     </div>
 
     <div class="fusion-tracks" aria-hidden="true">
       <span class="fusion-track fusion-track-vision"></span>
-      <span class="fusion-track fusion-track-voice"></span>
     </div>
 
-    <div class="solution-panel fusion-panel" data-panel="fusion" tabindex="0" role="button" aria-label="Decide card — activate to watch both streams fused">
+    <div class="solution-panel fusion-panel" data-panel="fusion" tabindex="0" role="button" aria-label="Decide card — activate to watch the stream analyzed">
       <div class="solution-flip fusion-flip">
         <div class="solution-face solution-front fusion-front">
-          <span class="solution-chip solution-chip-fusion">SpaceSight + Echo · Decides</span>
+          <span class="solution-chip solution-chip-fusion">SpaceSight · Decides</span>
           <p class="fusion-word">Decide</p>
           <p class="fusion-sub">Clear insight, instantly</p>
-          <p class="fusion-body">SpaceSight and Echo flow straight into our AI — both streams analyzed together, turning raw signals into clear, <span class="hl-fusion">decision-ready insight</span> for the people who need to act on it.</p>
+          <p class="fusion-body">SpaceSight flows straight into our AI — every stream analyzed as it happens, turning raw signals into clear, <span class="hl-fusion">decision-ready insight</span> for the people who need to act on it.</p>
         </div>
-        <div class="solution-face solution-back fusion-back" aria-label="SpaceSight and Echo streams side by side">
+        <div class="solution-face solution-back fusion-back" aria-label="SpaceSight monitoring stream">
           <video src="/hero/spacesight-sees.mp4" autoplay muted loop playsinline preload="metadata" aria-label="SpaceSight monitoring stream"></video>
-          <video src="/hero/echo-hears.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Echo voice capture stream"></video>
         </div>
       </div>
     </div>
@@ -78,7 +65,8 @@
 
   .solution-panels {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0, 640px);
+    justify-content: center;
     gap: var(--space-md);
     max-width: 1100px;
     margin-inline: auto;
@@ -156,7 +144,6 @@
   }
 
   [data-panel="spacesight"] .solution-front { --panel-ring: rgba(255, 210, 63, 0.35); }
-  [data-panel="echo"] .solution-front { --panel-ring: rgba(0, 229, 255, 0.4); }
 
   .solution-chip {
     display: inline-flex;
@@ -182,7 +169,6 @@
   }
 
   .solution-chip-spacesight::before { background: #FFD23F; }
-  .solution-chip-echo::before { background: #00E5FF; }
 
   .solution-word {
     font-family: var(--font-display);
@@ -196,7 +182,6 @@
   }
 
   .hl-vision { color: #FFD23F; }
-  .hl-voice { color: #00E5FF; }
 
   /* Back: video */
   .solution-back {
@@ -215,17 +200,13 @@
     box-shadow: inset 0 0 0 1px rgba(255, 210, 63, 0.5);
   }
 
-  [data-panel="echo"] .solution-back {
-    box-shadow: inset 0 0 0 1px rgba(0, 229, 255, 0.5);
-  }
-
   @media (max-width: 900px) {
     .solution-panels {
       grid-template-columns: 1fr;
     }
   }
 
-  /* Converging signal tracks: SpaceSight yellow + Echo cyan fuse into magenta */
+  /* Signal track: SpaceSight yellow flows into magenta */
   .fusion-tracks {
     display: flex;
     justify-content: center;
@@ -242,14 +223,6 @@
 
   .fusion-track-vision {
     background: linear-gradient(90deg, transparent, #FFD23F 55%, #FF4D8D);
-    transform: rotate(9deg);
-    transform-origin: right center;
-  }
-
-  .fusion-track-voice {
-    background: linear-gradient(-90deg, transparent, #00E5FF 55%, #FF4D8D);
-    transform: rotate(-9deg);
-    transform-origin: left center;
   }
 
   /* Fusion flip card: full width below the two product cards */
@@ -297,21 +270,9 @@
     font-weight: 600;
   }
 
-  /* Back: the two streams fused — split-screen videos with a magenta seam */
+  /* Back: the monitoring stream, full-bleed */
   .fusion-back {
-    display: flex;
     box-shadow: inset 0 0 0 1px rgba(255, 77, 141, 0.5);
-  }
-
-  .fusion-back video {
-    width: 50%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-
-  .fusion-back video + video {
-    border-left: 2px solid rgba(255, 77, 141, 0.65);
   }
 
   @media (max-width: 720px) {

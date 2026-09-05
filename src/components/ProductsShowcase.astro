@@ -54,57 +54,6 @@
       </div>
     </section>
 
-    <section class="section section-tint pd" id="echo">
-      <div class="container">
-        <div class="pd-head">
-          <span class="pd-chip pd-chip-echo">Echo · Hears</span>
-          <h2 class="pd-headline"><span class="wm"><span class="w" style="--i:0">Hear</span></span> <span class="wm"><span class="w" style="--i:1">what</span></span> <span class="wm"><span class="w" style="--i:2">matters</span></span> <span class="wm"><span class="w" style="--i:3">—</span></span> <span class="wm"><span class="w" style="--i:4">and</span></span> <span class="pd-ready"><span class="wm"><span class="w" style="--i:5">never</span></span> <span class="wm"><span class="w" style="--i:6">lose</span></span> <span class="wm"><span class="w" style="--i:7">it</span></span> <span class="wm"><span class="w" style="--i:8">in</span></span> <span class="wm"><span class="w" style="--i:9">the</span></span> <span class="wm"><span class="w" style="--i:10">noise.</span></span></span></h2>
-          <p class="pd-subhead">Echo captures and understands the communication behind your operations, feeding straight into our AI for instant, decision-ready insight.</p>
-        </div>
-
-        <div class="pd-showcase">
-          <div class="pd-media">
-            <video src="/products/echo-demo-eng.mp4" poster="/products/echo-demo-poster.jpg" autoplay muted loop controls preload="metadata" playsinline aria-label="Echo product demo"></video>
-          </div>
-
-          <div class="pd-carousel" data-carousel>
-            <div class="pd-track">
-          <article class="pd-cap">
-            <span class="pd-cap-label pd-label-echo">Always-On Capture</span>
-            <h3 class="pd-cap-slogan"><span class="w" style="--i:0">Every</span> <span class="w" style="--i:1">conversation,</span> <span class="w" style="--i:2">captured</span> <span class="pd-ready"><span class="w" style="--i:3">without</span> <span class="w" style="--i:4">lifting</span> <span class="w" style="--i:5">a</span> <span class="w" style="--i:6">finger.</span></span></h3>
-            <p>Echo wearables (Pin or Buds) capture conversations hands-free, with directional audio that stays clear even in noisy environments. Every interaction is automatically recorded and structured in real time — no manual note-taking, nothing lost.</p>
-            <p>With support for 30+ languages and real-time translation, your team can capture and understand conversations wherever business happens, in whatever language it happens in.</p>
-          </article>
-          <article class="pd-cap">
-            <span class="pd-cap-label pd-label-echo">Custom Analytics Engine</span>
-            <h3 class="pd-cap-slogan"><span class="w" style="--i:0">Insight</span> <span class="w" style="--i:1">tuned</span> <span class="w" style="--i:2">to</span> <span class="pd-ready"><span class="w" style="--i:3">how</span> <span class="w" style="--i:4">your</span> <span class="w" style="--i:5">industry</span> <span class="w" style="--i:6">actually</span> <span class="w" style="--i:7">works.</span></span></h3>
-            <p>Echo doesn't apply a generic transcript template to every conversation — it analyzes against your industry's own knowledge graph, extracting what matters for healthcare, legal, finance, retail, and 100+ other specialized verticals.</p>
-            <p>Configure your own analysis dimensions, or set a persona — like "Senior Sales Coach" — to review every conversation with specialized judgment.</p>
-          </article>
-          <article class="pd-cap">
-            <span class="pd-cap-label pd-label-echo">EchoClaw: Hands-Free Execution</span>
-            <h3 class="pd-cap-slogan"><span class="w" style="--i:0">Say</span> <span class="w" style="--i:1">it</span> <span class="w" style="--i:2">once.</span> <span class="pd-ready"><span class="w" style="--i:3">Consider</span> <span class="w" style="--i:4">it</span> <span class="w" style="--i:5">done.</span></span></h3>
-            <p>Echo doesn't stop at understanding — it acts. A single voice command ("send the meeting summary to the client") triggers Echo to handle it automatically, connecting directly to your CRM, ERP, and other tools without manual data entry.</p>
-            <p>This is where conversation becomes action — the same execution layer that powers the rest of the AI story across the platform.</p>
-          </article>
-            </div>
-            <div class="pd-carousel-nav">
-              <button type="button" class="pd-arrow" data-prev aria-label="Previous capability">
-                <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M10.5 2.5 5 8l5.5 5.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </button>
-              <div class="pd-dots"></div>
-              <button type="button" class="pd-arrow" data-next aria-label="Next capability">
-                <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M5.5 2.5 11 8l-5.5 5.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div class="pd-cta">
-          <button type="button" class="btn btn-primary btn-large" data-open-modal data-source-type="products页Echo Book a demo留资">Book a demo</button>
-        </div>
-      </div>
-    </section>
 
 <script>
   document.querySelectorAll('[data-carousel]').forEach((root) => {
@@ -187,30 +136,13 @@
   }
 
   .pd-head .pd-ready {
-    color: var(--ready-ink, #8A6D00); /* signal hue darkened for ≥3:1 on the marker wash */
-    background-image: linear-gradient(to top, var(--ready-mark, rgba(255, 210, 63, 0.4)) 36%, transparent 36%);
+    color: var(--ready-ink, var(--co-blue-ink)); /* signal hue darkened for ≥3:1 on the marker wash */
+    background-image: linear-gradient(to top, var(--ready-mark, rgba(37, 99, 235, 0.16)) 36%, transparent 36%);
     background-repeat: no-repeat;
     background-size: 0% 100%;
   }
 
-  #echo .pd-head .pd-ready {
-    --ready-mark: rgba(0, 229, 255, 0.35);
-    --ready-ink: #0E7490;
-  }
-
-  /* Echo voice: words resolve out of blur — signal settling out of noise */
-  #echo .pd-head.is-live .w {
-    animation-name: pd-rise-voice;
-  }
-
-  @keyframes pd-rise-voice {
-    from {
-      transform: translateY(110%);
-      filter: blur(5px);
-    }
-  }
-
-  .pd-head.is-live .w {
+    .pd-head.is-live .w {
     animation: pd-rise 0.65s cubic-bezier(0.16, 1, 0.3, 1) backwards;
     animation-delay: calc(var(--i, 0) * 80ms + 60ms);
   }
@@ -279,7 +211,6 @@
   }
 
   .pd-chip-spacesight::before { background: #FFD23F; }
-  .pd-chip-echo::before { background: #00E5FF; }
 
   .pd-headline {
     font-family: var(--font-display);
@@ -406,13 +337,6 @@
   }
 
   #spacesight .pd-carousel { --cap-dot: #FFD23F; --cap-accent: #B8860B; }
-  #echo .pd-carousel { --cap-dot: #00E5FF; --cap-accent: #0E7490; }
-
-  /* Echo: carousel left, video right (desktop); mobile keeps video on top */
-  @media (min-width: 861px) {
-    #echo .pd-showcase .pd-media { order: 2; }
-    #echo .pd-showcase .pd-carousel { order: 1; }
-  }
 
   .pd-cap {
     position: relative;
@@ -451,7 +375,6 @@
   }
 
   #spacesight .pd-cap { --cap-ring: rgba(255, 210, 63, 0.5); }
-  #echo .pd-cap { --cap-ring: rgba(0, 229, 255, 0.55); }
 
   .pd-cap:hover {
     transform: translateY(-4px);
@@ -480,10 +403,8 @@
   }
 
   #spacesight .pd-cap-label { --cap-dot: #FFD23F; }
-  #echo .pd-cap-label { --cap-dot: #00E5FF; }
 
-  .pd-label-spacesight { color: #8A6D00; }
-  .pd-label-echo { color: #0E7490; }
+  .pd-label-spacesight { color: var(--co-blue-ink); }
 
   .pd-cap-slogan {
     font-family: var(--font-display);
@@ -513,13 +434,12 @@
   }
 
   .pd-cap .pd-ready {
-    background-image: linear-gradient(to top, var(--ready-mark, rgba(255, 210, 63, 0.45)) 42%, transparent 42%);
+    background-image: linear-gradient(to top, var(--ready-mark, rgba(37, 99, 235, 0.18)) 42%, transparent 42%);
     background-repeat: no-repeat;
     background-size: 0% 100%;
   }
 
-  #spacesight .pd-cap { --ready-mark: rgba(255, 210, 63, 0.45); }
-  #echo .pd-cap { --ready-mark: rgba(0, 229, 255, 0.32); }
+  #spacesight .pd-cap { --ready-mark: rgba(37, 99, 235, 0.18); }
 
   .pd-cap.is-live .w {
     animation: pd-word-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) backwards;

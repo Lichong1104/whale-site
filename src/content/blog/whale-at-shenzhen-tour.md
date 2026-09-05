@@ -31,11 +31,11 @@ The answer, Whale argued, is operational excellence. As EV products converge on 
 
 **Rethinking Offline Operations Through AI**
 
-Whale shared how leading EV brands are deploying SpaceSight and Echo to transform their dealer networks across three areas:
+Whale shared how leading EV brands are deploying SpaceSight to transform their dealer networks across three areas:
 
 - **Digitizing Offline Data** — Edge AI and spatial analytics turn physical showrooms into intelligent hubs, surfacing foot traffic patterns and customer behavior that operators could never see before.
 
-- **Automating Operations & CX** — Smart audio badges give frontline staff real-time visibility into customer interactions, raising service consistency across locations while cutting manual audit costs.
+- **Automating Operations & CX** — AI-driven audits replace manual checklists, raising service consistency across locations while cutting manual audit costs.
 
 - **Maximizing LTV** — Offline behavioral data flows into CRM systems to sharpen post-delivery follow-ups, deepen customer retention, and strengthen dealer margins.
 

@@ -11,6 +11,9 @@
   --text-on-dark-secondary: #94A3B8;
   --ring: #4A6C8C;
   --ring-light: #6B8EAE;
+  /* Company blue scale — shared with /company/ for site-wide text accents */
+  --co-blue: #2563EB;
+  --co-blue-ink: #1D4ED8;
   --track-vision: #FFD23F;
   --track-voice: #00E5FF;
   --track-sensor: #FF4D8D;
@@ -287,38 +290,9 @@ input:focus-visible {
   max-width: 18ch;
 }
 
-.hero-gradient {
-  background: linear-gradient(
-    100deg,
-    #7c3aed 0%,
-    #2563eb 35%,
-    #06b6d4 65%,
-    #22c55e 100%
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-.hero-shimmer {
-  background: linear-gradient(
-    90deg,
-    #7c3aed 0%,
-    #06b6d4 25%,
-    #FFD23F 50%,
-    #FF4D8D 75%,
-    #7c3aed 100%
-  );
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  animation: hero-shimmer 4s linear infinite;
-}
-
-@keyframes hero-shimmer {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 200% 50%; }
+/* Hero headline: company-blue emphasis word on ink, matching /company/ */
+.hero-hot {
+  color: var(--co-blue-ink);
 }
 
 /* Hero two-column layout: copy left, carousel right */
@@ -386,10 +360,7 @@ input:focus-visible {
 }
 
 /* Signal-hue number colors: darkened for ≥3:1 on white */
-.stats-band .track-item:nth-child(1) .track-value { color: #B8860B; }
-.stats-band .track-item:nth-child(2) .track-value { color: #0891B2; }
-.stats-band .track-item:nth-child(3) .track-value { color: #DB2777; }
-.stats-band .track-item:nth-child(4) .track-value { color: #7C3AED; }
+.stats-band .track-value { color: var(--co-blue-ink); }
 
 /* Readout entrance: values settle from blur as the count runs, dot pings on lock */
 @keyframes stat-settle {
@@ -556,9 +527,9 @@ input:focus-visible {
   font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: #8a6d00;
-  background: rgba(255, 210, 63, 0.28);
-  border: 1px solid rgba(255, 210, 63, 0.55);
+  color: var(--co-blue-ink);
+  background: rgba(37, 99, 235, 0.1);
+  border: 1px solid rgba(37, 99, 235, 0.38);
   padding: 0.18rem 0.55rem;
   border-radius: 999px;
   white-space: nowrap;

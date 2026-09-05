@@ -27,19 +27,18 @@ At Booth 2305, Whale moved beyond concept and into execution. Rather than slides
 
 The message was direct: AI isn't next year's priority. It's already on the floor.
 
-### Seven Platforms. One Intelligent Operating System.
+### Six Platforms. One Intelligent Operating System.
 
-Whale introduced its complete product suite — seven enterprise AI platforms spanning every critical business function:
+Whale introduced its product suite — six enterprise AI platforms spanning every critical business function:
 
 - **SpaceSight** — VLM-powered spatial intelligence for automated store inspection, loss prevention, and real-time operational visibility
-- **Echo** — AI voice intelligence for sales and service teams, delivering real-time transcription, conversation scoring, and coaching reports
 - **Alivia** — An enterprise-grade Agentic AI platform built for intelligent decision-making across every business scenario
 - **Harbor** — A unified AI knowledge base and digital asset hub, with built-in AI content detection and review
 - **Lume** — An omnichannel social media and content growth engine, purpose-built for brand ambassador programs and scaled content distribution
 - **Novus** — Enterprise AI model governance: multi-model routing, workflow orchestration, and cost controls in one platform
 - **Stardust** — A cloud-to-edge IoT infrastructure layer for global device connectivity, AV processing, and secure remote operations
 
-Together, these platforms form a single, integrated AI operating system — connecting store operations, conversations, content, devices, and decisions under one intelligent layer.
+Together, these platforms form a single, integrated AI operating system — connecting store operations, content, devices, and decisions under one intelligent layer.
 
 ![NRF APAC, Marina Bay Sands, June 2nd, 2026 — Whale Marketing Director Xuan Tang meeting the Senior Minister of State, MTI Singapore, Ms. Low Yen Ling](/blog/nrf/171475929.jpeg)
 
@@ -47,10 +46,9 @@ Together, these platforms form a single, integrated AI operating system — conn
 
 ### AI That Works on the Floor, Not Just in the Pitch Deck
 
-Whale also unveiled three intelligent hardware devices that bring AI capabilities directly to the frontline:
+Whale also unveiled two intelligent hardware devices that bring AI capabilities directly to the frontline:
 
 - **AI PTZ Camera "Whale Owl"** — Plug-and-play edge AI for small and mid-size stores; 24/7 automated inspection with instant anomaly alerts
-- **Echo Buds** — Smart earpiece for frontline associates, delivering real-time AI-powered guidance during customer interactions
 - **AI Hub** — An in-store "super brain" supporting up to 25 simultaneous AI algorithms, serving as the intelligence center for cloud-edge coordination
 
 The hardware-software integration underscores Whale's core thesis: AI value is realized at the point of work, not in the back office.

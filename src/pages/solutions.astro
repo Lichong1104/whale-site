@@ -5,7 +5,7 @@ import CTASection from '../components/CTASection.astro';
 import Footer from '../components/Footer.astro';
 
 const canonicalUrl = 'https://www.whale.sg/solutions/';
-const pageDescription = 'Whale industry solutions: SpaceSight and Echo adapt to automotive, luxury retail, food and beverage, healthcare, and museums — real-time intelligence for how your industry actually runs.';
+const pageDescription = 'Whale industry solutions: SpaceSight adapts to automotive, luxury retail, food and beverage, healthcare, and museums — real-time intelligence for how your industry actually runs.';
 
 const extraSchema = [
   {
@@ -26,12 +26,12 @@ const industries = [
     id: 'automotive',
     short: 'Automotive',
     name: 'Automotive',
-    tagline: 'Every conversation. Every showroom standard. Finally visible.',
-    body: "Top performers carry their playbook in their heads — until they leave. Echo scores every sales conversation and turns what your best people do differently into something the whole team can learn. SpaceSight keeps showroom and service bay standards enforced without another manual walkthrough.",
-    accent: 'voice',
-    hover: '#0E7490',
-    track: '#22D3EE',
-    products: ['spacesight', 'echo'],
+    tagline: 'Every showroom standard. Finally visible.',
+    body: "Top performers carry their playbook in their heads — until they leave. SpaceSight keeps showroom and service bay standards enforced without another manual walkthrough, so every location runs the way your best location does.",
+    accent: 'vision',
+    hover: '#1D4ED8',
+    track: '#2563EB',
+    products: ['spacesight'],
     img: '/solutions/automotive.png',
     imgAlt: 'SpaceSight view of an automotive showroom — camera coverage zones and regional passenger-flow filtering over the exhibition floor',
     scene: `<path d="M42 130 h116 v-16 l-26-6 -15-22 h-40 l-17 22 -20 6 a8 8 0 0 0 -6 8 z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><path d="M78 108 l12-18 h22 l12 18" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><circle cx="72" cy="134" r="10" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="128" cy="134" r="10" fill="none" stroke="currentColor" stroke-width="3"/>`
@@ -41,11 +41,11 @@ const industries = [
     short: 'Luxury',
     name: 'Luxury & Fashion Retail',
     tagline: 'Brand standards, enforced at every location, every day.',
-    body: "Manual audits reach maybe 10% of stores a quarter — the rest run unchecked in between. SpaceSight audits every location around the clock, catching planogram and display issues before they become a pattern. Echo scores every sales-floor interaction, turning what your top performers do differently into something the whole team can learn.",
+    body: "Manual audits reach maybe 10% of stores a quarter — the rest run unchecked in between. SpaceSight audits every location around the clock, catching planogram and display issues before they become a pattern.",
     accent: 'vision',
-    hover: '#DB2777',
-    track: '#FF4D8D',
-    products: ['spacesight', 'echo'],
+    hover: '#1D4ED8',
+    track: '#2563EB',
+    products: ['spacesight'],
     img: '/solutions/luxury-retail.png',
     imgAlt: 'SpaceSight retail analytics — in-store customer-flow heat map and journey chart over a boutique camera view',
     scene: `<rect x="62" y="98" width="76" height="54" rx="10" fill="none" stroke="currentColor" stroke-width="3"/><path d="M84 98 v-10 a16 16 0 0 1 32 0 v10" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="100" cy="124" r="4" fill="currentColor" stroke="none"/>`
@@ -55,11 +55,11 @@ const industries = [
     short: 'Museums',
     name: 'Museums & Cultural Institutions',
     tagline: 'See how visitors actually experience your museum.',
-    body: "Curators rearrange exhibits on instinct, not data on where guests actually linger, and security relies on patrols that can't cover every gallery at once. SpaceSight maps real-time visitor flow and flags unauthorized access near your collection, while Echo captures interaction quality at info desks and guided tours.",
+    body: "Curators rearrange exhibits on instinct, not data on where guests actually linger, and security relies on patrols that can't cover every gallery at once. SpaceSight maps real-time visitor flow and flags unauthorized access near your collection.",
     accent: 'vision',
     hover: '#1D4ED8',
-    track: '#60A5FA',
-    products: ['spacesight', 'echo'],
+    track: '#2563EB',
+    products: ['spacesight'],
     img: '/solutions/museums.png',
     imgAlt: 'SpaceSight museum gallery analytics — visitors tracked with pose overlays and dwell-time labels, visitor path traced across the exhibition floor',
     scene: `<rect x="66" y="70" width="68" height="52" rx="4" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="100" cy="96" r="11" fill="none" stroke="currentColor" stroke-width="2.5" opacity="0.7"/><path d="M84 132 v16 M116 132 v16 M74 148 h52" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>`
@@ -69,11 +69,11 @@ const industries = [
     short: 'F&B',
     name: 'Food & Beverage',
     tagline: 'Food safety, monitored continuously — not sampled.',
-    body: "Health-code compliance across hundreds of locations is impossible to manage by walkthrough alone, and with high turnover, training rarely survives past the first few shifts. SpaceSight monitors kitchens in real time — hygiene, PPE, prep protocol — flagging deviations the moment they happen, so every shift meets the same standard. Echo scores customer-facing service quality across every shift, not just the ones someone happened to observe.",
+    body: "Health-code compliance across hundreds of locations is impossible to manage by walkthrough alone, and with high turnover, training rarely survives past the first few shifts. SpaceSight monitors kitchens in real time — hygiene, PPE, prep protocol — flagging deviations the moment they happen, so every shift meets the same standard.",
     accent: 'vision',
-    hover: '#B45309',
-    track: '#F59E0B',
-    products: ['spacesight', 'echo'],
+    hover: '#1D4ED8',
+    track: '#2563EB',
+    products: ['spacesight'],
     img: '/solutions/food-beverage.png',
     imgAlt: 'SpaceSight kitchen monitoring — PPE detection flags a cook not wearing a mask, with review timeline over the camera feed',
     scene: `<path d="M54 128 a46 38 0 0 1 92 0" fill="none" stroke="currentColor" stroke-width="3"/><path d="M44 128 h112" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><circle cx="100" cy="82" r="5" fill="none" stroke="currentColor" stroke-width="3"/><path d="M86 62 c-3-6 3-8 0-14 M114 62 c-3-6 3-8 0-14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" opacity="0.6"/>`
@@ -83,11 +83,11 @@ const industries = [
     short: 'Healthcare',
     name: 'Healthcare',
     tagline: 'Patient safety, monitored around the clock.',
-    body: "Hand hygiene, PPE compliance, and restricted-area access need continuous oversight — exactly what no shift supervisor can provide alone, which is why incidents are typically caught after the fact. SpaceSight watches high-risk zones continuously, flagging violations in real time and compiling audit-ready documentation automatically. Echo flags patient-experience breakdowns before they ever surface in a survey score.",
+    body: "Hand hygiene, PPE compliance, and restricted-area access need continuous oversight — exactly what no shift supervisor can provide alone, which is why incidents are typically caught after the fact. SpaceSight watches high-risk zones continuously, flagging violations in real time and compiling audit-ready documentation automatically.",
     accent: 'vision',
-    hover: '#15803D',
-    track: '#34D399',
-    products: ['spacesight', 'echo'],
+    hover: '#1D4ED8',
+    track: '#2563EB',
+    products: ['spacesight'],
     img: '/solutions/healthcare.png',
     imgAlt: 'SpaceSight hospital console — ward camera feed with AI personnel analysis and playback timeline, plus mobile ward list',
     scene: `<circle cx="100" cy="112" r="40" fill="none" stroke="currentColor" stroke-width="3"/><path d="M100 92 v40 M80 112 h40" stroke="currentColor" stroke-width="8" stroke-linecap="round"/>`
@@ -96,7 +96,6 @@ const industries = [
 
 const headlineWords = [
   { t: 'See', c: 'vision' }, { t: 'it.', c: 'vision' },
-  { t: 'Hear', c: 'voice' }, { t: 'it.', c: 'voice' },
   { t: 'Fix', c: 'fusion' }, { t: 'it', c: 'fusion' },
   { t: '—' }, { t: 'before' }, { t: 'it' }, { t: 'becomes' }, { t: 'a' }, { t: 'pattern.' }
 ];
@@ -116,10 +115,10 @@ const headlineWords = [
         captured event frame, and the reel rail makes the whole patrol skippable. Refuses the
         default industry-card grid every B2B solutions page ships.
       OWN-WORLD: Sensorium particle-detector system — daylight ground, ink detector stage,
-        signal yellow/cyan/magenta encoding See/Hear/Fix, orbital rings, mono data labels.
-      STORY: a first-time buyer reads "See it. Hear it. Fix it", swipes to their industry on
+        signal yellow/magenta encoding See/Fix, orbital rings, mono data labels.
+      STORY: a first-time buyer reads "See it. Fix it", swipes to their industry on
         the stage, and leaves to book a demo believing Whale already speaks their floor's language.
-      FIRST VIEWPORT: h1 with signal-colored See/Hear/Fix triad over the merged eyebrow subhead
+      FIRST VIEWPORT: h1 with signal-colored See/Fix pair over the merged eyebrow subhead
         and mono industry index, header CTA top-right; the reel's first stage peeks below the fold.
       FORM: horizontal snap reel (full-width slides: ink stage left, copy right; arrows, labeled
         ticks, and counter as the rail) — user-selected over the brief-pinned scroll-showcase.
@@ -130,17 +129,17 @@ const headlineWords = [
     <section class="section sol-hero" id="solutions">
       <div class="container">
         <h1 class="sol-headline" data-sol-head>
-          {headlineWords.slice(0, 4).map((word, i) => (
+          {headlineWords.slice(0, 2).map((word, i) => (
             <Fragment><span class="wm"><span class={`w${word.c ? ` w-${word.c}` : ''}`} style={`--i:${i}`}>{word.t}</span></span>{' '}</Fragment>
           ))}
           <span class="w-fix">
-            {headlineWords.slice(4, 6).map((word, k) => (
-              <Fragment><span class="wm"><span class={`w w-${word.c}`} style={`--i:${4 + k}`}>{word.t}</span></span>{' '}</Fragment>
+            {headlineWords.slice(2, 4).map((word, k) => (
+              <Fragment><span class="wm"><span class={`w w-${word.c}`} style={`--i:${2 + k}`}>{word.t}</span></span>{' '}</Fragment>
             ))}
             <span class="w-lock-ring" aria-hidden="true"></span>
           </span>
-          {headlineWords.slice(6).map((word, i) => (
-            <Fragment><span class="wm"><span class={`w${word.c ? ` w-${word.c}` : ''}`} style={`--i:${6 + i}`}>{word.t}</span></span>{' '}</Fragment>
+          {headlineWords.slice(4).map((word, i) => (
+            <Fragment><span class="wm"><span class={`w${word.c ? ` w-${word.c}` : ''}`} style={`--i:${4 + i}`}>{word.t}</span></span>{' '}</Fragment>
           ))}
         </h1>
         <p class="sol-subhead">Built for how your industry actually runs — Whale adapts to what matters most, from showroom floors to hospital corridors. Here's how.</p>
@@ -170,7 +169,7 @@ const headlineWords = [
                     <span class="ind-stage-caption">Placeholder visual — footage to come</span>
                   </Fragment>
                 )}
-                <span class="ind-hud ind-hud-prods">SpaceSight + Echo</span>
+                <span class="ind-hud ind-hud-prods">SpaceSight</span>
               </div>
               <div class="reel-copy">
                 <h2 class="ind-name">{ind.name}</h2>
@@ -178,7 +177,7 @@ const headlineWords = [
                 <p class="ind-body">{ind.body}</p>
                 <div class="ind-chips" aria-label="Products in this solution">
                   {ind.products.map((p) => (
-                    <span class={`ind-chip ind-chip-${p}`}>{p === 'echo' ? 'Echo · Hears' : 'SpaceSight · Sees'}</span>
+                    <span class={`ind-chip ind-chip-${p}`}>SpaceSight · Sees</span>
                   ))}
                 </div>
                 <a class="ind-link" href={`/solutions/${ind.id}/`} aria-label={`See how it works for ${ind.name} — industry solution detail`}>
@@ -213,7 +212,7 @@ const headlineWords = [
 
     <CTASection
       headline="Don't see your industry?<br>We probably still do this."
-      lead="SpaceSight and Echo are built to adapt — if your business runs on physical locations and real conversations, there's a good chance we already know your pain points."
+      lead="SpaceSight is built to adapt — if your business runs on physical locations, there's a good chance we already know your pain points."
       primaryLabel="Book a Demo"
     />
   </main>
@@ -253,12 +252,11 @@ const headlineWords = [
   }
 
   /*
-    Hit & deposit: See/Hear land in their raw track color with a small
+    Hit & deposit: See lands in its raw track color with a small
     energy glow — the detector hit — then settle into recorded daylight
     ink. The tail of the sentence gets no flash: it is prose, not a hit.
   */
-  .sol-headline.is-live .w-vision,
-  .sol-headline.is-live .w-voice {
+  .sol-headline.is-live .w-vision {
     animation:
       sol-rise 0.65s cubic-bezier(0.16, 1, 0.3, 1) backwards,
       sol-deposit 0.7s ease-out backwards;
@@ -291,7 +289,7 @@ const headlineWords = [
   .w-lock-ring {
     position: absolute;
     inset: -0.1em -0.14em -0.1em -0.28em;
-    border: 2px solid var(--track-sensor);
+    border: 2px solid var(--co-blue);
     border-radius: 999px;
     opacity: 0;
     pointer-events: none;
@@ -310,9 +308,8 @@ const headlineWords = [
   }
 
   /* Signal colors stepped for daylight ground — same hue, darker value */
-  .w-vision { --ink: var(--track-vision-ink); --flash: var(--track-vision); color: var(--ink); }
-  .w-voice { --ink: var(--track-voice-ink); --flash: var(--track-voice); color: var(--ink); }
-  .w-fusion { --ink: var(--track-sensor-ink); --flash: var(--track-sensor); color: var(--ink); }
+  .w-vision { --ink: var(--co-blue-ink); --flash: #3B82F6; color: var(--ink); }
+  .w-fusion { --ink: var(--co-blue-ink); --flash: #2563EB; color: var(--ink); }
 
   .sol-subhead {
     max-width: 56ch;
@@ -478,7 +475,7 @@ const headlineWords = [
   }
 
   .sol-reel:focus-visible {
-    outline: 3px solid var(--track-voice);
+    outline: 3px solid var(--co-blue);
     outline-offset: 3px;
   }
 
@@ -544,8 +541,7 @@ const headlineWords = [
     pointer-events: none;
   }
 
-  .scene-voice { color: var(--track-voice); }
-  .scene-vision { color: var(--track-vision); }
+  .scene-vision { color: #60A5FA; }
 
   .scene-ring {
     transform-origin: 100px 112px;
@@ -616,8 +612,7 @@ const headlineWords = [
     border-radius: 999px;
   }
 
-  .ind-chip-echo::before { background: var(--track-voice); }
-  .ind-chip-spacesight::before { background: var(--track-vision); }
+  .ind-chip-spacesight::before { background: var(--co-blue); }
 
   .ind-link {
     font-weight: 600;

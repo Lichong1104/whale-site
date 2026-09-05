@@ -10,21 +10,17 @@ export function getStaticPaths() {
       id: 'automotive',
       short: 'Automotive',
       name: 'Automotive',
-      headline: 'Every conversation. Every showroom standard. Finally visible.',
-      lines: ['Every conversation.', 'Every showroom standard.', 'Finally visible.'],
-      challenge: "On a dealership floor, the only record of what actually happened is whatever the salesperson typed into the CRM afterward — if they typed anything at all. Top performers carry their playbook in their heads, and when they leave, it leaves with them. Meanwhile, showroom compliance and service bay SOPs only get checked when a manager happens to walk by, which isn't nearly often enough across a busy floor with high-value transactions on the line.",
+      headline: 'Every showroom standard. Finally visible.',
+      lines: ['Every showroom standard.', 'Finally visible.'],
+      challenge: "On a dealership floor, showroom standards and service-bay SOPs only get checked when a manager happens to walk by — which isn't nearly often enough across a busy floor with high-value transactions on the line. Vehicle placement, pricing displays, and safety protocols drift between checks, and nobody notices until a customer or an auditor does.",
       log: [
-        { metric: 'CRM', label: 'The only record of what happened — if they typed anything at all', flag: 'Gap', level: 'red' },
+        { metric: 'Drift', label: 'Vehicle placement and pricing displays slip between checks', flag: 'Gap', level: 'red' },
         { metric: 'Walk-by', label: 'How showroom & service-bay SOPs get checked today', flag: 'Manual', level: 'amber' },
         { metric: '1×/wk', label: 'A compliance snapshot once a week — then nothing until the next one', flag: 'Sparse', level: 'amber' }
       ],
       see: "SpaceSight keeps a continuous eye on the floor — vehicle placement, pricing accuracy, safety protocols in the service bay — so nothing waits for the next manual walkthrough to get caught. Instead of a compliance snapshot once a week, you get one all day, every day.",
-      hear: "Echo records and scores every sales conversation — greeting, needs discovery, objection handling, closing — across every associate and every shift. And it doesn't just look back afterward: Echo can surface real-time coaching cues to managers during a live customer interaction, before a deal is lost rather than after. What used to live only in your best performer's head becomes something the whole team can learn from.",
       seeMode: 'Mode · Continuous — all day, every day',
-      hearMode: 'Mode · Real-time — every conversation, every shift',
       outcomeRows: [
-        'Every customer interaction captured and scored.',
-        'Top performer technique made trainable across the network.',
         'Showroom and service compliance enforced without another manual checklist.'
       ],
       scope: ['Showroom', 'Service bay', 'Sales floor'],
@@ -32,8 +28,8 @@ export function getStaticPaths() {
       time: 'All day / Every day',
       img: '/solutions/automotive.png',
       imgAlt: 'SpaceSight view of an automotive showroom — camera coverage zones and regional passenger-flow filtering over the exhibition floor',
-      hover: '#0E7490',
-      track: '#22D3EE'
+      hover: '#1D4ED8',
+      track: '#2563EB'
     },
     {
       id: 'luxury-retail',
@@ -48,12 +44,10 @@ export function getStaticPaths() {
         { metric: 'Local', label: 'Top-performer sales habits stay in one store instead of spreading', flag: 'Siloed', level: 'amber' }
       ],
       see: "SpaceSight runs continuous AI audits across every location — planogram compliance, display standards, staff presence, fitting room activity — and routes violations automatically to the right manager the moment they're detected, including a live check on whether in-store signage and displays still match approved brand assets.",
-      hear: 'Echo captures and scores every customer interaction on the sales floor, identifying what your top performers do differently and turning those patterns into something trainable across the full team — not just tribal knowledge that lives with a handful of associates.',
       seeMode: 'Mode · Continuous — every location, every day',
-      hearMode: 'Mode · Sales floor — every interaction scored',
       outcomeRows: [
         'Brand standards enforced across every location, every day.',
-        'Best-practice sales behavior scaled to every associate.',
+        "Violations routed to the right manager the moment they're detected.",
         'Customer experience made measurable instead of anecdotal.'
       ],
       scope: ['Sales floor', 'Fitting rooms', 'Displays'],
@@ -61,8 +55,8 @@ export function getStaticPaths() {
       time: 'Every location / Every day',
       img: '/solutions/luxury-retail.png',
       imgAlt: 'SpaceSight retail analytics — in-store customer-flow heat map and journey chart over a boutique camera view',
-      hover: '#DB2777',
-      track: '#FF4D8D'
+      hover: '#1D4ED8',
+      track: '#2563EB'
     },
     {
       id: 'food-beverage',
@@ -77,9 +71,7 @@ export function getStaticPaths() {
         { metric: 'Reactive', label: "Register loss prevention found only after it's already a pattern", flag: 'Late', level: 'red' }
       ],
       see: 'SpaceSight monitors kitchen operations in real time — hygiene compliance, PPE adherence, food safety protocol deviations — with violations triggering immediate alerts to the store manager. The same continuous coverage extends to the register, catching loss-prevention issues as they happen rather than after the fact.',
-      hear: 'Echo captures customer-facing interactions and scores service quality across every shift — not just the ones a supervisor happened to observe — surfacing the patterns that actually correlate with higher satisfaction and repeat visits.',
       seeMode: 'Mode · Real-time — kitchen to register',
-      hearMode: 'Mode · Every shift — service quality scored',
       outcomeRows: [
         'Food safety incidents caught before they become health code violations.',
         'Compliance documentation generated automatically, not compiled by hand.',
@@ -90,8 +82,8 @@ export function getStaticPaths() {
       time: 'Real-time / Every shift',
       img: '/solutions/food-beverage.png',
       imgAlt: 'SpaceSight kitchen monitoring — PPE detection flags a cook not wearing a mask, with review timeline over the camera feed',
-      hover: '#B45309',
-      track: '#F59E0B'
+      hover: '#1D4ED8',
+      track: '#2563EB'
     },
     {
       id: 'healthcare',
@@ -106,9 +98,7 @@ export function getStaticPaths() {
         { metric: 'CMS · TJC', label: 'Standards that expect continuous oversight of hygiene, PPE, restricted zones', flag: 'Expected', level: 'ind' }
       ],
       see: 'SpaceSight provides continuous AI monitoring of high-risk zones — ICUs, pharmacies, isolation rooms — flagging PPE and hand-hygiene violations, restricted-area access, and fall-risk behavior in real time, and compiling audit-ready compliance documentation automatically instead of by hand.',
-      hear: 'Echo captures patient-facing interactions and scores communication quality, flagging service breakdowns before they show up in HCAHPS survey data — giving you a chance to fix a problem before it affects reimbursement.',
       seeMode: 'Mode · Continuous — high-risk zones, around the clock',
-      hearMode: 'Mode · Real-time — before survey scores move',
       outcomeRows: [
         'Patient safety incidents flagged before they escalate.',
         'Regulatory audit documentation generated automatically.',
@@ -119,8 +109,8 @@ export function getStaticPaths() {
       time: 'Around the clock',
       img: '/solutions/healthcare.png',
       imgAlt: 'SpaceSight hospital console — ward camera feed with AI personnel analysis and playback timeline, plus mobile ward list',
-      hover: '#15803D',
-      track: '#34D399'
+      hover: '#1D4ED8',
+      track: '#2563EB'
     },
     {
       id: 'museums',
@@ -135,21 +125,19 @@ export function getStaticPaths() {
         { metric: 'Counters', label: 'Manual counts and periodic surveys feed grant and donor reports', flag: 'Manual', level: 'amber' }
       ],
       see: 'SpaceSight maps real-time visitor flow across every gallery — dwell time by exhibit, traffic patterns, crowd density — giving curators real data to guide layout and exhibit placement, while continuously flagging unauthorized access near your collection or unusual behavior near an exhibit.',
-      hear: 'Echo captures interaction quality at information desks, guided tours, and interactive stations, scoring staff engagement and identifying exactly where the visitor experience tends to break down.',
       seeMode: 'Mode · Continuous — every gallery mapped',
-      hearMode: 'Mode · Real-time — desks, tours, stations',
       outcomeRows: [
         'Exhibit layout guided by actual visitor behavior.',
         'Collection security strengthened without added headcount.',
         'Visitor engagement data ready whenever a grant application or donor update needs it.'
       ],
-      scope: ['Galleries', 'Info desks', 'Guided tours'],
+      scope: ['Galleries', 'Collection zones', 'Entrances'],
       camLabel: 'Gallery · Visitor flow',
       time: 'Real-time / Every gallery',
       img: '/solutions/museums.png',
       imgAlt: 'SpaceSight museum gallery analytics — visitors tracked with pose overlays and dwell-time labels, visitor path traced across the exhibition floor',
       hover: '#1D4ED8',
-      track: '#60A5FA'
+      track: '#2563EB'
     }
   ];
 
@@ -159,7 +147,7 @@ export function getStaticPaths() {
 const { ind } = Astro.props;
 
 const canonicalUrl = `https://www.whale.sg/solutions/${ind.id}/`;
-const pageDescription = `${ind.name} solution: ${ind.headline} SpaceSight and Echo bring real-time visibility and conversation intelligence to ${ind.name.toLowerCase()} operations.`;
+const pageDescription = `${ind.name} solution: ${ind.headline} SpaceSight brings real-time visibility to ${ind.name.toLowerCase()} operations.`;
 
 const extraSchema = [
   {
@@ -195,7 +183,6 @@ const extraSchema = [
           </h1>
           <ul class="scope" aria-label="Products and coverage">
             <li class="capsule capsule-see"><i aria-hidden="true"></i>SpaceSight · Sees</li>
-            <li class="capsule capsule-hear"><i aria-hidden="true"></i>Echo · Hears</li>
             {ind.scope.map((zone) => <li class="zone">{zone}</li>)}
           </ul>
         </div>
@@ -284,20 +271,6 @@ const extraSchema = [
             <p class="unit-body">{ind.see}</p>
             <footer class="unit-foot">{ind.seeMode} · <a href="/spacesight/" class="unit-link">Explore SpaceSight →</a></footer>
           </article>
-          <article class="unit unit-hear">
-            <span class="uc uc-tl" aria-hidden="true"></span>
-            <span class="uc uc-tr" aria-hidden="true"></span>
-            <span class="uc uc-bl" aria-hidden="true"></span>
-            <span class="uc uc-br" aria-hidden="true"></span>
-            <header class="unit-head">
-              <span class="unit-id">Unit.02</span>
-              <h3 class="unit-name">Echo</h3>
-              <span class="unit-tag">Hears</span>
-              <span class="unit-status"><i aria-hidden="true"></i>Active</span>
-            </header>
-            <p class="unit-body">{ind.hear}</p>
-            <footer class="unit-foot">{ind.hearMode}</footer>
-          </article>
         </div>
       </div>
     </section>
@@ -339,7 +312,7 @@ const extraSchema = [
     </section>
 
     <CTASection
-      headline={`See it. Hear it. Fix it —<br>for ${ind.name}.`}
+      headline={`See it. Fix it —<br>for ${ind.name}.`}
       lead="Book a demo and we'll walk through your floor, your shifts, and your standards — and show you what continuous visibility looks like."
       primaryLabel="Book a Demo"
     />
@@ -488,13 +461,8 @@ const extraSchema = [
   }
 
   .capsule-see i {
-    background: #FFD23F;
-    box-shadow: 0 0 8px rgba(255, 210, 63, 0.9);
-  }
-
-  .capsule-hear i {
-    background: #00E5FF;
-    box-shadow: 0 0 8px rgba(0, 229, 255, 0.9);
+    background: #2563EB;
+    box-shadow: 0 0 8px rgba(37, 99, 235, 0.9);
   }
 
   .zone {
@@ -827,7 +795,7 @@ const extraSchema = [
     inset: 0;
     background:
       radial-gradient(720px 320px at 12% -8%, color-mix(in srgb, var(--ind-track) 8%, transparent), transparent 62%),
-      radial-gradient(720px 320px at 88% 108%, rgba(0, 229, 255, 0.05), transparent 62%);
+      radial-gradient(720px 320px at 88% 108%, rgba(37, 99, 235, 0.07), transparent 62%);
     pointer-events: none;
   }
 
@@ -849,13 +817,14 @@ const extraSchema = [
   .units {
     position: relative;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 780px;
     gap: var(--space-md);
   }
 
   .unit {
-    --u: #FFD23F;
-    --u-glow: rgba(255, 210, 63, 0.09);
+    --u: #60A5FA;
+    --u-glow: rgba(96, 165, 250, 0.12);
     position: relative;
     display: flex;
     flex-direction: column;
@@ -874,11 +843,6 @@ const extraSchema = [
     inset: 0;
     background: radial-gradient(560px 220px at 18% -12%, var(--u-glow), transparent 62%);
     pointer-events: none;
-  }
-
-  .unit-hear {
-    --u: #00E5FF;
-    --u-glow: rgba(0, 229, 255, 0.09);
   }
 
   .uc {
@@ -976,7 +940,7 @@ const extraSchema = [
   }
 
   .unit-foot .unit-link {
-    color: var(--y, #FFD23F);
+    color: var(--y, #60A5FA);
     text-decoration: none;
     border-bottom: 1px solid color-mix(in srgb, currentColor 45%, transparent);
     padding-bottom: 1px;

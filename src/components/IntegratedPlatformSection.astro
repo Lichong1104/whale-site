@@ -16,8 +16,8 @@
 
 <style>
   .platform-headline .pf-ready {
-    color: #DB2777;
-    background-image: linear-gradient(to top, rgba(255, 77, 141, 0.22) 36%, transparent 36%);
+    color: var(--co-blue-ink);
+    background-image: linear-gradient(to top, rgba(37, 99, 235, 0.16) 36%, transparent 36%);
     background-repeat: no-repeat;
     background-size: 0% 100%;
   }
@@ -45,9 +45,9 @@
     background-size: 100% 100%;
   }
 
-  /* Detector lock-on: fusion magenta owns the verb, orbital ring pings onto it */
+  /* Detector lock-on: company blue owns the verb, orbital ring pings onto it */
   .platform-headline .w-decide {
-    color: #DB2777;
+    color: var(--co-blue-ink);
     position: relative;
     left: -0.12em;
   }
@@ -61,7 +61,7 @@
     position: absolute;
     inset: -0.06em -0.26em;
     translate: -0.12em 0; /* track the word's left nudge */
-    border: 2px solid rgba(219, 39, 119, 0.55);
+    border: 2px solid rgba(29, 78, 216, 0.55);
     border-radius: 999px;
     opacity: 0;
     pointer-events: none;
@@ -86,7 +86,7 @@
     0% {
       opacity: 0;
       transform: scale(1.7);
-      box-shadow: 0 0 0 0 rgba(219, 39, 119, 0.3);
+      box-shadow: 0 0 0 0 rgba(29, 78, 216, 0.3);
     }
     40% {
       opacity: 1;
@@ -95,7 +95,7 @@
     100% {
       opacity: 1;
       transform: scale(1);
-      box-shadow: 0 0 0 18px rgba(219, 39, 119, 0);
+      box-shadow: 0 0 0 18px rgba(29, 78, 216, 0);
     }
   }
 

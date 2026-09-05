@@ -65,7 +65,7 @@ Whale brings these insights to life through AI solutions that seamlessly integra
 
 **Proven Results in Retail Execution**
 
-A leading beauty retailer has successfully leveraged Whale’s solutions–including SpaceSight, Echo, and Harbor–to enhance execution across store audits, beauty advisor training, and content compliance. The results include:
+A leading beauty retailer has successfully leveraged Whale’s solutions–including SpaceSight and Harbor–to enhance execution across store audits, beauty advisor training, and content compliance. The results include:
 
 1. 80% reduction in store audit costs
 

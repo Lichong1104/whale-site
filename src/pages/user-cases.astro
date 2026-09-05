@@ -5,7 +5,7 @@ import CTASection from '../components/CTASection.astro';
 import Footer from '../components/Footer.astro';
 
 const canonicalUrl = 'https://www.whale.sg/user-cases/';
-const pageDescription = 'Whale customer stories: Watsons reads real foot traffic across 4,000+ stores with SpaceSight, OCBC makes every sales conversation visible with Echo, and LVMH replaces human-led training with a closed-loop AI system.';
+const pageDescription = 'Whale customer stories: Watsons reads real foot traffic across 4,000+ stores with SpaceSight, and LVMH replaces human-led training with a closed-loop AI system.';
 
 const extraSchema = [
   {
@@ -18,8 +18,7 @@ const extraSchema = [
 ];
 
 const headlineWords = [
-  { t: 'See', c: 'vision' }, { t: 'the' }, { t: 'proof.' },
-  { t: 'Hear', c: 'voice' }, { t: 'the' }, { t: 'numbers.' }
+  { t: 'See', c: 'vision' }, { t: 'the' }, { t: 'proof.' }
 ];
 
 const cases = [
@@ -55,37 +54,8 @@ const cases = [
     ]
   },
   {
-    id: 'ocbc',
-    index: '02',
-    name: 'OCBC',
-    industry: 'Banking',
-    product: 'Echo',
-    productChip: 'Echo · Hears',
-    accent: 'voice',
-    title: 'Making every sales conversation visible',
-    img: '/user-cases/ocbc.jpg',
-    imgW: 1600,
-    imgH: 1066,
-    imgAlt: 'Pedestrians walking past the OCBC bank headquarters facade in Singapore',
-    challenge: [
-      'Credit-card sales conversations were essentially a black box.',
-      'OCBC had no visibility into whether representatives were following communication standards, no way to catch compliance violations as they happened, and no way to measure which conversations actually converted to sales.'
-    ],
-    helpedTitle: 'How Echo helped',
-    helped: [
-      'OCBC deployed Echo Mini to record and analyze live sales conversations at scale — now processing 480,000+ hours of audio a month, and growing. Because OCBC’s frontline conversations happen largely in Bahasa Indonesia, Whale built specific ASR and language models tuned for it, reaching over 80% accuracy.',
-      'The resulting quality scores didn’t just sit in a dashboard — OCBC built them directly into sales KPIs and commission structures, so service quality became something reps were actually incentivized to improve, not just measured on.'
-    ],
-    stats: [
-      { n: '150%', label: 'Increase in sales productivity' },
-      { n: '20%', label: 'Increase in conversion rate' },
-      { n: '80+', label: 'Serving capability' },
-      { n: '100+', label: 'Deployments' }
-    ]
-  },
-  {
     id: 'lvmh',
-    index: '03',
+    index: '02',
     name: 'LVMH',
     industry: 'Luxury',
     product: 'Whale',
@@ -130,16 +100,16 @@ const cases = [
   <main>
     <!--
       DIRECTION CONTRACT — /user-cases/
-      THESIS: this is the evidence page — three named deployments told as
+      THESIS: this is the evidence page — named deployments told as
         challenge → deployment → measured outcome. Numbers carry the pitch;
         adjectives stay home.
       OWN-WORLD: Sensorium particle-detector system in the /company/ blue
         scale — product track colors are retired; each case owns a tier of
-        the family instead (SpaceSight mid blue, Echo deep navy, Whale
-        training light blue). Each case is a captured event: mono CASE
-        index, HUD brackets on the stage frame, and a dark detector-readout
-        panel (blue-300 accents) for the outcome stats.
-      FORM: hero (word-rise headline + case index) → three full chapters with
+        the family instead (SpaceSight mid blue, Whale training light blue).
+        Each case is a captured event: mono CASE index, HUD brackets on the
+        stage frame, and a dark detector-readout panel (blue-300 accents)
+        for the outcome stats.
+      FORM: hero (word-rise headline + case index) → full chapters with
         sticky photo stage alternating sides → dark CTA. No carousel: each
         case earns a whole chapter.
     -->
@@ -152,7 +122,7 @@ const cases = [
             <Fragment><span class="wm"><span class={`w${word.c ? ` w-${word.c}` : ''}`} style={`--i:${i}`}>{word.t}</span></span>{' '}</Fragment>
           ))}
         </h1>
-        <p class="uc-subhead">Three deployments across retail, banking, and luxury — what was broken, what Whale deployed on it, and what the numbers say after.</p>
+        <p class="uc-subhead">Two deployments across retail and luxury — what was broken, what Whale deployed on it, and what the numbers say after.</p>
         <nav class="uc-index" aria-label="Jump to case study">
           {cases.map((c) => (
             <a href={`#${c.id}`} class="uc-index-link" style={`--acc: var(--track-${c.accent}-ink); --acc-raw: var(--track-${c.accent})`}>
@@ -240,7 +210,7 @@ const cases = [
 
     <CTASection
       headline="Your operation could be<br>the next case study."
-      lead="SpaceSight and Echo deploy on the infrastructure you already have. Tell us about your floor — we'll show you what we'd measure first."
+      lead="SpaceSight deploys on the infrastructure you already have. Tell us about your floor — we'll show you what we'd measure first."
       primaryLabel="Request a Demo"
     />
   </main>
@@ -250,19 +220,17 @@ const cases = [
 <style>
   /* ---------- Palette: company blue system ----------
      Recolored to match /company/: the per-product track colors (vision
-     yellow / voice cyan / sensor magenta) resolve to the company blue scale
+     yellow / sensor magenta) resolve to the company blue scale
      inside this page. Each case keeps its own tier within the family —
-     mid blue (SpaceSight), deep navy (Echo), light blue (Whale training) —
-     so the three chapters stay distinguishable without leaving the scale.
+     mid blue (SpaceSight), light blue (Whale training) —
+     so the chapters stay distinguishable without leaving the scale.
      On photo stages and the dark outcome readout, raw accents step to
      blue-300 for legibility. */
   .uc-hero,
   .uc-case {
     --track-vision: #2563EB;
-    --track-voice: #1E40AF;
     --track-sensor: #60A5FA;
     --track-vision-ink: #1D4ED8;
-    --track-voice-ink: #1E3A8A;
     --track-sensor-ink: #2563EB;
   }
   .uc-stage,
@@ -312,7 +280,6 @@ const cases = [
   }
 
   .uc-headline .w-vision { color: var(--track-vision-ink); }
-  .uc-headline .w-voice { color: var(--track-voice-ink); }
 
   .uc-subhead {
     max-width: 56ch;
@@ -331,7 +298,7 @@ const cases = [
 
   @media (min-width: 721px) {
     .uc-index {
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 
