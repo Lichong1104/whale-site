@@ -95,7 +95,10 @@ const deploySteps = [
 
 const certs = [
   { src: '/cert-logos/soc2-shield.png', alt: 'SOC 2 Type II', label: 'SOC 2 Type II' },
-  { src: '/cert-logos/gdpr-badge.png', alt: 'GDPR Compliant', label: 'GDPR Compliant' }
+  { src: '/cert-logos/gdpr-badge.png', alt: 'GDPR Compliant', label: 'GDPR Compliant' },
+  { src: '/cert-logos/iso-27001-badge.png', alt: 'ISO 27001 Certified — Information Security Management', label: 'ISO 27001 Certified' },
+  { src: '/cert-logos/iso-27701-badge.png', alt: 'ISO 27701 Certified — Privacy Information Management', label: 'ISO 27701 Certified' },
+  { src: '/cert-logos/hipaa-badge.png', alt: 'HIPAA Compliant', label: 'HIPAA Compliant' }
 ];
 
 const tabs = [
@@ -168,11 +171,11 @@ const tabs = [
           <figure class="ss2-plate" data-reveal style="--i:5">
             <div class="ss2-plate-media">
               <picture>
-                <source srcset="/products/ss2-ai-audit.webp" type="image/webp" />
-                <img src="/products/ss2-ai-audit.png" alt="SpaceSight AI audit interface reviewing store compliance on live camera footage" width="1376" height="768" loading="eager" decoding="async" />
+                <source srcset="/products/ss2-hero-camera.webp" type="image/webp" />
+                <img src="/products/ss2-hero-camera.jpg" alt="AI-powered dome camera monitoring a retail store with intelligent analytics overlay" width="1376" height="734" loading="eager" decoding="async" />
               </picture>
             </div>
-            <figcaption class="ss2-plate-cap"><span>FIG. 00</span><span>AI audit pass — exception flagged, evidence attached</span></figcaption>
+            <figcaption class="ss2-plate-cap"><span>FIG. 00</span><span>AI camera coverage — every site, every zone, always on</span></figcaption>
           </figure>
         </div>
 
@@ -253,12 +256,9 @@ const tabs = [
           </div>
           <figure class="ss2-plate ss2-fig" data-reveal>
             <div class="ss2-plate-media ss2-fig-media">
-              <picture>
-                <source srcset="/products/ss2-flow-heatmap.webp" type="image/webp" />
-                <img src="/products/ss2-flow-heatmap.png" alt="SpaceSight heatmap analysis showing dwell time by zone on a store floor plan" width="1600" height="1004" loading="lazy" decoding="async" />
-              </picture>
+              <video src="/products/ss2-flow-demo.mp4" poster="/products/ss2-flow-demo-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="SpaceSight customer flow analytics demo — dwell time and traffic patterns in live product view" style="aspect-ratio: 1858/956"></video>
             </div>
-            <figcaption class="ss2-plate-cap"><span>FIG. B</span><span>Heatmap analysis — dwell time by zone, live product view</span></figcaption>
+            <figcaption class="ss2-plate-cap"><span>FIG. B</span><span>Customer flow analytics — live product demo</span></figcaption>
           </figure>
         </article>
 
