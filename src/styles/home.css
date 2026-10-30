@@ -125,16 +125,6 @@ body {
   }
 }
 
-.home-header-cta {
-  display: none;
-}
-
-@media (min-width: 721px) {
-  .home-header-cta {
-    display: inline-flex;
-  }
-}
-
 .home-header .nav-toggle {
   display: flex;
 }
