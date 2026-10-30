@@ -1,30 +1,34 @@
 ---
+import '../styles/home.css';
 import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
-import Hero from '../components/Hero.astro';
-import ProductsShowcase from '../components/ProductsShowcase.astro';
-import IntegratedPlatformSection from '../components/IntegratedPlatformSection.astro';
-import TrustBand from '../components/TrustBand.astro';
-import ClientLogosSection from '../components/ClientLogosSection.astro';
-import FAQSection from '../components/FAQSection.astro';
-import CTASection from '../components/CTASection.astro';
-import Footer from '../components/Footer.astro';
+import HomeHeader from '../components/home/HomeHeader.astro';
+import HomeHero from '../components/home/HomeHero.astro';
+import StatsBand from '../components/home/StatsBand.astro';
+import LogoCarousel from '../components/home/LogoCarousel.astro';
+import ProductEcosystem from '../components/home/ProductEcosystem.astro';
+import PlugAndPlaySection from '../components/home/PlugAndPlaySection.astro';
+import VideoDemoSection from '../components/home/VideoDemoSection.astro';
+import IndustryAccordion from '../components/home/IndustryAccordion.astro';
+import HomeFAQSection from '../components/home/HomeFAQSection.astro';
+import HomeFooter from '../components/home/HomeFooter.astro';
 ---
 
 <Layout
-  title="Whale AI | Physical Intelligence for Enterprise Operations"
-  description="Whale converts cameras, voice, and floor activity into real-time intelligence for retail, automotive, healthcare, and transit. Request a demo."
+  title="Whale AI | World Model for Commercial Intelligence"
+  description="Whale AI converts camera footage, voice, and floor activity into real-time intelligence for retail, automotive, healthcare, and more. Book a demo."
   canonical="https://www.whale.sg/"
 >
-  <Header />
-  <main>
-    <Hero />
-    <ProductsShowcase />
-    <IntegratedPlatformSection />
-    <TrustBand />
-    <ClientLogosSection />
-    <FAQSection />
-    <CTASection />
+  <HomeHeader />
+  <main class="home-page">
+    <HomeHero />
+    <StatsBand />
+    <LogoCarousel id="clients-1" />
+    <ProductEcosystem />
+    <PlugAndPlaySection />
+    <VideoDemoSection />
+    <IndustryAccordion />
+    <LogoCarousel id="clients-2" />
+    <HomeFAQSection />
   </main>
-  <Footer />
+  <HomeFooter />
 </Layout>

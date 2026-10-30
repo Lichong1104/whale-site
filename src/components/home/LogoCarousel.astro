@@ -1,0 +1,20 @@
+---
+export interface Props {
+  id?: string;
+}
+const { id = 'clients' } = Astro.props;
+const logos = [
+  'LOGO', 'LOGO', 'LOGO', 'LOGO', 'LOGO', 'LOGO', 'LOGO', 'LOGO'
+];
+---
+
+<section class="home-logo-carousel" aria-label="Trusted by" id={id}>
+  <div class="home-logo-track">
+    {logos.map((label, i) => (
+      <span class="home-logo-item" aria-hidden={i >= 4 ? 'true' : undefined}>{label}</span>
+    ))}
+    {logos.map((label, i) => (
+      <span class="home-logo-item" aria-hidden="true">{label}</span>
+    ))}
+  </div>
+</section>

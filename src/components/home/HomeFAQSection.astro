@@ -1,0 +1,70 @@
+---
+const faqs = [
+  {
+    question: 'What is SpaceSight, and what is it not?',
+    answer: "SpaceSight is Whale's spatial intelligence and AI-audit platform that transforms camera footage into structured metrics, real-time alerts, and operational workflows. It is far more than a basic people-counting tool, delivering end-to-end spatial analytics, safety checks, multi-site benchmarking, and automated evidence review across your physical operations."
+  },
+  {
+    question: 'How is ROI measured?',
+    answer: 'ROI is tied to measurable operational outcomes: reduced stockouts, faster issue resolution, improved compliance scores, lower shrink, and labor efficiency. Whale dashboards track before/after metrics by site so teams can quantify impact in weeks, not quarters.'
+  },
+  {
+    question: 'Do you use facial recognition? What are you actually capturing?',
+    answer: 'No. SpaceSight is built for operational intelligence, not identity surveillance. We analyze scene context, object placement, movement patterns, and compliance events — all while following privacy-by-design principles and regional data regulations.'
+  },
+  {
+    question: 'Does our video leave the building, and where does the data live?',
+    answer: 'Deployment is flexible. SpaceSight supports on-premise edge processing, private cloud, and hybrid setups. Video streams can be processed locally at the edge, with only anonymized metadata and alerts sent to the cloud dashboard.'
+  },
+  {
+    question: 'Can we use our existing cameras?',
+    answer: 'Yes. SpaceSight works with most standard CCTV and IP cameras. Our team maps your current infrastructure and recommends minimal-addition upgrades only when needed.'
+  }
+];
+---
+
+<section class="home-section home-faq" id="faq">
+  <div class="home-container">
+    <div class="home-section-head center">
+      <h2 class="home-section-title">Frequently Asked Questions</h2>
+      <p class="home-section-lead">Everything you need to know about SpaceSight before scaling across your sites.</p>
+    </div>
+
+    <div class="home-faq-list" data-faq-list>
+      {faqs.map((faq, index) => (
+        <details class="home-faq-item" open={index === 0} data-faq-item>
+          <summary class="home-faq-summary">
+            <span class="home-faq-number">{String(index + 1).padStart(2, '0')}</span>
+            <span class="home-faq-question">{faq.question}</span>
+            <span class="home-faq-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="home-faq-answer">
+            <p>{faq.answer}</p>
+          </div>
+        </details>
+      ))}
+    </div>
+
+    <div class="home-faq-more">
+      <button type="button" data-faq-expand>Show 4 more</button>
+    </div>
+  </div>
+
+  <script is:inline>
+    (function () {
+      var list = document.querySelector('[data-faq-list]');
+      var expandBtn = document.querySelector('[data-faq-expand]');
+      if (!list || !expandBtn) return;
+      var items = Array.from(list.querySelectorAll('[data-faq-item]'));
+      expandBtn.addEventListener('click', function () {
+        var allOpen = items.slice(1).every(function (item) { return item.open; });
+        items.slice(1).forEach(function (item) { item.open = !allOpen; });
+        expandBtn.textContent = allOpen ? 'Show 4 more' : 'Show less';
+      });
+      list.addEventListener('toggle', function () {
+        var allOpen = items.slice(1).every(function (item) { return item.open; });
+        expandBtn.textContent = allOpen ? 'Show less' : 'Show 4 more';
+      }, true);
+    })();
+  </script>
+</section>

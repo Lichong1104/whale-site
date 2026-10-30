@@ -1,0 +1,125 @@
+---
+---
+
+<header class="home-header site-header" data-home-header>
+  <a href="/" class="logo" aria-label="Whale AI home">
+    <img src="/home-assets/logo.png" alt="Whale AI" width="144" height="42">
+  </a>
+  <nav class="home-nav site-nav" aria-label="Primary">
+    <a href="/products/" class="nav-link">Products</a>
+    <a href="/solutions/" class="nav-link">Solutions</a>
+    <a href="/company/" class="nav-link">Company</a>
+    <a href="/blog/" class="nav-link">Blog</a>
+    <a href="/blog/" class="nav-link">News</a>
+    <a href="#home-contact" class="nav-link">Contact</a>
+  </nav>
+  <button type="button" class="btn btn-primary home-header-cta" data-open-modal data-source-type="官网首页Header预约演示">Book a Demo</button>
+  <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="home-nav-drawer" aria-label="Open menu">
+    <span class="nav-toggle-bar"></span>
+    <span class="nav-toggle-bar"></span>
+    <span class="nav-toggle-bar"></span>
+  </button>
+</header>
+
+<div class="nav-drawer-backdrop" aria-hidden="true"></div>
+<nav class="nav-drawer" id="home-nav-drawer" aria-label="Mobile navigation">
+  <div class="nav-drawer-head">
+    <span class="nav-drawer-title">Menu</span>
+    <button type="button" class="nav-drawer-close" data-nav-close aria-label="Close menu">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+  </div>
+  <a href="/products/" class="nav-drawer-link">Products</a>
+  <a href="/solutions/" class="nav-drawer-link">Solutions</a>
+  <a href="/company/" class="nav-drawer-link">Company</a>
+  <a href="/blog/" class="nav-drawer-link">Blog</a>
+  <a href="/blog/" class="nav-drawer-link">News</a>
+  <a href="#home-contact" class="nav-drawer-link">Contact</a>
+  <button type="button" class="btn btn-primary nav-drawer-cta" data-open-modal data-source-type="官网首页抽屉预约演示">Book a Demo</button>
+</nav>
+
+<script is:inline>
+(function () {
+  'use strict';
+  var header = document.querySelector('[data-home-header]');
+  if (header) {
+    function onScroll() {
+      header.classList.toggle('is-scrolled', window.scrollY > 10);
+    }
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+  }
+
+  var toggle = document.querySelector('.home-header .nav-toggle');
+  var drawer = document.getElementById('home-nav-drawer');
+  var backdrop = document.querySelector('.home-header + .nav-drawer-backdrop');
+  if (!toggle || !drawer || !backdrop) return;
+
+  var lastFocused = null;
+  var lockedScrollY = 0;
+
+  function focusables() {
+    return drawer.querySelectorAll('a[href], button:not([disabled])');
+  }
+  function lockScroll() {
+    lockedScrollY = window.scrollY;
+    document.body.style.overflow = 'hidden';
+    document.body.style.position = 'fixed';
+    document.body.style.top = '-' + lockedScrollY + 'px';
+    document.body.style.left = '0';
+    document.body.style.right = '0';
+  }
+  function unlockScroll() {
+    document.body.style.overflow = '';
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.left = '';
+    document.body.style.right = '';
+    window.scrollTo(0, lockedScrollY);
+  }
+  function openDrawer() {
+    lastFocused = document.activeElement;
+    drawer.classList.add('is-open');
+    backdrop.classList.add('is-open');
+    toggle.setAttribute('aria-expanded', 'true');
+    lockScroll();
+    var first = focusables()[0];
+    if (first) first.focus();
+  }
+  function closeDrawer() {
+    drawer.classList.remove('is-open');
+    backdrop.classList.remove('is-open');
+    toggle.setAttribute('aria-expanded', 'false');
+    unlockScroll();
+    if (lastFocused && document.contains(lastFocused)) lastFocused.focus();
+  }
+  function isOpen() { return drawer.classList.contains('is-open'); }
+
+  toggle.addEventListener('click', function () { isOpen() ? closeDrawer() : openDrawer(); });
+  backdrop.addEventListener('click', closeDrawer);
+  drawer.querySelectorAll('[data-nav-close]').forEach(function (el) {
+    el.addEventListener('click', closeDrawer);
+  });
+  drawer.querySelectorAll('a, [data-open-modal]').forEach(function (el) {
+    el.addEventListener('click', closeDrawer);
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (!isOpen()) return;
+    if (e.key === 'Escape') { closeDrawer(); return; }
+    if (e.key === 'Tab') {
+      var items = Array.prototype.slice.call(focusables());
+      if (!items.length) return;
+      var first = items[0], last = items[items.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+  });
+
+  window.matchMedia('(min-width: 721px)').addEventListener('change', function (e) {
+    if (e.matches && isOpen()) closeDrawer();
+  });
+})();
+</script>

@@ -1,0 +1,85 @@
+---
+const industries = [
+  {
+    title: 'Fashion, Footwear, Off-price',
+    body: 'Fashion, footwear, off-price: new drops, missing sizes, treasure-hunt aisles. SpaceSight monitors every store 24/7 and helps teams resolve issues before they spread.'
+  },
+  {
+    title: 'Beauty & Personal Care',
+    body: 'A missing tester or an overlooked shopper can mean a missed sale. SpaceSight tracks shelf conditions, tester availability, and service coverage so beauty teams stay focused on what drives conversion.'
+  },
+  {
+    title: 'Grocery',
+    body: 'Empty shelves, long checkout lines, and fresh food left out too long all erode trust. SpaceSight flags replenishment, queue, and food-safety issues in real time.'
+  },
+  {
+    title: 'Restaurants & Cafés',
+    body: 'During a busy shift, small oversights can quickly affect food safety and service speed. SpaceSight helps crews keep prep areas, hand-wash stations, and service lines on standard.'
+  },
+  {
+    title: 'Telecom & Electronics',
+    body: 'Customers come in to try, compare, and get advice before buying. SpaceSight ensures displays stay staffed, demo units stay active, and high-value zones never go unattended.'
+  },
+  {
+    title: 'Variety, Discount & Convenience',
+    body: 'Fast-moving stock, lean teams, and busy aisles leave little room for error. SpaceSight spots out-of-stocks, misplaced goods, and checkout bottlenecks so stores keep pace.'
+  }
+];
+---
+
+<section class="home-section home-industries" id="industries">
+  <div class="home-container-wide">
+    <div class="home-section-head">
+      <h2 class="home-section-title">See it. Fix it— before it becomes a pattern.</h2>
+      <p class="home-section-lead">
+        Spot issues early. Resolve them before they spread across stores.
+      </p>
+    </div>
+
+    <div class="home-industry-grid">
+      <div class="home-industry-list" role="tablist" aria-label="Industries">
+        {industries.map((item, index) => (
+          <details class="home-industry-item" open={index === 0} data-industry-item>
+            <summary class="home-industry-summary" role="tab" aria-selected={index === 0 ? 'true' : 'false'}>
+              <span class="home-industry-number">{index + 1}</span>
+              <span class="home-industry-title">{item.title}</span>
+              <span class="home-industry-chevron" aria-hidden="true">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </span>
+            </summary>
+            <div class="home-industry-body">
+              <p>{item.body}</p>
+              <a href="/solutions/">More details &nbsp;&gt;&gt;</a>
+            </div>
+          </details>
+        ))}
+      </div>
+
+      <div class="home-industry-media">
+        <span class="home-industry-live">Live Preview</span>
+        <img src="/home-assets/industry-demo.webp" alt="SpaceSight detection preview" width="1200" height="684" loading="lazy" decoding="async">
+        <div class="home-industry-media-caption">
+          <h4>SpaceSight Detection Demo</h4>
+          <p>Real-time contaminant detection powered by AI spatial intelligence</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script is:inline>
+    (function () {
+      var items = document.querySelectorAll('[data-industry-item]');
+      items.forEach(function (item) {
+        item.addEventListener('toggle', function () {
+          if (item.open) {
+            items.forEach(function (other) {
+              if (other !== item && other.open) other.open = false;
+            });
+          }
+        });
+      });
+    })();
+  </script>
+</section>

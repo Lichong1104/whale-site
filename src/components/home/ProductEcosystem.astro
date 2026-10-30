@@ -1,0 +1,99 @@
+---
+const products = [
+  {
+    tag: 'SEE',
+    tagClass: 'blue',
+    name: 'SpaceSight: AI spatial intelligence',
+    desc: 'VLM-powered, 24/7 AI inspections; turn activity in physical spaces into actionable insights that improve operations.',
+    icon: '/home-assets/icon-spacesight.png'
+  },
+  {
+    tag: 'THINK',
+    tagClass: 'purple',
+    name: 'Alivia: Agent collaboration',
+    desc: 'AI-native agents built on enterprise data and workflows to automate decisions and execute operations.',
+    icon: '/home-assets/icon-alivia.png',
+    apps: [
+      { name: 'Mira: Data Analytics Platform', desc: 'Mira combines AI-powered data exploration, dashboards, and agent-assisted configuration. A planned business knowledge base will help turn findings into business-relevant insights.' },
+      { name: 'Lume: AI social media growth', desc: 'Turns a creative input into multi-platform content, managing production, distribution, and performance end to end.' }
+    ]
+  },
+  {
+    tag: 'HEAR',
+    tagClass: 'orange',
+    name: 'Echo: AI voice intelligence',
+    desc: '100+ languages: auto-capture conversations, assess service quality, uncover customer needs, and drive training.',
+    icon: '/home-assets/icon-echo.png'
+  },
+  {
+    tag: 'MEMORY',
+    tagClass: 'purple',
+    name: 'Harbor: Content and knowledge hub',
+    desc: 'Centralized enterprise knowledge: multimodal search, compliant knowledge bases, intelligent Q&A, long-term memory.',
+    icon: '/home-assets/icon-harbor.png'
+  },
+  {
+    tag: 'EDGE AI INFRA, CONNECT',
+    tagClass: 'gray',
+    name: 'Stardust: Cloud and edge AI IoT',
+    desc: 'Unified platform connecting edge devices, with cloud-edge AI powering intelligent IoT infrastructure.',
+    icon: '/home-assets/icon-stardust.png'
+  },
+  {
+    tag: 'CLOUD AI INFRA, CONTROL',
+    tagClass: 'gray',
+    name: 'Novus: AI model governance',
+    desc: 'Unified large-model management: orchestration, access control, cost, security, private deployment.',
+    icon: '/home-assets/icon-novus.png'
+  }
+];
+---
+
+<section class="home-section home-ecosystem" id="ecosystem">
+  <div class="home-container">
+    <div class="home-section-head">
+      <h2 class="home-section-title">Enterprise AI product ecosystem</h2>
+      <p class="home-section-lead">
+        Our world models understand real-world business environments. AIOS (AI Operating System) brings that intelligence into everyday enterprise operations.
+      </p>
+    </div>
+
+    <div class="home-bu-row">
+      <div class="home-bu-card">
+        <h3 class="home-bu-title blue">WORLD MODEL BU</h3>
+        <p class="home-bu-desc">Physical world sensing, understanding & feedback</p>
+      </div>
+      <div class="home-bu-card">
+        <h3 class="home-bu-title purple">AIOS BU</h3>
+        <p class="home-bu-desc">Enterprise AI platform & App ecosystem.</p>
+      </div>
+    </div>
+
+    <div class="home-product-grid">
+      {products.map((p) => (
+        <article class="home-product-card">
+          <div class="home-product-header">
+            <div class="home-product-icon">
+              <img src={p.icon} alt="" width="48" height="48" loading="lazy" decoding="async">
+            </div>
+            <div>
+              <div class={`home-product-tag ${p.tagClass}`}>{p.tag}</div>
+              <h3 class="home-product-name">{p.name}</h3>
+            </div>
+          </div>
+          <p class="home-product-desc">{p.desc}</p>
+          {p.apps && (
+            <div class="home-app-row">
+              {p.apps.map((app) => (
+                <div class="home-app-card">
+                  <h4>{app.name}</h4>
+                  <p>{app.desc}</p>
+                </div>
+              ))}
+            </div>
+          )}
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
