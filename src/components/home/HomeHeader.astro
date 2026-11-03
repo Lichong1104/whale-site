@@ -2,22 +2,27 @@
 ---
 
 <header class="home-header site-header" data-home-header>
-  <a href="/" class="logo" aria-label="Whale AI home">
-    <img src="/home-assets/logo.png" alt="Whale AI" width="144" height="42">
-  </a>
-  <nav class="home-nav site-nav" aria-label="Primary">
-    <a href="/products/" class="nav-link">Products</a>
-    <a href="/solutions/" class="nav-link">Solutions</a>
-    <a href="/company/" class="nav-link">Company</a>
-    <a href="/blog/" class="nav-link">Blog</a>
-    <a href="/blog/" class="nav-link">News</a>
-    <a href="#home-contact" class="nav-link">Contact</a>
-  </nav>
-  <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="home-nav-drawer" aria-label="Open menu">
-    <span class="nav-toggle-bar"></span>
-    <span class="nav-toggle-bar"></span>
-    <span class="nav-toggle-bar"></span>
-  </button>
+  <div class="home-header-bar">
+    <a href="/" class="logo" aria-label="Whale AI home">
+      <img src="/home-assets/logo.png" alt="Whale AI" width="144" height="42">
+    </a>
+    <nav class="home-nav site-nav" aria-label="Primary">
+      <a href="/products/" class="nav-link">Products</a>
+      <a href="/solutions/" class="nav-link">Solutions</a>
+      <a href="/company/" class="nav-link">Company</a>
+      <a href="/blog/" class="nav-link">Blog</a>
+      <a href="/blog/" class="nav-link">News</a>
+      <a href="#home-contact" class="nav-link">Contact</a>
+    </nav>
+    <button type="button" class="btn btn-primary home-header-cta" data-open-modal data-source-type="Homepage header">
+      Book a demo
+    </button>
+    <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="home-nav-drawer" aria-label="Open menu">
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+    </button>
+  </div>
 </header>
 
 <div class="nav-drawer-backdrop" aria-hidden="true"></div>
@@ -36,6 +41,7 @@
   <a href="/blog/" class="nav-drawer-link">Blog</a>
   <a href="/blog/" class="nav-drawer-link">News</a>
   <a href="#home-contact" class="nav-drawer-link">Contact</a>
+  <button type="button" class="btn btn-primary nav-drawer-cta" data-open-modal data-source-type="Homepage header mobile">Book a demo</button>
 </nav>
 
 <script is:inline>

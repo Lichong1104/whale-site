@@ -1,26 +1,93 @@
 ---
+const slides = [
+  {
+    headline: 'World Model for Commercial Intelligence.',
+    lead: 'AI that sees beyond the lens, turning real-world activity into meaningful insights for better business decisions.',
+    image: '/home-assets/hero-collage.webp',
+    imageWidth: 1600,
+    imageHeight: 900,
+    imageAlt: 'Whale AI 3D wordmark built from retail, automotive, travel and everyday objects'
+  },
+  {
+    headline: 'Empower your teams to move your business forward.',
+    lead: 'Make AI part of your everyday work, helping your teams spend less time on routine tasks and more time creating business value.',
+    image: '/home-assets/aios-hero.png',
+    imageWidth: 2900,
+    imageHeight: 950,
+    imageAlt: 'AIOS 3D wordmark'
+  }
+];
 ---
 
-<section class="home-hero" id="home-hero">
-  <div class="home-hero-bg" aria-hidden="true">
-    <picture>
-      <source srcset="/home-assets/hero-bg.webp" type="image/webp">
-      <img src="/home-assets/hero-bg.png" alt="" width="1920" height="1080" loading="eager" decoding="async">
-    </picture>
-  </div>
-  <img class="home-hero-decor" src="/home-assets/hero-decor.png" alt="" width="120" height="120" loading="eager" decoding="async" aria-hidden="true">
-  <div class="home-hero-grid">
-    <div class="home-hero-copy">
-      <h1>World Model for Commercial Intelligence.</h1>
-      <p class="home-hero-lead">
-        AI that sees beyond the lens, turning real-world activity into meaningful insights for better business decisions.
-      </p>
-      <div class="home-hero-actions">
-        <a href="/products/" class="btn btn-ghost btn-large">Explore products</a>
+<section class="home-hero" id="home-hero" data-hero-carousel>
+  <div class="home-hero-inner">
+    {slides.map((slide, i) => (
+      <div class={`home-hero-slide ${i === 0 ? 'is-active' : ''}`} data-slide-index={i}>
+        <div class="home-hero-copy">
+          <h1>{slide.headline}</h1>
+          <p class="home-hero-lead">{slide.lead}</p>
+        </div>
+
+        <div class="home-hero-media">
+          <img src={slide.image} alt={slide.imageAlt} width={slide.imageWidth} height={slide.imageHeight} loading={i === 0 ? 'eager' : 'lazy'} decoding="async">
+        </div>
+
+        <div class="home-hero-actions">
+          <button type="button" class="btn btn-primary btn-large" data-open-modal data-source-type="Homepage hero">
+            Book a demo
+          </button>
+          <a href="/products/" class="btn btn-ghost btn-large">
+            Explore products
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="5" y1="12" x2="19" y2="12"/>
+              <polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </a>
+        </div>
       </div>
-    </div>
-    <div class="home-hero-media">
-      <img src="/home-assets/hero-collage.webp" alt="Whale AI spatial intelligence dashboard" width="1200" height="660" loading="eager" decoding="async">
-    </div>
+    ))}
   </div>
+
+  <div class="home-hero-slider" role="tablist" aria-label="Hero slides">
+    {slides.map((_, i) => (
+      <button
+        type="button"
+        class={`home-hero-slider-dot ${i === 0 ? 'is-active' : ''}`}
+        data-slide-to={i}
+        role="tab"
+        aria-selected={i === 0}
+        aria-label={`Slide ${i + 1}`}
+      >
+        <span class="home-hero-slider-number" aria-hidden="true">{i + 1}</span>
+      </button>
+    ))}
+  </div>
+
+  <script is:inline>
+    (function () {
+      'use strict';
+      var root = document.querySelector('[data-hero-carousel]');
+      if (!root) return;
+      var slides = Array.from(root.querySelectorAll('[data-slide-index]'));
+      var dots = Array.from(root.querySelectorAll('[data-slide-to]'));
+      var current = 0;
+
+      function goTo(index) {
+        if (index < 0 || index >= slides.length) return;
+        slides[current].classList.remove('is-active');
+        dots[current].classList.remove('is-active');
+        dots[current].setAttribute('aria-selected', 'false');
+        current = index;
+        slides[current].classList.add('is-active');
+        dots[current].classList.add('is-active');
+        dots[current].setAttribute('aria-selected', 'true');
+      }
+
+      dots.forEach(function (dot) {
+        dot.addEventListener('click', function () {
+          goTo(parseInt(dot.getAttribute('data-slide-to'), 10));
+        });
+      });
+    })();
+  </script>
 </section>
