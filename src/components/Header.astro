@@ -3,19 +3,17 @@
 
 <header class="site-header">
   <a href="/" class="logo" aria-label="Whale AI home">
-    <img src="/whale-logo.png" alt="Whale AI" width="144" height="32">
+    <img src="/home-assets/logo-figma.svg" alt="Whale AI" width="182" height="50">
   </a>
   <nav class="site-nav" aria-label="Primary">
-    <a href="/spacesight/" class="nav-link">Products</a>
+    <a href="/products/" class="nav-link">Products</a>
     <a href="/solutions/" class="nav-link">Solutions</a>
     <a href="/company/" class="nav-link">Company</a>
-
     <a href="/blog/" class="nav-link">Blog</a>
     <a href="/blog/" class="nav-link">News</a>
-
     <a href="/#contact" class="nav-link">Contact</a>
   </nav>
-  <button type="button" class="btn btn-primary header-cta" data-open-modal data-source-type="官网立即咨询留资">Book a Demo</button>
+  <button type="button" class="btn btn-primary header-cta" data-open-modal data-source-type="Site header">Book a demo</button>
   <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="mobile-nav-drawer" aria-label="Open menu">
     <span class="nav-toggle-bar"></span>
     <span class="nav-toggle-bar"></span>
@@ -33,154 +31,14 @@
       </svg>
     </button>
   </div>
-  <a href="/spacesight/" class="nav-drawer-link">Products</a>
+  <a href="/products/" class="nav-drawer-link">Products</a>
   <a href="/solutions/" class="nav-drawer-link">Solutions</a>
   <a href="/company/" class="nav-drawer-link">Company</a>
   <a href="/blog/" class="nav-drawer-link">Blog</a>
   <a href="/blog/" class="nav-drawer-link">News</a>
   <a href="/#contact" class="nav-drawer-link">Contact</a>
-  <button type="button" class="btn btn-primary nav-drawer-cta" data-open-modal data-source-type="官网立即咨询留资">Book a Demo</button>
+  <button type="button" class="btn btn-primary nav-drawer-cta" data-open-modal data-source-type="Site header mobile">Book a demo</button>
 </nav>
-
-<style>
-  .site-nav {
-    height: 100%;
-  }
-  .nav-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.35rem;
-    background: transparent;
-    border: none;
-    font: inherit;
-    color: var(--text-secondary);
-    cursor: pointer;
-    padding: 0.5rem 0;
-    text-decoration: none;
-    font-weight: 500;
-    white-space: nowrap;
-    transition: color 0.2s ease;
-  }
-  .nav-link:hover {
-    color: var(--text);
-  }
-
-  /* Hamburger — mobile only */
-  .nav-toggle {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-    width: 44px;
-    height: 44px;
-    padding: 0;
-    border: none;
-    border-radius: var(--radius-sm);
-    background: transparent;
-    cursor: pointer;
-    flex: 0 0 auto;
-  }
-  .nav-toggle-bar {
-    width: 20px;
-    height: 2px;
-    border-radius: 2px;
-    background: var(--text);
-  }
-
-  /* Drawer + backdrop — hidden on desktop by media query below */
-  .nav-drawer {
-    position: fixed;
-    top: 0;
-    right: 0;
-    z-index: 160;
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-xs);
-    width: min(320px, 84vw);
-    height: 100dvh;
-    padding: var(--space-sm) var(--space-md) var(--space-md);
-    background: var(--bg-elevated);
-    box-shadow: -12px 0 40px rgba(11, 16, 32, 0.18);
-    transform: translateX(100%);
-    visibility: hidden;
-    transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), visibility 0s linear 0.28s;
-    overflow-y: auto;
-  }
-  .nav-drawer.is-open {
-    transform: translateX(0);
-    visibility: visible;
-    transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), visibility 0s;
-  }
-  .nav-drawer-backdrop {
-    position: fixed;
-    inset: 0;
-    z-index: 150;
-    background: rgba(11, 16, 32, 0.5);
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.28s ease, visibility 0s linear 0.28s;
-  }
-  .nav-drawer-backdrop.is-open {
-    opacity: 1;
-    visibility: visible;
-    transition: opacity 0.28s ease, visibility 0s;
-  }
-  .nav-drawer-head {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-bottom: var(--space-xs);
-    margin-bottom: var(--space-xs);
-    border-bottom: 1px solid rgba(15, 23, 42, 0.08);
-  }
-  .nav-drawer-title {
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 1rem;
-  }
-  .nav-drawer-close {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 44px;
-    height: 44px;
-    border: none;
-    border-radius: 50%;
-    background: transparent;
-    color: var(--text-secondary);
-    cursor: pointer;
-  }
-  .nav-drawer-link {
-    display: block;
-    padding: 0.75rem 0.25rem;
-    font-weight: 500;
-    font-size: 1.05rem;
-    color: var(--text-secondary);
-    text-decoration: none;
-  }
-  .nav-drawer-link:hover {
-    color: var(--text);
-  }
-  .nav-drawer-cta {
-    margin-top: var(--space-sm);
-  }
-
-  @media (min-width: 721px) {
-    .nav-toggle,
-    .nav-drawer,
-    .nav-drawer-backdrop {
-      display: none;
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .nav-drawer,
-    .nav-drawer-backdrop {
-      transition: none;
-    }
-  }
-</style>
 
 <script is:inline>
 (function () {
@@ -198,8 +56,8 @@
   }
   function lockScroll() {
     lockedScrollY = window.scrollY;
-    document.body.style.overflow = 'hidden';   /* mirrors leads.js openModal */
-    document.body.style.position = 'fixed';    /* iOS Safari body-lock */
+    document.body.style.overflow = 'hidden';
+    document.body.style.position = 'fixed';
     document.body.style.top = '-' + lockedScrollY + 'px';
     document.body.style.left = '0';
     document.body.style.right = '0';
@@ -235,7 +93,6 @@
   drawer.querySelectorAll('[data-nav-close]').forEach(function (el) {
     el.addEventListener('click', closeDrawer);
   });
-  /* close on link click and on drawer CTA (leads.js opens modal after this handler) */
   drawer.querySelectorAll('a, [data-open-modal]').forEach(function (el) {
     el.addEventListener('click', closeDrawer);
   });
@@ -243,7 +100,7 @@
   document.addEventListener('keydown', function (e) {
     if (!isOpen()) return;
     if (e.key === 'Escape') { closeDrawer(); return; }
-    if (e.key === 'Tab') {  /* minimal focus trap */
+    if (e.key === 'Tab') {
       var items = Array.prototype.slice.call(focusables());
       if (!items.length) return;
       var first = items[0], last = items[items.length - 1];
@@ -252,7 +109,6 @@
     }
   });
 
-  /* safety: never leave the drawer open across the breakpoint */
   window.matchMedia('(min-width: 721px)').addEventListener('change', function (e) {
     if (e.matches && isOpen()) closeDrawer();
   });

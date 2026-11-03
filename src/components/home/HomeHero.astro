@@ -12,8 +12,8 @@ const slides = [
     headline: 'Empower your teams to move your business forward.',
     lead: 'Make AI part of your everyday work, helping your teams spend less time on routine tasks and more time creating business value.',
     image: '/home-assets/aios-hero.png',
-    imageWidth: 2900,
-    imageHeight: 950,
+    imageWidth: 3100,
+    imageHeight: 1200,
     imageAlt: 'AIOS 3D wordmark'
   }
 ];
@@ -22,14 +22,24 @@ const slides = [
 <section class="home-hero" id="home-hero" data-hero-carousel>
   <div class="home-hero-inner">
     {slides.map((slide, i) => (
-      <div class={`home-hero-slide ${i === 0 ? 'is-active' : ''}`} data-slide-index={i}>
+      <div
+        class={`home-hero-slide ${i === 0 ? 'is-active' : ''}`}
+        data-slide-index={i}
+      >
         <div class="home-hero-copy">
           <h1>{slide.headline}</h1>
           <p class="home-hero-lead">{slide.lead}</p>
         </div>
 
         <div class="home-hero-media">
-          <img src={slide.image} alt={slide.imageAlt} width={slide.imageWidth} height={slide.imageHeight} loading={i === 0 ? 'eager' : 'lazy'} decoding="async">
+          <img
+            src={slide.image}
+            alt={slide.imageAlt}
+            width={slide.imageWidth}
+            height={slide.imageHeight}
+            loading={i === 0 ? 'eager' : 'lazy'}
+            decoding="async"
+          />
         </div>
 
         <div class="home-hero-actions">
