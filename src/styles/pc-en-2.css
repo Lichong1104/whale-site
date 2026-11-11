@@ -503,6 +503,10 @@
   border-radius: 24px;
   background: #fff;
   overflow: hidden;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.45s ease;
+}#pc-stage .feature-row:hover{
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(35, 128, 251, 0.08);
 }#pc-stage .feature-row.reverse{
   flex-direction: row-reverse;
   gap: 176px;
@@ -557,7 +561,56 @@
   height: 100%;
   object-fit: cover;
   border-radius: 16px;
-}#pc-stage .feature-cards{
+  transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+}#pc-stage .feature-row:hover .feature-image img{
+  transform: scale(1.03);
+}
+
+/* Plug & Play scroll-driven reveals */
+#pc-stage .feature-row.animate-on-scroll .feature-text{
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+#pc-stage .feature-row.animate-on-scroll .feature-image{
+  opacity: 0;
+  transform: translateX(60px) scale(0.95);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+}
+#pc-stage .feature-row.animate-on-scroll.is-revealed .feature-text,
+#pc-stage .feature-row.animate-on-scroll.is-revealed .feature-image{
+  opacity: 1;
+  transform: translateX(0) scale(1);
+}
+#pc-stage .feature-card.animate-on-scroll{
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1), transform 0.55s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+}
+#pc-stage .feature-card.animate-on-scroll.is-revealed{
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  #pc-stage .feature-row,
+  #pc-stage .feature-row .feature-text,
+  #pc-stage .feature-row .feature-image,
+  #pc-stage .feature-image img,
+  #pc-stage .feature-card{
+    transition: opacity 0.25s ease !important;
+    transform: none !important;
+    animation: none !important;
+  }
+  #pc-stage .feature-row:hover,
+  #pc-stage .feature-card:hover,
+  #pc-stage .feature-row.animate-on-scroll.is-revealed .feature-text,
+  #pc-stage .feature-row.animate-on-scroll.is-revealed .feature-image,
+  #pc-stage .feature-card.animate-on-scroll.is-revealed{
+    transform: none !important;
+  }
+}
+
+#pc-stage .feature-cards{
   display: flex;
   gap: 30px;
   align-items: flex-end;
@@ -570,6 +623,11 @@
   border-radius: 18px;
   background: #fff;
   border: 1.5px solid #c8dafd;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+}#pc-stage .feature-card:hover{
+  transform: translateY(-4px);
+  border-color: #2380fb;
+  box-shadow: 0 12px 40px rgba(35, 128, 251, 0.08);
 }
 @media (max-width: 1024px) {
   #pc-stage .feature-cards{

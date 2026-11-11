@@ -612,5 +612,47 @@ const asset = (name: string) => `/home-assets/pc-en-2/${name}`;
       });
     })();
 
+    (function () {
+      'use strict';
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+      if (reduceMotion.matches) return;
+
+      const rows = document.querySelectorAll('.features-panel .feature-row');
+      const cards = document.querySelectorAll('.features-panel .feature-card');
+      if (!rows.length) return;
+
+      rows.forEach(function (row) { row.classList.add('animate-on-scroll'); });
+      cards.forEach(function (card) { card.classList.add('animate-on-scroll'); });
+
+      function reveal(el) {
+        el.classList.add('is-revealed');
+      }
+
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(function (entries, obs) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              const el = entry.target;
+              const delay = Number(el.dataset.revealDelay) || 0;
+              window.setTimeout(function () { reveal(el); }, delay);
+              obs.unobserve(el);
+            }
+          });
+        }, { threshold: 0.25, rootMargin: '0px 0px -10% 0px' });
+
+        rows.forEach(function (row, i) {
+          row.dataset.revealDelay = String(i * 150);
+          observer.observe(row);
+        });
+        cards.forEach(function (card, i) {
+          card.dataset.revealDelay = String(450 + i * 100);
+          observer.observe(card);
+        });
+      } else {
+        rows.forEach(reveal);
+        cards.forEach(reveal);
+      }
+    })();
+
   </script>
 </Layout>
