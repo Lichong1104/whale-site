@@ -570,6 +570,18 @@
   border-radius: 18px;
   background: #fff;
   border: 1.5px solid #c8dafd;
+}
+@media (max-width: 1024px) {
+  #pc-stage .feature-cards{
+    flex-direction: column;
+    align-items: center;
+  }
+  #pc-stage .feature-card{
+    width: 100%;
+    max-width: 524px;
+    height: auto;
+    min-height: 139px;
+  }
 }#pc-stage .feature-card-icon{
   position: absolute;
   left: 16.5px;
@@ -599,7 +611,9 @@
   align-self: center;
   width: 623px;
   height: 95px;
-}#pc-stage .industry-panel{
+}
+
+#pc-stage .industry-panel{
   position: absolute;
   left: 92px;
   top: 6312px;
@@ -911,6 +925,9 @@
 }#pc-stage .footer-bottom span:first-child{
   flex: 1;
 }#pc-stage .lang-switch{
+  position: relative;
+  display: inline-flex;
+}#pc-stage .lang-switch-toggle{
   display: flex;
   align-items: center;
   gap: 8px;
@@ -920,9 +937,47 @@
   border: 1px solid #e5e7eb;
   font-size: 14px;
   color: #2380fb;
-}#pc-stage .lang-switch img{
+  cursor: pointer;
+}#pc-stage .lang-switch-toggle img{
   width: 16px;
   height: 16px;
+}#pc-stage .lang-switch-toggle img:last-child{
+  transition: transform 0.2s ease;
+}#pc-stage .lang-switch.open .lang-switch-toggle img:last-child{
+  transform: rotate(180deg);
+}#pc-stage .lang-switch-menu{
+  position: absolute;
+  bottom: calc(100% + 8px);
+  right: 0;
+  min-width: 180px;
+  margin: 0;
+  padding: 6px;
+  list-style: none;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
+  z-index: 100;
+}#pc-stage .lang-switch.open .lang-switch-menu{
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}#pc-stage .lang-switch-menu a{
+  display: block;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #111827;
+  text-decoration: none;
+  white-space: nowrap;
+}#pc-stage .lang-switch-menu a:hover,
+#pc-stage .lang-switch-menu a[aria-current="true"]{
+  background: #eff3ff;
+  color: #2380fb;
 }#pc-stage .accordion-item:not(.active) .accordion-body,#pc-stage .faq-item:not(.active) .faq-body{
   display: none;
 } html body {

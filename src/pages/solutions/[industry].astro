@@ -4,140 +4,146 @@ import Header from '../../components/Header.astro';
 import CTASection from '../../components/CTASection.astro';
 import Footer from '../../components/Footer.astro';
 
+const RING = `<circle cx="100" cy="112" r="88" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.22" stroke-dasharray="2 8"/><circle cx="100" cy="112" r="64" fill="none" stroke="currentColor" stroke-width="1" opacity="0.12"/><circle cx="100" cy="24" r="4" fill="currentColor" stroke="none"/>`;
+
+const toParas = (text) => text.split('\n\n').map((p) => `<p>${p}</p>`).join('');
+const bulletParts = (b) => {
+  const i = b.indexOf(':');
+  if (i < 0) return b;
+  return `<strong>${b.slice(0, i)}:</strong>${b.slice(i + 1)}`;
+};
+
 export function getStaticPaths() {
   const industries = [
     {
-      id: 'automotive',
-      short: 'Automotive',
-      name: 'Automotive',
-      headline: 'Every showroom standard. Finally visible.',
-      lines: ['Every showroom standard.', 'Finally visible.'],
-      challenge: "On a dealership floor, showroom standards and service-bay SOPs only get checked when a manager happens to walk by — which isn't nearly often enough across a busy floor with high-value transactions on the line. Vehicle placement, pricing displays, and safety protocols drift between checks, and nobody notices until a customer or an auditor does.",
-      log: [
-        { metric: 'Drift', label: 'Vehicle placement and pricing displays slip between checks', flag: 'Gap', level: 'red' },
-        { metric: 'Walk-by', label: 'How showroom & service-bay SOPs get checked today', flag: 'Manual', level: 'amber' },
-        { metric: '1×/wk', label: 'A compliance snapshot once a week — then nothing until the next one', flag: 'Sparse', level: 'amber' }
+      id: 'fashion-footwear-offprice',
+      short: 'Fashion',
+      name: 'Fashion, Footwear, Off-price',
+      lines: ['The line at the exit registers:', 'wait, walk-aways and registers staffed, by hour'],
+      problem: "For off-price retailers, checkout is the final step—and one last opportunity to lose a purchase. A growing line can leave shoppers waiting, frustrate store teams, and lead customers to walk away.\n\nYet a visible queue tells only part of the story. How long did shoppers wait? How many registers were staffed? Did moving more employees to checkout help? Daily sales alone cannot answer those questions.",
+      whyNow: "Retailers face pressure to speed up checkout while keeping stores organized and labor costs under control. Investments in staffing and self-checkout raise a practical question: Are those changes actually reducing customer wait times?\n\nMeasuring queues helps teams understand where support is needed and whether their changes are working.",
+      how: "SpaceSight measures how many shoppers are in line, how long they wait, and how many leave before reaching a register. It supports shared checkout lines, separate register queues, and dedicated self-checkout areas.\n\nBy tracking presence at cashier positions, SpaceSight also helps teams understand register coverage throughout the day—without relying on uniform recognition.",
+      bullets: [
+        'Respond to growing lines: Get near-real-time alerts when queues exceed a defined threshold.',
+        'Review checkout performance: Access hourly wait-time and walk-away reports the next morning.',
+        'Connect staffing with results: Compare queue performance, register coverage, and POS transactions by store and hour to assess whether staffing changes improve checkout flow.'
       ],
-      see: "SpaceSight keeps a continuous eye on the floor — vehicle placement, pricing accuracy, safety protocols in the service bay — so nothing waits for the next manual walkthrough to get caught. Instead of a compliance snapshot once a week, you get one all day, every day.",
-      seeMode: 'Mode · Continuous — all day, every day',
-      outcomeRows: [
-        'Showroom and service compliance enforced without another manual checklist.'
-      ],
-      scope: ['Showroom', 'Service bay', 'Sales floor'],
-      camLabel: 'Showroom floor · Regional flow',
-      time: 'All day / Every day',
-      img: '/solutions/automotive.png',
-      imgAlt: 'SpaceSight view of an automotive showroom — camera coverage zones and regional passenger-flow filtering over the exhibition floor',
+      scope: ['Checkout', 'Registers', 'Queue zones'],
+      camLabel: 'Checkout line · Queue metrics',
+      time: 'By hour / Every day',
       hover: '#1D4ED8',
-      track: '#2563EB'
+      track: '#2563EB',
+      scene: `<path d="M70 80 h60 v80 h-60 z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><path d="M85 80 v-20 a15 15 0 0 1 30 0 v20" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="100" cy="125" r="8" fill="none" stroke="currentColor" stroke-width="2.5"/><path d="M55 160 h90" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>`,
+      imgAlt: 'SpaceSight view of a fashion checkout area — queue length and register coverage tracked over the camera feed'
     },
     {
-      id: 'luxury-retail',
-      short: 'Luxury',
-      name: 'Luxury & Fashion Retail',
-      headline: 'Brand standards, enforced at every location, every day.',
-      lines: ['Brand standards,', 'enforced at every location,', 'every day.'],
-      challenge: 'Multi-location luxury and fashion brands live and die by consistency — but manual store visits typically reach only about 10% of locations per quarter, leaving the rest unmonitored between audits. Compliance erodes quietly at the store level. Top-performer sales habits stay local instead of spreading. And customer experience is measured anecdotally ("it felt slow in the fitting room") instead of with real data.',
-      log: [
-        { metric: '~10%', label: 'Of stores reached by manual audits each quarter — the rest run unchecked', flag: 'Sparse', level: 'amber' },
-        { metric: 'Anecdote', label: '"It felt slow in the fitting room" stands in for customer-experience data', flag: 'Gap', level: 'red' },
-        { metric: 'Local', label: 'Top-performer sales habits stay in one store instead of spreading', flag: 'Siloed', level: 'amber' }
+      id: 'beauty-personal-care',
+      short: 'Beauty',
+      name: 'Beauty & Personal Care',
+      lines: ['See which brands', 'and displays draw shoppers in'],
+      problem: "Brand placement matters—from a prominent fragrance wall to an individual shelf bay. But sales alone cannot tell merchants whether a location attracts shopper attention or reflects existing demand for the brand.\n\nWithout visibility into how shoppers engage, teams have limited evidence to guide placement discussions, assess displays, or decide what to change.",
+      whyNow: "Beauty retailers want the same depth of understanding on the store floor that they seek online: which areas shoppers pass, where they stop, and which displays they face.\n\nAs brands compete for visibility, a practical question follows: Are priority brands and displays attracting the engagement retailers expect?",
+      how: "SpaceSight shows how shoppers interact with each brand area or display—from passing by to stopping and facing it. By measuring traffic, time spent, and front-facing engagement, it gives merchants evidence to inform placement and display decisions.",
+      bullets: [
+        'Compare brand areas: See which bays attract passing traffic and encourage shoppers to stop.',
+        'Understand time spent: Measure how long shoppers stay near each display and whether they face it.',
+        'Evaluate placement changes: Compare engagement before and after layout or display updates to understand what changed.'
       ],
-      see: "SpaceSight runs continuous AI audits across every location — planogram compliance, display standards, staff presence, fitting room activity — and routes violations automatically to the right manager the moment they're detected, including a live check on whether in-store signage and displays still match approved brand assets.",
-      seeMode: 'Mode · Continuous — every location, every day',
-      outcomeRows: [
-        'Brand standards enforced across every location, every day.',
-        "Violations routed to the right manager the moment they're detected.",
-        'Customer experience made measurable instead of anecdotal.'
-      ],
-      scope: ['Sales floor', 'Fitting rooms', 'Displays'],
-      camLabel: 'Boutique floor · Flow heat map',
-      time: 'Every location / Every day',
-      img: '/solutions/luxury-retail.png',
-      imgAlt: 'SpaceSight retail analytics — in-store customer-flow heat map and journey chart over a boutique camera view',
+      funnel: 'Passed by → Stopped → Faced the display',
+      scope: ['Brand areas', 'Displays', 'Shopper traffic'],
+      camLabel: 'Beauty floor · Display engagement',
+      time: 'Continuous / Every day',
       hover: '#1D4ED8',
-      track: '#2563EB'
+      track: '#2563EB',
+      scene: `<rect x="78" y="70" width="44" height="70" rx="8" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="100" cy="92" r="10" fill="none" stroke="currentColor" stroke-width="2.5"/><path d="M88 70 v-12 h24 v12" fill="none" stroke="currentColor" stroke-width="3"/>`,
+      imgAlt: 'SpaceSight beauty analytics — shopper attention measured at fragrance and skincare displays'
     },
     {
-      id: 'food-beverage',
-      short: 'F&B',
-      name: 'Food & Beverage',
-      headline: 'Food safety, monitored continuously — not sampled.',
-      lines: ['Food safety,', 'monitored continuously —', 'not sampled.'],
-      challenge: "Food safety compliance — FDA standards, state health codes — across hundreds of locations is structurally impossible to manage by manual walkthrough. Kitchen behavior (gloves, sanitizing, prep protocol) is largely invisible to HQ. High staff turnover means training rarely sticks, so a new hire's third shift often looks nothing like what corporate SOPs prescribe. And loss prevention at the register tends to be reactive — you find out about a problem only after it's already a pattern.",
-      log: [
-        { metric: 'Invisible', label: 'Kitchen behavior — gloves, sanitizing, prep protocol — to HQ', flag: 'Gap', level: 'red' },
-        { metric: 'Turnover', label: "A new hire's third shift often looks nothing like corporate SOPs", flag: 'Churn', level: 'amber' },
-        { metric: 'Reactive', label: "Register loss prevention found only after it's already a pattern", flag: 'Late', level: 'red' }
+      id: 'grocery-pharmacy',
+      short: 'Grocery',
+      name: 'Grocery & Pharmacy',
+      lines: ['Make pharmacy waits visible', 'while protecting customer privacy'],
+      problem: "Prescription systems track the time from drop-off to ready. But they can miss another part of the customer experience: people lining up at the counter or waiting in the seating area.\n\nWhen staffing decisions rely mainly on prescription volume, busy walk-up periods can go unseen in planning. Teams need a clearer view of customer demand—with privacy built into how it is measured.",
+      whyNow: "Pharmacies face growing pressure to align staffing with the full demands of customer service. Virginia’s pharmacy working-conditions rule, for example, requires staffing decisions to consider responsibilities beyond prescription volume.\n\nThat raises a practical question: Does staffing reflect when customers need help at the counter?\n\nMeasuring queues and waiting-area activity gives teams another source of evidence to inform those decisions.",
+      how: "SpaceSight measures activity in designated pickup and drop-off queues, with a separate zone for the waiting area. Queue zones focus on customer areas and exclude staff positions, helping teams understand when lines build and how many people are affected.",
+      bullets: [
+        'Respond to growing lines: Receive platform alerts when a queue exceeds an agreed headcount.',
+        'Review demand by hour: Access queue-time reports, threshold breaches, and the number of people affected the next morning.',
+        'Protect customer privacy: With face blurring enabled and verified for each pharmacy camera, high-clarity faces are blurred on the in-store device before traffic images leave.'
       ],
-      see: 'SpaceSight monitors kitchen operations in real time — hygiene compliance, PPE adherence, food safety protocol deviations — with violations triggering immediate alerts to the store manager. The same continuous coverage extends to the register, catching loss-prevention issues as they happen rather than after the fact.',
-      seeMode: 'Mode · Real-time — kitchen to register',
-      outcomeRows: [
-        'Food safety incidents caught before they become health code violations.',
-        'Compliance documentation generated automatically, not compiled by hand.',
-        'A consistent customer experience regardless of location or shift.'
-      ],
-      scope: ['Kitchen', 'Prep line', 'Register'],
-      camLabel: 'Kitchen line · PPE detection',
-      time: 'Real-time / Every shift',
-      img: '/solutions/food-beverage.png',
-      imgAlt: 'SpaceSight kitchen monitoring — PPE detection flags a cook not wearing a mask, with review timeline over the camera feed',
+      note: 'Video stays in the store, and SpaceSight does not connect this analysis to pharmacy systems, prescription records, or loyalty data.',
+      scope: ['Pharmacy counter', 'Waiting area', 'Pickup & drop-off'],
+      camLabel: 'Pharmacy counter · Queue & wait area',
+      time: 'By hour / Every day',
       hover: '#1D4ED8',
-      track: '#2563EB'
+      track: '#2563EB',
+      scene: `<rect x="60" y="90" width="80" height="60" rx="6" fill="none" stroke="currentColor" stroke-width="3"/><path d="M90 105 h20 v15 h15 v20 h-15 v15 h-20 v-15 h-15 v-20 h15 z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>`,
+      imgAlt: 'SpaceSight pharmacy view — pickup queue and waiting-area activity measured without identifying individuals'
     },
     {
-      id: 'healthcare',
-      short: 'Healthcare',
-      name: 'Healthcare',
-      headline: 'Patient safety, monitored around the clock.',
-      lines: ['Patient safety,', 'monitored around the clock.'],
-      challenge: 'Hand hygiene, PPE adherence, restricted-zone access, fall prevention — these are exactly the standards CMS and The Joint Commission expect continuous oversight for, and exactly the ones no shift supervisor can physically watch every minute of. Incidents are typically discovered after they happen, not prevented in real time. Compliance documentation, meanwhile, is largely manual — pulling clinical staff away from patient care to produce it.',
-      log: [
-        { metric: 'After', label: 'Incidents typically discovered after they happen, not prevented in real time', flag: 'Late', level: 'red' },
-        { metric: 'Manual', label: 'Compliance documentation pulls clinical staff away from patient care', flag: 'Manual', level: 'amber' },
-        { metric: 'CMS · TJC', label: 'Standards that expect continuous oversight of hygiene, PPE, restricted zones', flag: 'Expected', level: 'ind' }
+      id: 'restaurants-cafes',
+      short: 'Restaurants',
+      name: 'Restaurants & Cafés',
+      lines: ['Keep kitchen standards', 'in view across every location'],
+      problem: "Running several restaurants means trusting each team to maintain standards throughout the day. But experienced kitchen managers can be difficult to hire and retain, and everyday issues can go unnoticed: a spill on the floor, an open trash bin beside the prep line, or a back door left propped open.\n\nPeriodic inspections provide only a snapshot. Owners need a more consistent view of what happens between visits, so managers can address issues before they become recurring problems.",
+      whyNow: "Maintaining kitchen standards takes regular attention across shifts and locations. Health inspections are periodic, while cleanliness and operating conditions can change throughout the day.\n\nThat raises a practical question: How can owners spot issues across every kitchen when they cannot be there themselves?\n\nScheduled visual checks give managers another way to identify conditions that need attention and follow up with their teams.",
+      how: "SpaceSight checks still images from your existing kitchen cameras on a set schedule—for example, hourly during opening hours. Each check evaluates a specific, agreed condition and returns a pass or a flag, with a short explanation and the image reviewed.\n\nFlagged results go to the restaurant manager and the owner’s dashboard after each check, helping teams see what needs attention and where.",
+      bullets: [
+        'Check everyday kitchen conditions: Identify visible floor spills or objects, unclean prep counters, open trash bin lids, and back doors left open.',
+        'Review staff-area phone use: Flag visible phone use in designated staff-only areas.',
+        'Maintain visibility across locations: Review scheduled results in one dashboard to focus follow-up and support consistent routines.'
       ],
-      see: 'SpaceSight provides continuous AI monitoring of high-risk zones — ICUs, pharmacies, isolation rooms — flagging PPE and hand-hygiene violations, restricted-area access, and fall-risk behavior in real time, and compiling audit-ready compliance documentation automatically instead of by hand.',
-      seeMode: 'Mode · Continuous — high-risk zones, around the clock',
-      outcomeRows: [
-        'Patient safety incidents flagged before they escalate.',
-        'Regulatory audit documentation generated automatically.',
-        'Staff compliance measurable and continuously improving.'
-      ],
-      scope: ['ICU', 'Pharmacy', 'Isolation rooms'],
-      camLabel: 'Ward · Personnel analysis',
-      time: 'Around the clock',
-      img: '/solutions/healthcare.png',
-      imgAlt: 'SpaceSight hospital console — ward camera feed with AI personnel analysis and playback timeline, plus mobile ward list',
+      note: 'Hair-covering checks require training on images from your restaurant. Mask-wearing observations are available for information only; handwashing checks require custom development. These visual checks support daily oversight but do not establish food safety or replace inspections.',
+      scope: ['Kitchen', 'Prep line', 'Back door'],
+      camLabel: 'Kitchen · Scheduled visual checks',
+      time: 'Scheduled / Every shift',
       hover: '#1D4ED8',
-      track: '#2563EB'
+      track: '#2563EB',
+      scene: `<path d="M70 110 c0-20 60-20 60 0 v40 h-60 z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><path d="M75 110 c0-15 50-15 50 0" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="115" cy="135" r="5" fill="none" stroke="currentColor" stroke-width="2.5"/>`,
+      imgAlt: 'SpaceSight kitchen monitoring — scheduled visual checks flag spills, open bins, and propped doors'
     },
     {
-      id: 'museums',
-      short: 'Museums',
-      name: 'Museums & Cultural Institutions',
-      headline: 'See how visitors actually experience your museum.',
-      lines: ['See how visitors actually', 'experience your museum.'],
-      challenge: "Curators typically rearrange exhibits based on instinct, not on data showing where guests actually stop, linger, and disengage. Security and artifact protection rely on staff patrols that can't achieve continuous coverage across large, multi-gallery facilities. Staff scheduling is built on historical patterns rather than real-time visitor density, leading to understaffed galleries during surges. And grant applications or donor reports often need visitor-engagement data most institutions still collect through manual counters and periodic surveys.",
-      log: [
-        { metric: 'Instinct', label: 'How exhibits get rearranged — no data on where guests actually linger', flag: 'No data', level: 'red' },
-        { metric: 'Patrols', label: "Security coverage that can't watch every gallery at once", flag: 'Sparse', level: 'amber' },
-        { metric: 'Counters', label: 'Manual counts and periodic surveys feed grant and donor reports', flag: 'Manual', level: 'amber' }
+      id: 'telecom-consumer-electronics',
+      short: 'Telecom',
+      name: 'Telecom & Consumer Electronics',
+      lines: ['Understand which device', 'displays draw shoppers in'],
+      problem: "A device in a prime table position may sell well — but how much comes from product demand, and how much from placement?\n\nSell-through alone cannot separate the two. Carriers, device brands, and retail teams need visibility into shopper engagement to make more informed decisions about which products get the most prominent space.",
+      whyNow: "Physical stores give shoppers a chance to explore devices before buying. As retailers and brands invest in interactive experiences, dedicated displays, and in-store support, they need evidence of how shoppers engage.\n\nThat raises a practical question: Are priority devices and display locations attracting the interest retailers expect?\n\nMeasuring engagement adds context to sales performance and helps teams assess how valuable floor space is being used.",
+      how: "SpaceSight measures how many shoppers approach each device table and how long they stay. Where camera placement and display layout allow, it also measures front-facing attention.",
+      bullets: [
+        'Compare device tables: See which display areas attract shoppers and encourage them to spend time.',
+        'Count shoppers more accurately: Deduplicate repeat approaches so one person returning to a table does not inflate the shopper count.',
+        'Inform merchandising decisions: Compare engagement across locations and after placement changes to help assess which displays earn attention.'
       ],
-      see: 'SpaceSight maps real-time visitor flow across every gallery — dwell time by exhibit, traffic patterns, crowd density — giving curators real data to guide layout and exhibit placement, while continuously flagging unauthorized access near your collection or unusual behavior near an exhibit.',
-      seeMode: 'Mode · Continuous — every gallery mapped',
-      outcomeRows: [
-        'Exhibit layout guided by actual visitor behavior.',
-        'Collection security strengthened without added headcount.',
-        'Visitor engagement data ready whenever a grant application or donor update needs it.'
-      ],
-      scope: ['Galleries', 'Collection zones', 'Entrances'],
-      camLabel: 'Gallery · Visitor flow',
-      time: 'Real-time / Every gallery',
-      img: '/solutions/museums.png',
-      imgAlt: 'SpaceSight museum gallery analytics — visitors tracked with pose overlays and dwell-time labels, visitor path traced across the exhibition floor',
+      scope: ['Device tables', 'Display areas', 'Shopper flow'],
+      camLabel: 'Device table · Engagement metrics',
+      time: 'Continuous / Every day',
       hover: '#1D4ED8',
-      track: '#2563EB'
+      track: '#2563EB',
+      scene: `<rect x="72" y="50" width="56" height="100" rx="8" fill="none" stroke="currentColor" stroke-width="3"/><path d="M82 70 h36" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M82 85 h36 M82 100 h24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>`,
+      imgAlt: 'SpaceSight telecom analytics — shopper engagement measured at each device display table'
+    },
+    {
+      id: 'variety-discount-convenience',
+      short: 'Variety',
+      name: 'Variety, Discount & Convenience',
+      lines: ['Bring timely visibility', 'to loss prevention'],
+      problem: "Loss-prevention teams often work backward, reviewing transactions and investigating issues after they happen. Manual review takes time, making it harder to identify recurring patterns and decide where to focus.\n\nTeams need a faster way to spot defined events and understand what is happening across their stores.",
+      whyNow: "Convenience retailers are looking to AI to support loss prevention and reduce manual investigation. The challenge is choosing clear use cases and understanding their value.\n\nThat raises a practical question: Which events need immediate attention, and where should teams focus their efforts?\n\nTimely alerts and accessible reporting give teams evidence to guide their response and assess results.",
+      how: "SpaceSight detects defined events on the in-store device and sends alerts as they happen. Vega lets teams ask plain-English questions about the events and metrics the platform has already calculated.",
+      bullets: [
+        'Respond sooner: Receive real-time alerts for configured event types.',
+        'Get answers more easily: Use Vega to explore recorded events and calculated metrics through plain-English questions.',
+        'Focus follow-up: Use event data to identify recurring patterns and prioritize review across stores.'
+      ],
+      note: 'Footage search and clip retrieval are available only through an on-premises deployment or a separately contracted configuration.',
+      scope: ['Event detection', 'Real-time alerts', 'Vega search'],
+      camLabel: 'Store floor · Event detection',
+      time: 'Real-time / Every day',
+      hover: '#1D4ED8',
+      track: '#2563EB',
+      scene: `<path d="M100 50 l50 20 v40 c0 35-50 50-50 50s-50-15-50-50 v-40 z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><circle cx="100" cy="110" r="6" fill="currentColor" stroke="none"/><path d="M100 94 v-10" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>`,
+      imgAlt: 'SpaceSight loss-prevention view — defined events detected in real time and surfaced through Vega search'
     }
   ];
 
@@ -147,7 +153,7 @@ export function getStaticPaths() {
 const { ind } = Astro.props;
 
 const canonicalUrl = `https://www.whale.sg/solutions/${ind.id}/`;
-const pageDescription = `${ind.name} solution: ${ind.headline} SpaceSight brings real-time visibility to ${ind.name.toLowerCase()} operations.`;
+const pageDescription = `${ind.name} solution: ${ind.lines.join(' ')} SpaceSight turns in-store activity into insight.`;
 
 const extraSchema = [
   {
@@ -170,7 +176,6 @@ const extraSchema = [
   <Header />
   <main class="hud" style={`--ind: ${ind.hover}; --ind-track: ${ind.track}`}>
 
-    <!-- Hero: brief left, monitored frame right -->
     <section class="ind-hero">
       <div class="container ind-hero-grid">
         <div class="ind-hero-copy">
@@ -181,7 +186,7 @@ const extraSchema = [
               <span class={`line${i === ind.lines.length - 1 ? ' tail' : ''}`}>{line}</span>
             ))}
           </h1>
-          <ul class="scope" aria-label="Products and coverage">
+          <ul class="scope" aria-label="Coverage">
             <li class="capsule capsule-see"><i aria-hidden="true"></i>SpaceSight · Sees</li>
             {ind.scope.map((zone) => <li class="zone">{zone}</li>)}
           </ul>
@@ -194,8 +199,11 @@ const extraSchema = [
               <span class="console-cam">{ind.camLabel}</span>
               <span class="console-time">{ind.time}</span>
             </div>
-            <div class="console-view">
-              <img src={ind.img} alt={ind.imgAlt} loading="eager" />
+            <div class="console-view console-view-svg">
+              <svg viewBox="0 0 200 200" role="img" aria-label={ind.imgAlt}>
+                <g class="scene-ring" set:html={RING} />
+                <g set:html={ind.scene} />
+              </svg>
               <span class="vc vc-tl" aria-hidden="true"></span>
               <span class="vc vc-tr" aria-hidden="true"></span>
               <span class="vc vc-bl" aria-hidden="true"></span>
@@ -208,8 +216,8 @@ const extraSchema = [
                 <dd>{ind.time}</dd>
               </div>
               <div>
-                <dt>Compliance</dt>
-                <dd>Continuous</dd>
+                <dt>Insight</dt>
+                <dd>By store & hour</dd>
               </div>
               <div>
                 <dt>Zones</dt>
@@ -222,39 +230,34 @@ const extraSchema = [
       </div>
     </section>
 
-    <!-- SEC.01 — The challenge -->
-    <section class="sec" aria-labelledby="sec-challenge">
+    <section class="sec" aria-labelledby="sec-problem">
       <div class="container">
         <header class="ruler">
           <span class="ruler-id">SEC.01</span>
           <span class="ruler-line" aria-hidden="true"></span>
-          <h2 class="ruler-name" id="sec-challenge">The challenge</h2>
+          <h2 class="ruler-name" id="sec-problem">The problem</h2>
         </header>
-        <div class="challenge-grid">
-          <p class="challenge-body">{ind.challenge}</p>
-          <aside class="log" aria-label="Field log — status quo">
-            <div class="log-head"><i aria-hidden="true"></i>Field log — status quo</div>
-            <ul>
-              {ind.log.map((row) => (
-                <li>
-                  <span class="log-metric">{row.metric}</span>
-                  <span class="log-label">{row.label}</span>
-                  <span class={`log-flag flag-${row.level}`}>{row.flag}</span>
-                </li>
-              ))}
-            </ul>
-          </aside>
-        </div>
+        <div class="story-body" set:html={toParas(ind.problem)} />
       </div>
     </section>
 
-    <!-- SEC.02 — Whale's solutions (ink stage band) -->
-    <section class="sec sec-units" aria-labelledby="sec-solutions">
+    <section class="sec" aria-labelledby="sec-whynow">
       <div class="container">
         <header class="ruler">
           <span class="ruler-id">SEC.02</span>
           <span class="ruler-line" aria-hidden="true"></span>
-          <h2 class="ruler-name" id="sec-solutions">Whale's solutions</h2>
+          <h2 class="ruler-name" id="sec-whynow">Why now</h2>
+        </header>
+        <div class="story-body" set:html={toParas(ind.whyNow)} />
+      </div>
+    </section>
+
+    <section class="sec sec-units" aria-labelledby="sec-how">
+      <div class="container">
+        <header class="ruler">
+          <span class="ruler-id">SEC.03</span>
+          <span class="ruler-line" aria-hidden="true"></span>
+          <h2 class="ruler-name" id="sec-how">How SpaceSight helps</h2>
         </header>
         <div class="units">
           <article class="unit unit-see">
@@ -268,43 +271,41 @@ const extraSchema = [
               <span class="unit-tag">Sees</span>
               <span class="unit-status"><i aria-hidden="true"></i>Active</span>
             </header>
-            <p class="unit-body">{ind.see}</p>
-            <footer class="unit-foot">{ind.seeMode} · <a href="/spacesight/" class="unit-link">Explore SpaceSight →</a></footer>
+            <p class="unit-body">{ind.how}</p>
+            <footer class="unit-foot">{ind.camLabel} · <a href="/spacesight/" class="unit-link">Explore SpaceSight →</a></footer>
           </article>
         </div>
-      </div>
-    </section>
 
-    <!-- SEC.03 — The outcome -->
-    <section class="sec sec-outcome" aria-labelledby="sec-outcome">
-      <div class="container">
-        <header class="ruler">
-          <span class="ruler-id">SEC.03</span>
-          <span class="ruler-line" aria-hidden="true"></span>
-          <h2 class="ruler-name" id="sec-outcome">The outcome</h2>
-        </header>
-        <div class="outcome-grid">
-          <div class="result">
-            <div class="result-head"><i aria-hidden="true"></i>Results — all systems go</div>
+        {ind.bullets?.length > 0 && (
+          <div class="result result-detail">
+            <div class="result-head"><i aria-hidden="true"></i>What you can do</div>
             <ul>
-              {ind.outcomeRows.map((row) => (
+              {ind.bullets.map((b) => (
                 <li>
                   <span class="check" aria-hidden="true">
                     <svg viewBox="0 0 12 12" fill="none"><path d="M2.2 6.3 4.8 8.8 9.8 3.4" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                   </span>
-                  <p>{row}</p>
-                  <span class="pass">Pass</span>
+                  <p set:html={bulletParts(b)} />
                 </li>
               ))}
             </ul>
           </div>
-          <aside class="scoreboard" aria-label="Outcome checks summary" data-rail="Event · Captured">
-            <span class="score-label">Outcome checks</span>
-            <span class="score-value">{ind.outcomeRows.length}<span class="score-total">/{ind.outcomeRows.length}</span></span>
-            <span class="score-state"><i aria-hidden="true"></i>All green</span>
-            <span class="score-bars" aria-hidden="true">{ind.outcomeRows.map(() => <b></b>)}</span>
+        )}
+
+        {ind.funnel && (
+          <p class="funnel-strip">{ind.funnel}</p>
+        )}
+
+        {ind.note && (
+          <aside class="note-box">
+            <strong>Note:</strong> {ind.note}
           </aside>
-        </div>
+        )}
+      </div>
+    </section>
+
+    <section class="sec">
+      <div class="container">
         <a class="others" href="/solutions/">
           See how it works for other industries <span aria-hidden="true">→</span>
         </a>
@@ -313,7 +314,7 @@ const extraSchema = [
 
     <CTASection
       headline={`See it. Fix it —<br>for ${ind.name}.`}
-      lead="Book a demo and we'll walk through your floor, your shifts, and your standards — and show you what continuous visibility looks like."
+      lead="Book a demo and we will walk through your floor, your shifts, and your standards — and show you what continuous visibility looks like."
       primaryLabel="Book a Demo"
     />
   </main>
@@ -327,7 +328,6 @@ const extraSchema = [
     --alert: #B91C1C;
     --hairline: rgba(15, 23, 42, 0.14);
     --hairline-soft: rgba(15, 23, 42, 0.08);
-    /* fixed header measures ~81px here (the 60px token is stale site-wide) */
     padding-top: calc(var(--header-height) + 22px);
   }
 
@@ -388,7 +388,6 @@ const extraSchema = [
     margin-bottom: var(--space-md);
   }
 
-  /* 45° signal diamond — the kicker marker from the landing page system */
   .eyebrow::before {
     content: '';
     width: 7px;
@@ -470,7 +469,7 @@ const extraSchema = [
     border: 1px dashed var(--hairline);
   }
 
-  /* ---------------- Monitored frame (hero console) ---------------- */
+  /* ---------------- Monitored frame ---------------- */
   .frame-wrap {
     margin: 0;
   }
@@ -529,6 +528,28 @@ const extraSchema = [
     display: block;
     width: 100%;
     height: auto;
+  }
+
+  .console-view-svg {
+    display: grid;
+    place-items: center;
+    aspect-ratio: 4 / 3;
+  }
+
+  .console-view-svg svg {
+    width: 58%;
+    height: auto;
+    display: block;
+    color: #60A5FA;
+  }
+
+  .scene-ring {
+    transform-origin: 100px 112px;
+    animation: scene-spin 28s linear infinite;
+  }
+
+  @keyframes scene-spin {
+    to { transform: rotate(360deg); }
   }
 
   .vc {
@@ -674,115 +695,19 @@ const extraSchema = [
     white-space: nowrap;
   }
 
-  /* ---------------- Challenge + field log ---------------- */
-  .challenge-grid {
-    display: grid;
-    grid-template-columns: 1.05fr 0.95fr;
-    gap: clamp(var(--space-md), 4vw, var(--space-xl));
-    align-items: start;
-  }
-
-  .challenge-body {
+  .story-body :global(p) {
     font-size: clamp(1.12rem, 1.65vw, 1.32rem);
     line-height: 1.7;
     color: var(--text);
-    max-width: 56ch;
-    margin: 0;
+    max-width: 62ch;
+    margin: 0 0 1rem;
   }
 
-  .log {
-    background: var(--bg-elevated);
-    border: 1px solid var(--hairline);
-    border-radius: var(--radius-sm);
-    box-shadow: 0 20px 48px rgba(15, 23, 42, 0.08);
-    overflow: hidden;
+  .story-body :global(p:last-child) {
+    margin-bottom: 0;
   }
 
-  .log-head {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    padding: 0.8rem var(--space-md);
-    border-bottom: 1px dashed var(--hairline);
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--text-secondary);
-  }
-
-  .log-head i {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: #F59E0B;
-    box-shadow: 0 0 8px rgba(245, 158, 11, 0.7);
-  }
-
-  .log ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-
-  .log li {
-    display: grid;
-    grid-template-columns: 6.5rem 1fr auto;
-    align-items: center;
-    gap: var(--space-sm);
-    padding: 1.05rem var(--space-md);
-    border-bottom: 1px solid var(--hairline-soft);
-  }
-
-  .log li:last-child {
-    border-bottom: none;
-  }
-
-  .log-metric {
-    font-family: var(--font-mono);
-    font-size: 1.05rem;
-    font-weight: 700;
-    letter-spacing: 0.02em;
-    color: var(--text);
-  }
-
-  .log-label {
-    font-size: 0.92rem;
-    line-height: 1.5;
-    color: var(--text-secondary);
-  }
-
-  .log-flag {
-    font-family: var(--font-mono);
-    font-size: 0.62rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    padding: 0.3rem 0.55rem;
-    border-radius: 3px;
-    white-space: nowrap;
-  }
-
-  .flag-red {
-    color: var(--alert);
-    background: rgba(239, 68, 68, 0.1);
-    border: 1px solid rgba(239, 68, 68, 0.32);
-  }
-
-  .flag-amber {
-    color: var(--warn);
-    background: rgba(245, 158, 11, 0.13);
-    border: 1px solid rgba(245, 158, 11, 0.36);
-  }
-
-  .flag-ind {
-    color: var(--ind);
-    background: color-mix(in srgb, var(--ind-track) 12%, transparent);
-    border: 1px solid color-mix(in srgb, var(--ind) 36%, transparent);
-  }
-
-  /* ---------------- Ink stage band: unit console panels ---------------- */
+  /* ---------------- Ink stage band: unit + result ---------------- */
   .sec-units {
     background: var(--bg-dark);
     position: relative;
@@ -940,7 +865,7 @@ const extraSchema = [
   }
 
   .unit-foot .unit-link {
-    color: var(--y, #60A5FA);
+    color: #60A5FA;
     text-decoration: none;
     border-bottom: 1px solid color-mix(in srgb, currentColor 45%, transparent);
     padding-bottom: 1px;
@@ -950,59 +875,55 @@ const extraSchema = [
     border-bottom-color: currentColor;
   }
 
-  /* ---------------- Outcome: all-green checklist ---------------- */
-  .outcome-grid {
-    display: grid;
-    grid-template-columns: 1.55fr 1fr;
-    gap: var(--space-md);
-    align-items: stretch;
-  }
-
-  .result {
-    background: var(--bg-elevated);
-    border: 1px solid var(--hairline);
+  /* Result checklist on dark band */
+  .result-detail {
+    position: relative;
+    background: rgba(248, 247, 244, 0.045);
+    border: 1px solid rgba(248, 247, 244, 0.12);
     border-radius: var(--radius);
-    box-shadow: 0 24px 60px rgba(15, 23, 42, 0.09);
+    margin-top: var(--space-md);
+    max-width: 780px;
     overflow: hidden;
+    color: var(--text-on-dark);
   }
 
-  .result-head {
+  .result-detail .result-head {
     display: flex;
     align-items: center;
     gap: 0.6rem;
     padding: 0.85rem var(--space-md);
-    border-bottom: 1px solid var(--hairline-soft);
+    border-bottom: 1px dashed rgba(248, 247, 244, 0.16);
     font-family: var(--font-mono);
     font-size: 0.7rem;
     font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--text-secondary);
+    color: rgba(248, 247, 244, 0.62);
   }
 
-  .result-head i {
+  .result-detail .result-head i {
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: var(--ok);
-    box-shadow: 0 0 8px rgba(22, 163, 74, 0.7);
+    background: #4ADE80;
+    box-shadow: 0 0 8px rgba(74, 222, 128, 0.7);
   }
 
-  .result ul {
+  .result-detail ul {
     list-style: none;
     margin: 0;
     padding: 0;
   }
 
-  .result li {
+  .result-detail li {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: var(--space-sm);
     padding: 1.15rem var(--space-md);
-    border-bottom: 1px solid var(--hairline-soft);
+    border-bottom: 1px solid rgba(248, 247, 244, 0.08);
   }
 
-  .result li:last-child {
+  .result-detail li:last-child {
     border-bottom: none;
   }
 
@@ -1015,6 +936,7 @@ const extraSchema = [
     display: inline-grid;
     place-items: center;
     box-shadow: 0 0 0 4px rgba(22, 163, 74, 0.14);
+    margin-top: 0.1rem;
   }
 
   .check svg {
@@ -1023,129 +945,59 @@ const extraSchema = [
     display: block;
   }
 
-  .result p {
-    font-size: 1.1rem;
-    line-height: 1.5;
-    color: var(--text);
+  .result-detail p {
+    font-size: 1.05rem;
+    line-height: 1.55;
+    color: #B9C6DA;
     margin: 0;
   }
 
-  .pass {
-    margin-left: auto;
-    flex: 0 0 auto;
-    font-family: var(--font-mono);
-    font-size: 0.62rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--ok);
-    border: 1px solid rgba(22, 163, 74, 0.4);
-    background: rgba(22, 163, 74, 0.08);
-    border-radius: 3px;
-    padding: 0.3rem 0.55rem;
-  }
-
-  /* Scoreboard tile — dark console readout next to the result list,
-     vertical EVENT · CAPTURED rail on its left edge (landing-page motif) */
-  .scoreboard {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 0.4rem;
-    background: var(--bg-dark);
+  .result-detail p :global(strong) {
     color: var(--text-on-dark);
-    border: 1px solid rgba(11, 16, 32, 0.7);
+    font-weight: 600;
+  }
+
+  .funnel-strip {
+    position: relative;
+    max-width: 780px;
+    margin: var(--space-md) 0 0;
+    padding: 0.85rem var(--space-md);
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-align: center;
+    color: #60A5FA;
+    border: 1px solid rgba(96, 165, 250, 0.35);
     border-radius: var(--radius);
-    padding: var(--space-md) var(--space-lg) var(--space-md) calc(var(--space-lg) + 1.4rem);
-    box-shadow: 0 24px 56px rgba(11, 16, 32, 0.22);
+    background: rgba(96, 165, 250, 0.08);
   }
 
-  .scoreboard::before {
-    content: attr(data-rail);
-    position: absolute;
-    left: 1.05rem;
-    top: var(--space-md);
-    bottom: var(--space-md);
-    writing-mode: vertical-rl;
-    transform: rotate(180deg);
-    font-family: var(--font-mono);
-    font-size: 0.6rem;
-    font-weight: 700;
-    letter-spacing: 0.28em;
-    text-transform: uppercase;
-    color: var(--text-on-dark-secondary);
-    border-left: 1px dashed rgba(248, 247, 244, 0.18);
-    padding-left: 0.5rem;
+  .note-box {
+    position: relative;
+    max-width: 780px;
+    margin: var(--space-md) 0 0;
+    padding: var(--space-sm) var(--space-md);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: rgba(248, 247, 244, 0.72);
+    border-left: 3px solid var(--ind-track);
+    background: rgba(248, 247, 244, 0.05);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
   }
 
-  .score-label {
-    font-family: var(--font-mono);
-    font-size: 0.68rem;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--text-on-dark-secondary);
+  .note-box strong {
+    color: var(--text-on-dark);
+    font-weight: 600;
   }
 
-  .score-value {
-    font-family: var(--font-display);
-    font-size: clamp(3.2rem, 5vw, 4.6rem);
-    font-weight: 700;
-    line-height: 1;
-    letter-spacing: -0.03em;
-    color: #4ADE80;
-    font-variant-numeric: tabular-nums;
-  }
-
-  .score-total {
-    font-size: 0.42em;
-    color: var(--text-on-dark-secondary);
-    letter-spacing: 0;
-  }
-
-  .score-state {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-family: var(--font-mono);
-    font-size: 0.68rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: #4ADE80;
-  }
-
-  .score-state i {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: #4ADE80;
-    box-shadow: 0 0 10px rgba(74, 222, 128, 0.8);
-    animation: hud-pulse 1.8s ease-in-out infinite;
-  }
-
-  .score-bars {
-    display: flex;
-    gap: 6px;
-    margin-top: var(--space-sm);
-  }
-
-  .score-bars b {
-    flex: 1 1 0;
-    height: 6px;
-    border-radius: 3px;
-    background: #4ADE80;
-    box-shadow: 0 0 8px rgba(74, 222, 128, 0.45);
-  }
-
-  /* Hairline-bound, right-aligned exit link (editorial finish) */
+  /* ---------------- Exit link ---------------- */
   .others {
     display: flex;
     align-items: center;
     justify-content: flex-end;
     gap: 0.5em;
-    margin-top: var(--space-lg);
     border-top: 1px solid var(--hairline);
     padding-top: var(--space-md);
     font-family: var(--font-mono);
@@ -1189,19 +1041,6 @@ const extraSchema = [
       gap: var(--space-lg);
     }
 
-    .challenge-grid {
-      grid-template-columns: 1fr;
-      gap: var(--space-md);
-    }
-
-    .outcome-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .units {
-      grid-template-columns: 1fr;
-    }
-
     .unit-status {
       margin-left: 0;
     }
@@ -1228,6 +1067,14 @@ const extraSchema = [
 
     .console-cam {
       display: none;
+    }
+
+    .console-view-svg {
+      aspect-ratio: 16 / 10;
+    }
+
+    .console-view-svg svg {
+      width: 50%;
     }
 
     .vc {
@@ -1271,47 +1118,20 @@ const extraSchema = [
       margin-bottom: var(--space-md);
     }
 
-    .log li {
-      grid-template-columns: 1fr auto;
-      gap: 0.4rem 0.75rem;
-      padding: 0.95rem var(--space-sm);
-    }
-
-    .log-metric {
-      grid-column: 1;
-    }
-
-    .log-flag {
-      grid-column: 2;
-      grid-row: 1;
-    }
-
-    .log-label {
-      grid-column: 1 / -1;
-    }
-
     .unit {
       padding: var(--space-md) var(--space-sm) var(--space-sm);
     }
 
-    .scoreboard {
-      padding-left: calc(var(--space-md) + 1.4rem);
-    }
-
-    .result p {
-      font-size: 1rem;
-    }
-
-    .pass {
-      display: none;
+    .result-detail li {
+      padding: 0.95rem var(--space-sm);
     }
   }
 
   @media (prefers-reduced-motion: reduce) {
     .rec i,
     .unit-status i,
-    .score-state i,
-    .headline .tail::after {
+    .headline .tail::after,
+    .scene-ring {
       animation: none;
     }
 

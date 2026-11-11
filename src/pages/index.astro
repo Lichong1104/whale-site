@@ -219,8 +219,8 @@ const asset = (name: string) => `/home-assets/pc-en-2/${name}`;
 
       <!-- Plug and Play title -->
       <div class="section-title plug-title">
-        <h2>Plug and Play: Same Cameras, New Intelligence.</h2>
-        <p>Rewiring a store for new cameras can cost $2,000 to $3,000 before any software. Our AI solutions turn footage from your existing CCTV cameras into actionable business insights, helping your team understand on-site activity, uncover new opportunities, and improve operations.</p>
+        <h2>Plug &amp; Play: Your cameras. A clearer view of your business.</h2>
+        <p>Turn everyday store footage into actionable insights with Whale AI.</p>
       </div>
 
       <!-- Features / video panel -->
@@ -228,51 +228,50 @@ const asset = (name: string) => `/home-assets/pc-en-2/${name}`;
         <div class="features-content">
           <div class="feature-row">
             <div class="feature-text">
-              <div class="feature-icon"><img src={asset('d502f.svg')} alt="" /></div>
-              <h4>Existing cameras & Existing recorder</h4>
-              <p>Already on the ceiling,<br />The NVR that stores footage today.</p>
-              <p class="feature-blue">Inside the store: video is analyzed here and stays here</p>
+              <div class="feature-icon"><img src={asset('59f18.svg')} alt="" /></div>
+              <h4>Start with the cameras you already have</h4>
+              <p>Keep your existing cameras and recorder. Whale connects to your setup to help you get more from every store.</p>
             </div>
             <div class="feature-image">
-              <img src={asset('6505f.png')} alt="" />
-            </div>
-          </div>
-          <div class="feature-row reverse">
-            <div class="feature-text">
-              <div class="feature-icon"><img src={asset('39c71.svg')} alt="" /></div>
-              <h4>Whale AI Hub</h4>
-              <p class="feature-blue">The one new box</p>
-            </div>
-            <div class="feature-image">
-              <img src={asset('1c785.png')} alt="" />
+              <img src={asset('6505f.png')} alt="" loading="eager" />
             </div>
           </div>
           <div class="feature-row">
             <div class="feature-text">
-              <div class="feature-icon"><img src={asset('fc01b.svg')} alt="" /></div>
-              <h4>Whale cloud > Phone and web</h4>
-              <p>Reports and alerts<br />For stores and HQ</p>
-              <p class="feature-blue">Only counts, zones and face-blurred snapshots leave the store</p>
+              <div class="feature-icon"><img src={asset('77cfd.svg')} alt="" /></div>
+              <h4>Add the Whale AI Hub</h4>
+              <p>One compact device analyzes video in your store, turning activity into insights while keeping video on-site.</p>
             </div>
             <div class="feature-image">
-              <img src={asset('e42f2.png')} alt="" />
+              <img src={asset('1c785.png')} alt="" loading="eager" />
+            </div>
+          </div>
+          <div class="feature-row">
+            <div class="feature-text">
+              <div class="feature-icon"><img src={asset('edb7d.svg')} alt="" /></div>
+              <h4>See what matters wherever you are</h4>
+              <p>Access reports and alerts on your phone or browser. Give store teams and HQ a clearer view of what’s happening across locations.</p>
+              <p class="feature-note">Note: Only counts, zone data, and face-blurred snapshots are sent to the cloud.</p>
+            </div>
+            <div class="feature-image">
+              <img src={asset('f2737.png')} alt="" loading="eager" />
             </div>
           </div>
           <div class="feature-cards">
             <div class="feature-card">
-              <div class="feature-card-icon"><img src={asset('edb55.svg')} alt="" /></div>
-              <h5>No new cameras</h5>
-              <p>Works with the cameras most stores already have, including 360° cameras.</p>
+              <div class="feature-card-icon"><img src={asset('641c7.png')} alt="" /></div>
+              <h5>No new cameras needed</h5>
+              <p>Works with your existing setup, including supported 360° cameras.</p>
             </div>
             <div class="feature-card">
-              <div class="feature-card-icon"><img src={asset('3c20e.svg')} alt="" /></div>
-              <h5>Installed after closing</h5>
-              <p>A few hours per store. No rewiring, no downtime.</p>
+              <div class="feature-card-icon"><img src={asset('d51d1.png')} alt="" /></div>
+              <h5>Installed after hours</h5>
+              <p>Installation fits around store hours, with minimal disruption to daily operations.</p>
             </div>
             <div class="feature-card">
-              <div class="feature-card-icon"><img src={asset('c884f.svg')} alt="" /></div>
-              <h5>Runs on its own</h5>
-              <p>No new camera system, no platform migration. Hubs sized to the store.</p>
+              <div class="feature-card-icon"><img src={asset('55a6b.png')} alt="" /></div>
+              <h5>Built for your store</h5>
+              <p>A dedicated AI Hub setup sized to your store, with no platform migration required.</p>
             </div>
           </div>
         </div>
@@ -477,10 +476,17 @@ const asset = (name: string) => `/home-assets/pc-en-2/${name}`;
             <span>© 2026 WHALE FUTURE INC.</span>
             <a href="/legal/">Legal</a>
             <a href="/privacy/">Privacy</a>
-            <div class="lang-switch">
-              <img src={asset('d9b2d.svg')} alt="" />
-              <span>English (US)</span>
-              <img src={asset('7be47.svg')} alt="" />
+            <div class="lang-switch" data-lang-switch>
+              <button type="button" class="lang-switch-toggle" aria-expanded="false" aria-haspopup="listbox">
+                <img src={asset('d9b2d.svg')} alt="" />
+                <span>English (US)</span>
+                <img src={asset('7be47.svg')} alt="" />
+              </button>
+              <ul class="lang-switch-menu" role="listbox">
+                <li><a href="https://www.meetwhale.com/" target="_blank" rel="noopener noreferrer" role="option">Chinese (简体中文)</a></li>
+                <li><a href="https://www.whaleai.co.jp/" target="_blank" rel="noopener noreferrer" role="option">Japanese (日本語)</a></li>
+                <li><a href="https://www.whale.sg/" target="_blank" rel="noopener noreferrer" role="option" aria-current="true">English (Singapore)</a></li>
+              </ul>
             </div>
           </div>
         </footer>
@@ -557,5 +563,54 @@ const asset = (name: string) => `/home-assets/pc-en-2/${name}`;
         });
       });
     })();
+
+    (function () {
+      'use strict';
+      const switchEl = document.querySelector('[data-lang-switch]');
+      if (!switchEl) return;
+      const toggle = switchEl.querySelector('.lang-switch-toggle');
+      const menu = switchEl.querySelector('.lang-switch-menu');
+
+      function closeMenu() {
+        switchEl.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+
+      function openMenu() {
+        switchEl.classList.add('open');
+        toggle.setAttribute('aria-expanded', 'true');
+      }
+
+      toggle.addEventListener('click', function (e) {
+        e.stopPropagation();
+        if (switchEl.classList.contains('open')) {
+          closeMenu();
+        } else {
+          openMenu();
+        }
+      });
+
+      document.addEventListener('click', function (e) {
+        if (!switchEl.contains(e.target)) closeMenu();
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeMenu();
+      });
+
+      const currentHost = window.location.hostname;
+      const map = {
+        'www.meetwhale.com': 'Chinese (简体中文)',
+        'www.whaleai.co.jp': 'Japanese (日本語)',
+        'www.whale.sg': 'English (Singapore)'
+      };
+      const label = map[currentHost] || 'English (US)';
+      toggle.querySelector('span').textContent = label;
+      menu.querySelectorAll('a').forEach(function (link) {
+        const host = new URL(link.href).hostname;
+        link.setAttribute('aria-current', map[host] === label ? 'true' : 'false');
+      });
+    })();
+
   </script>
 </Layout>
