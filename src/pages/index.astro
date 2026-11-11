@@ -526,10 +526,11 @@ const asset = (name: string) => `/home-assets/pc-en-2/${name}`;
         ticking = true;
         window.requestAnimationFrame(function () {
           const scale = getScale();
-          const designScroll = window.scrollY / scale;
-          const sticky = designScroll >= 70;
+          const stageRect = stage.getBoundingClientRect();
+          const designTop = -stageRect.top / scale;
+          const sticky = designTop >= 70;
           nav.classList.toggle('sticky', sticky);
-          nav.style.top = Math.max(70, designScroll) + 'px';
+          nav.style.top = Math.max(70, designTop) + 'px';
           ticking = false;
         });
       }
