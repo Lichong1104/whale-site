@@ -423,9 +423,8 @@
   width: 50px;
   height: 50px;
   border-radius: 12px;
-  opacity: 0.1;
   flex-shrink: 0;
-}#pc-stage .icon-box.icon-blue{ background: #2380fb; }#pc-stage .icon-box.icon-orange{ background: #f96a39; }#pc-stage .icon-box.icon-cyan{ background: #62c7ff; }#pc-stage .icon-box.icon-dark{ background: #333; }#pc-stage .icon-box img{
+}#pc-stage .icon-box.icon-blue{ background: rgba(35, 128, 251, 0.1); }#pc-stage .icon-box.icon-orange{ background: rgba(249, 106, 57, 0.1); }#pc-stage .icon-box.icon-cyan{ background: rgba(98, 199, 255, 0.1); }#pc-stage .icon-box.icon-dark{ background: rgba(51, 51, 51, 0.1); }#pc-stage .icon-box img{
   position: absolute;
   left: 2.63px;
   top: 3.29px;
