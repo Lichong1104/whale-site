@@ -933,6 +933,10 @@
 }#pc-stage .faq-more{
   display: flex;
   justify-content: center;
+}#pc-stage .faq-item-collapsed{
+  display: none;
+}#pc-stage .faq-list.is-expanded .faq-item-collapsed{
+  display: block;
 }#pc-stage .pc-footer{
   width: 100%;
   display: flex;

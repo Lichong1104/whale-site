@@ -432,9 +432,49 @@ const asset = (name: string) => `/home-assets/pc-en-2/${name}`;
                 <span class="faq-toggle">+</span>
               </div>
             </div>
+            <div class="faq-item faq-item-collapsed">
+              <div class="faq-head">
+                <div class="faq-num">06</div>
+                <span>How is this different from our existing CCTV system?</span>
+                <span class="faq-toggle">+</span>
+              </div>
+              <div class="faq-body">
+                <p>While traditional CCTV acts as a passive recording tool for manual incident review, SpaceSight transforms your camera network into an active operational intelligence system. It automatically analyzes video streams in real time to generate automated alerts, predictive insights, and semantic search capabilities without requiring you to replace your current hardware.</p>
+              </div>
+            </div>
+            <div class="faq-item faq-item-collapsed">
+              <div class="faq-head">
+                <div class="faq-num">07</div>
+                <span>How accurate is SpaceSight?</span>
+                <span class="faq-toggle">+</span>
+              </div>
+              <div class="faq-body">
+                <p>Because AI precision depends on site-specific variables like lighting and camera angles, we establish custom performance baselines rather than offering a generic universal figure. We collaborate with your team to define exact success criteria and validate model accuracy against human-verified ground truth before full deployment.</p>
+              </div>
+            </div>
+            <div class="faq-item faq-item-collapsed">
+              <div class="faq-head">
+                <div class="faq-num">08</div>
+                <span>Pilot: How long, how many sites, and what does it cost?</span>
+                <span class="faq-toggle">+</span>
+              </div>
+              <div class="faq-body">
+                <p>Pilots typically run for 2 to 4 weeks at a single flagship site, focusing on 1 to 2 priority use cases before scaling to a multi-site rollout. Commercial pricing is fully customized based on your required AI Hub hardware capacity, annual software licensing, installation, and specific workflow integrations.</p>
+              </div>
+            </div>
+            <div class="faq-item faq-item-collapsed">
+              <div class="faq-head">
+                <div class="faq-num">09</div>
+                <span>What are our key responsibilities during deployment?</span>
+                <span class="faq-toggle">+</span>
+              </div>
+              <div class="faq-body">
+                <p>Your team and local integrators manage physical site readiness, network access, cabling, and day-to-day alert reviews. Whale handles the pre-installation site survey, AI Hub configuration, model calibration, continuous platform maintenance, and ongoing technical support.</p>
+              </div>
+            </div>
           </div>
           <div class="faq-more">
-            <button type="button" class="btn btn-ghost">Show 4 more</button>
+            <button type="button" class="btn btn-ghost" data-faq-more>Show 4 more</button>
           </div>
         </section>
 
@@ -553,6 +593,15 @@ const asset = (name: string) => `/home-assets/pc-en-2/${name}`;
           if (!wasActive) item.classList.add('active');
         });
       });
+
+      const faqMoreBtn = document.querySelector('[data-faq-more]');
+      const faqList = document.querySelector('.faq-list');
+      if (faqMoreBtn && faqList) {
+        faqMoreBtn.addEventListener('click', function () {
+          const expanded = faqList.classList.toggle('is-expanded');
+          faqMoreBtn.textContent = expanded ? 'Show less' : 'Show 4 more';
+        });
+      }
 
       const heroDots = document.querySelectorAll('.hero-dots .hero-dot');
       const heroSlides = document.querySelectorAll('.hero-slide');
