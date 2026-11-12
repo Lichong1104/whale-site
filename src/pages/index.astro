@@ -86,24 +86,24 @@ const asset = (name: string) => `/home-assets/pc-en-2/${name}`;
 
       <!-- Stats -->
       <section class="stats-row">
-        <div class="stat-card">
+        <div class="stat-card" data-reveal>
           <img class="stat-icon" src={asset('d55ab.svg')} alt="" />
           <div class="stat-text">
-            <b>1,600+</b>
+            <b data-count="1600" data-suffix="+">0</b>
             <span>Enterprise clients</span>
           </div>
         </div>
-        <div class="stat-card">
+        <div class="stat-card" data-reveal>
           <img class="stat-icon" src={asset('10fd5.svg')} alt="" />
           <div class="stat-text">
-            <b>45+</b>
+            <b data-count="45" data-suffix="+">0</b>
             <span>Countries deployed</span>
           </div>
         </div>
-        <div class="stat-card">
+        <div class="stat-card" data-reveal>
           <img class="stat-icon" src={asset('1c52c.svg')} alt="" />
           <div class="stat-text">
-            <b>600,000+</b>
+            <b data-count="600000" data-suffix="+">0</b>
             <span>Edge AI nodes managed</span>
           </div>
         </div>
@@ -121,6 +121,15 @@ const asset = (name: string) => `/home-assets/pc-en-2/${name}`;
           <div class="logo-card">LOGO</div>
           <div class="logo-card">LOGO</div>
           <div class="logo-card">LOGO</div>
+          <div class="logo-card" aria-hidden="true">LOGO</div>
+          <div class="logo-card" aria-hidden="true">LOGO</div>
+          <div class="logo-card" aria-hidden="true">LOGO</div>
+          <div class="logo-card" aria-hidden="true">LOGO</div>
+          <div class="logo-card" aria-hidden="true">LOGO</div>
+          <div class="logo-card" aria-hidden="true">LOGO</div>
+          <div class="logo-card" aria-hidden="true">LOGO</div>
+          <div class="logo-card" aria-hidden="true">LOGO</div>
+          <div class="logo-card" aria-hidden="true">LOGO</div>
         </div>
         <div class="carousel-bar">
           <img src={asset('11f3e.svg')} alt="" />
@@ -131,93 +140,94 @@ const asset = (name: string) => `/home-assets/pc-en-2/${name}`;
       <div class="section-title ecosystem-title">
         <h2>Enterprise AI product ecosystem</h2>
         <p>Our world models understand real-world business environments. AIOS (AI Operating System) brings that intelligence into everyday enterprise operations.</p>
-      </div>
-
-      <!-- Ecosystem panel -->
+      </div>      <!-- Ecosystem panel -->
       <div class="ecosystem-panel">
-        <div class="bu-header">
-          <span class="bu-world">WORLD MODEL BU</span>
-          <span class="bu-aios">AIOS BU</span>
-        </div>
-        <div class="bu-summary">
-          <span>Physical world sensing, understanding & feedback</span>
-          <span>Enterprise AI platform & App ecosystem.</span>
-        </div>
-        <div class="ecosystem-grid">
-          <!-- SpaceSight -->
-          <div class="product-card large">
-            <div class="card-tag blue">SEE</div>
-            <h3><strong>SpaceSight:</strong> <span>AI spatial intelligence</span></h3>
-            <div class="card-desc-row">
-              <div class="icon-box icon-blue"><img src={asset('08412.png')} alt="" /></div>
-              <p>VLM-powered, 24/7 AI inspections; Turn activity in physical spaces into actionable insights that improve operations.</p>
-            </div>
-            <div class="card-visuals">
-              <div class="visual-placeholder blue"></div>
-              <div class="visual-placeholder blue"></div>
-            </div>
-          </div>
-          <!-- Alivia -->
-          <div class="product-card large">
-            <div class="card-tag purple">THINK</div>
-            <h3><strong>Alivia:</strong> <span>Agent collaboration</span></h3>
-            <div class="card-desc-row">
-              <div class="icon-box icon-blue"><img src={asset('e9424.png')} alt="" /></div>
-              <p>AI-native agents built on enterprise data and workflows to automate decisions and execute operations.</p>
-            </div>
-            <img class="card-divider" src={asset('f33c5.svg')} alt="" />
-            <div class="card-tag purple">WORKBENCH APPS</div>
-            <div class="app-columns">
-              <div class="app-col">
-                <h4><span class="app-name">Mira:</span> Data Analytics Platform</h4>
-                <p>Mira combines AI-powered data exploration, dashboards, and agent-assisted configuration. A planned business knowledge base will help turn findings into business-relevant insights.</p>
+        <div class="ecosystem-col world">
+          <div class="ecosystem-col-header"><h3>WORLD MODEL BU</h3></div>
+          <div class="ecosystem-col-summary">Physical world sensing, understanding &amp; feedback</div>
+          <div class="ecosystem-col-content">
+            <!-- SpaceSight -->
+            <div class="product-card large">
+              <div class="card-tag blue">SEE</div>
+              <h3><strong>SpaceSight:</strong> <span>AI spatial intelligence</span></h3>
+              <div class="card-desc-row">
+                <div class="icon-box icon-blue"><img src={asset('08412.png')} alt="" /></div>
+                <p>VLM-powered, 24/7 AI inspections; Turn activity in physical spaces into actionable insights that improve operations.</p>
               </div>
-              <div class="app-col">
-                <h4><span class="app-name">Lume:</span> AI social media growth</h4>
-                <p>Turns a creative input into multi-platform content, managing production, distribution, and performance end to end.</p>
+              <div class="card-visuals">
+                <div class="visual-placeholder blue"></div>
+                <div class="visual-placeholder blue"></div>
+              </div>
+            </div>
+            <!-- Echo -->
+            <div class="product-card">
+              <div class="card-tag orange">HEAR</div>
+              <h3><strong>Echo:</strong> <span>AI voice intelligence</span></h3>
+              <div class="card-desc-row">
+                <div class="icon-box icon-orange"><img src={asset('db911.png')} alt="" /></div>
+                <p>100+ languages: auto-capture conversations, assess service quality, uncover customer needs, and drive training.</p>
+              </div>
+            </div>
+            <!-- Stardust -->
+            <div class="product-card">
+              <div class="card-tag gray">EDGE AI INFRA, CONNECT</div>
+              <h3><strong>Stardust:</strong> <span>Cloud and edge AI IoT</span></h3>
+              <div class="card-desc-row">
+                <div class="icon-box icon-dark"><img src={asset('8dccd.png')} alt="" /></div>
+                <p>Unified platform connecting edge devices, with cloud-edge AI powering intelligent IoT infrastructure.</p>
               </div>
             </div>
           </div>
-          <!-- Echo -->
-          <div class="product-card">
-            <div class="card-tag orange">HEAR</div>
-            <h3><strong>Echo:</strong> <span>AI voice intelligence</span></h3>
-            <div class="card-desc-row">
-              <div class="icon-box icon-orange"><img src={asset('db911.png')} alt="" /></div>
-              <p>100+ languages: auto-capture conversations, assess service quality, uncover customer needs, and drive training.</p>
+        </div>
+        <div class="ecosystem-col aios">
+          <div class="ecosystem-col-header"><h3>AIOS BU</h3></div>
+          <div class="ecosystem-col-summary">Enterprise AI platform &amp; App ecosystem.</div>
+          <div class="ecosystem-col-content">
+            <!-- Alivia -->
+            <div class="product-card large">
+              <div class="card-tag purple">THINK</div>
+              <h3><strong>Alivia:</strong> <span>Agent collaboration</span></h3>
+              <div class="card-desc-row">
+                <div class="icon-box icon-blue"><img src={asset('e9424.png')} alt="" /></div>
+                <p>AI-native agents built on enterprise data and workflows to automate decisions and execute operations.</p>
+              </div>
+              <img class="card-divider" src={asset('f33c5.svg')} alt="" />
+              <div class="card-tag purple">WORKBENCH APPS</div>
+              <div class="app-columns">
+                <div class="app-col">
+                  <h4><span class="app-name">Mira:</span> Data Analytics Platform</h4>
+                  <p>Mira combines AI-powered data exploration, dashboards, and agent-assisted configuration. A planned business knowledge base will help turn findings into business-relevant insights.</p>
+                </div>
+                <div class="app-col">
+                  <h4><span class="app-name">Lume:</span> AI social media growth</h4>
+                  <p>Turns a creative input into multi-platform content, managing production, distribution, and performance end to end.</p>
+                </div>
+              </div>
             </div>
-          </div>
-          <!-- Harbor -->
-          <div class="product-card">
-            <div class="card-tag purple">MEMORY</div>
-            <h3><strong>Harbor:</strong> <span>Content and knowledge hub</span></h3>
-            <div class="card-desc-row">
-              <div class="icon-box icon-cyan"><img src={asset('c9852.png')} alt="" /></div>
-              <p>Centralized enterprise knowledge: multimodal search, compliant knowledge bases, intelligent Q&A, long-term memory.</p>
+            <!-- Harbor -->
+            <div class="product-card">
+              <div class="card-tag purple">MEMORY</div>
+              <h3><strong>Harbor:</strong> <span>Content and knowledge hub</span></h3>
+              <div class="card-desc-row">
+                <div class="icon-box icon-cyan"><img src={asset('c9852.png')} alt="" /></div>
+                <p>Centralized enterprise knowledge: multimodal search, compliant knowledge bases, intelligent Q&amp;A, long-term memory.</p>
+              </div>
             </div>
-          </div>
-          <!-- Stardust -->
-          <div class="product-card">
-            <div class="card-tag gray">EDGE AI INFRA, CONNECT</div>
-            <h3><strong>Stardust:</strong> <span>Cloud and edge AI IoT</span></h3>
-            <div class="card-desc-row">
-              <div class="icon-box icon-dark"><img src={asset('8dccd.png')} alt="" /></div>
-              <p>Unified platform connecting edge devices, with cloud-edge AI powering intelligent IoT infrastructure.</p>
-            </div>
-          </div>
-          <!-- Novus -->
-          <div class="product-card">
-            <div class="card-tag gray">CLOUD AI INFRA, CONTROL</div>
-            <h3><strong>Novus:</strong> <span>AI model governance</span></h3>
-            <div class="card-desc-row">
-              <div class="icon-box icon-dark"><img src={asset('eb724.png')} alt="" /></div>
-              <p>Unified large-model management: orchestration, access control, cost, security, private deployment.</p>
+            <!-- Novus -->
+            <div class="product-card">
+              <div class="card-tag gray">CLOUD AI INFRA, CONTROL</div>
+              <h3><strong>Novus:</strong> <span>AI model governance</span></h3>
+              <div class="card-desc-row">
+                <div class="icon-box icon-dark"><img src={asset('eb724.png')} alt="" /></div>
+                <p>Unified large-model management: orchestration, access control, cost, security, private deployment.</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
       <!-- Plug and Play title -->
+
       <div class="section-title plug-title">
         <h2>Plug &amp; Play: Your cameras. A clearer view of your business.</h2>
         <p>Turn everyday store footage into actionable insights with Whale AI.</p>
@@ -289,7 +299,7 @@ const asset = (name: string) => `/home-assets/pc-en-2/${name}`;
         <h3 class="industry-heading">Spot issues early. Resolve them before they spread across stores.</h3>
         <div class="industry-body">
           <div class="accordion">
-            <div class="accordion-item active">
+            <div class="accordion-item active" data-media={asset('51469.png')} data-type="image">
               <div class="accordion-head">
                 <div class="accordion-num blue">1</div>
                 <span class="accordion-label">Fashion, Footwear, Off-price</span>
@@ -301,60 +311,70 @@ const asset = (name: string) => `/home-assets/pc-en-2/${name}`;
                 <a href="/solutions/" class="accordion-more">More details  >></a>
               </div>
             </div>
-            <div class="accordion-item">
+            <div class="accordion-item" data-media={asset('51469.png')} data-type="image">
               <div class="accordion-head">
                 <div class="accordion-num">2</div>
-                <div class="accordion-summary">
-                  <span class="accordion-label">Beauty & Personal Care</span>
-                  <p>A missing tester or an overlooked shopper can mean a lost sale.</p>
-                </div>
+                <span class="accordion-label">Beauty & Personal Care</span>
                 <span class="accordion-chevron">⌄</span>
               </div>
+              <div class="accordion-body">
+                <p>A missing tester or an overlooked shopper can mean a missed sale. SpaceSight tracks shelf conditions, tester availability, and service coverage so beauty teams stay focused on what drives conversion.</p>
+                <div class="accordion-divider"></div>
+                <a href="/solutions/" class="accordion-more">More details  >></a>
+              </div>
             </div>
-            <div class="accordion-item">
+            <div class="accordion-item" data-media={asset('51469.png')} data-type="image">
               <div class="accordion-head">
                 <div class="accordion-num">3</div>
-                <div class="accordion-summary">
-                  <span class="accordion-label">Grocery</span>
-                  <p>Empty shelves, long checkout lines, and fresh food left too long.</p>
-                </div>
+                <span class="accordion-label">Grocery</span>
                 <span class="accordion-chevron">⌄</span>
               </div>
+              <div class="accordion-body">
+                <p>Empty shelves, long checkout lines, and fresh food left out too long all erode trust. SpaceSight flags replenishment, queue, and food-safety issues in real time.</p>
+                <div class="accordion-divider"></div>
+                <a href="/solutions/" class="accordion-more">More details  >></a>
+              </div>
             </div>
-            <div class="accordion-item">
+            <div class="accordion-item" data-media={asset('51469.png')} data-type="image">
               <div class="accordion-head">
                 <div class="accordion-num">4</div>
-                <div class="accordion-summary">
-                  <span class="accordion-label">Restaurants & Cafés</span>
-                  <p>During a busy shift, small oversights can quickly affect food safety.</p>
-                </div>
+                <span class="accordion-label">Restaurants & Cafés</span>
                 <span class="accordion-chevron">⌄</span>
               </div>
+              <div class="accordion-body">
+                <p>During a busy shift, small oversights can quickly affect food safety and service speed. SpaceSight helps crews keep prep areas, hand-wash stations, and service lines on standard.</p>
+                <div class="accordion-divider"></div>
+                <a href="/solutions/" class="accordion-more">More details  >></a>
+              </div>
             </div>
-            <div class="accordion-item">
+            <div class="accordion-item" data-media={asset('51469.png')} data-type="image">
               <div class="accordion-head">
                 <div class="accordion-num">5</div>
-                <div class="accordion-summary">
-                  <span class="accordion-label">Telecom & Electronics</span>
-                  <p>Customers come in to try, compare, and get advice before buying.</p>
-                </div>
+                <span class="accordion-label">Telecom & Electronics</span>
                 <span class="accordion-chevron">⌄</span>
               </div>
+              <div class="accordion-body">
+                <p>Customers come in to try, compare, and get advice before buying. SpaceSight ensures displays stay staffed, demo units stay active, and high-value zones never go unattended.</p>
+                <div class="accordion-divider"></div>
+                <a href="/solutions/" class="accordion-more">More details  >></a>
+              </div>
             </div>
-            <div class="accordion-item">
+            <div class="accordion-item" data-media={asset('51469.png')} data-type="image">
               <div class="accordion-head">
                 <div class="accordion-num">6</div>
-                <div class="accordion-summary">
-                  <span class="accordion-label">Variety, Discount & Convenience</span>
-                  <p>Fast-moving stock, lean teams, and busy aisles leave little room for error.</p>
-                </div>
+                <span class="accordion-label">Variety, Discount & Convenience</span>
                 <span class="accordion-chevron">⌄</span>
+              </div>
+              <div class="accordion-body">
+                <p>Fast-moving stock, lean teams, and busy aisles leave little room for error. SpaceSight spots out-of-stocks, misplaced goods, and checkout bottlenecks so stores keep pace.</p>
+                <div class="accordion-divider"></div>
+                <a href="/solutions/" class="accordion-more">More details  >></a>
               </div>
             </div>
           </div>
           <div class="industry-media">
-            <div class="industry-media-frame">
-              <img src={asset('51469.png')} alt="" />
+            <div class="industry-media-frame" data-media-frame>
+              <img class="industry-media-target" src={asset('51469.png')} alt="" />
               <div class="media-badge">
                 <span class="badge-dot"></span>
                 <span class="badge-dot"></span>
@@ -382,6 +402,14 @@ const asset = (name: string) => `/home-assets/pc-en-2/${name}`;
             <div class="logo-card">LOGO</div>
             <div class="logo-card">LOGO</div>
             <div class="logo-card">LOGO</div>
+            <div class="logo-card" aria-hidden="true">LOGO</div>
+            <div class="logo-card" aria-hidden="true">LOGO</div>
+            <div class="logo-card" aria-hidden="true">LOGO</div>
+            <div class="logo-card" aria-hidden="true">LOGO</div>
+            <div class="logo-card" aria-hidden="true">LOGO</div>
+            <div class="logo-card" aria-hidden="true">LOGO</div>
+            <div class="logo-card" aria-hidden="true">LOGO</div>
+            <div class="logo-card" aria-hidden="true">LOGO</div>
           </div>
           <div class="carousel-bar">
             <img src={asset('26d34.svg')} alt="" />
@@ -485,9 +513,18 @@ const asset = (name: string) => `/home-assets/pc-en-2/${name}`;
               <p>AI that powers enterprise operations across physical and digital channels.</p>
               <h5>CONTACT US</h5>
               <p>whaleglobal@whale.im</p>
-              <p>United States | Singapore | China | Japan</p>
-              <h5>FOLLOW US</h5>
-              <p>Facebook &nbsp; LinkedIn</p>
+              <p>Singapore · United States · China · Japan</p>
+              <div class="footer-social-row">
+                <h5>FOLLOW US</h5>
+                <div class="footer-social">
+                  <a href="https://www.facebook.com/Whale-105271425542708" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12.07C24 5.41 18.63 0 12 0S0 5.41 0 12.07C0 18.1 4.39 23.1 10.12 24v-8.44H7.08v-3.49h3.04V9.41c0-3.02 1.79-4.7 4.53-4.7 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.95.93-1.95 1.89v2.26h3.33l-.53 3.49h-2.8V24C19.61 23.1 24 18.1 24 12.07z"/></svg>
+                  </a>
+                  <a href="https://www.linkedin.com/company/hellowhale" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.21 0 22.23 0zM7.12 20.45H3.56V9h3.56v11.45zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zm15.11 13.02h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29z"/></svg>
+                  </a>
+                </div>
+              </div>
             </div>
             <div class="footer-col">
               <h5>PRODUCTS</h5>
@@ -579,12 +616,56 @@ const asset = (name: string) => `/home-assets/pc-en-2/${name}`;
 
       document.querySelectorAll('.accordion-item').forEach(function (item) {
         item.querySelector('.accordion-head').addEventListener('click', function () {
+          if (item.classList.contains('active')) return;
           const parent = item.closest('.accordion');
           parent.querySelectorAll('.accordion-item').forEach(function (sibling) {
-            sibling.classList.toggle('active', sibling === item);
+            const isActive = sibling === item;
+            sibling.classList.toggle('active', isActive);
+            sibling.querySelector('.accordion-num').classList.toggle('blue', isActive);
+            sibling.querySelector('.accordion-chevron').classList.toggle('rotate', isActive);
           });
+          updateIndustryMedia(item);
         });
       });
+
+      function updateIndustryMedia(item) {
+        const frame = document.querySelector('[data-media-frame]');
+        if (!frame) return;
+        const src = item.dataset.media;
+        const type = item.dataset.type || 'image';
+        if (!src) return;
+
+        frame.classList.add('is-changing');
+        window.setTimeout(function () {
+          let current = frame.querySelector('.industry-media-target');
+          if (type === 'video') {
+            if (!current || current.tagName !== 'VIDEO') {
+              if (current) current.remove();
+              current = document.createElement('video');
+              current.className = 'industry-media-target';
+              current.autoplay = true;
+              current.loop = true;
+              current.muted = true;
+              current.playsInline = true;
+              frame.insertBefore(current, frame.firstChild);
+            }
+            current.src = src;
+            current.load();
+            current.play().catch(function () {});
+          } else {
+            if (!current || current.tagName !== 'IMG') {
+              if (current) current.remove();
+              current = document.createElement('img');
+              current.className = 'industry-media-target';
+              frame.insertBefore(current, frame.firstChild);
+            }
+            current.src = src;
+          }
+          window.setTimeout(function () {
+            frame.classList.remove('is-changing');
+          }, 50);
+        }, 300);
+      }
 
       document.querySelectorAll('.faq-item').forEach(function (item) {
         item.querySelector('.faq-head').addEventListener('click', function () {
@@ -700,6 +781,195 @@ const asset = (name: string) => `/home-assets/pc-en-2/${name}`;
         });
       } else {
         rows.forEach(reveal);
+        cards.forEach(reveal);
+      }
+    })();
+
+    (function () {
+      'use strict';
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+      if (reduceMotion.matches) return;
+
+      const stage = document.getElementById('pc-stage');
+      const carousels = document.querySelectorAll('.logo-carousel');
+      if (!carousels.length || !stage) return;
+
+      function getStageScale() {
+        const rect = stage.getBoundingClientRect();
+        return rect.width ? rect.width / 1920 : 1;
+      }
+
+      carousels.forEach(function (carousel) {
+        const track = carousel.querySelector('.logo-track');
+        if (!track) return;
+
+        let singleWidth = 0;
+        function measure() {
+          singleWidth = track.scrollWidth / 2;
+        }
+        measure();
+        window.addEventListener('load', measure);
+        window.addEventListener('resize', measure);
+
+        let x = 0;
+        let isDragging = false;
+        let isHovering = false;
+        let startX = 0;
+        let startLeft = 0;
+        let rafId = null;
+        let lastTime = performance.now();
+        const speed = 48;
+
+        function setTransform() {
+          track.style.transform = 'translateX(' + x + 'px)';
+        }
+
+        function wrap() {
+          if (!singleWidth) return;
+          x = ((x % singleWidth) + singleWidth) % singleWidth;
+          if (x === 0) return;
+          if (x > 0) x -= singleWidth;
+        }
+
+        function step(now) {
+          if (!isDragging && !isHovering) {
+            const dt = (now - lastTime) / 1000;
+            x -= speed * dt;
+            if (singleWidth && x <= -singleWidth) {
+              x += singleWidth;
+            }
+            setTransform();
+          }
+          lastTime = now;
+          rafId = window.requestAnimationFrame(step);
+        }
+
+        rafId = window.requestAnimationFrame(step);
+
+        track.addEventListener('mouseenter', function () {
+          isHovering = true;
+        });
+
+        track.addEventListener('mouseleave', function () {
+          isHovering = false;
+          if (!isDragging) lastTime = performance.now();
+        });
+
+        track.addEventListener('mousedown', function (e) {
+          if (e.button !== 0) return;
+          isDragging = true;
+          track.classList.add('is-dragging');
+          startX = e.clientX;
+          startLeft = x;
+          e.preventDefault();
+        });
+
+        window.addEventListener('mousemove', function (e) {
+          if (!isDragging) return;
+          const scale = getStageScale();
+          const delta = (e.clientX - startX) / scale;
+          x = startLeft + delta;
+          if (singleWidth) {
+            while (x > 0) x -= singleWidth;
+            while (x <= -singleWidth) x += singleWidth;
+          }
+          setTransform();
+        });
+
+        window.addEventListener('mouseup', function () {
+          if (!isDragging) return;
+          isDragging = false;
+          track.classList.remove('is-dragging');
+          wrap();
+          setTransform();
+          lastTime = performance.now();
+        });
+
+        track.addEventListener('touchstart', function (e) {
+          isDragging = true;
+          track.classList.add('is-dragging');
+          startX = e.touches[0].clientX;
+          startLeft = x;
+        }, { passive: true });
+
+        window.addEventListener('touchmove', function (e) {
+          if (!isDragging) return;
+          const scale = getStageScale();
+          const delta = (e.touches[0].clientX - startX) / scale;
+          x = startLeft + delta;
+          if (singleWidth) {
+            while (x > 0) x -= singleWidth;
+            while (x <= -singleWidth) x += singleWidth;
+          }
+          setTransform();
+        }, { passive: true });
+
+        window.addEventListener('touchend', function () {
+          if (!isDragging) return;
+          isDragging = false;
+          track.classList.remove('is-dragging');
+          wrap();
+          setTransform();
+          lastTime = performance.now();
+        });
+      });
+    })();
+
+    (function () {
+      'use strict';
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+      if (reduceMotion.matches) {
+        document.querySelectorAll('.stat-card').forEach(function (card) { card.classList.add('is-visible'); });
+        return;
+      }
+
+      const cards = document.querySelectorAll('.stat-card[data-reveal]');
+      if (!cards.length) return;
+
+      const fmt = new Intl.NumberFormat('en-US');
+
+      function easeOutExpo(t) {
+        return t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
+      }
+
+      function count(el, target, suffix, duration) {
+        const start = performance.now();
+        function frame(now) {
+          const t = Math.min(1, (now - start) / duration);
+          const value = Math.floor(easeOutExpo(t) * target);
+          el.textContent = fmt.format(value) + suffix;
+          if (t < 1) {
+            window.requestAnimationFrame(frame);
+          } else {
+            el.textContent = fmt.format(target) + suffix;
+          }
+        }
+        window.requestAnimationFrame(frame);
+      }
+
+      function reveal(card) {
+        card.classList.add('is-visible');
+        const num = card.querySelector('[data-count]');
+        if (!num || num.dataset.countDone) return;
+        const target = Number(num.dataset.count);
+        const suffix = num.dataset.suffix || '';
+        if (Number.isFinite(target) && target > 0) {
+          num.dataset.countDone = 'true';
+          count(num, target, suffix, 2000);
+        }
+      }
+
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              reveal(entry.target);
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.3 });
+        cards.forEach(function (card) { observer.observe(card); });
+      } else {
         cards.forEach(reveal);
       }
     })();
