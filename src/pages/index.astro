@@ -686,11 +686,25 @@ const asset = (name: string) => `/home-assets/pc-en-2/${name}`;
 
       const heroDots = document.querySelectorAll('.hero-dots .hero-dot');
       const heroSlides = document.querySelectorAll('.hero-slide');
+      function goToHeroSlide(idx) {
+        heroDots.forEach(function (d, i) { d.classList.toggle('active', i === idx); });
+        heroSlides.forEach(function (s, i) { s.classList.toggle('active', i === idx); });
+      }
+      let heroInterval = setInterval(function () {
+        const current = Array.prototype.findIndex.call(heroSlides, function (s) { return s.classList.contains('active'); });
+        const next = (current + 1) % heroSlides.length;
+        goToHeroSlide(next);
+      }, 5000);
       heroDots.forEach(function (dot) {
         dot.addEventListener('click', function () {
           const idx = Number(dot.dataset.slide);
-          heroDots.forEach(function (d) { d.classList.toggle('active', d === dot); });
-          heroSlides.forEach(function (s, i) { s.classList.toggle('active', i === idx); });
+          goToHeroSlide(idx);
+          clearInterval(heroInterval);
+          heroInterval = setInterval(function () {
+            const current = Array.prototype.findIndex.call(heroSlides, function (s) { return s.classList.contains('active'); });
+            const next = (current + 1) % heroSlides.length;
+            goToHeroSlide(next);
+          }, 5000);
         });
       });
     })();
