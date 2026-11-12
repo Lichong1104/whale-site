@@ -3,6 +3,75 @@ import '../styles/pc-en-2.css';
 import Layout from '../layouts/Layout.astro';
 
 const asset = (name: string) => `/home-assets/pc-en-2/${name}`;
+const domesticLogos = [
+  { name: '韶音科技', file: '韶音科技.png' },
+  { name: '西贝', file: '西贝.png' },
+  { name: '深蓝汽车', file: '深蓝汽车.png' },
+  { name: '翼蓝数码', file: '翼蓝数码.png' },
+  { name: '奇华饼家', file: '奇华饼家.png' },
+  { name: '喜喜点心', file: '喜喜点心.png' },
+  { name: '陈记顺和', file: '陈记顺和.png' },
+  { name: '久久丫', file: '久久丫.png' },
+  { name: '意尔康', file: '意尔康.png' },
+  { name: '三福', file: '三福.png' },
+  { name: '奶糖派', file: '奶糖派.png' },
+  { name: '小吊梨汤', file: '小吊梨汤.png' },
+  { name: '官栈花胶', file: '官栈花胶.png' },
+  { name: 'Gentle Monster', file: 'Gentle-Monster.png' },
+  { name: '超级碗', file: '超级碗.png' },
+  { name: '鲜啤三十公里', file: '鲜啤三十公里.png' },
+  { name: '牛排家', file: '牛排家.png' },
+  { name: '夸爷拌粉', file: '夸爷拌粉.png' },
+  { name: '佟小曼', file: '佟小曼.png' },
+  { name: '罗丽丝', file: '罗丽丝.png' },
+  { name: '皇冠蛋糕', file: '皇冠蛋糕.png' },
+  { name: '田老师红烧肉', file: '田老师红烧肉.png' },
+  { name: '哥弟', file: '哥弟.png' },
+  { name: '马丫东北饭儿', file: '马丫东北饭儿.png' },
+  { name: '开心汽车', file: '开心汽车.png' },
+  { name: '拜耳', file: '拜耳.png' },
+  { name: '吉野家', file: '吉野家.png' },
+  { name: '理想汽车', file: '理想汽车.png' },
+  { name: '京东养车', file: '京东养车.png' },
+  { name: '巴黎贝甜（poc）', file: '巴黎贝甜poc.png' },
+  { name: '瑞 尔（poc）', file: '瑞-尔poc.png' },
+  { name: '恒昌照明', file: '恒昌照明.png' },
+  { name: '大金空调', file: '大金空调.png' },
+  { name: '黄山旅游', file: '黄山旅游.png' },
+  { name: '启迪数科', file: '启迪数科.png' },
+  { name: '无限极', file: '无限极.png' },
+  { name: '潘多拉', file: '潘多拉.png' },
+  { name: '基诺浦', file: '基诺浦.png' },
+  { name: '康宝莱', file: '康宝莱.png' },
+  { name: '资生堂', file: '资生堂.png' },
+  { name: '利星奔驰', file: '利星奔驰.png' },
+  { name: 'WPP', file: 'WPP.png' },
+  { name: '百度云', file: '百度云.png' },
+]
+const overseasLogos = [
+  { name: 'JREV', file: 'JREV.png' },
+  { name: 'Aeon Mall', file: 'Aeon-Mall.png' },
+  { name: 'ZUS Coffee', file: 'ZUS-Coffee.png' },
+  { name: 'PICO Singapore', file: 'PICO-Singapore.png' },
+  { name: 'mothercare', file: 'mothercare.png' },
+  { name: 'National Gallery Singapore', file: 'National-Gallery-Singapore.png' },
+  { name: 'Blibli', file: 'Blibli.png' },
+  { name: 'Acer', file: 'Acer.png' },
+  { name: 'OPPO', file: 'OPPO.png' },
+  { name: 'Metro', file: 'Metro.png' },
+  { name: 'OCBC', file: 'OCBC.png' },
+  { name: 'Siloam', file: 'Siloam.png' },
+  { name: 'J chicken', file: 'J-chicken.png' },
+  { name: 'Kanmo Group', file: 'Kanmo-Group.png' },
+  { name: 'Breitling', file: 'Breitling.png' },
+  { name: 'Haus', file: 'Haus.png' },
+  { name: 'Optik Tunggal', file: 'Optik-Tunggal.png' },
+  { name: 'Amanaia', file: 'Amanaia.png' },
+  { name: 'Boga Group', file: 'Boga-Group.png' },
+  { name: 'Erajaya Active Lifestyle', file: 'Erajaya-Active-Lifestyle.png' },
+  { name: 'PT. Kurnia Ciptamoda Gemilang', file: 'PT-Kurnia-Ciptamoda-Gemilang.png' },
+  { name: 'The Paper Bunny', file: 'The-Paper-Bunny.png' },
+]
 ---
 
 <style is:global>
@@ -111,25 +180,93 @@ const asset = (name: string) => `/home-assets/pc-en-2/${name}`;
 
       <!-- Logo carousel 1 -->
       <div class="logo-carousel" data-carousel="1">
-        <div class="logo-track">
-          <div class="logo-card">LOGO</div>
-          <div class="logo-card">LOGO</div>
-          <div class="logo-card">LOGO</div>
-          <div class="logo-card">LOGO</div>
-          <div class="logo-card">LOGO</div>
-          <div class="logo-card">LOGO</div>
-          <div class="logo-card">LOGO</div>
-          <div class="logo-card">LOGO</div>
-          <div class="logo-card">LOGO</div>
-          <div class="logo-card" aria-hidden="true">LOGO</div>
-          <div class="logo-card" aria-hidden="true">LOGO</div>
-          <div class="logo-card" aria-hidden="true">LOGO</div>
-          <div class="logo-card" aria-hidden="true">LOGO</div>
-          <div class="logo-card" aria-hidden="true">LOGO</div>
-          <div class="logo-card" aria-hidden="true">LOGO</div>
-          <div class="logo-card" aria-hidden="true">LOGO</div>
-          <div class="logo-card" aria-hidden="true">LOGO</div>
-          <div class="logo-card" aria-hidden="true">LOGO</div>
+                <div class="logo-track">
+          <div class="logo-card"><img src="/home-assets/logos/韶音科技.png" alt="韶音科技" loading="lazy" /></div>
+          <div class="logo-card"><img src="/home-assets/logos/西贝.png" alt="西贝" loading="lazy" /></div>
+          <div class="logo-card"><img src="/home-assets/logos/深蓝汽车.png" alt="深蓝汽车" loading="lazy" /></div>
+          <div class="logo-card"><img src="/home-assets/logos/翼蓝数码.png" alt="翼蓝数码" loading="lazy" /></div>
+          <div class="logo-card"><img src="/home-assets/logos/奇华饼家.png" alt="奇华饼家" loading="lazy" /></div>
+          <div class="logo-card"><img src="/home-assets/logos/喜喜点心.png" alt="喜喜点心" loading="lazy" /></div>
+          <div class="logo-card"><img src="/home-assets/logos/陈记顺和.png" alt="陈记顺和" loading="lazy" /></div>
+          <div class="logo-card"><img src="/home-assets/logos/久久丫.png" alt="久久丫" loading="lazy" /></div>
+          <div class="logo-card"><img src="/home-assets/logos/意尔康.png" alt="意尔康" loading="lazy" /></div>
+          <div class="logo-card"><img src="/home-assets/logos/三福.png" alt="三福" loading="lazy" /></div>
+          <div class="logo-card"><img src="/home-assets/logos/奶糖派.png" alt="奶糖派" loading="lazy" /></div>
+          <div class="logo-card"><img src="/home-assets/logos/小吊梨汤.png" alt="小吊梨汤" loading="lazy" /></div>
+          <div class="logo-card"><img src="/home-assets/logos/官栈花胶.png" alt="官栈花胶" loading="lazy" /></div>
+          <div class="logo-card"><img src="/home-assets/logos/Gentle-Monster.png" alt="Gentle Monster" loading="lazy" /></div>
+          <div class="logo-card"><img src="/home-assets/logos/超级碗.png" alt="超级碗" loading="lazy" /></div>
+          <div class="logo-card"><img src="/home-assets/logos/鲜啤三十公里.png" alt="鲜啤三十公里" loading="lazy" /></div>
+          <div class="logo-card"><img src="/home-assets/logos/牛排家.png" alt="牛排家" loading="lazy" /></div>
+          <div class="logo-card"><img src="/home-assets/logos/夸爷拌粉.png" alt="夸爷拌粉" loading="lazy" /></div>
+          <div class="logo-card"><img src="/home-assets/logos/佟小曼.png" alt="佟小曼" loading="lazy" /></div>
+          <div class="logo-card"><img src="/home-assets/logos/罗丽丝.png" alt="罗丽丝" loading="lazy" /></div>
+          <div class="logo-card"><img src="/home-assets/logos/皇冠蛋糕.png" alt="皇冠蛋糕" loading="lazy" /></div>
+          <div class="logo-card"><img src="/home-assets/logos/田老师红烧肉.png" alt="田老师红烧肉" loading="lazy" /></div>
+          <div class="logo-card"><img src="/home-assets/logos/哥弟.png" alt="哥弟" loading="lazy" /></div>
+          <div class="logo-card"><img src="/home-assets/logos/马丫东北饭儿.png" alt="马丫东北饭儿" loading="lazy" /></div>
+          <div class="logo-card"><img src="/home-assets/logos/开心汽车.png" alt="开心汽车" loading="lazy" /></div>
+          <div class="logo-card"><img src="/home-assets/logos/拜耳.png" alt="拜耳" loading="lazy" /></div>
+          <div class="logo-card"><img src="/home-assets/logos/吉野家.png" alt="吉野家" loading="lazy" /></div>
+          <div class="logo-card"><img src="/home-assets/logos/理想汽车.png" alt="理想汽车" loading="lazy" /></div>
+          <div class="logo-card"><img src="/home-assets/logos/京东养车.png" alt="京东养车" loading="lazy" /></div>
+          <div class="logo-card"><img src="/home-assets/logos/巴黎贝甜poc.png" alt="巴黎贝甜（poc）" loading="lazy" /></div>
+          <div class="logo-card"><img src="/home-assets/logos/瑞-尔poc.png" alt="瑞 尔（poc）" loading="lazy" /></div>
+          <div class="logo-card"><img src="/home-assets/logos/恒昌照明.png" alt="恒昌照明" loading="lazy" /></div>
+          <div class="logo-card"><img src="/home-assets/logos/大金空调.png" alt="大金空调" loading="lazy" /></div>
+          <div class="logo-card"><img src="/home-assets/logos/黄山旅游.png" alt="黄山旅游" loading="lazy" /></div>
+          <div class="logo-card"><img src="/home-assets/logos/启迪数科.png" alt="启迪数科" loading="lazy" /></div>
+          <div class="logo-card"><img src="/home-assets/logos/无限极.png" alt="无限极" loading="lazy" /></div>
+          <div class="logo-card"><img src="/home-assets/logos/潘多拉.png" alt="潘多拉" loading="lazy" /></div>
+          <div class="logo-card"><img src="/home-assets/logos/基诺浦.png" alt="基诺浦" loading="lazy" /></div>
+          <div class="logo-card"><img src="/home-assets/logos/康宝莱.png" alt="康宝莱" loading="lazy" /></div>
+          <div class="logo-card"><img src="/home-assets/logos/资生堂.png" alt="资生堂" loading="lazy" /></div>
+          <div class="logo-card"><img src="/home-assets/logos/利星奔驰.png" alt="利星奔驰" loading="lazy" /></div>
+          <div class="logo-card"><img src="/home-assets/logos/WPP.png" alt="WPP" loading="lazy" /></div>
+          <div class="logo-card"><img src="/home-assets/logos/百度云.png" alt="百度云" loading="lazy" /></div>
+          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/韶音科技.png" alt="" loading="lazy" /></div>
+          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/西贝.png" alt="" loading="lazy" /></div>
+          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/深蓝汽车.png" alt="" loading="lazy" /></div>
+          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/翼蓝数码.png" alt="" loading="lazy" /></div>
+          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/奇华饼家.png" alt="" loading="lazy" /></div>
+          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/喜喜点心.png" alt="" loading="lazy" /></div>
+          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/陈记顺和.png" alt="" loading="lazy" /></div>
+          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/久久丫.png" alt="" loading="lazy" /></div>
+          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/意尔康.png" alt="" loading="lazy" /></div>
+          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/三福.png" alt="" loading="lazy" /></div>
+          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/奶糖派.png" alt="" loading="lazy" /></div>
+          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/小吊梨汤.png" alt="" loading="lazy" /></div>
+          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/官栈花胶.png" alt="" loading="lazy" /></div>
+          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/Gentle-Monster.png" alt="" loading="lazy" /></div>
+          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/超级碗.png" alt="" loading="lazy" /></div>
+          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/鲜啤三十公里.png" alt="" loading="lazy" /></div>
+          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/牛排家.png" alt="" loading="lazy" /></div>
+          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/夸爷拌粉.png" alt="" loading="lazy" /></div>
+          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/佟小曼.png" alt="" loading="lazy" /></div>
+          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/罗丽丝.png" alt="" loading="lazy" /></div>
+          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/皇冠蛋糕.png" alt="" loading="lazy" /></div>
+          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/田老师红烧肉.png" alt="" loading="lazy" /></div>
+          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/哥弟.png" alt="" loading="lazy" /></div>
+          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/马丫东北饭儿.png" alt="" loading="lazy" /></div>
+          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/开心汽车.png" alt="" loading="lazy" /></div>
+          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/拜耳.png" alt="" loading="lazy" /></div>
+          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/吉野家.png" alt="" loading="lazy" /></div>
+          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/理想汽车.png" alt="" loading="lazy" /></div>
+          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/京东养车.png" alt="" loading="lazy" /></div>
+          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/巴黎贝甜poc.png" alt="" loading="lazy" /></div>
+          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/瑞-尔poc.png" alt="" loading="lazy" /></div>
+          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/恒昌照明.png" alt="" loading="lazy" /></div>
+          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/大金空调.png" alt="" loading="lazy" /></div>
+          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/黄山旅游.png" alt="" loading="lazy" /></div>
+          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/启迪数科.png" alt="" loading="lazy" /></div>
+          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/无限极.png" alt="" loading="lazy" /></div>
+          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/潘多拉.png" alt="" loading="lazy" /></div>
+          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/基诺浦.png" alt="" loading="lazy" /></div>
+          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/康宝莱.png" alt="" loading="lazy" /></div>
+          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/资生堂.png" alt="" loading="lazy" /></div>
+          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/利星奔驰.png" alt="" loading="lazy" /></div>
+          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/WPP.png" alt="" loading="lazy" /></div>
+          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/百度云.png" alt="" loading="lazy" /></div>
         </div>
         <div class="carousel-bar">
           <img src={asset('11f3e.svg')} alt="" />
@@ -393,24 +530,52 @@ const asset = (name: string) => `/home-assets/pc-en-2/${name}`;
       <!-- Bottom area: carousel, FAQ, footer -->
       <div class="bottom-area" id="contact">
         <div class="logo-carousel" data-carousel="2">
-          <div class="logo-track">
-            <div class="logo-card">LOGO</div>
-            <div class="logo-card">LOGO</div>
-            <div class="logo-card">LOGO</div>
-            <div class="logo-card">LOGO</div>
-            <div class="logo-card">LOGO</div>
-            <div class="logo-card">LOGO</div>
-            <div class="logo-card">LOGO</div>
-            <div class="logo-card">LOGO</div>
-            <div class="logo-card" aria-hidden="true">LOGO</div>
-            <div class="logo-card" aria-hidden="true">LOGO</div>
-            <div class="logo-card" aria-hidden="true">LOGO</div>
-            <div class="logo-card" aria-hidden="true">LOGO</div>
-            <div class="logo-card" aria-hidden="true">LOGO</div>
-            <div class="logo-card" aria-hidden="true">LOGO</div>
-            <div class="logo-card" aria-hidden="true">LOGO</div>
-            <div class="logo-card" aria-hidden="true">LOGO</div>
-          </div>
+                  <div class="logo-track">
+          <div class="logo-card"><img src="/home-assets/logos/JREV.png" alt="JREV" loading="lazy" /></div>
+          <div class="logo-card"><img src="/home-assets/logos/Aeon-Mall.png" alt="Aeon Mall" loading="lazy" /></div>
+          <div class="logo-card"><img src="/home-assets/logos/ZUS-Coffee.png" alt="ZUS Coffee" loading="lazy" /></div>
+          <div class="logo-card"><img src="/home-assets/logos/PICO-Singapore.png" alt="PICO Singapore" loading="lazy" /></div>
+          <div class="logo-card"><img src="/home-assets/logos/mothercare.png" alt="mothercare" loading="lazy" /></div>
+          <div class="logo-card"><img src="/home-assets/logos/National-Gallery-Singapore.png" alt="National Gallery Singapore" loading="lazy" /></div>
+          <div class="logo-card"><img src="/home-assets/logos/Blibli.png" alt="Blibli" loading="lazy" /></div>
+          <div class="logo-card"><img src="/home-assets/logos/Acer.png" alt="Acer" loading="lazy" /></div>
+          <div class="logo-card"><img src="/home-assets/logos/OPPO.png" alt="OPPO" loading="lazy" /></div>
+          <div class="logo-card"><img src="/home-assets/logos/Metro.png" alt="Metro" loading="lazy" /></div>
+          <div class="logo-card"><img src="/home-assets/logos/OCBC.png" alt="OCBC" loading="lazy" /></div>
+          <div class="logo-card"><img src="/home-assets/logos/Siloam.png" alt="Siloam" loading="lazy" /></div>
+          <div class="logo-card"><img src="/home-assets/logos/J-chicken.png" alt="J chicken" loading="lazy" /></div>
+          <div class="logo-card"><img src="/home-assets/logos/Kanmo-Group.png" alt="Kanmo Group" loading="lazy" /></div>
+          <div class="logo-card"><img src="/home-assets/logos/Breitling.png" alt="Breitling" loading="lazy" /></div>
+          <div class="logo-card"><img src="/home-assets/logos/Haus.png" alt="Haus" loading="lazy" /></div>
+          <div class="logo-card"><img src="/home-assets/logos/Optik-Tunggal.png" alt="Optik Tunggal" loading="lazy" /></div>
+          <div class="logo-card"><img src="/home-assets/logos/Amanaia.png" alt="Amanaia" loading="lazy" /></div>
+          <div class="logo-card"><img src="/home-assets/logos/Boga-Group.png" alt="Boga Group" loading="lazy" /></div>
+          <div class="logo-card"><img src="/home-assets/logos/Erajaya-Active-Lifestyle.png" alt="Erajaya Active Lifestyle" loading="lazy" /></div>
+          <div class="logo-card"><img src="/home-assets/logos/PT-Kurnia-Ciptamoda-Gemilang.png" alt="PT. Kurnia Ciptamoda Gemilang" loading="lazy" /></div>
+          <div class="logo-card"><img src="/home-assets/logos/The-Paper-Bunny.png" alt="The Paper Bunny" loading="lazy" /></div>
+          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/JREV.png" alt="" loading="lazy" /></div>
+          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/Aeon-Mall.png" alt="" loading="lazy" /></div>
+          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/ZUS-Coffee.png" alt="" loading="lazy" /></div>
+          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/PICO-Singapore.png" alt="" loading="lazy" /></div>
+          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/mothercare.png" alt="" loading="lazy" /></div>
+          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/National-Gallery-Singapore.png" alt="" loading="lazy" /></div>
+          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/Blibli.png" alt="" loading="lazy" /></div>
+          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/Acer.png" alt="" loading="lazy" /></div>
+          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/OPPO.png" alt="" loading="lazy" /></div>
+          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/Metro.png" alt="" loading="lazy" /></div>
+          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/OCBC.png" alt="" loading="lazy" /></div>
+          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/Siloam.png" alt="" loading="lazy" /></div>
+          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/J-chicken.png" alt="" loading="lazy" /></div>
+          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/Kanmo-Group.png" alt="" loading="lazy" /></div>
+          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/Breitling.png" alt="" loading="lazy" /></div>
+          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/Haus.png" alt="" loading="lazy" /></div>
+          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/Optik-Tunggal.png" alt="" loading="lazy" /></div>
+          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/Amanaia.png" alt="" loading="lazy" /></div>
+          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/Boga-Group.png" alt="" loading="lazy" /></div>
+          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/Erajaya-Active-Lifestyle.png" alt="" loading="lazy" /></div>
+          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/PT-Kurnia-Ciptamoda-Gemilang.png" alt="" loading="lazy" /></div>
+          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/The-Paper-Bunny.png" alt="" loading="lazy" /></div>
+        </div>
           <div class="carousel-bar">
             <img src={asset('26d34.svg')} alt="" />
           </div>
