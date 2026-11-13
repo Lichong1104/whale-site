@@ -34,7 +34,9 @@ const extraSchema = [
     image: post.data.coverImage,
     datePublished: post.data.publishDate.toISOString(),
     ...(post.data.modifiedDate && { dateModified: post.data.modifiedDate.toISOString() }),
-    author: { '@type': 'Organization', name: post.data.author },
+    author: post.data.authorUrl
+      ? { '@type': 'Person', name: post.data.author, url: post.data.authorUrl }
+      : { '@type': 'Organization', name: post.data.author },
     mainEntityOfPage: canonicalUrl,
   },
   {
@@ -67,6 +69,13 @@ const extraSchema = [
             <time datetime={post.data.publishDate.toISOString().slice(0, 10)}>{dateLabel}</time>
           </p>
           <h1 class="pr-title">{post.data.title}</h1>
+          {post.data.author && (
+            <p class="pr-author">
+              By {post.data.authorUrl ? (
+                <a href={post.data.authorUrl} target="_blank" rel="noopener noreferrer">{post.data.author}</a>
+              ) : post.data.author}
+            </p>
+          )}
           <figure class="pr-cover">
             <img src={post.data.coverImage} alt={post.data.title} loading="eager" decoding="async" width="1200" height="675" />
           </figure>
@@ -144,6 +153,15 @@ const extraSchema = [
     font-size: clamp(1.7rem, 3.4vw, 2.6rem);
     line-height: 1.25;
     margin: 0 0 var(--space-md);
+  }
+
+  .pr-author {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin: calc(var(--space-xs) * -1) 0 var(--space-md);
+  }
+  .pr-author a {
+    color: #1D4ED8;
   }
 
   .pr-cover {
