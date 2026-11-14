@@ -26,6 +26,17 @@ const dateLabel = post.data.publishDate.toLocaleDateString('en-US', {
   day: 'numeric',
 });
 
+const authorName = post.data.author;
+const authorUrl = post.data.authorUrl;
+const authorTitle = post.data.authorTitle;
+const authorBio = post.data.authorBio;
+const authorInitials = authorName
+  .split(/\s+/)
+  .filter(Boolean)
+  .slice(0, 2)
+  .map((part) => part[0]?.toUpperCase() ?? '')
+  .join('');
+
 const extraSchema = [
   {
     '@type': 'BlogPosting',
@@ -69,13 +80,31 @@ const extraSchema = [
             <time datetime={post.data.publishDate.toISOString().slice(0, 10)}>{dateLabel}</time>
           </p>
           <h1 class="pr-title">{post.data.title}</h1>
-          {post.data.author && (
-            <p class="pr-author">
-              By {post.data.authorUrl ? (
-                <a href={post.data.authorUrl} target="_blank" rel="noopener noreferrer">{post.data.author}</a>
-              ) : post.data.author}
-            </p>
-          )}
+          <div class="pr-author">
+            <span class="pr-author-avatar" aria-hidden="true">{authorInitials}</span>
+            <span class="pr-author-meta">
+              <span class="pr-author-name">
+                By {authorUrl ? (
+                  <a href={authorUrl} target="_blank" rel="noopener noreferrer">{authorName}</a>
+                ) : authorName}
+              </span>
+              {authorTitle && <span class="pr-author-role">{authorTitle}</span>}
+            </span>
+            {authorUrl && (
+              <a
+                class="pr-author-linkedin"
+                href={authorUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`${authorName} on LinkedIn`}
+              >
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.95v5.66H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.61 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.23 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.73V1.73C24 .77 23.21 0 22.23 0z" />
+                </svg>
+                <span>LinkedIn</span>
+              </a>
+            )}
+          </div>
           <figure class="pr-cover">
             <img src={post.data.coverImage} alt={post.data.title} loading="eager" decoding="async" width="1200" height="675" />
           </figure>
@@ -84,6 +113,29 @@ const extraSchema = [
         <div class="pr-body">
           <Content />
         </div>
+
+        {authorUrl && (
+          <aside class="pr-author-card" aria-label="About the author">
+            <span class="pr-author-avatar pr-author-avatar--lg" aria-hidden="true">{authorInitials}</span>
+            <div class="pr-author-card-body">
+              <p class="pr-author-card-label">About the author</p>
+              <p class="pr-author-card-name">{authorName}</p>
+              {authorTitle && <p class="pr-author-card-role">{authorTitle}</p>}
+              {authorBio && <p class="pr-author-card-bio">{authorBio}</p>}
+              <a
+                class="pr-author-card-link"
+                href={authorUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.95v5.66H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.61 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.23 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.73V1.73C24 .77 23.21 0 22.23 0z" />
+                </svg>
+                Connect on LinkedIn
+              </a>
+            </div>
+          </aside>
+        )}
 
         {post.data.externalUrl && (
           <p class="pr-source">
@@ -156,12 +208,153 @@ const extraSchema = [
   }
 
   .pr-author {
-    font-size: 0.95rem;
-    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    padding: 0.7rem 0.9rem;
     margin: calc(var(--space-xs) * -1) 0 var(--space-md);
+    background: var(--bg-elevated);
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    border-radius: var(--radius-sm);
   }
-  .pr-author a {
+
+  .pr-author-avatar {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #2563EB 0%, #06B6D4 100%);
+    color: #fff;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.02em;
+  }
+
+  .pr-author-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    min-width: 0;
+  }
+
+  .pr-author-name {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .pr-author-name a {
+    color: var(--text);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(37, 99, 235, 0.35);
+    transition: color 0.2s ease, border-color 0.2s ease;
+  }
+
+  .pr-author-name a:hover {
     color: #1D4ED8;
+    border-color: #1D4ED8;
+  }
+
+  .pr-author-role {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+  }
+
+  .pr-author-linkedin {
+    margin-left: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #0A66C2;
+    background: #EAF3FB;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+
+  .pr-author-linkedin svg {
+    width: 15px;
+    height: 15px;
+  }
+
+  .pr-author-linkedin:hover {
+    background: #0A66C2;
+    color: #fff;
+  }
+
+  .pr-author-card {
+    display: flex;
+    gap: var(--space-sm);
+    margin-top: var(--space-lg);
+    padding: var(--space-md);
+    background: var(--bg-tint);
+    border: 1px solid rgba(15, 23, 42, 0.06);
+    border-radius: var(--radius);
+  }
+
+  .pr-author-avatar--lg {
+    width: 56px;
+    height: 56px;
+    font-size: 1.05rem;
+  }
+
+  .pr-author-card-body p {
+    margin: 0;
+  }
+
+  .pr-author-card-body .pr-author-card-label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin-bottom: 0.35rem;
+  }
+
+  .pr-author-card-name {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .pr-author-card-role {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+  }
+
+  .pr-author-card-body .pr-author-card-bio {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin-top: 0.4rem;
+  }
+
+  .pr-author-card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 0.6rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #0A66C2;
+    text-decoration: none;
+  }
+
+  .pr-author-card-link svg {
+    width: 15px;
+    height: 15px;
+  }
+
+  .pr-author-card-link:hover {
+    text-decoration: underline;
   }
 
   .pr-cover {
