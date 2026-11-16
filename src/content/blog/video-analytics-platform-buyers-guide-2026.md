@@ -8,7 +8,7 @@ subcategory: "video-analytics"
 author: "Charissa Zheng"
 authorUrl: "https://www.linkedin.com/in/charissa-zheng-776ba1148/"
 featured: false
-coverImage: "/blog-covers/default-cover.svg"
+coverImage: "/blog-covers/video-analytics-platform-buyers-guide-2026.jpg"
 tags:
   - "video-analytics"
   - "retail-technology"

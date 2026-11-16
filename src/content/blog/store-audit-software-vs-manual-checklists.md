@@ -8,7 +8,7 @@ subcategory: "store-audit"
 author: "Charissa Zheng"
 authorUrl: "https://www.linkedin.com/in/charissa-zheng-776ba1148/"
 featured: false
-coverImage: "/blog-covers/default-cover.svg"
+coverImage: "/blog-covers/store-audit-software-vs-manual-checklists.jpg"
 tags:
   - "store-audit"
   - "retail-operations"

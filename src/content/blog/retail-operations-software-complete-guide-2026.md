@@ -8,7 +8,7 @@ subcategory: "retail-operations"
 author: "Charissa Zheng"
 authorUrl: "https://www.linkedin.com/in/charissa-zheng-776ba1148/"
 featured: false
-coverImage: "/blog-covers/default-cover.svg"
+coverImage: "/blog-covers/retail-operations-software-complete-guide-2026.jpg"
 tags:
   - "retail-operations"
   - "operations-software"
