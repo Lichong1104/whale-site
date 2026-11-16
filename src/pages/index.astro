@@ -3,74 +3,100 @@ import '../styles/pc-en-2.css';
 import Layout from '../layouts/Layout.astro';
 
 const asset = (name: string) => `/home-assets/pc-en-2/${name}`;
-const domesticLogos = [
-  { name: '韶音科技', file: '韶音科技.png' },
-  { name: '西贝', file: '西贝.png' },
-  { name: '深蓝汽车', file: '深蓝汽车.png' },
-  { name: '翼蓝数码', file: '翼蓝数码.png' },
-  { name: '奇华饼家', file: '奇华饼家.png' },
-  { name: '喜喜点心', file: '喜喜点心.png' },
-  { name: '陈记顺和', file: '陈记顺和.png' },
-  { name: '久久丫', file: '久久丫.png' },
-  { name: '意尔康', file: '意尔康.png' },
-  { name: '三福', file: '三福.png' },
-  { name: '奶糖派', file: '奶糖派.png' },
-  { name: '小吊梨汤', file: '小吊梨汤.png' },
-  { name: '官栈花胶', file: '官栈花胶.png' },
-  { name: 'Gentle Monster', file: 'Gentle-Monster.png' },
-  { name: '超级碗', file: '超级碗.png' },
-  { name: '鲜啤三十公里', file: '鲜啤三十公里.png' },
-  { name: '牛排家', file: '牛排家.png' },
-  { name: '夸爷拌粉', file: '夸爷拌粉.png' },
-  { name: '佟小曼', file: '佟小曼.png' },
-  { name: '罗丽丝', file: '罗丽丝.png' },
-  { name: '皇冠蛋糕', file: '皇冠蛋糕.png' },
-  { name: '田老师红烧肉', file: '田老师红烧肉.png' },
-  { name: '哥弟', file: '哥弟.png' },
-  { name: '马丫东北饭儿', file: '马丫东北饭儿.png' },
-  { name: '开心汽车', file: '开心汽车.png' },
-  { name: '拜耳', file: '拜耳.png' },
-  { name: '吉野家', file: '吉野家.png' },
-  { name: '理想汽车', file: '理想汽车.png' },
-  { name: '京东养车', file: '京东养车.png' },
-  { name: '巴黎贝甜（poc）', file: '巴黎贝甜poc.png' },
-  { name: '瑞 尔（poc）', file: '瑞-尔poc.png' },
-  { name: '恒昌照明', file: '恒昌照明.png' },
-  { name: '大金空调', file: '大金空调.png' },
-  { name: '黄山旅游', file: '黄山旅游.png' },
-  { name: '启迪数科', file: '启迪数科.png' },
-  { name: '无限极', file: '无限极.png' },
-  { name: '潘多拉', file: '潘多拉.png' },
-  { name: '基诺浦', file: '基诺浦.png' },
-  { name: '康宝莱', file: '康宝莱.png' },
-  { name: '资生堂', file: '资生堂.png' },
-  { name: '利星奔驰', file: '利星奔驰.png' },
-  { name: 'WPP', file: 'WPP.png' },
-  { name: '百度云', file: '百度云.png' },
+const industryLogos = [
+  // 餐饮
+  { name: 'BOGA', src: '/home-assets/logos/leading-industry/food-beverage/BOGA.jpg' },
+  { name: 'starbucks', src: '/home-assets/logos/leading-industry/food-beverage/starbucks.jpg' },
+  { name: 'STEAK HOUSE', src: '/home-assets/logos/leading-industry/food-beverage/STEAK-HOUSE.jpg' },
+  { name: 'talaga sampireun', src: '/home-assets/logos/leading-industry/food-beverage/talaga-sampireun.jpg' },
+  { name: 'VITO', src: '/home-assets/logos/leading-industry/food-beverage/VITO.jpg' },
+  { name: 'ZUS', src: '/home-assets/logos/leading-industry/food-beverage/ZUS.jpg' },
+  // 交通
+  { name: 'JR', src: '/home-assets/logos/leading-industry/transport/JR.jpg' },
+  { name: 'MTR', src: '/home-assets/logos/leading-industry/transport/MTR.jpg' },
+  // 金融
+  { name: 'OCBC', src: '/home-assets/logos/leading-industry/finance/OCBC.jpg' },
+  { name: 'SMBC', src: '/home-assets/logos/leading-industry/finance/SMBC.jpg' },
+  // 零售商店
+  { name: 'carrefour', src: '/home-assets/logos/leading-industry/retail/carrefour.jpg' },
+  { name: 'erajaya', src: '/home-assets/logos/leading-industry/retail/erajaya.jpg' },
+  { name: 'K-Life', src: '/home-assets/logos/leading-industry/retail/K-Life.jpg' },
+  { name: 'LAWSON', src: '/home-assets/logos/leading-industry/retail/LAWSON.jpg' },
+  { name: 'mannings', src: '/home-assets/logos/leading-industry/retail/mannings.jpg' },
+  { name: 'watsons', src: '/home-assets/logos/leading-industry/retail/watsons.jpg' },
+  // 美妆护肤
+  { name: '百雀羚', src: '/home-assets/logos/leading-industry/beauty/百雀羚.jpg' },
+  { name: 'AMORE PACIFIC', src: '/home-assets/logos/leading-industry/beauty/AMORE-PACIFIC.jpg' },
+  { name: 'DIOR', src: '/home-assets/logos/leading-industry/beauty/DIOR.jpg' },
+  { name: 'ESTEE LAUDER', src: '/home-assets/logos/leading-industry/beauty/ESTEE-LAUDER.jpg' },
+  { name: 'Henkel', src: '/home-assets/logos/leading-industry/beauty/Henkel.jpg' },
+  { name: 'LOREAL', src: '/home-assets/logos/leading-industry/beauty/LOREAL.jpg' },
+  { name: 'SHISEIDO 资生堂', src: '/home-assets/logos/leading-industry/beauty/SHISEIDO-资生堂.jpg' },
+  // 汽车
+  { name: 'BYD', src: '/home-assets/logos/leading-industry/automotive/BYD.jpg' },
+  { name: 'FORD', src: '/home-assets/logos/leading-industry/automotive/FORD.jpg' },
+  { name: 'LOTUS', src: '/home-assets/logos/leading-industry/automotive/LOTUS.jpg' },
+  { name: 'NIO', src: '/home-assets/logos/leading-industry/automotive/NIO.jpg' },
+  { name: 'NISSAN', src: '/home-assets/logos/leading-industry/automotive/NISSAN.jpg' },
+  { name: 'PORSCHE', src: '/home-assets/logos/leading-industry/automotive/PORSCHE.jpg' },
+  { name: 'TUHU', src: '/home-assets/logos/leading-industry/automotive/TUHU.jpg' },
+  // 商业地产
+  { name: '如家', src: '/home-assets/logos/leading-industry/real-estate/如家.jpg' },
+  { name: '新加坡国家美术馆', src: '/home-assets/logos/leading-industry/real-estate/新加坡国家美术馆.jpg' },
+  { name: 'AEON', src: '/home-assets/logos/leading-industry/real-estate/AEON.jpg' },
+  { name: 'CDF中免集团', src: '/home-assets/logos/leading-industry/real-estate/CDF中免集团.jpg' },
+  { name: 'CP GROUP 正大集团', src: '/home-assets/logos/leading-industry/real-estate/CP-GROUP-正大集团.jpg' },
+  { name: 'SKP', src: '/home-assets/logos/leading-industry/real-estate/SKP.jpg' },
+  // 奢侈品及时尚零售
+  { name: '周大福', src: '/home-assets/logos/leading-industry/luxury-fashion/周大福.jpg' },
+  { name: 'BREITLING', src: '/home-assets/logos/leading-industry/luxury-fashion/BREITLING.jpg' },
+  { name: 'CHANEL', src: '/home-assets/logos/leading-industry/luxury-fashion/CHANEL.jpg' },
+  { name: 'GIORGIO ARMANI', src: '/home-assets/logos/leading-industry/luxury-fashion/GIORGIO-ARMANI.jpg' },
+  { name: 'MUJI', src: '/home-assets/logos/leading-industry/luxury-fashion/MUJI.jpg' },
+  { name: 'UNIQLO', src: '/home-assets/logos/leading-industry/luxury-fashion/UNIQLO.jpg' },
+  // 通讯
+  { name: '澳门电讯 CTM', src: '/home-assets/logos/leading-industry/telecom/澳门电讯-CTM.jpg' },
+  { name: '新加坡 M1', src: '/home-assets/logos/leading-industry/telecom/新加坡-M1.jpg' },
+  { name: '新加坡 SINGTEL', src: '/home-assets/logos/leading-industry/telecom/新加坡-SINGTEL.jpg' },
+  { name: '印尼电信 Telkom Indonesia', src: '/home-assets/logos/leading-industry/telecom/印尼电信-Telkom-Indonesia.jpg' },
+  { name: '中国电信 CHINA TELECOM', src: '/home-assets/logos/leading-industry/telecom/中国电信-CHINA-TELECOM.jpg' },
+  { name: '中国联通 CHINA UNICOM', src: '/home-assets/logos/leading-industry/telecom/中国联通-CHINA-UNICOM.jpg' },
+  { name: 'Telkomsel（印尼电信移动）', src: '/home-assets/logos/leading-industry/telecom/Telkomsel印尼电信移动.jpg' },
+  // 消费
+  { name: 'ABinBev', src: '/home-assets/logos/leading-industry/consumer/ABinBev.jpg' },
+  { name: 'CocaCola', src: '/home-assets/logos/leading-industry/consumer/CocaCola.jpg' },
+  { name: 'MARS', src: '/home-assets/logos/leading-industry/consumer/MARS.jpg' },
+  { name: 'P&G', src: '/home-assets/logos/leading-industry/consumer/PandG.jpg' },
+  { name: 'Purcotton', src: '/home-assets/logos/leading-industry/consumer/Purcotton.jpg' },
+  { name: 'Unilever', src: '/home-assets/logos/leading-industry/consumer/Unilever.jpg' },
+  // 消费电子
+  { name: 'BOSCH', src: '/home-assets/logos/leading-industry/electronics/BOSCH.jpg' },
+  { name: 'COLMO', src: '/home-assets/logos/leading-industry/electronics/COLMO.jpg' },
+  { name: 'DELL', src: '/home-assets/logos/leading-industry/electronics/DELL.jpg' },
+  { name: 'midea', src: '/home-assets/logos/leading-industry/electronics/midea.jpg' },
+  { name: 'OPPO', src: '/home-assets/logos/leading-industry/electronics/OPPO.jpg' },
+  { name: 'PICO', src: '/home-assets/logos/leading-industry/electronics/PICO.jpg' },
+  // 医疗康养
+  { name: 'COMO GROUP', src: '/home-assets/logos/leading-industry/healthcare/COMO-GROUP.jpg' },
+  { name: 'CRRAIL 瑞尔', src: '/home-assets/logos/leading-industry/healthcare/CRRAIL-瑞尔.jpg' },
 ]
-const overseasLogos = [
-  { name: 'JREV', file: 'JREV.png' },
-  { name: 'Aeon Mall', file: 'Aeon-Mall.png' },
-  { name: 'ZUS Coffee', file: 'ZUS-Coffee.png' },
-  { name: 'PICO Singapore', file: 'PICO-Singapore.png' },
-  { name: 'mothercare', file: 'mothercare.png' },
-  { name: 'National Gallery Singapore', file: 'National-Gallery-Singapore.png' },
-  { name: 'Blibli', file: 'Blibli.png' },
-  { name: 'Acer', file: 'Acer.png' },
-  { name: 'OPPO', file: 'OPPO.png' },
-  { name: 'Metro', file: 'Metro.png' },
-  { name: 'OCBC', file: 'OCBC.png' },
-  { name: 'Siloam', file: 'Siloam.png' },
-  { name: 'J chicken', file: 'J-chicken.png' },
-  { name: 'Kanmo Group', file: 'Kanmo-Group.png' },
-  { name: 'Breitling', file: 'Breitling.png' },
-  { name: 'Haus', file: 'Haus.png' },
-  { name: 'Optik Tunggal', file: 'Optik-Tunggal.png' },
-  { name: 'Amanaia', file: 'Amanaia.png' },
-  { name: 'Boga Group', file: 'Boga-Group.png' },
-  { name: 'Erajaya Active Lifestyle', file: 'Erajaya-Active-Lifestyle.png' },
-  { name: 'PT. Kurnia Ciptamoda Gemilang', file: 'PT-Kurnia-Ciptamoda-Gemilang.png' },
-  { name: 'The Paper Bunny', file: 'The-Paper-Bunny.png' },
+const investorLogos = [
+  { name: 'ALPHA STARTUPS', src: '/home-assets/logos/investors/ALPHA-STARTUPS.jpg' },
+  { name: 'BAI CAPITAL', src: '/home-assets/logos/investors/BAI-CAPITAL.jpg' },
+  { name: 'BOSCH', src: '/home-assets/logos/investors/BOSCH.jpg' },
+  { name: 'GENTREE', src: '/home-assets/logos/investors/GENTREE.jpg' },
+  { name: 'HYUNDAI', src: '/home-assets/logos/investors/HYUNDAI.jpg' },
+  { name: 'INNOV8', src: '/home-assets/logos/investors/INNOV8.jpg' },
+  { name: 'KRUNGSRI', src: '/home-assets/logos/investors/KRUNGSRI.jpg' },
+  { name: 'LINEAR CAPITAL', src: '/home-assets/logos/investors/LINEAR-CAPITAL.jpg' },
+  { name: 'MDI ventures', src: '/home-assets/logos/investors/MDI-ventures.jpg' },
+  { name: 'MTR LAB', src: '/home-assets/logos/investors/MTR-LAB.jpg' },
+  { name: 'NIO CAPITAL', src: '/home-assets/logos/investors/NIO-CAPITAL.jpg' },
+  { name: 'SMBC', src: '/home-assets/logos/investors/SMBC.jpg' },
+  { name: 'SOURCE CODE CAPITAL', src: '/home-assets/logos/investors/SOURCE-CODE-CAPITAL.jpg' },
+  { name: 'TEMASEK', src: '/home-assets/logos/investors/TEMASEK.jpg' },
+  { name: '弘章投资', src: '/home-assets/logos/investors/弘章投资.jpg' },
+  { name: '招银国际', src: '/home-assets/logos/investors/招银国际.jpg' },
 ]
 ---
 
@@ -121,10 +147,12 @@ const overseasLogos = [
             </div>
           </div>
           <div class="hero-slide">
-            <h1 class="hero-title">Empower your teams to move your business forward.</h1>
+            <h1 class="hero-title hero-title-aios">Empower your teams to move your business forward.</h1>
             <p class="hero-sub">Make AI part of your everyday work, helping your teams spend less time on routine tasks and more time creating business value.</p>
-            <div class="hero-media">
-              <img class="hero-media-bg" src={asset('5c5c9.png')} alt="AIOS" />
+            <div class="hero-media hero-media-aios">
+              <div class="hero-media-aios-frame">
+                <img class="hero-media-aios-img" src={asset('5c5c9.png')} alt="AIOS" />
+              </div>
             </div>
           </div>
           <div class="hero-slide">
@@ -181,136 +209,58 @@ const overseasLogos = [
       <!-- Logo carousel 1 -->
       <div class="logo-carousel" data-carousel="1">
                 <div class="logo-track">
-          <div class="logo-card"><img src="/home-assets/logos/韶音科技.png" alt="韶音科技" loading="lazy" /></div>
-          <div class="logo-card"><img src="/home-assets/logos/西贝.png" alt="西贝" loading="lazy" /></div>
-          <div class="logo-card"><img src="/home-assets/logos/深蓝汽车.png" alt="深蓝汽车" loading="lazy" /></div>
-          <div class="logo-card"><img src="/home-assets/logos/翼蓝数码.png" alt="翼蓝数码" loading="lazy" /></div>
-          <div class="logo-card"><img src="/home-assets/logos/奇华饼家.png" alt="奇华饼家" loading="lazy" /></div>
-          <div class="logo-card"><img src="/home-assets/logos/喜喜点心.png" alt="喜喜点心" loading="lazy" /></div>
-          <div class="logo-card"><img src="/home-assets/logos/陈记顺和.png" alt="陈记顺和" loading="lazy" /></div>
-          <div class="logo-card"><img src="/home-assets/logos/久久丫.png" alt="久久丫" loading="lazy" /></div>
-          <div class="logo-card"><img src="/home-assets/logos/意尔康.png" alt="意尔康" loading="lazy" /></div>
-          <div class="logo-card"><img src="/home-assets/logos/三福.png" alt="三福" loading="lazy" /></div>
-          <div class="logo-card"><img src="/home-assets/logos/奶糖派.png" alt="奶糖派" loading="lazy" /></div>
-          <div class="logo-card"><img src="/home-assets/logos/小吊梨汤.png" alt="小吊梨汤" loading="lazy" /></div>
-          <div class="logo-card"><img src="/home-assets/logos/官栈花胶.png" alt="官栈花胶" loading="lazy" /></div>
-          <div class="logo-card"><img src="/home-assets/logos/Gentle-Monster.png" alt="Gentle Monster" loading="lazy" /></div>
-          <div class="logo-card"><img src="/home-assets/logos/超级碗.png" alt="超级碗" loading="lazy" /></div>
-          <div class="logo-card"><img src="/home-assets/logos/鲜啤三十公里.png" alt="鲜啤三十公里" loading="lazy" /></div>
-          <div class="logo-card"><img src="/home-assets/logos/牛排家.png" alt="牛排家" loading="lazy" /></div>
-          <div class="logo-card"><img src="/home-assets/logos/夸爷拌粉.png" alt="夸爷拌粉" loading="lazy" /></div>
-          <div class="logo-card"><img src="/home-assets/logos/佟小曼.png" alt="佟小曼" loading="lazy" /></div>
-          <div class="logo-card"><img src="/home-assets/logos/罗丽丝.png" alt="罗丽丝" loading="lazy" /></div>
-          <div class="logo-card"><img src="/home-assets/logos/皇冠蛋糕.png" alt="皇冠蛋糕" loading="lazy" /></div>
-          <div class="logo-card"><img src="/home-assets/logos/田老师红烧肉.png" alt="田老师红烧肉" loading="lazy" /></div>
-          <div class="logo-card"><img src="/home-assets/logos/哥弟.png" alt="哥弟" loading="lazy" /></div>
-          <div class="logo-card"><img src="/home-assets/logos/马丫东北饭儿.png" alt="马丫东北饭儿" loading="lazy" /></div>
-          <div class="logo-card"><img src="/home-assets/logos/开心汽车.png" alt="开心汽车" loading="lazy" /></div>
-          <div class="logo-card"><img src="/home-assets/logos/拜耳.png" alt="拜耳" loading="lazy" /></div>
-          <div class="logo-card"><img src="/home-assets/logos/吉野家.png" alt="吉野家" loading="lazy" /></div>
-          <div class="logo-card"><img src="/home-assets/logos/理想汽车.png" alt="理想汽车" loading="lazy" /></div>
-          <div class="logo-card"><img src="/home-assets/logos/京东养车.png" alt="京东养车" loading="lazy" /></div>
-          <div class="logo-card"><img src="/home-assets/logos/巴黎贝甜poc.png" alt="巴黎贝甜（poc）" loading="lazy" /></div>
-          <div class="logo-card"><img src="/home-assets/logos/瑞-尔poc.png" alt="瑞 尔（poc）" loading="lazy" /></div>
-          <div class="logo-card"><img src="/home-assets/logos/恒昌照明.png" alt="恒昌照明" loading="lazy" /></div>
-          <div class="logo-card"><img src="/home-assets/logos/大金空调.png" alt="大金空调" loading="lazy" /></div>
-          <div class="logo-card"><img src="/home-assets/logos/黄山旅游.png" alt="黄山旅游" loading="lazy" /></div>
-          <div class="logo-card"><img src="/home-assets/logos/启迪数科.png" alt="启迪数科" loading="lazy" /></div>
-          <div class="logo-card"><img src="/home-assets/logos/无限极.png" alt="无限极" loading="lazy" /></div>
-          <div class="logo-card"><img src="/home-assets/logos/潘多拉.png" alt="潘多拉" loading="lazy" /></div>
-          <div class="logo-card"><img src="/home-assets/logos/基诺浦.png" alt="基诺浦" loading="lazy" /></div>
-          <div class="logo-card"><img src="/home-assets/logos/康宝莱.png" alt="康宝莱" loading="lazy" /></div>
-          <div class="logo-card"><img src="/home-assets/logos/资生堂.png" alt="资生堂" loading="lazy" /></div>
-          <div class="logo-card"><img src="/home-assets/logos/利星奔驰.png" alt="利星奔驰" loading="lazy" /></div>
-          <div class="logo-card"><img src="/home-assets/logos/WPP.png" alt="WPP" loading="lazy" /></div>
-          <div class="logo-card"><img src="/home-assets/logos/百度云.png" alt="百度云" loading="lazy" /></div>
-          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/韶音科技.png" alt="" loading="lazy" /></div>
-          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/西贝.png" alt="" loading="lazy" /></div>
-          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/深蓝汽车.png" alt="" loading="lazy" /></div>
-          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/翼蓝数码.png" alt="" loading="lazy" /></div>
-          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/奇华饼家.png" alt="" loading="lazy" /></div>
-          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/喜喜点心.png" alt="" loading="lazy" /></div>
-          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/陈记顺和.png" alt="" loading="lazy" /></div>
-          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/久久丫.png" alt="" loading="lazy" /></div>
-          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/意尔康.png" alt="" loading="lazy" /></div>
-          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/三福.png" alt="" loading="lazy" /></div>
-          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/奶糖派.png" alt="" loading="lazy" /></div>
-          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/小吊梨汤.png" alt="" loading="lazy" /></div>
-          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/官栈花胶.png" alt="" loading="lazy" /></div>
-          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/Gentle-Monster.png" alt="" loading="lazy" /></div>
-          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/超级碗.png" alt="" loading="lazy" /></div>
-          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/鲜啤三十公里.png" alt="" loading="lazy" /></div>
-          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/牛排家.png" alt="" loading="lazy" /></div>
-          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/夸爷拌粉.png" alt="" loading="lazy" /></div>
-          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/佟小曼.png" alt="" loading="lazy" /></div>
-          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/罗丽丝.png" alt="" loading="lazy" /></div>
-          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/皇冠蛋糕.png" alt="" loading="lazy" /></div>
-          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/田老师红烧肉.png" alt="" loading="lazy" /></div>
-          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/哥弟.png" alt="" loading="lazy" /></div>
-          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/马丫东北饭儿.png" alt="" loading="lazy" /></div>
-          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/开心汽车.png" alt="" loading="lazy" /></div>
-          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/拜耳.png" alt="" loading="lazy" /></div>
-          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/吉野家.png" alt="" loading="lazy" /></div>
-          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/理想汽车.png" alt="" loading="lazy" /></div>
-          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/京东养车.png" alt="" loading="lazy" /></div>
-          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/巴黎贝甜poc.png" alt="" loading="lazy" /></div>
-          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/瑞-尔poc.png" alt="" loading="lazy" /></div>
-          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/恒昌照明.png" alt="" loading="lazy" /></div>
-          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/大金空调.png" alt="" loading="lazy" /></div>
-          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/黄山旅游.png" alt="" loading="lazy" /></div>
-          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/启迪数科.png" alt="" loading="lazy" /></div>
-          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/无限极.png" alt="" loading="lazy" /></div>
-          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/潘多拉.png" alt="" loading="lazy" /></div>
-          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/基诺浦.png" alt="" loading="lazy" /></div>
-          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/康宝莱.png" alt="" loading="lazy" /></div>
-          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/资生堂.png" alt="" loading="lazy" /></div>
-          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/利星奔驰.png" alt="" loading="lazy" /></div>
-          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/WPP.png" alt="" loading="lazy" /></div>
-          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/百度云.png" alt="" loading="lazy" /></div>
+          {industryLogos.map((logo) => (
+            <div class="logo-card"><img src={logo.src} alt={logo.name} loading="lazy" /></div>
+          ))}
+          {industryLogos.map((logo) => (
+            <div class="logo-card" aria-hidden="true"><img src={logo.src} alt="" loading="lazy" /></div>
+          ))}
         </div>
         <div class="carousel-bar">
           <img src={asset('11f3e.svg')} alt="" />
         </div>
       </div>
 
-      <!-- Ecosystem title -->
+      <!-- Ecosystem -->
+      <section class="ecosystem" aria-labelledby="ecosystem-title">
       <div class="section-title ecosystem-title">
-        <h2>Enterprise AI product ecosystem</h2>
+        <h2 id="ecosystem-title">Enterprise AI product ecosystem</h2>
         <p>Our world models understand real-world business environments. AIOS (AI Operating System) brings that intelligence into everyday enterprise operations.</p>
-      </div>      <!-- Ecosystem panel -->
+      </div>
+      <!-- Ecosystem panel -->
       <div class="ecosystem-panel">
         <div class="ecosystem-col world">
           <div class="ecosystem-col-header"><h3>WORLD MODEL BU</h3></div>
           <div class="ecosystem-col-summary">Physical world sensing, understanding &amp; feedback</div>
-          <div class="ecosystem-col-content">
+          <div class="ecosystem-col-content" role="list">
             <!-- SpaceSight -->
-            <div class="product-card large">
+            <div class="product-card large" role="listitem">
               <div class="card-tag blue">SEE</div>
-              <h3><strong>SpaceSight:</strong> <span>AI spatial intelligence</span></h3>
+              <h4><strong>SpaceSight:</strong> <span>AI spatial intelligence</span></h4>
               <div class="card-desc-row">
-                <div class="icon-box icon-blue"><img src={asset('08412.png')} alt="" /></div>
+                <div class="icon-box icon-blue"><img src={asset('08412.webp')} alt="" width="44" height="44" loading="lazy" decoding="async" /></div>
                 <p>VLM-powered, 24/7 AI inspections; Turn activity in physical spaces into actionable insights that improve operations.</p>
               </div>
               <div class="card-visuals">
-                <div class="visual-placeholder blue"></div>
-                <div class="visual-placeholder blue"></div>
+                <img class="card-visual" src="/products/ss2-ai-audit.webp" alt="SpaceSight AI audit flagging an expired product label, a staff handling issue, and an unsanitized prep surface" width="1376" height="768" loading="lazy" decoding="async" />
+                <img class="card-visual" src="/products/ss2-audit-vlm.webp" alt="SpaceSight VLM evaluation interface showing human fall detection test results" width="1600" height="938" loading="lazy" decoding="async" />
               </div>
             </div>
             <!-- Echo -->
-            <div class="product-card">
+            <div class="product-card" role="listitem">
               <div class="card-tag orange">HEAR</div>
-              <h3><strong>Echo:</strong> <span>AI voice intelligence</span></h3>
+              <h4><strong>Echo:</strong> <span>AI voice intelligence</span></h4>
               <div class="card-desc-row">
-                <div class="icon-box icon-orange"><img src={asset('db911.png')} alt="" /></div>
+                <div class="icon-box icon-orange"><img src={asset('db911.webp')} alt="" width="44" height="44" loading="lazy" decoding="async" /></div>
                 <p>100+ languages: auto-capture conversations, assess service quality, uncover customer needs, and drive training.</p>
               </div>
             </div>
             <!-- Stardust -->
-            <div class="product-card">
+            <div class="product-card" role="listitem">
               <div class="card-tag gray">EDGE AI INFRA, CONNECT</div>
-              <h3><strong>Stardust:</strong> <span>Cloud and edge AI IoT</span></h3>
+              <h4><strong>Stardust:</strong> <span>Cloud and edge AI IoT</span></h4>
               <div class="card-desc-row">
-                <div class="icon-box icon-dark"><img src={asset('8dccd.png')} alt="" /></div>
+                <div class="icon-box icon-dark"><img src={asset('8dccd.webp')} alt="" width="44" height="44" loading="lazy" decoding="async" /></div>
                 <p>Unified platform connecting edge devices, with cloud-edge AI powering intelligent IoT infrastructure.</p>
               </div>
             </div>
@@ -319,49 +269,50 @@ const overseasLogos = [
         <div class="ecosystem-col aios">
           <div class="ecosystem-col-header"><h3>AIOS BU</h3></div>
           <div class="ecosystem-col-summary">Enterprise AI platform &amp; App ecosystem.</div>
-          <div class="ecosystem-col-content">
+          <div class="ecosystem-col-content" role="list">
             <!-- Alivia -->
-            <div class="product-card large">
+            <div class="product-card large" role="listitem">
               <div class="card-tag purple">THINK</div>
-              <h3><strong>Alivia:</strong> <span>Agent collaboration</span></h3>
+              <h4><strong>Alivia:</strong> <span>Agent collaboration</span></h4>
               <div class="card-desc-row">
-                <div class="icon-box icon-blue"><img src={asset('e9424.png')} alt="" /></div>
+                <div class="icon-box icon-blue"><img src={asset('e9424.webp')} alt="" width="44" height="44" loading="lazy" decoding="async" /></div>
                 <p>AI-native agents built on enterprise data and workflows to automate decisions and execute operations.</p>
               </div>
               <img class="card-divider" src={asset('f33c5.svg')} alt="" />
               <div class="card-tag purple">WORKBENCH APPS</div>
               <div class="app-columns">
                 <div class="app-col">
-                  <h4><span class="app-name">Mira:</span> Data Analytics Platform</h4>
+                  <h5><span class="app-name">Mira:</span> Data Analytics Platform</h5>
                   <p>Mira combines AI-powered data exploration, dashboards, and agent-assisted configuration. A planned business knowledge base will help turn findings into business-relevant insights.</p>
                 </div>
                 <div class="app-col">
-                  <h4><span class="app-name">Lume:</span> AI social media growth</h4>
+                  <h5><span class="app-name">Lume:</span> AI social media growth</h5>
                   <p>Turns a creative input into multi-platform content, managing production, distribution, and performance end to end.</p>
                 </div>
               </div>
             </div>
             <!-- Harbor -->
-            <div class="product-card">
+            <div class="product-card" role="listitem">
               <div class="card-tag purple">MEMORY</div>
-              <h3><strong>Harbor:</strong> <span>Content and knowledge hub</span></h3>
+              <h4><strong>Harbor:</strong> <span>Content and knowledge hub</span></h4>
               <div class="card-desc-row">
-                <div class="icon-box icon-cyan"><img src={asset('c9852.png')} alt="" /></div>
+                <div class="icon-box icon-cyan"><img src={asset('c9852.webp')} alt="" width="44" height="44" loading="lazy" decoding="async" /></div>
                 <p>Centralized enterprise knowledge: multimodal search, compliant knowledge bases, intelligent Q&amp;A, long-term memory.</p>
               </div>
             </div>
             <!-- Novus -->
-            <div class="product-card">
+            <div class="product-card" role="listitem">
               <div class="card-tag gray">CLOUD AI INFRA, CONTROL</div>
-              <h3><strong>Novus:</strong> <span>AI model governance</span></h3>
+              <h4><strong>Novus:</strong> <span>AI model governance</span></h4>
               <div class="card-desc-row">
-                <div class="icon-box icon-dark"><img src={asset('eb724.png')} alt="" /></div>
+                <div class="icon-box icon-dark"><img src={asset('eb724.webp')} alt="" width="44" height="44" loading="lazy" decoding="async" /></div>
                 <p>Unified large-model management: orchestration, access control, cost, security, private deployment.</p>
               </div>
             </div>
           </div>
         </div>
       </div>
+      </section>
 
       <!-- Plug and Play title -->
 
@@ -531,50 +482,12 @@ const overseasLogos = [
       <div class="bottom-area" id="contact">
         <div class="logo-carousel" data-carousel="2">
                   <div class="logo-track">
-          <div class="logo-card"><img src="/home-assets/logos/JREV.png" alt="JREV" loading="lazy" /></div>
-          <div class="logo-card"><img src="/home-assets/logos/Aeon-Mall.png" alt="Aeon Mall" loading="lazy" /></div>
-          <div class="logo-card"><img src="/home-assets/logos/ZUS-Coffee.png" alt="ZUS Coffee" loading="lazy" /></div>
-          <div class="logo-card"><img src="/home-assets/logos/PICO-Singapore.png" alt="PICO Singapore" loading="lazy" /></div>
-          <div class="logo-card"><img src="/home-assets/logos/mothercare.png" alt="mothercare" loading="lazy" /></div>
-          <div class="logo-card"><img src="/home-assets/logos/National-Gallery-Singapore.png" alt="National Gallery Singapore" loading="lazy" /></div>
-          <div class="logo-card"><img src="/home-assets/logos/Blibli.png" alt="Blibli" loading="lazy" /></div>
-          <div class="logo-card"><img src="/home-assets/logos/Acer.png" alt="Acer" loading="lazy" /></div>
-          <div class="logo-card"><img src="/home-assets/logos/OPPO.png" alt="OPPO" loading="lazy" /></div>
-          <div class="logo-card"><img src="/home-assets/logos/Metro.png" alt="Metro" loading="lazy" /></div>
-          <div class="logo-card"><img src="/home-assets/logos/OCBC.png" alt="OCBC" loading="lazy" /></div>
-          <div class="logo-card"><img src="/home-assets/logos/Siloam.png" alt="Siloam" loading="lazy" /></div>
-          <div class="logo-card"><img src="/home-assets/logos/J-chicken.png" alt="J chicken" loading="lazy" /></div>
-          <div class="logo-card"><img src="/home-assets/logos/Kanmo-Group.png" alt="Kanmo Group" loading="lazy" /></div>
-          <div class="logo-card"><img src="/home-assets/logos/Breitling.png" alt="Breitling" loading="lazy" /></div>
-          <div class="logo-card"><img src="/home-assets/logos/Haus.png" alt="Haus" loading="lazy" /></div>
-          <div class="logo-card"><img src="/home-assets/logos/Optik-Tunggal.png" alt="Optik Tunggal" loading="lazy" /></div>
-          <div class="logo-card"><img src="/home-assets/logos/Amanaia.png" alt="Amanaia" loading="lazy" /></div>
-          <div class="logo-card"><img src="/home-assets/logos/Boga-Group.png" alt="Boga Group" loading="lazy" /></div>
-          <div class="logo-card"><img src="/home-assets/logos/Erajaya-Active-Lifestyle.png" alt="Erajaya Active Lifestyle" loading="lazy" /></div>
-          <div class="logo-card"><img src="/home-assets/logos/PT-Kurnia-Ciptamoda-Gemilang.png" alt="PT. Kurnia Ciptamoda Gemilang" loading="lazy" /></div>
-          <div class="logo-card"><img src="/home-assets/logos/The-Paper-Bunny.png" alt="The Paper Bunny" loading="lazy" /></div>
-          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/JREV.png" alt="" loading="lazy" /></div>
-          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/Aeon-Mall.png" alt="" loading="lazy" /></div>
-          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/ZUS-Coffee.png" alt="" loading="lazy" /></div>
-          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/PICO-Singapore.png" alt="" loading="lazy" /></div>
-          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/mothercare.png" alt="" loading="lazy" /></div>
-          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/National-Gallery-Singapore.png" alt="" loading="lazy" /></div>
-          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/Blibli.png" alt="" loading="lazy" /></div>
-          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/Acer.png" alt="" loading="lazy" /></div>
-          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/OPPO.png" alt="" loading="lazy" /></div>
-          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/Metro.png" alt="" loading="lazy" /></div>
-          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/OCBC.png" alt="" loading="lazy" /></div>
-          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/Siloam.png" alt="" loading="lazy" /></div>
-          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/J-chicken.png" alt="" loading="lazy" /></div>
-          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/Kanmo-Group.png" alt="" loading="lazy" /></div>
-          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/Breitling.png" alt="" loading="lazy" /></div>
-          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/Haus.png" alt="" loading="lazy" /></div>
-          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/Optik-Tunggal.png" alt="" loading="lazy" /></div>
-          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/Amanaia.png" alt="" loading="lazy" /></div>
-          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/Boga-Group.png" alt="" loading="lazy" /></div>
-          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/Erajaya-Active-Lifestyle.png" alt="" loading="lazy" /></div>
-          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/PT-Kurnia-Ciptamoda-Gemilang.png" alt="" loading="lazy" /></div>
-          <div class="logo-card" aria-hidden="true"><img src="/home-assets/logos/The-Paper-Bunny.png" alt="" loading="lazy" /></div>
+          {investorLogos.map((logo) => (
+            <div class="logo-card"><img src={logo.src} alt={logo.name} loading="lazy" /></div>
+          ))}
+          {investorLogos.map((logo) => (
+            <div class="logo-card" aria-hidden="true"><img src={logo.src} alt="" loading="lazy" /></div>
+          ))}
         </div>
           <div class="carousel-bar">
             <img src={asset('26d34.svg')} alt="" />
@@ -589,7 +502,7 @@ const overseasLogos = [
           <div class="faq-list">
             <div class="faq-item active">
               <div class="faq-head">
-                <div class="faq-num blue">01</div>
+                <div class="faq-num">01</div>
                 <span>What is SpaceSight, and what is it not?</span>
                 <span class="faq-toggle">×</span>
               </div>
@@ -603,12 +516,18 @@ const overseasLogos = [
                 <span>How is ROI measured?</span>
                 <span class="faq-toggle">+</span>
               </div>
+              <div class="faq-body">
+                <p>ROI is measured by tangible business outcomes—such as labor hours saved, faster issue closure, and reduced shrink—rather than raw detection volume alone. By connecting real-time AI alerts directly to your daily operations, value is generated through optimized staffing, improved customer experience, and higher multi-site compliance.</p>
+              </div>
             </div>
             <div class="faq-item">
               <div class="faq-head">
                 <div class="faq-num">03</div>
                 <span>Do you use facial recognition? What are you actually capturing?</span>
                 <span class="faq-toggle">+</span>
+              </div>
+              <div class="faq-body">
+                <p>No, SpaceSight does not use facial recognition or identify individual customers by name. Instead, our platform uses anonymous Person Re-Identification (ReID) to convert foot traffic and spatial activity into privacy-compliant metadata, supported by encryption, role-based access, and optional video masking.</p>
               </div>
             </div>
             <div class="faq-item">
@@ -617,12 +536,18 @@ const overseasLogos = [
                 <span>Does our video leave the building, and where does the data live?</span>
                 <span class="faq-toggle">+</span>
               </div>
+              <div class="faq-body">
+                <p>No, continuous raw video remains securely on your local NVR network and never leaves your facility. Primary AI processing occurs locally on an on-premises AI Hub, transmitting only lightweight analytics metadata and approved evidence snapshots to the cloud using enterprise-grade encryption.</p>
+              </div>
             </div>
             <div class="faq-item">
               <div class="faq-head">
                 <div class="faq-num">05</div>
                 <span>Can we use our existing cameras?</span>
                 <span class="faq-toggle">+</span>
+              </div>
+              <div class="faq-body">
+                <p>In most cases, yes, as SpaceSight is designed to layer directly onto your existing IP cameras and NVR streams via an AI Hub. During onboarding, our team conducts a quick technical assessment to verify stream stability, camera angles, and lighting before recommending any minor adjustments or hardware additions.</p>
               </div>
             </div>
             <div class="faq-item faq-item-collapsed">
@@ -745,12 +670,23 @@ const overseasLogos = [
       const DESIGN_WIDTH = 1920;
       const DESIGN_HEIGHT = 9262;
       const MAX_SCALE = 1;
+      const MOBILE_BREAKPOINT = 1024;
+
+      function isMobile() {
+        return window.innerWidth <= MOBILE_BREAKPOINT;
+      }
 
       function getScale() {
         return Math.min(MAX_SCALE, window.innerWidth / DESIGN_WIDTH);
       }
 
       function fitStage() {
+        if (isMobile()) {
+          stage.style.transform = 'none';
+          viewport.style.width = '100%';
+          viewport.style.height = 'auto';
+          return;
+        }
         const scale = getScale();
         stage.style.transform = 'scale(' + scale + ')';
         viewport.style.width = (DESIGN_WIDTH * scale) + 'px';
@@ -764,6 +700,11 @@ const overseasLogos = [
       const nav = document.querySelector('.pc-nav');
       let ticking = false;
       function stickyNav() {
+        if (isMobile()) {
+          nav.classList.remove('sticky');
+          nav.style.top = '';
+          return;
+        }
         if (ticking) return;
         ticking = true;
         window.requestAnimationFrame(function () {
@@ -833,10 +774,32 @@ const overseasLogos = [
       }
 
       document.querySelectorAll('.faq-item').forEach(function (item) {
-        item.querySelector('.faq-head').addEventListener('click', function () {
+        const head = item.querySelector('.faq-head');
+        const toggle = item.querySelector('.faq-toggle');
+        head.setAttribute('role', 'button');
+        head.setAttribute('tabindex', '0');
+        head.setAttribute('aria-expanded', item.classList.contains('active') ? 'true' : 'false');
+        function toggleFaq() {
           const wasActive = item.classList.contains('active');
-          document.querySelectorAll('.faq-item').forEach(function (i) { i.classList.remove('active'); });
-          if (!wasActive) item.classList.add('active');
+          document.querySelectorAll('.faq-item').forEach(function (i) {
+            i.classList.remove('active');
+            const t = i.querySelector('.faq-toggle');
+            if (t) t.textContent = '+';
+            const h = i.querySelector('.faq-head');
+            if (h) h.setAttribute('aria-expanded', 'false');
+          });
+          if (!wasActive) {
+            item.classList.add('active');
+            if (toggle) toggle.textContent = '×';
+            head.setAttribute('aria-expanded', 'true');
+          }
+        }
+        head.addEventListener('click', toggleFaq);
+        head.addEventListener('keydown', function (event) {
+          if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            toggleFaq();
+          }
         });
       });
 
@@ -974,6 +937,7 @@ const overseasLogos = [
       if (!carousels.length || !stage) return;
 
       function getStageScale() {
+        if (window.innerWidth <= 1024) return 1;
         const rect = stage.getBoundingClientRect();
         return rect.width ? rect.width / 1920 : 1;
       }
