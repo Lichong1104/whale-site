@@ -41,7 +41,8 @@ const industries = [
     hover: '#1D4ED8',
     track: '#2563EB',
     scene: `<path d="M70 80 h60 v80 h-60 z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><path d="M85 80 v-20 a15 15 0 0 1 30 0 v20" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="100" cy="125" r="8" fill="none" stroke="currentColor" stroke-width="2.5"/><path d="M55 160 h90" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>`,
-    imgAlt: 'SpaceSight view of a fashion checkout area — queue length and register coverage tracked over the camera feed'
+    img: '/images/solutions/jewelry.png',
+    imgAlt: 'High-end jewelry boutique interior with glass display cases and curated pieces'
   },
   {
     id: 'beauty-personal-care',
@@ -59,7 +60,8 @@ const industries = [
     hover: '#1D4ED8',
     track: '#2563EB',
     scene: `<rect x="78" y="70" width="44" height="70" rx="8" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="100" cy="92" r="10" fill="none" stroke="currentColor" stroke-width="2.5"/><path d="M88 70 v-12 h24 v12" fill="none" stroke="currentColor" stroke-width="3"/>`,
-    imgAlt: 'SpaceSight beauty analytics — shopper attention measured at fragrance and skincare displays'
+    img: '/images/solutions/jewelry.png',
+    imgAlt: 'Modern boutique interior with glass display cases and curated products'
   },
   {
     id: 'grocery-pharmacy',
@@ -77,7 +79,8 @@ const industries = [
     hover: '#1D4ED8',
     track: '#2563EB',
     scene: `<rect x="60" y="90" width="80" height="60" rx="6" fill="none" stroke="currentColor" stroke-width="3"/><path d="M90 105 h20 v15 h15 v20 h-15 v15 h-20 v-15 h-15 v-20 h15 z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>`,
-    imgAlt: 'SpaceSight pharmacy view — pickup queue and waiting-area activity measured without identifying individuals'
+    img: '/images/solutions/medicine.png',
+    imgAlt: 'Modern health and personal care retail store with organized product shelves'
   },
   {
     id: 'restaurants-cafes',
@@ -95,7 +98,8 @@ const industries = [
     hover: '#1D4ED8',
     track: '#2563EB',
     scene: `<path d="M70 110 c0-20 60-20 60 0 v40 h-60 z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><path d="M75 110 c0-15 50-15 50 0" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="115" cy="135" r="5" fill="none" stroke="currentColor" stroke-width="2.5"/>`,
-    imgAlt: 'SpaceSight kitchen monitoring — scheduled visual checks flag spills, open bins, and propped doors'
+    img: '/images/solutions/restaurant.png',
+    imgAlt: 'Restaurant dining area and open kitchen with chefs and red-checkered tablecloths'
   },
   {
     id: 'telecom-consumer-electronics',
@@ -112,7 +116,8 @@ const industries = [
     hover: '#1D4ED8',
     track: '#2563EB',
     scene: `<rect x="72" y="50" width="56" height="100" rx="8" fill="none" stroke="currentColor" stroke-width="3"/><path d="M82 70 h36" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M82 85 h36 M82 100 h24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>`,
-    imgAlt: 'SpaceSight telecom analytics — shopper engagement measured at each device display table'
+    img: '/images/solutions/electronics.jpeg',
+    imgAlt: 'Smart home appliance showroom with connected kitchen and consumer electronics on display'
   },
   {
     id: 'variety-discount-convenience',
@@ -130,7 +135,8 @@ const industries = [
     hover: '#1D4ED8',
     track: '#2563EB',
     scene: `<path d="M100 50 l50 20 v40 c0 35-50 50-50 50s-50-15-50-50 v-40 z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><circle cx="100" cy="110" r="6" fill="currentColor" stroke="none"/><path d="M100 94 v-10" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>`,
-    imgAlt: 'SpaceSight loss-prevention view — defined events detected in real time and surfaced through Vega search'
+    img: '/images/solutions/snack.png',
+    imgAlt: 'Convenience store counter with snacks, candies and chilled beverages'
   }
 ];
 
@@ -179,12 +185,16 @@ const headlineWords = [
         <div class="sol-reel" data-reel tabindex="0" role="region" aria-roledescription="carousel" aria-label="Industry solutions — swipe, drag, or use arrow keys">
           {industries.map((ind, i) => (
             <article class="reel-slide" id={ind.id} data-slide={i} role="group" aria-roledescription="slide" aria-label={`${i + 1} of ${industries.length}: ${ind.name}`}>
-              <div class={`reel-stage scene-${ind.accent}`}>
+              <div class={`reel-stage scene-${ind.accent}${ind.img ? ' has-img' : ''}`}>
                 <span class="ind-hud ind-hud-name">{ind.name}</span>
-                <svg viewBox="0 0 200 200" role="img" aria-label={`${ind.name} illustration`}>
-                  <g class="scene-ring" set:html={RING} />
-                  <g set:html={ind.scene} />
-                </svg>
+                {ind.img ? (
+                  <img src={ind.img} alt={ind.imgAlt} loading="eager" decoding="async" />
+                ) : (
+                  <svg viewBox="0 0 200 200" role="img" aria-label={`${ind.name} illustration`}>
+                    <g class="scene-ring" set:html={RING} />
+                    <g set:html={ind.scene} />
+                  </svg>
+                )}
                 <span class="ind-hud ind-hud-prods">SpaceSight</span>
               </div>
               <div class="reel-copy">
@@ -462,6 +472,15 @@ const headlineWords = [
     width: 62%;
     height: auto;
     display: block;
+  }
+
+  .reel-stage.has-img img {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 
   /* ---------- Horizontal snap reel ---------- */
