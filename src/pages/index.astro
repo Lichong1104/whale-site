@@ -126,7 +126,13 @@ const investorLogos = [
       <nav class="pc-nav">
         <a href="/" class="nav-logo"><img src={asset('001ea.png')} alt="Whale" width="182" height="50" /></a>
         <ul class="nav-links">
-          <li><a href="/products/">Products</a></li>
+          <li class="nav-dropdown">
+            <a href="/products/" class="nav-dropdown-trigger" aria-haspopup="true">Products</a>
+            <div class="nav-dropdown-menu" role="menu">
+              <a href="https://spacesight.meetwhale.ai/" class="nav-dropdown-link" role="menuitem">SpaceSight</a>
+              <a href="https://echobusiness.meetwhale.ai/" class="nav-dropdown-link" role="menuitem">Echo</a>
+            </div>
+          </li>
           <li><a href="/solutions/">Solutions</a></li>
           <li><a href="/company/">Company</a></li>
           <li><a href="/blog/">Blog</a></li>
@@ -387,7 +393,7 @@ const investorLogos = [
         <h3 class="industry-heading">Spot issues early. Resolve them before they spread across stores.</h3>
         <div class="industry-body">
           <div class="accordion">
-            <div class="accordion-item active" data-media={asset('51469.png')} data-type="image">
+            <div class="accordion-item active" data-media="/images/solutions/fashion-footwear-offprice.png" data-type="image">
               <div class="accordion-head">
                 <div class="accordion-num blue">1</div>
                 <span class="accordion-label">Fashion, Footwear, Off-price</span>
@@ -399,7 +405,7 @@ const investorLogos = [
                 <a href="/solutions/" class="accordion-more">More details  >></a>
               </div>
             </div>
-            <div class="accordion-item" data-media={asset('51469.png')} data-type="image">
+            <div class="accordion-item" data-media="/images/solutions/beauty-personal-care.png" data-type="image">
               <div class="accordion-head">
                 <div class="accordion-num">2</div>
                 <span class="accordion-label">Beauty & Personal Care</span>
@@ -411,7 +417,7 @@ const investorLogos = [
                 <a href="/solutions/" class="accordion-more">More details  >></a>
               </div>
             </div>
-            <div class="accordion-item" data-media={asset('51469.png')} data-type="image">
+            <div class="accordion-item" data-media="/images/solutions/grocery-pharmacy.png" data-type="image">
               <div class="accordion-head">
                 <div class="accordion-num">3</div>
                 <span class="accordion-label">Grocery</span>
@@ -423,7 +429,7 @@ const investorLogos = [
                 <a href="/solutions/" class="accordion-more">More details  >></a>
               </div>
             </div>
-            <div class="accordion-item" data-media={asset('51469.png')} data-type="image">
+            <div class="accordion-item" data-media="/images/solutions/restaurants-cafes.png" data-type="image">
               <div class="accordion-head">
                 <div class="accordion-num">4</div>
                 <span class="accordion-label">Restaurants & Cafés</span>
@@ -435,7 +441,7 @@ const investorLogos = [
                 <a href="/solutions/" class="accordion-more">More details  >></a>
               </div>
             </div>
-            <div class="accordion-item" data-media={asset('51469.png')} data-type="image">
+            <div class="accordion-item" data-media="/images/solutions/telecom-consumer-electronics.png" data-type="image">
               <div class="accordion-head">
                 <div class="accordion-num">5</div>
                 <span class="accordion-label">Telecom & Electronics</span>
@@ -447,7 +453,7 @@ const investorLogos = [
                 <a href="/solutions/" class="accordion-more">More details  >></a>
               </div>
             </div>
-            <div class="accordion-item" data-media={asset('51469.png')} data-type="image">
+            <div class="accordion-item" data-media="/images/solutions/variety-discount-convenience.png" data-type="image">
               <div class="accordion-head">
                 <div class="accordion-num">6</div>
                 <span class="accordion-label">Variety, Discount & Convenience</span>
@@ -462,7 +468,7 @@ const investorLogos = [
           </div>
           <div class="industry-media">
             <div class="industry-media-frame" data-media-frame>
-              <img class="industry-media-target" src={asset('51469.png')} alt="" />
+              <img class="industry-media-target" src="/images/solutions/fashion-footwear-offprice.png" alt="" />
               <div class="media-badge">
                 <span class="badge-dot"></span>
                 <span class="badge-dot"></span>
@@ -619,6 +625,7 @@ const investorLogos = [
             <div class="footer-col">
               <h5>PRODUCTS</h5>
               <a href="/spacesight/">SpaceSight</a>
+              <a href="/echo/">Echo</a>
             </div>
             <div class="footer-col">
               <h5>SOLUTIONS</h5>
@@ -772,6 +779,44 @@ const investorLogos = [
           }, 50);
         }, 300);
       }
+
+      // Auto-rotate industry accordion / image carousel
+      (function () {
+        const items = Array.from(document.querySelectorAll('#pc-stage .accordion-item'));
+        if (!items.length) return;
+        let timer = null;
+        let userInteracted = false;
+        const delay = 5000;
+
+        function activate(index) {
+          const head = items[index].querySelector('.accordion-head');
+          if (head) head.click();
+        }
+
+        function next() {
+          const current = items.findIndex(function (i) { return i.classList.contains('active'); });
+          activate((current + 1) % items.length);
+        }
+
+        function start() {
+          stop();
+          if (!userInteracted) timer = window.setInterval(next, delay);
+        }
+
+        function stop() {
+          if (timer) window.clearInterval(timer);
+          timer = null;
+        }
+
+        items.forEach(function (item) {
+          item.querySelector('.accordion-head').addEventListener('click', function () {
+            userInteracted = true;
+            stop();
+          });
+        });
+
+        start();
+      })();
 
       document.querySelectorAll('.faq-item').forEach(function (item) {
         const head = item.querySelector('.faq-head');
