@@ -181,8 +181,8 @@ const investorLogos = [
       <!-- Hero CTAs -->
       <div class="hero-ctas">
         <button type="button" class="btn btn-primary btn-lg" data-open-modal data-source-type="Homepage hero">Book a demo</button>
-        <a href="/products/" class="btn btn-secondary btn-lg">
-          <span>Explore products</span>
+        <a href="/solutions/" class="btn btn-secondary btn-lg">
+          <span>Explore solutions</span>
           <img src={asset('ab2a9.svg')} alt="" />
         </a>
       </div>
@@ -214,16 +214,14 @@ const investorLogos = [
 
       <!-- Logo carousel 1 -->
       <div class="logo-carousel" data-carousel="1">
-                <div class="logo-track">
+        <h3 class="logo-carousel-heading">Trusted by</h3>
+        <div class="logo-track">
           {industryLogos.map((logo) => (
             <div class="logo-card"><img src={logo.src} alt={logo.name} loading="lazy" /></div>
           ))}
           {industryLogos.map((logo) => (
             <div class="logo-card" aria-hidden="true"><img src={logo.src} alt="" loading="lazy" /></div>
           ))}
-        </div>
-        <div class="carousel-bar">
-          <img src={asset('11f3e.svg')} alt="" />
         </div>
       </div>
 
@@ -289,7 +287,7 @@ const investorLogos = [
               <div class="app-columns">
                 <div class="app-col">
                   <h5><span class="app-name">Mira:</span> Data Analytics Platform</h5>
-                  <p>Mira combines AI-powered data exploration, dashboards, and agent-assisted configuration. A planned business knowledge base will help turn findings into business-relevant insights.</p>
+                  <p>Mira combines AI-powered data exploration, dashboards and agent-assisted setup. A planned knowledge base will turn findings into insights.</p>
                 </div>
                 <div class="app-col">
                   <h5><span class="app-name">Lume:</span> AI social media growth</h5>
@@ -487,7 +485,8 @@ const investorLogos = [
       <!-- Bottom area: carousel, FAQ, footer -->
       <div class="bottom-area" id="contact">
         <div class="logo-carousel" data-carousel="2">
-                  <div class="logo-track">
+          <h3 class="logo-carousel-heading">Backed by</h3>
+          <div class="logo-track">
           {investorLogos.map((logo) => (
             <div class="logo-card"><img src={logo.src} alt={logo.name} loading="lazy" /></div>
           ))}
@@ -495,9 +494,6 @@ const investorLogos = [
             <div class="logo-card" aria-hidden="true"><img src={logo.src} alt="" loading="lazy" /></div>
           ))}
         </div>
-          <div class="carousel-bar">
-            <img src={asset('26d34.svg')} alt="" />
-          </div>
         </div>
 
         <section class="faq">
@@ -727,6 +723,18 @@ const investorLogos = [
       window.addEventListener('scroll', stickyNav, { passive: true });
       stickyNav();
 
+      // Preload industry images so switching is instant
+      (function () {
+        document.querySelectorAll('#pc-stage .accordion-item[data-media]').forEach(function (item) {
+          const src = item.dataset.media;
+          const type = item.dataset.type || 'image';
+          if (src && type === 'image') {
+            const img = new Image();
+            img.src = src;
+          }
+        });
+      })();
+
       document.querySelectorAll('.accordion-item').forEach(function (item) {
         item.querySelector('.accordion-head').addEventListener('click', function () {
           if (item.classList.contains('active')) return;
@@ -748,36 +756,30 @@ const investorLogos = [
         const type = item.dataset.type || 'image';
         if (!src) return;
 
-        frame.classList.add('is-changing');
-        window.setTimeout(function () {
-          let current = frame.querySelector('.industry-media-target');
-          if (type === 'video') {
-            if (!current || current.tagName !== 'VIDEO') {
-              if (current) current.remove();
-              current = document.createElement('video');
-              current.className = 'industry-media-target';
-              current.autoplay = true;
-              current.loop = true;
-              current.muted = true;
-              current.playsInline = true;
-              frame.insertBefore(current, frame.firstChild);
-            }
-            current.src = src;
-            current.load();
-            current.play().catch(function () {});
-          } else {
-            if (!current || current.tagName !== 'IMG') {
-              if (current) current.remove();
-              current = document.createElement('img');
-              current.className = 'industry-media-target';
-              frame.insertBefore(current, frame.firstChild);
-            }
-            current.src = src;
+        let current = frame.querySelector('.industry-media-target');
+        if (type === 'video') {
+          if (!current || current.tagName !== 'VIDEO') {
+            if (current) current.remove();
+            current = document.createElement('video');
+            current.className = 'industry-media-target';
+            current.autoplay = true;
+            current.loop = true;
+            current.muted = true;
+            current.playsInline = true;
+            frame.insertBefore(current, frame.firstChild);
           }
-          window.setTimeout(function () {
-            frame.classList.remove('is-changing');
-          }, 50);
-        }, 300);
+          current.src = src;
+          current.load();
+          current.play().catch(function () {});
+        } else {
+          if (!current || current.tagName !== 'IMG') {
+            if (current) current.remove();
+            current = document.createElement('img');
+            current.className = 'industry-media-target';
+            frame.insertBefore(current, frame.firstChild);
+          }
+          current.src = src;
+        }
       }
 
       // Auto-rotate industry accordion / image carousel

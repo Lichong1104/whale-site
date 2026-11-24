@@ -138,8 +138,13 @@
   z-index: 20;
 }
 #pc-stage .nav-dropdown {
-  padding-bottom: 20px;
   margin-bottom: -20px;
+}
+#pc-stage .nav-dropdown-trigger {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding-bottom: 20px;
 }
 #pc-stage .nav-dropdown:hover .nav-dropdown-menu,
 #pc-stage .nav-dropdown:focus-within .nav-dropdown-menu {
@@ -449,6 +454,12 @@
   left: auto;
   width: 100%;
   padding: 40px 92px;
+}#pc-stage .logo-carousel-heading{
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+  color: #5f7aa8;
+  text-align: center;
 }#pc-stage .logo-track{
   display: flex;
   gap: 16px;
