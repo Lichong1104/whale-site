@@ -1012,12 +1012,12 @@
   height: 100%;
 }#pc-stage .industry-media-frame img,
 #pc-stage .industry-media-frame video{
-  width: 142.35%;
-  height: 107.62%;
+  width: 100%;
+  height: 100%;
   position: absolute;
-  left: -35.59%;
-  top: -4.1%;
-  object-fit: cover;
+  left: 0;
+  top: 0;
+  object-fit: contain;
   opacity: 1;
   transform: scale(1);
   transition: opacity 0.35s ease, transform 0.35s ease;
